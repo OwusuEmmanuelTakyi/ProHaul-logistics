@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router";
+import logo from "../../images/logo.png";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu,
@@ -119,17 +120,27 @@ export function Navigation() {
       >
         <div className="grid h-16 grid-cols-[auto_1fr_auto] items-center gap-4 px-4 sm:h-20 sm:px-6 lg:px-7 xl:px-8">
           {/* Logo */}
-          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-            <Link to="/" className="flex items-center gap-3" onClick={closeMobileMenu}>
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg shadow-orange-600/25 sm:h-12 sm:w-12">
-                <span className="text-lg font-black text-white sm:text-xl">PH</span>
-              </div>
-              <div>
-                <h1 className={`text-lg font-black leading-none sm:text-xl ${linkBase}`}>ProHaul</h1>
-                <p className={`mt-1 text-[11px] leading-none sm:text-xs ${mutedText}`}>Logistics Solutions</p>
-              </div>
-            </Link>
-          </motion.div>
+          {/* Logo */}
+<motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+  <Link to="/" className="flex items-center gap-3" onClick={closeMobileMenu}>
+    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white p-2 shadow-lg shadow-black/10 sm:h-16 sm:w-16">
+      <img
+        src={logo}
+        alt="ProHaul"
+        className="h-full w-full object-contain"
+      />
+    </div>
+
+    <div>
+      <h1 className={`text-xl font-black leading-none sm:text-2xl ${linkBase}`}>
+        ProHaul
+      </h1>
+      <p className={`mt-1 text-[10px] font-medium leading-none sm:text-xs ${mutedText}`}>
+        Bulk Haulage | Ghana | West Africa
+      </p>
+    </div>
+  </Link>
+</motion.div>
 
           {/* Desktop Nav */}
           <nav className="hidden items-center justify-center gap-8 lg:flex xl:gap-10 2xl:gap-12">
@@ -226,9 +237,7 @@ export function Navigation() {
                                       <h3 className="text-sm font-bold text-slate-950 transition-colors group-hover:text-orange-500 dark:text-white">
                                         {service.name}
                                       </h3>
-                                      <p className="mt-0.5 max-w-md truncate text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-                                        {service.desc}
-                                      </p>
+                                      
                                     </div>
                                   </Link>
                                 </motion.div>

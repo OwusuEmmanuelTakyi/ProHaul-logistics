@@ -450,12 +450,11 @@ export function Home() {
               transition={{ duration: 0.6 }}
               className="inline-flex max-w-full items-center gap-2 px-3 sm:px-4 py-1.5 bg-orange-500/20 border border-orange-500/40 rounded-full text-orange-300 text-[11px] sm:text-sm mb-6 sm:mb-8 leading-relaxed"
             >
-              <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse flex-shrink-0" />
-              <span className="truncate sm:whitespace-normal">Reliable Bulk Haulage · Nationwide Strength · Regional Reach</span>
+              
             </motion.div>
 
             <div className="mb-2 sm:mb-4 overflow-visible text-sm">
-              {"·Reliable Bulk Haulage   ·Nationwide Strength.".split(" ").map((word, i) => (
+              {"Reliable Bulk Haulage   Nationwide Strength.".split(" ").map((word, i) => (
                 <motion.span
                   key={word}
                   initial={{ opacity: 0, y: reduceMotion ? 0 : isMobile ? 26 : 70 }}
@@ -475,7 +474,7 @@ export function Home() {
               className="min-h-[1.15em] text-[clamp(2.2rem,11vw,4.5rem)] md:text-6xl lg:text-7xl font-extrabold leading-[1.02] tracking-tight mb-6 sm:mb-8"
             >
               <Typewriter
-                words={[ "· Regional Reach." ]}
+                words={[ "Regional Reach" ]}
                 className="block max-w-full break-words text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600"
               />
             </motion.div>
@@ -511,27 +510,7 @@ Backed by a high-capacity fleet, we support seamless transportation across key t
             </motion.div>
           </div>
 
-          <div className="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 flex-col gap-4">
-            {[
-              { icon: Shield, label: "NPA Certified" },
-              { icon: Navigation, label: "Live GPS Tracking" },
-              { icon: Clock, label: "99% On-Time Rate" },
-            ].map((b, i) => {
-              const Icon = b.icon;
-              return (
-                <motion.div
-                  key={b.label}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 1.4 + i * 0.18, duration: 0.55 }}
-                  className="flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/15 rounded-xl px-5 py-3 text-white text-sm font-medium"
-                >
-                  <Icon className="w-5 h-5 text-orange-400" />
-                  {b.label}
-                </motion.div>
-              );
-            })}
-          </div>
+          
         </motion.div>
 
         <motion.div
