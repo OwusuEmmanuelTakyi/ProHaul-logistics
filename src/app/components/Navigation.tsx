@@ -3,135 +3,110 @@ import { Link, NavLink } from "react-router";
 import logo from "../../images/logo.png";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Menu,
-  X,
-  ChevronDown,
-  Sun,
-  Moon,
-  ArrowRight,
-  Search,
-  Droplet,
-  Wheat,
-  Building2,
-  Sprout,
-  Container,
-  Globe,
-  PackageCheck,
+  Menu, X, ChevronDown, Sun, Moon, ArrowRight,
+  Droplet, Wheat, Building2, Sprout, Container,
+  Globe, PackageCheck,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 
 export function Navigation() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen]         = useState(false);
+  const [servicesOpen, setServicesOpen]             = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled]                     = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { theme, setTheme } = useTheme();
 
-  const isDark = theme === "dark";
-
   const services = [
-    { name: "Fuel Haulage", path: "/services/fuel-haulage", icon: Droplet },
-    { name: "Agricultural Products", path: "/services/agricultural", icon: Wheat },
-    { name: "Cement & Construction", path: "/services/cement", icon: Building2 },
-    { name: "Fertilizer & Industrial", path: "/services/fertilizer", icon: Sprout },
-    { name: "Container Haulage", path: "/services/container", icon: Container },
-    { name: "Cross-Border Haulage", path: "/services/cross-border", icon: Globe },
-  ];
-
-  const navItems = [
-    { name: "Home", path: "/" },
-    { name: "About Us", path: "/about" },
-    { name: "Fleet", path: "/fleet" },
-    { name: "HSE", path: "/hse" },
-    { name: "Contact", path: "/contact" },
+    { name: "Fuel Haulage",            path: "/services/fuel-haulage", icon: Droplet   },
+    { name: "Agricultural Products",   path: "/services/agricultural", icon: Wheat     },
+    { name: "Cement & Construction",   path: "/services/cement",       icon: Building2 },
+    { name: "Fertilizer & Industrial", path: "/services/fertilizer",   icon: Sprout    },
+    { name: "Container Haulage",       path: "/services/container",    icon: Container },
+    { name: "Cross-Border Haulage",    path: "/services/cross-border", icon: Globe     },
   ];
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 24);
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const openServices = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    setServicesOpen(true);
-  };
+  const openServices  = () => { if (closeTimer.current) clearTimeout(closeTimer.current); setServicesOpen(true); };
+  const closeServices = () => { closeTimer.current = setTimeout(() => setServicesOpen(false), 180); };
+  const closeMobileMenu = () => { setMobileMenuOpen(false); setMobileServicesOpen(false); };
 
-  const closeServices = () => {
-    closeTimer.current = setTimeout(() => {
-      setServicesOpen(false);
-    }, 180);
-  };
-
-  const closeMobileMenu = () => {
-    setMobileMenuOpen(false);
-    setMobileServicesOpen(false);
-  };
-
-  const navText = isDark ? "text-white" : "text-slate-950";
-
-  const desktopNavLink = ({ isActive }: { isActive: boolean }) =>
-    `group relative inline-flex items-center px-1 py-2 text-sm font-bold transition-colors duration-300 ${
-      isActive ? "text-orange-500" : `${navText} hover:text-orange-500`
+  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `group relative flex items-center gap-0.5 px-4 py-2 text-[13.5px] font-semibold tracking-[0.01em] transition-colors duration-200 rounded-xl ${
+      isActive
+        ? "text-orange-500"
+        : "text-slate-700 hover:text-orange-500 dark:text-slate-200 dark:hover:text-orange-400"
     }`;
 
   return (
     <motion.header
-      initial={{ y: -24, opacity: 0 }}
+      initial={{ y: -32, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed left-0 right-0 top-0 z-50 w-full"
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed left-0 right-0 top-0 z-50 flex justify-center px-4 pt-4 sm:px-6 sm:pt-5"
     >
+      {/* ── PILL / ROUNDED CONTAINER ── */}
       <motion.div
         layout
-        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-        className={`w-full rounded-none transition-all duration-300 ${
-          isDark
-            ? "bg-slate-950/92 shadow-xl shadow-black/30 ring-1 ring-white/10 backdrop-blur-xl"
-            : "bg-white shadow-lg shadow-black/10 ring-1 ring-black/5"
-        } ${scrolled ? "backdrop-blur-xl" : ""}`}
+        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        className={`w-full max-w-7xl bg-white dark:bg-slate-950 transition-all duration-300 overflow-visible ${
+          mobileMenuOpen ? "rounded-3xl" : "rounded-full"
+        } ${
+          scrolled
+            ? "shadow-xl shadow-black/10"
+            : "shadow-md shadow-black/6 border border-slate-100 dark:border-white/5"
+        }`}
       >
-        <div className="mx-auto grid h-[82px] w-full grid-cols-[auto_1fr_auto] items-center gap-6 px-5 sm:px-8 lg:px-10 xl:px-12">
-          {/* Logo */}
-          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="min-w-0">
-            <Link to="/" className="flex items-center gap-3" onClick={closeMobileMenu}>
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white p-2 shadow-md shadow-black/10 ring-1 ring-black/5 sm:h-16 sm:w-16 lg:h-[68px] lg:w-[68px]">
-                <img src={logo} alt="ProHaul" className="h-full w-full object-contain" />
-              </div>
+        {/* ── INNER BAR ── */}
+        <div className="flex h-[72px] items-center px-4 sm:px-6 sm:h-[78px]">
 
-              <h1 className="hidden text-2xl font-black leading-none text-[#c90000] sm:block lg:text-3xl">
+          {/* ── LOGO + WORDMARK ── */}
+          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="flex-shrink-0">
+            <Link to="/" onClick={closeMobileMenu} className="flex items-center gap-3">
+
+              {/* Logo — white bg pill so it reads in dark mode */}
+              <motion.div
+                className="flex h-14 w-14 flex-shrink-0 items-center justify-center overflow-hidden rounded-2xl
+                           bg-white shadow-md shadow-black/10 border border-slate-100
+                           dark:border-white/10 dark:shadow-white/5
+                           sm:h-[60px] sm:w-[60px]"
+                whileHover={{ rotate: [0, -5, 5, 0] }}
+                transition={{ duration: 0.4 }}
+              >
+                <img src={logo} alt="ProHaul logo" className="h-[85%] w-[85%] object-contain" />
+              </motion.div>
+
+              {/* Wordmark — red, larger, always visible */}
+              <span className="text-[22px] sm:text-[26px] font-black leading-none tracking-tight text-red-600">
                 ProHaul
-              </h1>
+              </span>
             </Link>
           </motion.div>
 
-          {/* Desktop Nav - arranged in one clean centered row like the reference */}
-          <nav className="hidden items-center justify-end gap-8 lg:flex xl:gap-10 2xl:gap-12">
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.3 }}
-            >
-              <NavLink to="/" className={desktopNavLink}>
+          {/* ── DESKTOP NAV — pushed right ── */}
+          <nav className="hidden lg:flex items-center ml-auto gap-1">
+
+            {/* Home */}
+            <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1, duration: 0.3 }}>
+              <NavLink to="/" end className={navLinkClass}>
                 {({ isActive }) => (
                   <>
-                    <span>Home</span>
-                    <span
-                      className={`absolute -bottom-0.5 left-0 h-[2px] rounded-full bg-orange-500 transition-all duration-300 ${
-                        isActive ? "w-full" : "w-0 group-hover:w-full"
-                      }`}
-                    />
+                    Home
+                    <span className={`absolute bottom-1 left-4 right-4 h-[2px] rounded-full bg-orange-500 transition-all duration-300 ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`} />
                   </>
                 )}
               </NavLink>
             </motion.div>
 
-            {/* Services Menu */}
+            {/* ── Services mega-menu trigger ── */}
             <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.3 }}
               className="relative"
               onMouseEnter={openServices}
@@ -139,65 +114,68 @@ export function Navigation() {
             >
               <button
                 type="button"
-                onClick={() => setServicesOpen((open) => !open)}
-                className={`group relative flex items-center gap-1 px-1 py-2 text-sm font-bold transition-colors duration-300 ${
-                  servicesOpen ? "text-orange-500" : `${navText} hover:text-orange-500`
-                }`}
+                onClick={() => setServicesOpen((v) => !v)}
                 aria-expanded={servicesOpen}
+                className={`group relative flex items-center gap-1 px-4 py-2 text-[13.5px] font-semibold tracking-[0.01em] rounded-xl transition-colors duration-200 ${
+                  servicesOpen
+                    ? "text-orange-500"
+                    : "text-slate-700 hover:text-orange-500 dark:text-slate-200 dark:hover:text-orange-400"
+                }`}
               >
                 Services
-                <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`} />
-                <span
-                  className={`absolute -bottom-0.5 left-0 h-[2px] rounded-full bg-orange-500 transition-all duration-300 ${
-                    servicesOpen ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
-                />
+                <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`} />
+                <span className={`absolute bottom-1 left-4 right-4 h-[2px] rounded-full bg-orange-500 transition-all duration-300 ${servicesOpen ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`} />
               </button>
 
+              {/* ── MEGA-MENU DROPDOWN ── */}
               <AnimatePresence>
                 {servicesOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: 16, scale: 0.98 }}
+                    initial={{ opacity: 0, y: 16, scale: 0.97 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 12, scale: 0.98 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.97 }}
                     transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute left-1/2 top-full w-[min(760px,calc(100vw-2rem))] -translate-x-1/2 pt-4"
+                    className="absolute left-1/2 top-full -translate-x-1/2 pt-5 w-[820px]"
                     onMouseEnter={openServices}
                     onMouseLeave={closeServices}
                   >
-                    <div className="overflow-hidden bg-white shadow-2xl ring-1 ring-black/5 dark:bg-slate-950 dark:ring-white/10">
-                      <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr]">
-                        <div className="p-5">
+                    <div className="overflow-hidden rounded-3xl bg-white shadow-2xl ring-1 ring-black/6 dark:bg-slate-950 dark:ring-white/10">
+                      <div className="grid grid-cols-[1.15fr_0.85fr]">
+
+                        {/* Services list */}
+                        <div className="p-6">
                           <Link
                             to="/services"
                             onClick={() => setServicesOpen(false)}
-                            className="group mb-3 inline-flex items-center gap-2 text-xl font-black text-slate-950 transition-colors hover:text-orange-500 dark:text-white"
+                            className="group mb-5 inline-flex items-center gap-2 text-xl font-black text-slate-900 transition-colors hover:text-orange-500 dark:text-white"
                           >
                             All Services
-                            <ArrowRight className="h-6 w-6 text-orange-500 transition-transform group-hover:translate-x-1" />
+                            <ArrowRight className="h-5 w-5 text-orange-500 transition-transform group-hover:translate-x-1" />
                           </Link>
 
-                          <div className="divide-y divide-slate-200 dark:divide-white/10">
-                            {services.map((service, index) => {
+                          <div className="divide-y divide-slate-100 dark:divide-white/8">
+                            {services.map((service, i) => {
                               const Icon = service.icon;
                               return (
                                 <motion.div
                                   key={service.path}
                                   initial={{ opacity: 0, x: -12 }}
                                   animate={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: index * 0.035, duration: 0.25 }}
+                                  transition={{ delay: i * 0.04, duration: 0.22 }}
                                 >
                                   <Link
                                     to={service.path}
                                     onClick={() => setServicesOpen(false)}
-                                    className="group flex items-center gap-3 py-2.5 transition-colors hover:text-orange-500"
+                                    className="group flex items-start gap-3 py-3 transition-colors"
                                   >
-                                    <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-orange-500/10 transition-colors group-hover:bg-orange-500">
+                                    <div className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-orange-50 transition-colors group-hover:bg-orange-500 dark:bg-orange-500/10">
                                       <Icon className="h-4 w-4 text-orange-500 transition-colors group-hover:text-white" />
                                     </div>
-                                    <h3 className="text-sm font-bold text-slate-950 transition-colors group-hover:text-orange-500 dark:text-white">
-                                      {service.name}
-                                    </h3>
+                                    <div className="min-w-0">
+                                      <p className="text-sm font-bold text-slate-900 transition-colors group-hover:text-orange-500 dark:text-white">
+                                        {service.name}
+                                      </p>
+                                    </div>
                                   </Link>
                                 </motion.div>
                               );
@@ -205,27 +183,30 @@ export function Navigation() {
                           </div>
                         </div>
 
-                        <div className="relative min-h-[330px] overflow-hidden bg-slate-950">
+                        {/* Promo image panel */}
+                        <div className="relative min-h-[360px] overflow-hidden rounded-r-3xl">
                           <img
                             src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1200&q=85"
-                            alt="ProHaul logistics truck"
-                            className="absolute inset-0 h-full w-full object-cover opacity-80 transition-transform duration-700 hover:scale-105"
+                            alt="ProHaul truck on highway"
+                            className="absolute inset-0 h-full w-full object-cover opacity-85 transition-transform duration-700 hover:scale-105"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/55 to-slate-950/20" />
-                          <div className="absolute inset-0 flex flex-col items-center justify-center p-5 text-center text-white">
-                            <p className="mb-2 text-xs font-bold uppercase tracking-[0.22em] text-orange-300">ProHaul Services</p>
-                            <h2 className="max-w-[260px] text-2xl font-black leading-tight">
-                              Find the Right Haulage Solution for You
-                            </h2>
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/55 to-slate-950/10" />
+                          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-7 text-center text-white">
+                            <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-orange-300">ProHaul</p>
+                            <h3 className="max-w-[210px] text-xl font-black leading-snug">
+                              Find the right haulage solution for your cargo
+                            </h3>
+                            {/* ── Points to /quote ── */}
                             <Link
                               to="/quote"
                               onClick={() => setServicesOpen(false)}
-                              className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/60 bg-white/10 px-5 py-2.5 text-sm font-black uppercase tracking-wider text-white backdrop-blur-sm transition-all hover:border-orange-500 hover:bg-orange-500"
+                              className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-5 py-2.5 text-xs font-black uppercase tracking-wider text-white backdrop-blur-sm transition-all hover:border-orange-500 hover:bg-orange-500"
                             >
-                              Get Quote <ArrowRight className="h-5 w-5" />
+                              Get a Quote <ArrowRight className="h-3.5 w-3.5" />
                             </Link>
                           </div>
                         </div>
+
                       </div>
                     </div>
                   </motion.div>
@@ -233,180 +214,222 @@ export function Navigation() {
               </AnimatePresence>
             </motion.div>
 
-            {navItems.slice(1).map((item, index) => (
+            {/* Remaining nav links */}
+            {[
+              { name: "About Us", path: "/about",   delay: 0.2  },
+              { name: "Fleet",    path: "/fleet",   delay: 0.25 },
+              { name: "HSE",      path: "/hse",     delay: 0.3  },
+              { name: "Contact",  path: "/contact", delay: 0.35 },
+            ].map((item) => (
               <motion.div
                 key={item.path}
-                initial={{ opacity: 0, y: -10 }}
+                initial={{ opacity: 0, y: -8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + index * 0.05, duration: 0.3 }}
+                transition={{ delay: item.delay, duration: 0.3 }}
               >
-                <NavLink to={item.path} className={desktopNavLink}>
+                <NavLink to={item.path} className={navLinkClass}>
                   {({ isActive }) => (
                     <>
-                      <span>{item.name}</span>
-                      <span
-                        className={`absolute -bottom-0.5 left-0 h-[2px] rounded-full bg-orange-500 transition-all duration-300 ${
-                          isActive ? "w-full" : "w-0 group-hover:w-full"
-                        }`}
-                      />
+                      {item.name}
+                      <span className={`absolute bottom-1 left-4 right-4 h-[2px] rounded-full bg-orange-500 transition-all duration-300 ${isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`} />
                     </>
                   )}
                 </NavLink>
               </motion.div>
             ))}
-          </nav>
 
-          {/* Desktop Actions */}
-          <div className="hidden items-center justify-end gap-4 lg:flex">
-            <motion.button
-              initial={{ opacity: 0, x: 14 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.48, duration: 0.3 }}
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.94 }}
-              className={`flex h-10 w-10 items-center justify-center transition-all ${
-                isDark ? "text-white hover:text-orange-400" : "text-slate-950 hover:text-orange-500"
-              }`}
-              aria-label="Search"
-            >
-              <Search className="h-5 w-5" />
-            </motion.button>
+            {/* Divider */}
+            <div className="mx-2 h-5 w-px bg-slate-200 dark:bg-white/10" />
 
+            {/* Theme toggle */}
             <motion.button
-              initial={{ opacity: 0, x: 14 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.52, duration: 0.3 }}
-              whileHover={{ scale: 1.08, rotate: theme === "dark" ? -10 : 10 }}
+              initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.3 }}
+              whileHover={{ scale: 1.08, rotate: theme === "dark" ? -15 : 15 }}
               whileTap={{ scale: 0.94 }}
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className={`flex h-10 w-10 items-center justify-center transition-all ${
-                isDark ? "text-white hover:text-orange-400" : "text-slate-950 hover:text-orange-500"
-              }`}
+              className="flex h-9 w-9 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-colors dark:text-slate-400 dark:hover:bg-white/10"
               aria-label="Toggle theme"
             >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={theme}
+                  initial={{ rotate: -90, opacity: 0, scale: 0.6 }}
+                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotate: 90, opacity: 0, scale: 0.6 }}
+                  transition={{ duration: 0.22 }}
+                >
+                  {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                </motion.div>
+              </AnimatePresence>
             </motion.button>
 
+            {/* ── CTA — points to /quote ── */}
             <motion.div
-              initial={{ opacity: 0, x: 14 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.56, duration: 0.3 }}
-              whileHover={{ scale: 1.04, y: -1 }}
-              whileTap={{ scale: 0.96 }}
+              initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.46, duration: 0.3 }}
+              whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
+              className="ml-1"
             >
               <Link
                 to="/quote"
-                className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-7 py-4 text-xs font-black uppercase tracking-wide text-white shadow-lg shadow-orange-600/25 transition-all hover:bg-orange-600"
+                className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-2.5 text-[13px] font-black uppercase tracking-wide text-white shadow-lg shadow-orange-600/25 transition-all hover:bg-orange-600 hover:shadow-orange-600/40"
               >
-                <PackageCheck className="h-4 w-4" />
+                <PackageCheck className="h-3.5 w-3.5" />
                 Get a Quote
               </Link>
             </motion.div>
-          </div>
+          </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            className={`justify-self-end p-2 transition-colors lg:hidden ${
-              isDark ? "text-white hover:bg-white/10" : "text-slate-950 hover:bg-slate-100"
-            }`}
-            onClick={() => setMobileMenuOpen((open) => !open)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          {/* ── MOBILE: theme toggle + hamburger ── */}
+          <div className="ml-auto flex items-center gap-2 lg:hidden">
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="flex h-9 w-9 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 transition-colors dark:text-slate-400 dark:hover:bg-white/10"
+              aria-label="Toggle theme"
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={theme}
+                  initial={{ rotate: -90, opacity: 0, scale: 0.6 }}
+                  animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                  exit={{ rotate: 90, opacity: 0, scale: 0.6 }}
+                  transition={{ duration: 0.22 }}
+                >
+                  {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+                </motion.div>
+              </AnimatePresence>
+            </motion.button>
+
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              className="flex h-9 w-9 items-center justify-center rounded-full text-slate-700 hover:bg-slate-100 transition-colors dark:text-white dark:hover:bg-white/10"
+              onClick={() => setMobileMenuOpen((v) => !v)}
+              aria-label="Toggle menu"
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={mobileMenuOpen ? "close" : "open"}
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.18 }}
+                >
+                  {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                </motion.div>
+              </AnimatePresence>
+            </motion.button>
+          </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* ── MOBILE MENU ── */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
               className="overflow-hidden lg:hidden"
             >
-              <div className={`px-4 py-4 backdrop-blur-xl ${isDark ? "bg-slate-950/95" : "bg-white"}`}>
-                <div className="space-y-2">
-                  {navItems.slice(0, 1).map((item) => (
-                    <NavLink
-                      key={item.path}
-                      to={item.path}
-                      className="block px-3 py-3 text-slate-950 hover:bg-slate-100 hover:text-orange-500 dark:text-white dark:hover:bg-white/10"
-                      onClick={closeMobileMenu}
-                    >
-                      {item.name}
-                    </NavLink>
-                  ))}
+              <div className="space-y-1 rounded-b-3xl bg-white px-4 pb-5 pt-2 dark:bg-slate-950">
 
-                  <div>
-                    <button
-                      className="flex w-full items-center justify-between px-3 py-3 text-slate-950 hover:bg-slate-100 dark:text-white dark:hover:bg-white/10"
-                      onClick={() => setMobileServicesOpen((open) => !open)}
-                    >
-                      <span>Services</span>
-                      <ChevronDown className={`h-4 w-4 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`} />
-                    </button>
+                <NavLink
+                  to="/" end
+                  className={({ isActive }) =>
+                    `block rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors ${
+                      isActive
+                        ? "bg-orange-50 text-orange-500 dark:bg-orange-500/10"
+                        : "text-slate-700 hover:bg-slate-50 hover:text-orange-500 dark:text-slate-300 dark:hover:bg-white/5"
+                    }`
+                  }
+                  onClick={closeMobileMenu}
+                >
+                  Home
+                </NavLink>
 
-                    <AnimatePresence>
-                      {mobileServicesOpen && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="mt-2 space-y-2 bg-slate-100 p-2 dark:bg-white/10">
-                            {services.map((service) => {
-                              const Icon = service.icon;
-                              return (
-                                <Link
-                                  key={service.path}
-                                  to={service.path}
-                                  className="flex items-center gap-3 px-3 py-3 text-sm text-slate-600 hover:bg-white hover:text-orange-500 dark:text-slate-300 dark:hover:bg-slate-950"
-                                  onClick={closeMobileMenu}
-                                >
-                                  <Icon className="h-4 w-4 text-orange-500" />
-                                  {service.name}
-                                </Link>
-                              );
-                            })}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
+                {/* Mobile services accordion */}
+                <div>
+                  <button
+                    onClick={() => setMobileServicesOpen((v) => !v)}
+                    className="flex w-full items-center justify-between rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors dark:text-slate-300 dark:hover:bg-white/5"
+                  >
+                    Services
+                    <motion.div animate={{ rotate: mobileServicesOpen ? 180 : 0 }} transition={{ duration: 0.22 }}>
+                      <ChevronDown className="h-4 w-4" />
+                    </motion.div>
+                  </button>
 
-                  {navItems.slice(1).map((item) => (
-                    <NavLink
-                      key={item.path}
-                      to={item.path}
-                      className="block px-3 py-3 text-slate-950 hover:bg-slate-100 hover:text-orange-500 dark:text-white dark:hover:bg-white/10"
-                      onClick={closeMobileMenu}
-                    >
-                      {item.name}
-                    </NavLink>
-                  ))}
+                  <AnimatePresence>
+                    {mobileServicesOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.22 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="mt-1 space-y-0.5 rounded-2xl bg-slate-50 p-2 dark:bg-white/5">
+                          <Link
+                            to="/services"
+                            onClick={closeMobileMenu}
+                            className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-black text-orange-500 hover:bg-white transition-colors dark:hover:bg-white/10"
+                          >
+                            All Services <ArrowRight className="h-3.5 w-3.5" />
+                          </Link>
+                          {services.map((service) => {
+                            const Icon = service.icon;
+                            return (
+                              <Link
+                                key={service.path}
+                                to={service.path}
+                                onClick={closeMobileMenu}
+                                className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-slate-600 hover:bg-white hover:text-orange-500 transition-colors dark:text-slate-400 dark:hover:bg-white/10"
+                              >
+                                <Icon className="h-4 w-4 text-orange-500 flex-shrink-0" />
+                                <span className="font-semibold">{service.name}</span>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
-                <div className="mt-3 space-y-3 border-t border-slate-200 pt-3 dark:border-white/10">
+                {[
+                  { name: "About Us", path: "/about"   },
+                  { name: "Fleet",    path: "/fleet"   },
+                  { name: "HSE",      path: "/hse"     },
+                  { name: "Contact",  path: "/contact" },
+                ].map((item) => (
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `block rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors ${
+                        isActive
+                          ? "bg-orange-50 text-orange-500 dark:bg-orange-500/10"
+                          : "text-slate-700 hover:bg-slate-50 hover:text-orange-500 dark:text-slate-300 dark:hover:bg-white/5"
+                      }`
+                    }
+                    onClick={closeMobileMenu}
+                  >
+                    {item.name}
+                  </NavLink>
+                ))}
+
+                {/* ── Mobile CTA — points to /quote ── */}
+                <div className="pt-3 border-t border-slate-100 dark:border-white/8">
                   <Link
                     to="/quote"
-                    className="inline-flex w-full items-center justify-center gap-2 bg-orange-500 px-4 py-3 text-sm font-bold text-white hover:bg-orange-600"
                     onClick={closeMobileMenu}
+                    className="flex w-full items-center justify-center gap-2 rounded-full bg-orange-500 px-4 py-3 text-sm font-black uppercase tracking-wide text-white hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/25"
                   >
                     <PackageCheck className="h-4 w-4" />
                     Get a Quote
                   </Link>
-
-                  <button
-                    onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                    className="inline-flex w-full items-center justify-center gap-2 bg-slate-100 px-4 py-3 text-sm font-semibold text-slate-950 dark:bg-white/10 dark:text-white"
-                  >
-                    {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-                    Toggle Theme
-                  </button>
                 </div>
               </div>
             </motion.div>

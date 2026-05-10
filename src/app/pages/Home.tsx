@@ -406,118 +406,125 @@ export function Home() {
   return (
     <div className="w-full overflow-x-hidden bg-background">
       {/* ══════════ HERO ══════════ */}
-      {/* ══════════ HERO ══════════ */}
-<section
-  ref={heroRef}
-  className="relative min-h-[100svh] lg:min-h-[760px] flex items-center overflow-hidden pt-28 pb-24 sm:pt-32 sm:pb-28 text-white"
->
-  {/* Background Video */}
-  <motion.div
-    style={{ y: reduceMotion ? "0%" : videoY }}
-    className="absolute inset-0 z-0"
-  >
-    <video
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="auto"
-      poster={IMGS.hero}
-      className="absolute inset-0 h-full w-full object-cover brightness-[1.18] contrast-[1.05] saturate-[1.08]"
-    >
-      <source src={heroVideo} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-
-    <Img
-      src={IMGS.hero}
-      alt="ProHaul trucks"
-      className="absolute inset-0 -z-10 h-full w-full"
-    />
-
-    {/* overlay similar to the prototype, but light enough for video visibility */}
-    <div className="absolute inset-0 bg-black/35" />
-    <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/10" />
-    <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
-  </motion.div>
-
-  {/* Hero Content */}
-  <motion.div
-    style={{ opacity: reduceMotion ? 1 : heroOpacity }}
-    className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-  >
-    <div className="max-w-4xl">
-      <motion.h1
-        initial={{ opacity: 0, y: reduceMotion ? 0 : 70 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="text-[clamp(3.2rem,10vw,6.8rem)] font-black uppercase leading-[0.92] tracking-[-0.06em] text-white"
+      <section
+        ref={heroRef}
+        className="relative min-h-[100svh] lg:min-h-[760px] flex items-center overflow-hidden py-24 sm:py-28"
       >
-        Reliable Bulk Haulage
-        <br />
-        Nationwide Strength
-        <br />
-        Regional Reach
-        <br />
-        
-      </motion.h1>
+        <motion.div style={{ y: reduceMotion ? "0%" : videoY }} className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster={IMGS.hero}
+            className="absolute inset-0 h-full w-full object-cover"
+          >
+            <source src={heroVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
 
-      <motion.p
-        initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.65, delay: 0.28 }}
-        className="mt-6 max-w-2xl text-base sm:text-lg font-semibold leading-relaxed text-white/90"
-      >
-        ProHaul delivers reliable bulk haulage solutions across Ghana and West Africa, ensuring safe and efficient cargo movement.
-      </motion.p>
+          {/* fallback poster image behind the video */}
+          <Img src={IMGS.hero} alt="ProHaul trucks" className="absolute inset-0 -z-10 w-full h-full" />
 
-      <motion.div
-        initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.65, delay: 0.45 }}
-        className="mt-8 flex flex-col sm:flex-row gap-4"
-      >
-        <Link
-          to="/quote"
-          className="inline-flex w-full sm:w-auto items-center justify-center rounded-full bg-orange-500 px-8 py-4 text-xs sm:text-sm font-black uppercase tracking-wide text-white shadow-xl shadow-orange-600/30 transition-all hover:bg-orange-600 sm:hover:scale-105"
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/65 via-slate-950/35 to-slate-950/10" />
+<div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent" />
+        </motion.div>
+
+        <div
+          className="absolute inset-0 z-0 opacity-[0.03]"
+          style={{
+            backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
+            backgroundSize: isMobile ? "48px 48px" : "80px 80px",
+          }}
+        />
+
+        <motion.div
+          style={{ opacity: reduceMotion ? 1 : heroOpacity }}
+          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full"
         >
-          Request a Quote
-        </Link>
+          <div className="max-w-3xl w-full">
+            <motion.div
+              initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex max-w-full items-center gap-2 px-3 sm:px-4 py-1.5 bg-orange-500/20 border border-orange-500/40 rounded-full text-orange-300 text-[11px] sm:text-sm mb-6 sm:mb-8 leading-relaxed"
+            >
+              
+            </motion.div>
 
-        <Link
-          to="/about"
-          className="inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-full border border-white/55 bg-white/10 px-8 py-4 text-xs sm:text-sm font-black uppercase tracking-wide text-white backdrop-blur-sm transition-all hover:bg-white/20 sm:hover:scale-105"
+            <div className="mb-2 sm:mb-4 overflow-visible text-sm">
+              {"Reliable Bulk Haulage   Nationwide Strength".split(" ").map((word, i) => (
+                <motion.span
+                  key={word}
+                  initial={{ opacity: 0, y: reduceMotion ? 0 : isMobile ? 26 : 70 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.65, delay: 0.2 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                  className="inline-block mr-2 sm:mr-3 lg:mr-4 text-[clamp(2rem,10vw,4rem)] md:text-5xl lg:text-6xl font-extrabold text-white leading-[0.98] tracking-tight"
+                >
+                  {word}
+                </motion.span>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              className="min-h-[1.15em] text-[clamp(2.2rem,11vw,4.5rem)] md:text-6xl lg:text-7xl font-extrabold leading-[1.02] tracking-tight mb-6 sm:mb-8"
+            >
+              <Typewriter
+                words={[ "Regional Reach" ]}
+                className="block max-w-full break-words text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600"
+              />
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.95 }}
+              className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 sm:mb-10 leading-relaxed max-w-xl"
+            >
+              ProHaul delivers reliable bulk haulage solutions across Ghana and West Africa, ensuring safe and efficient cargo movement.
+Backed by a high-capacity fleet, we support seamless transportation across key trade corridors.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.1 }}
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4"
+            >
+              <Link
+                to="/quote"
+                className="inline-flex w-full sm:w-auto items-center justify-center px-6 sm:px-8 py-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600 sm:hover:scale-105 active:scale-100 transition-all gap-2 font-bold shadow-xl shadow-orange-600/40"
+              >
+                Get a Free Quote <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link
+                to="/services"
+                className="inline-flex w-full sm:w-auto items-center justify-center px-6 sm:px-8 py-4 bg-white/10 text-white border border-white/25 rounded-lg hover:bg-white/20 sm:hover:scale-105 transition-all gap-2 backdrop-blur-sm"
+              >
+                Our Services
+              </Link>
+            </motion.div>
+          </div>
+
+          
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.8 }}
+          className="absolute bottom-5 sm:bottom-8 left-1/2 -translate-x-1/2 z-10 hidden sm:flex flex-col items-center gap-1 text-white/40 text-xs"
         >
-          How It Works <ArrowRight className="h-5 w-5" />
-        </Link>
-      </motion.div>
-    </div>
-  </motion.div>
-
-  {/* Slanted White Bottom Shape */}
-  <div
-    className="absolute bottom-0 left-0 right-0 z-10 h-12 sm:h-16 bg-background"
-    style={{
-      clipPath: "polygon(0 100%, 0 55%, 49% 55%, 53% 100%, 100% 100%)",
-    }}
-  />
-
-  {/* Scroll Indicator */}
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ delay: 1.2 }}
-    className="absolute bottom-5 left-1/2 z-20 hidden -translate-x-1/2 flex-col items-center gap-1 text-xs text-white/60 sm:flex"
-  >
-    <span>Scroll</span>
-    <motion.div
-      animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
-      transition={{ repeat: Infinity, duration: 1.4 }}
-    >
-      <ChevronDown className="h-5 w-5" />
-    </motion.div>
-  </motion.div>
-</section>
+          <span>Scroll</span>
+          <motion.div animate={reduceMotion ? undefined : { y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 1.4 }}>
+            <ChevronDown className="w-5 h-5" />
+          </motion.div>
+        </motion.div>
+      </section>
 
       {/* ══════════ STATS BAR ══════════ */}
       <section className="py-10 sm:py-14 bg-orange-500">
