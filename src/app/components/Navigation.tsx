@@ -14,6 +14,7 @@ import {
   Sprout,
   Container,
   Globe,
+  PackageCheck,
 } from "lucide-react";
 import { useTheme } from "next-themes";
 
@@ -74,8 +75,10 @@ export function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24);
+
     handleScroll();
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -108,7 +111,7 @@ export function Navigation() {
       initial={{ y: -28, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed left-0 right-0 top-0 z-50 px-3 sm:px-4 pt-3 sm:pt-5"
+      className="fixed left-0 right-0 top-0 z-50 px-3 pt-3 sm:px-4 sm:pt-5"
     >
       <motion.div
         layout
@@ -116,10 +119,11 @@ export function Navigation() {
         className={`mx-auto max-w-7xl transition-all duration-300 ${
           scrolled || mobileMenuOpen
             ? "rounded-2xl bg-background/90 shadow-xl backdrop-blur-xl"
-            : "rounded-2xl lg:rounded-full bg-slate-950/20 shadow-lg backdrop-blur-md"
+            : "rounded-2xl bg-slate-950/20 shadow-lg backdrop-blur-md lg:rounded-full"
         }`}
       >
-        <div className="grid h-16 grid-cols-[auto_1fr_auto] items-center gap-4 px-4 sm:h-20 sm:px-6 lg:px-8">
+        <div className="grid h-16 grid-cols-[auto_1fr_auto] items-center gap-4 px-4 sm:h-20 sm:px-6 lg:px-7 xl:px-8">
+          {/* Logo */}
           <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
             <Link to="/" className="flex items-center gap-3" onClick={closeMobileMenu}>
               <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg shadow-orange-600/25 sm:h-12 sm:w-12">
@@ -132,7 +136,8 @@ export function Navigation() {
             </Link>
           </motion.div>
 
-          <nav className="hidden items-center justify-center gap-10 lg:flex xl:gap-14 2xl:gap-16">
+          {/* Desktop Nav */}
+          <nav className="hidden items-center justify-center gap-8 lg:flex xl:gap-10 2xl:gap-12">
             {navItems.slice(0, 2).map((item, index) => (
               <motion.div
                 key={item.path}
@@ -155,6 +160,7 @@ export function Navigation() {
               </motion.div>
             ))}
 
+            {/* Services Mega Menu */}
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -249,11 +255,11 @@ export function Navigation() {
                               Find the Right Haulage Solution for You
                             </h2>
                             <Link
-                              to="/contact"
+                              to="/quote"
                               onClick={() => setServicesOpen(false)}
                               className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/60 bg-white/10 px-5 py-2.5 text-sm font-black uppercase tracking-wider text-white backdrop-blur-sm transition-all hover:border-orange-500 hover:bg-orange-500"
                             >
-                              Contact Us <ArrowRight className="h-5 w-5" />
+                              Get Quote <ArrowRight className="h-5 w-5" />
                             </Link>
                           </div>
                         </div>
@@ -287,15 +293,33 @@ export function Navigation() {
             ))}
           </nav>
 
-          <div className="hidden justify-end lg:flex">
+          {/* Desktop Actions */}
+          <div className="hidden items-center justify-end gap-3 lg:flex">
+            <motion.div
+              initial={{ opacity: 0, x: 14 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.48, duration: 0.35 }}
+              whileHover={{ scale: 1.05, y: -1 }}
+              whileTap={{ scale: 0.96 }}
+            >
+              <Link
+                to="/quote"
+                className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-3 text-sm font-black text-white shadow-lg shadow-orange-600/25 transition-all hover:bg-orange-600"
+              >
+                <PackageCheck className="h-4 w-4" />
+                Get Quote
+              </Link>
+            </motion.div>
+
             <motion.button
+              initial={{ opacity: 0, x: 14 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.54, duration: 0.35 }}
               whileHover={{ scale: 1.08, rotate: theme === "dark" ? -10 : 10 }}
               whileTap={{ scale: 0.94 }}
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className={`flex h-11 w-11 items-center justify-center rounded-xl transition-all ${
-                scrolled
-                  ? "bg-muted text-foreground hover:bg-accent"
-                  : "bg-white/10 text-white hover:bg-white/20"
+                scrolled ? "bg-muted text-foreground hover:bg-accent" : "bg-white/10 text-white hover:bg-white/20"
               }`}
               aria-label="Toggle theme"
             >
@@ -303,6 +327,7 @@ export function Navigation() {
             </motion.button>
           </div>
 
+          {/* Mobile Menu Button */}
           <button
             className={`justify-self-end rounded-xl p-2 transition-colors lg:hidden ${
               scrolled || mobileMenuOpen ? "text-foreground hover:bg-muted" : "text-white hover:bg-white/10"
@@ -314,6 +339,7 @@ export function Navigation() {
           </button>
         </div>
 
+        {/* Mobile Menu */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
@@ -387,7 +413,16 @@ export function Navigation() {
                   ))}
                 </div>
 
-                <div className="mt-3 border-t border-border pt-3">
+                <div className="mt-3 space-y-3 border-t border-border pt-3">
+                  <Link
+                    to="/quote"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-orange-500 px-4 py-3 text-sm font-bold text-white hover:bg-orange-600"
+                    onClick={closeMobileMenu}
+                  >
+                    <PackageCheck className="h-4 w-4" />
+                    Get a Quote
+                  </Link>
+
                   <button
                     onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                     className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-muted px-4 py-3 text-sm font-semibold text-foreground"

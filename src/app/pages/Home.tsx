@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import heroVideo from "../../images/hero.mp4";
 import {
   motion,
   useInView,
@@ -151,7 +152,11 @@ function Reveal({
       ref={ref}
       initial={{ opacity: 0, y: safeY }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: safeY }}
-      transition={{ duration: isMobile ? 0.5 : 0.75, delay: isMobile ? Math.min(delay, 0.12) : delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: isMobile ? 0.5 : 0.75,
+        delay: isMobile ? Math.min(delay, 0.12) : delay,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className={className}
     >
       {children}
@@ -182,7 +187,11 @@ function RevealX({
       ref={ref}
       initial={{ opacity: 0, x: safeX, y: safeY }}
       animate={inView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: safeX, y: safeY }}
-      transition={{ duration: isMobile ? 0.5 : 0.75, delay: isMobile ? Math.min(delay, 0.12) : delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: isMobile ? 0.5 : 0.75,
+        delay: isMobile ? Math.min(delay, 0.12) : delay,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className={className}
     >
       {children}
@@ -201,7 +210,11 @@ function RevealScale({ children, delay = 0, className = "" }: { children: ReactN
       ref={ref}
       initial={{ opacity: 0, scale: reduceMotion ? 1 : isMobile ? 0.96 : 0.85 }}
       animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: reduceMotion ? 1 : isMobile ? 0.96 : 0.85 }}
-      transition={{ duration: isMobile ? 0.45 : 0.65, delay: isMobile ? Math.min(delay, 0.12) : delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: isMobile ? 0.45 : 0.65,
+        delay: isMobile ? Math.min(delay, 0.12) : delay,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className={className}
     >
       {children}
@@ -293,7 +306,7 @@ const SERVICES = [
     icon: Package,
     title: "Fertilizers & Inputs",
     desc: "Safe transport of NPK, urea and industrial inputs aligned with farming cycles.",
-    link: "/services/fertilizers",
+    link: "/services/fertilizer",
     color: "from-yellow-500 to-amber-700",
     img: IMGS.about,
   },
@@ -398,10 +411,22 @@ export function Home() {
         className="relative min-h-[100svh] lg:min-h-[760px] flex items-center overflow-hidden py-24 sm:py-28"
       >
         <motion.div style={{ y: reduceMotion ? "0%" : videoY }} className="absolute inset-0 z-0">
-          <video autoPlay muted loop playsInline className="w-full h-full object-cover" poster={IMGS.hero}>
-            <source src="/src/images/hero.mp4" type="video/mp4" />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster={IMGS.hero}
+            className="absolute inset-0 h-full w-full object-cover"
+          >
+            <source src={heroVideo} type="video/mp4" />
+            Your browser does not support the video tag.
           </video>
+
+          {/* fallback poster image behind the video */}
           <Img src={IMGS.hero} alt="ProHaul trucks" className="absolute inset-0 -z-10 w-full h-full" />
+
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/75 to-slate-900/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent" />
         </motion.div>
@@ -471,7 +496,7 @@ export function Home() {
               className="flex flex-col sm:flex-row gap-3 sm:gap-4"
             >
               <Link
-                to="/contact"
+                to="/quote"
                 className="inline-flex w-full sm:w-auto items-center justify-center px-6 sm:px-8 py-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600 sm:hover:scale-105 active:scale-100 transition-all gap-2 font-bold shadow-xl shadow-orange-600/40"
               >
                 Get a Free Quote <ArrowRight className="w-5 h-5" />
@@ -842,7 +867,7 @@ export function Home() {
               </div>
 
               <Link
-                to="/about"
+                to="/hse"
                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 border border-orange-500 text-orange-500 rounded-lg hover:bg-orange-500 hover:text-white sm:hover:scale-105 transition-all font-semibold"
               >
                 Our HSE Framework <ArrowRight className="w-5 h-5" />
@@ -901,10 +926,10 @@ export function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link
-                to="/contact"
+                to="/quote"
                 className="inline-flex w-full sm:w-auto items-center justify-center px-6 sm:px-8 py-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600 sm:hover:scale-105 transition-all gap-2 font-bold shadow-xl shadow-orange-600/40"
               >
-                Contact Us Today <ArrowRight className="w-5 h-5" />
+                Get a Quote <ArrowRight className="w-5 h-5" />
               </Link>
               <a
                 href="tel:+233000000000"

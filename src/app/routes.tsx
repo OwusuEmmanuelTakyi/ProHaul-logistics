@@ -12,6 +12,7 @@ import { Fleet } from "./pages/Fleet";
 import { HSE } from "./pages/HSE";
 import { Contact } from "./pages/Contact";
 import { NotFound } from "./pages/NotFound";
+import { Quote } from "./pages/Quote";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ export const router = createBrowserRouter([
       { path: "fleet", Component: Fleet },
       { path: "hse", Component: HSE },
       { path: "contact", Component: Contact },
+      { path: "quote", Component: Quote },
       { path: "*", Component: NotFound },
     ],
   },
