@@ -121,6 +121,7 @@ export function Navigation() {
         <div className="grid h-16 grid-cols-[auto_1fr_auto] items-center gap-4 px-4 sm:h-20 sm:px-6 lg:px-7 xl:px-8">
           {/* Logo */}
           {/* Logo */}
+{/* Logo */}
 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
   <Link to="/" className="flex items-center gap-3" onClick={closeMobileMenu}>
     <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white p-2 shadow-lg shadow-black/10 sm:h-16 sm:w-16">
@@ -132,16 +133,12 @@ export function Navigation() {
     </div>
 
     <div>
-      <h1 className={`text-xl font-black leading-none sm:text-2xl ${linkBase}`}>
+      <h1 className="text-xl font-black leading-none text-red-600 sm:text-2xl">
         ProHaul
       </h1>
-      <p className={`mt-1 text-[10px] font-medium leading-none sm:text-xs ${mutedText}`}>
-        Bulk Haulage | Ghana | West Africa
-      </p>
     </div>
   </Link>
 </motion.div>
-
           {/* Desktop Nav */}
           <nav className="hidden items-center justify-center gap-8 lg:flex xl:gap-10 2xl:gap-12">
             {navItems.slice(0, 2).map((item, index) => (

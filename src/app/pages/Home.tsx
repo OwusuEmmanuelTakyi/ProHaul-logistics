@@ -454,7 +454,7 @@ export function Home() {
             </motion.div>
 
             <div className="mb-2 sm:mb-4 overflow-visible text-sm">
-              {"Reliable Bulk Haulage   Nationwide Strength.".split(" ").map((word, i) => (
+              {"Reliable Bulk Haulage   Nationwide Strength".split(" ").map((word, i) => (
                 <motion.span
                   key={word}
                   initial={{ opacity: 0, y: reduceMotion ? 0 : isMobile ? 26 : 70 }}
