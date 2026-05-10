@@ -13,6 +13,7 @@ import { HSE } from "./pages/HSE";
 import { Contact } from "./pages/Contact";
 import { NotFound } from "./pages/NotFound";
 import { Quote } from "./pages/Quote";
+//import {ScrollToTop} from "./components/ScrollToTop";
 
 export const router = createBrowserRouter([
   {
