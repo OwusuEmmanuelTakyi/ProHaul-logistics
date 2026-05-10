@@ -146,7 +146,7 @@ const IMGS = {
 const stats = [
   { value: "Ghana", label: "Nationwide coverage", icon: MapPin },
   { value: "ECOWAS", label: "Cross-border corridors", icon: Globe },
-  { value: "460-530HP", label: "Prime mover power", icon: Zap },
+  { value: "460-530", label: "Horse power", icon: Zap },
   { value: "54,000L", label: "Tanker capacity", icon: Fuel },
 ];
 

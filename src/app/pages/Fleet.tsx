@@ -1,4 +1,6 @@
 import { Link } from "react-router";
+
+import fleetVideo from "../../images/fleet.mp4";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   motion,
@@ -160,10 +162,10 @@ const brands = [
 ];
 
 const stats = [
-  { icon: Zap, value: "460-530HP", label: "Engine power range" },
-  { icon: Gauge, value: "2,100-2,500Nm", label: "Torque output" },
-  { icon: Fuel, value: "27,000-54,000L", label: "Fuel tanker capacities" },
-  { icon: Package, value: "Up to 80T", label: "Flatbed load capacity" },
+  { icon: Zap, value: "460-530", label: "Horse power range" },
+  { icon: Gauge, value: "2,100-2,500Nm", label: "Torque " },
+  { icon: Fuel, value: "27,000L-54,000L", label: "Fuel tanker capacities" },
+  { icon: Package, value: "50T", label: "Flat Bed capacity" },
 ];
 
 const capabilities = [
@@ -263,10 +265,26 @@ export function Fleet() {
       {/* HERO */}
       <section ref={heroRef} className="relative min-h-[78svh] lg:min-h-[720px] flex items-center overflow-hidden py-24 text-white">
         <motion.div style={{ y: reduceMotion ? "0%" : imageY }} className="absolute inset-0 z-0">
-          <Img src={IMGS.hero} alt="ProHaul fleet on the road" className="absolute inset-0 h-full w-full" />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/72 to-slate-950/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/88 via-transparent to-transparent" />
-        </motion.div>
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="auto"
+    poster={IMGS.hero}
+    className="absolute inset-0 h-full w-full object-cover brightness-[1.15] contrast-[1.05] saturate-[1.1]"
+  >
+    <source src={fleetVideo} type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  {/* fallback image behind the video */}
+  <Img src={IMGS.hero} alt="ProHaul fleet on the road" className="absolute inset-0 -z-10 h-full w-full" />
+
+  {/* lighter overlays so the video is clearer */}
+  <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 via-slate-950/30 to-slate-950/5" />
+  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
+</motion.div>
 
         <div
           className="absolute inset-0 z-0 opacity-[0.035]"

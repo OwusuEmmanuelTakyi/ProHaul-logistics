@@ -31,37 +31,32 @@ export function Navigation() {
       name: "Fuel Haulage",
       path: "/services/fuel-haulage",
       icon: Droplet,
-      desc: "Safe petroleum transportation for depots, stations, mines, and industries.",
     },
     {
       name: "Agricultural Products",
       path: "/services/agricultural",
       icon: Wheat,
-      desc: "Farmgate-to-market movement for grains, cash crops, and agro commodities.",
     },
     {
       name: "Cement & Construction",
       path: "/services/cement",
       icon: Building2,
-      desc: "Reliable site delivery for cement, tiles, steel, and project materials.",
     },
     {
       name: "Fertilizer & Industrial",
       path: "/services/fertilizer",
       icon: Sprout,
-      desc: "Input logistics for fertilizers, agro-inputs, and production materials.",
     },
     {
       name: "Container Haulage",
       path: "/services/container",
       icon: Container,
-      desc: "20ft and 40ft container movement from ports to inland destinations.",
     },
     {
       name: "Cross-Border Haulage",
       path: "/services/cross-border",
       icon: Globe,
-      desc: "Regional cargo movement across Ghana and West African corridors.",
+      
     },
   ];
 

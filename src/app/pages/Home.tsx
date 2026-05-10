@@ -344,7 +344,7 @@ const FEATURES = [
 
 const FLEET = [
   { label: "Fuel Tankers", specs: "27,000 – 54,000 L", icon: Fuel },
-  { label: "Flatbed Load", specs: "Up to 80 tonnes", icon: Truck },
+  { label: "Flatbed Load", specs: "Up to 50 tonnes", icon: Truck },
   { label: "Engine Power", specs: "460 – 530 HP", icon: Zap },
   { label: "Torque Output", specs: "2,100 – 2,500 Nm", icon: BarChart3 },
   { label: "Containers", specs: "20ft & 40ft", icon: Container },
@@ -427,8 +427,8 @@ export function Home() {
           {/* fallback poster image behind the video */}
           <Img src={IMGS.hero} alt="ProHaul trucks" className="absolute inset-0 -z-10 w-full h-full" />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/75 to-slate-900/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/65 via-slate-950/35 to-slate-950/10" />
+<div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent" />
         </motion.div>
 
         <div
@@ -454,14 +454,14 @@ export function Home() {
               <span className="truncate sm:whitespace-normal">Reliable Bulk Haulage · Nationwide Strength · Regional Reach</span>
             </motion.div>
 
-            <div className="mb-3 sm:mb-4 overflow-visible">
-              {"Moving Your Cargo".split(" ").map((word, i) => (
+            <div className="mb-2 sm:mb-4 overflow-visible text-sm">
+              {"·Reliable Bulk Haulage   ·Nationwide Strength.".split(" ").map((word, i) => (
                 <motion.span
                   key={word}
                   initial={{ opacity: 0, y: reduceMotion ? 0 : isMobile ? 26 : 70 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.65, delay: 0.2 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                  className="inline-block mr-2 sm:mr-3 lg:mr-4 text-[clamp(2.5rem,12vw,4.5rem)] md:text-6xl lg:text-7xl font-extrabold text-white leading-[0.98] tracking-tight"
+                  className="inline-block mr-2 sm:mr-3 lg:mr-4 text-[clamp(2rem,10vw,4rem)] md:text-5xl lg:text-6xl font-extrabold text-white leading-[0.98] tracking-tight"
                 >
                   {word}
                 </motion.span>
@@ -475,7 +475,7 @@ export function Home() {
               className="min-h-[1.15em] text-[clamp(2.2rem,11vw,4.5rem)] md:text-6xl lg:text-7xl font-extrabold leading-[1.02] tracking-tight mb-6 sm:mb-8"
             >
               <Typewriter
-                words={["Securely.", "On Schedule.", "At Scale.", "Across Ghana.", "Across West Africa."]}
+                words={[ "· Regional Reach." ]}
                 className="block max-w-full break-words text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600"
               />
             </motion.div>
@@ -486,7 +486,8 @@ export function Home() {
               transition={{ duration: 0.7, delay: 0.95 }}
               className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 sm:mb-10 leading-relaxed max-w-xl"
             >
-              ProHaul delivers dependable, end-to-end transportation across Ghana and West Africa. Safe, efficient, and always on time.
+              ProHaul delivers reliable bulk haulage solutions across Ghana and West Africa, ensuring safe and efficient cargo movement.
+Backed by a high-capacity fleet, we support seamless transportation across key trade corridors.
             </motion.p>
 
             <motion.div
@@ -606,13 +607,13 @@ export function Home() {
               <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-3">About ProHaul</p>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6 leading-tight">Ghana's Trusted Partner for Bulk Haulage</h2>
               <p className="text-muted-foreground leading-relaxed mb-5">
-                ProHaul is a Ghana-based haulage company delivering dependable, end-to-end transportation solutions across Ghana and the wider West African sub-region. With a modern fleet, experienced drivers, and deep knowledge of regional trade routes, we are built to move your cargo securely.
+                ProHaul is a Ghana-based haulage company delivering dependable, end-to-end transportation solutions across Ghana and the wider West African sub-region. We specialize in the safe, efficient, and timely movement of bulk and packaged goods, supporting businesses across critical sectors of the economy.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-8">
-                Our fleet of European-engineered trucks — MAN, DAF, Volvo, and Scania — powered between 460HP and 530HP, deliver the strength required for heavy-duty haulage across long-haul routes and challenging terrains.
+                With a modern fleet, experienced drivers, and a deep understanding of regional trade routes, ProHaul is built to move your cargo securely, on schedule, and at scale.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                {["NPA Certified Operations", "GPS Fleet Tracking", "ECOWAS Cross-Border Ready", "Goods in Transit Insurance"].map((item) => (
+                {["NPA Certified Operations","MPS Certified", "GPS Fleet Tracking", "ECOWAS Cross-Border Ready", "Goods in Transit Insurance"].map((item) => (
                   <div key={item} className="flex items-center gap-2 text-sm font-medium">
                     <CheckCircle2 className="w-4 h-4 text-orange-500 flex-shrink-0" />
                     {item}
