@@ -204,273 +204,291 @@ const whyChoose = [
 
 /* ─────────────────────────────────────────────
    West Africa Cartographic Map
-   Styled like the reference: cream/tan parchment,
-   gold country borders, dashed route lines,
-   pin-style city markers with outer rings
+   Uses D3 + TopoJSON world-atlas for real
+   country shapes — parchment style matching
+   the reference image (cream bg, gold borders,
+   dashed routes, reference-style city pins)
 ───────────────────────────────────────────── */
 
-// Cities in SVG coordinate space (viewBox 0 0 660 480)
-const cities = [
-  { id: "dakar",        name: "DAKAR",         x: 82,  y: 148, primary: false },
-  { id: "conakry",      name: "CONAKRY",        x: 148, y: 228, primary: false },
-  { id: "abidjan",      name: "ABIDJAN",        x: 248, y: 296, primary: false },
-  { id: "accra",        name: "ACCRA",          x: 336, y: 298, primary: true  },
-  { id: "lome",         name: "LOMÉ",           x: 374, y: 290, primary: false },
-  { id: "cotonou",      name: "COTONOU",        x: 412, y: 292, primary: false },
-  { id: "lagos",        name: "LAGOS",          x: 458, y: 306, primary: false },
-  { id: "ouaga",        name: "OUAGADOUGOU",    x: 334, y: 196, primary: false },
-  { id: "bamako",       name: "BAMAKO",         x: 200, y: 188, primary: false },
-];
+// West Africa ISO-3166 numeric IDs (world-atlas uses numeric)
+const WA_IDS = new Set([
+  "012","204","854","120","132","384","624","266","288","324",
+  "226","430","466","478","562","566","686","694","768","270",
+]);
 
-// Route connections as city id pairs
-const routes: [string, string][] = [
-  ["accra", "lome"],
-  ["lome", "cotonou"],
-  ["cotonou", "lagos"],
-  ["accra", "abidjan"],
-  ["abidjan", "conakry"],
-  ["conakry", "dakar"],
-  ["abidjan", "bamako"],
-  ["bamako", "ouaga"],
-  ["ouaga", "accra"],
-  ["ouaga", "lagos"],
-];
-
-function cityById(id: string) {
-  return cities.find((c) => c.id === id)!;
+interface City {
+  name: string;
+  lon: number;
+  lat: number;
+  primary: boolean;
+  labelDy: number; // label offset from dot centre
 }
 
-// Very detailed West Africa SVG outline (simplified but faithful)
-// Using a rough but recognizable coastal + interior shape
-const WEST_AFRICA_PATH = `
-  M 82 100
-  L 118 88  L 158 80  L 196 76  L 228 80
-  L 248 86  L 268 88  L 292 90  L 314 96
-  L 338 102 L 360 110 L 390 122 L 416 140
-  L 440 158 L 462 178 L 486 206 L 500 232
-  L 508 260 L 508 290 L 496 318 L 476 342
-  L 448 360 L 416 372 L 380 380 L 342 382
-  L 308 376 L 276 364 L 250 348 L 230 330
-  L 210 312 L 192 294 L 174 276 L 154 256
-  L 134 234 L 116 210 L 100 186 L 88 162
-  L 80 140 Z
-`;
+const CITIES: City[] = [
+  { name: "DAKAR",       lon: -17.44, lat: 14.69, primary: false, labelDy: -14 },
+  { name: "CONAKRY",     lon: -13.57, lat:  9.54, primary: false, labelDy: -14 },
+  { name: "ABIDJAN",     lon:  -3.99, lat:  5.35, primary: false, labelDy:  18 },
+  { name: "BAMAKO",      lon:  -8.00, lat: 12.65, primary: false, labelDy: -14 },
+  { name: "OUAGADOUGOU", lon:  -1.52, lat: 12.37, primary: false, labelDy: -14 },
+  { name: "ACCRA",       lon:  -0.19, lat:  5.55, primary: true,  labelDy:  22 },
+  { name: "LOMÉ",        lon:   1.22, lat:  6.14, primary: false, labelDy:  18 },
+  { name: "COTONOU",     lon:   2.37, lat:  6.37, primary: false, labelDy:  18 },
+  { name: "LAGOS",       lon:   3.38, lat:  6.45, primary: false, labelDy: -14 },
+];
 
-// Interior country border lines (simplified separations)
-const COUNTRY_LINES = [
-  "M 200 76 L 196 130 L 190 180 L 186 228",          // Senegal/Mali/Guinea border region
-  "M 268 88 L 264 140 L 260 190 L 255 240 L 248 296", // Mali/Burkina/Ivory Coast
-  "M 338 102 L 336 150 L 334 196",                    // Burkina top
-  "M 338 102 L 340 145 L 343 185 L 346 240 L 348 298", // Ghana vertical
-  "M 360 110 L 364 155 L 370 200 L 373 250 L 374 290", // Togo
-  "M 390 122 L 394 165 L 400 210 L 406 252 L 412 292", // Benin
-  "M 334 196 L 380 190 L 416 196 L 458 210",           // Burkina/Niger border
-  "M 148 228 L 186 228 L 200 250 L 210 270 L 218 296", // Guinea/Sierra Leone coast
+const ROUTES: [string, string][] = [
+  ["ACCRA", "LOMÉ"],
+  ["LOMÉ", "COTONOU"],
+  ["COTONOU", "LAGOS"],
+  ["ACCRA", "ABIDJAN"],
+  ["ABIDJAN", "CONAKRY"],
+  ["CONAKRY", "DAKAR"],
+  ["ACCRA", "OUAGADOUGOU"],
+  ["OUAGADOUGOU", "BAMAKO"],
+  ["OUAGADOUGOU", "LAGOS"],
 ];
 
 function WestAfricaMap() {
+  const containerRef = useRef<HTMLDivElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    // Dynamically load D3 + TopoJSON from CDN
+    const loadScript = (src: string): Promise<void> =>
+      new Promise((res, rej) => {
+        if (document.querySelector(`script[src="${src}"]`)) { res(); return; }
+        const s = document.createElement("script");
+        s.src = src;
+        s.onload = () => res();
+        s.onerror = () => rej();
+        document.head.appendChild(s);
+      });
+
+    (async () => {
+      try {
+        await loadScript("https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js");
+        await loadScript("https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js");
+
+        const d3 = (window as any).d3;
+        const topojson = (window as any).topojson;
+
+        const W = 660, H = 420;
+        const world = await d3.json(
+          "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
+        );
+        const allCountries = topojson.feature(world, world.objects.countries);
+        const waFeatures = allCountries.features.filter((f: any) =>
+          WA_IDS.has(String(f.id).padStart(3, "0"))
+        );
+
+        const projection = d3.geoMercator()
+          .center([5, 12])
+          .scale(1020)
+          .translate([W / 2, H / 2]);
+
+        const path = d3.geoPath().projection(projection);
+        const svg = d3.select(svgRef.current);
+
+        // Grid pattern
+        const defs = svg.append("defs");
+        const pat = defs.append("pattern")
+          .attr("id", "wag")
+          .attr("width", 28).attr("height", 28)
+          .attr("patternUnits", "userSpaceOnUse");
+        pat.append("path").attr("d", "M28 0H0V28")
+          .attr("fill", "none").attr("stroke", "#c4a060")
+          .attr("stroke-width", "0.3").attr("stroke-opacity", "0.4");
+
+        svg.append("rect").attr("width", W).attr("height", H).attr("fill", "#f0e8d5");
+        svg.append("rect").attr("width", W).attr("height", H).attr("fill", "url(#wag)");
+
+        // Country fills
+        svg.selectAll("path.land")
+          .data(waFeatures)
+          .enter().append("path")
+          .attr("class", "land")
+          .attr("d", path)
+          .attr("fill", "#dfd0ad")
+          .attr("stroke", "#c4a060")
+          .attr("stroke-width", "0.9");
+
+        // Internal borders
+        const internalBorders = topojson.mesh(
+          world, world.objects.countries,
+          (a: any, b: any) => {
+            const aIn = WA_IDS.has(String(a.id).padStart(3, "0"));
+            const bIn = WA_IDS.has(String(b.id).padStart(3, "0"));
+            return aIn && bIn && a !== b;
+          }
+        );
+        svg.append("path")
+          .datum(internalBorders)
+          .attr("d", path)
+          .attr("fill", "none")
+          .attr("stroke", "#c4a060")
+          .attr("stroke-width", "0.5")
+          .attr("stroke-opacity", "0.65");
+
+        // Project cities
+        const projected = CITIES.map(c => ({
+          ...c,
+          px: projection([c.lon, c.lat])![0],
+          py: projection([c.lon, c.lat])![1],
+        }));
+
+        const cityByName = (n: string) => projected.find(c => c.name === n)!;
+
+        // Dashed route lines
+        ROUTES.forEach(([a, b], i) => {
+          const ca = cityByName(a), cb = cityByName(b);
+          const mx = (ca.px + cb.px) / 2;
+          const my = (ca.py + cb.py) / 2 - 18;
+          svg.append("path")
+            .attr("d", `M${ca.px},${ca.py} Q${mx},${my} ${cb.px},${cb.py}`)
+            .attr("fill", "none")
+            .attr("stroke", "#c4a060")
+            .attr("stroke-width", "1.4")
+            .attr("stroke-dasharray", "7 5")
+            .attr("stroke-linecap", "round")
+            .attr("opacity", "0")
+            .transition().delay(100 + i * 140).duration(900).ease(d3.easeQuadOut)
+            .attr("opacity", "0.9");
+        });
+
+        // City markers
+        projected.forEach((c, i) => {
+          const outerR  = c.primary ? 9  : 6.5;
+          const innerR  = c.primary ? 4.5 : 3;
+          const delay   = 700 + i * 80;
+
+          const g = svg.append("g")
+            .attr("opacity", "0")
+            .attr("transform", `translate(${c.px},${c.py}) scale(0)`);
+
+          // Outer ring (reference style)
+          g.append("circle")
+            .attr("r", outerR)
+            .attr("fill", "#f0e8d5")
+            .attr("stroke", "#c8851e")
+            .attr("stroke-width", c.primary ? 2.2 : 1.6);
+
+          // Inner dot
+          g.append("circle")
+            .attr("r", innerR)
+            .attr("fill", "#c8851e");
+
+          // City label
+          g.append("text")
+            .attr("y", c.labelDy)
+            .attr("text-anchor", "middle")
+            .attr("font-family", "Georgia, 'Times New Roman', serif")
+            .attr("font-size", c.primary ? "10" : "8")
+            .attr("font-weight", "700")
+            .attr("fill", c.primary ? "#6a3e08" : "#8a6218")
+            .attr("letter-spacing", "0.09em")
+            .text(c.name);
+
+          g.transition().delay(delay).duration(350).ease(d3.easeBackOut)
+            .attr("opacity", "1")
+            .attr("transform", `translate(${c.px},${c.py}) scale(1)`);
+        });
+
+        // Atlantic Ocean label
+        svg.append("text")
+          .attr("x", 28).attr("y", H - 18)
+          .attr("font-family", "Georgia, serif")
+          .attr("font-size", "9.5")
+          .attr("font-style", "italic")
+          .attr("fill", "#a08040")
+          .attr("opacity", "0.65")
+          .text("Atlantic Ocean");
+
+        // Compass rose
+        const cr = svg.append("g").attr("transform", `translate(${W - 34}, ${H - 34})`);
+        cr.append("circle").attr("r", 16).attr("fill", "#dfd0ad").attr("stroke", "#c4a060").attr("stroke-width", "0.7");
+        cr.append("line").attr("x1", 0).attr("y1", -11).attr("x2", 0).attr("y2", 11)
+          .attr("stroke", "#c4a060").attr("stroke-width", "0.6").attr("opacity", "0.7");
+        cr.append("line").attr("x1", -11).attr("y1", 0).attr("x2", 11).attr("y2", 0)
+          .attr("stroke", "#c4a060").attr("stroke-width", "0.6").attr("opacity", "0.7");
+        cr.append("polygon").attr("points", "0,-11 2.2,-4.5 -2.2,-4.5").attr("fill", "#a07020");
+        cr.append("text").attr("text-anchor", "middle").attr("y", -14)
+          .attr("font-size", "8").attr("font-weight", "700")
+          .attr("fill", "#7a5010").attr("font-family", "Georgia, serif").text("N");
+
+        // Legend
+        const leg = svg.append("g").attr("transform", "translate(16, 390)");
+        leg.append("rect").attr("width", 116).attr("height", 44).attr("rx", 5)
+          .attr("fill", "#dfd0ad").attr("stroke", "#c4a060").attr("stroke-width", "0.7");
+        leg.append("line").attr("x1", 8).attr("y1", 13).attr("x2", 30).attr("y2", 13)
+          .attr("stroke", "#c4a060").attr("stroke-width", "1.4").attr("stroke-dasharray", "6 4")
+          .attr("stroke-linecap", "round");
+        leg.append("text").attr("x", 36).attr("y", 17)
+          .attr("font-size", "9.5").attr("fill", "#7a5010").attr("font-family", "Georgia, serif")
+          .text("Trade route");
+        leg.append("circle").attr("cx", 16).attr("cy", 32).attr("r", 5)
+          .attr("fill", "#f0e8d5").attr("stroke", "#c8851e").attr("stroke-width", "1.5");
+        leg.append("circle").attr("cx", 16).attr("cy", 32).attr("r", 2.5).attr("fill", "#c8851e");
+        leg.append("text").attr("x", 28).attr("y", 36)
+          .attr("font-size", "9.5").attr("fill", "#7a5010").attr("font-family", "Georgia, serif")
+          .text("City / hub");
+
+        setReady(true);
+      } catch (e) {
+        console.error("Map load error:", e);
+      }
+    })();
+  }, []);
 
   return (
     <div
       id="coverage"
-      className="relative overflow-hidden rounded-3xl border border-amber-200/60"
-      style={{ background: "#f5edd8" }}
+      className="relative overflow-hidden rounded-3xl border"
+      style={{ background: "#f0e8d5", borderColor: "#d4b87a" }}
     >
-      {/* Subtle grid texture like the reference */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(180,140,60,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(180,140,60,0.08) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
-      />
-
       {/* Header */}
-      <div className="relative z-10 px-6 pt-6 pb-4 flex items-start justify-between gap-4">
+      <div className="relative z-10 px-5 pt-5 pb-3.5 flex items-start justify-between gap-4"
+        style={{ borderBottom: "0.5px solid #d4b87a44" }}>
         <div>
-          <p
-            className="text-[10px] font-bold uppercase tracking-[0.22em] mb-2"
-            style={{ color: "#b8892a" }}
-          >
+          <p className="text-[10px] font-bold uppercase tracking-[0.22em] mb-1.5"
+            style={{ color: "#a07020" }}>
             Regional Coverage
           </p>
-          <h3 className="text-xl font-extrabold text-slate-900 leading-tight">
+          <h3 className="text-lg font-bold leading-tight" style={{ color: "#3a2a10" }}>
             West African Route Network
           </h3>
-          <p className="mt-1.5 text-sm text-slate-600 max-w-xs leading-relaxed">
-            Ports, industrial zones, farms, and ECOWAS trade corridors.
+          <p className="mt-1 text-xs leading-relaxed max-w-xs" style={{ color: "#7a6040" }}>
+            Ports, industrial zones, farms and ECOWAS trade corridors.
           </p>
         </div>
         <span
-          className="hidden sm:flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold text-white shadow-lg flex-shrink-0"
+          className="hidden sm:flex items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-bold text-white flex-shrink-0"
           style={{ background: "#c8851e" }}
         >
-          <MapPin className="h-3.5 w-3.5" />
+          <MapPin className="h-3 w-3" />
           Accra Hub
         </span>
       </div>
 
-      {/* SVG Map */}
-      <div className="relative px-2 pb-2">
+      {/* SVG map canvas */}
+      <div className="relative" style={{ background: "#f0e8d5" }}>
+        {!ready && (
+          <div className="absolute inset-0 flex items-center justify-center z-10"
+            style={{ minHeight: 200 }}>
+            <div className="text-xs" style={{ color: "#a07020" }}>Loading map…</div>
+          </div>
+        )}
         <svg
           ref={svgRef}
-          viewBox="0 0 660 430"
+          viewBox="0 0 660 420"
           width="100%"
-          xmlns="http://www.w3.org/2000/svg"
           style={{ display: "block" }}
-        >
-          {/* Land fill */}
-          <path
-            d={WEST_AFRICA_PATH}
-            fill="#e8d9b8"
-            stroke="#c9a84c"
-            strokeWidth="1.5"
-          />
-
-          {/* Country interior lines */}
-          {COUNTRY_LINES.map((d, i) => (
-            <path
-              key={i}
-              d={d}
-              fill="none"
-              stroke="#c9a84c"
-              strokeWidth="0.7"
-              strokeOpacity="0.55"
-            />
-          ))}
-
-          {/* Ocean label */}
-          <text
-            x="52"
-            y="370"
-            fontSize="11"
-            fontStyle="italic"
-            fill="#b8975a"
-            fillOpacity="0.7"
-            fontFamily="Georgia, serif"
-            letterSpacing="0.06em"
-          >
-            Atlantic Ocean
-          </text>
-
-          {/* Compass rose */}
-          <g transform="translate(608, 390)">
-            <circle cx="0" cy="0" r="18" fill="#e8d9b8" stroke="#c9a84c" strokeWidth="1" />
-            <line x1="0" y1="-13" x2="0" y2="13" stroke="#c9a84c" strokeWidth="0.8" strokeOpacity="0.7" />
-            <line x1="-13" y1="0" x2="13" y2="0" stroke="#c9a84c" strokeWidth="0.8" strokeOpacity="0.7" />
-            <polygon points="0,-12 2.5,-5 -2.5,-5" fill="#b8892a" />
-            <text x="0" y="-16" textAnchor="middle" fontSize="9" fontWeight="700" fill="#8a6318" fontFamily="Georgia, serif">N</text>
-          </g>
-
-          {/* Legend */}
-          <g transform="translate(22, 385)">
-            <rect x="0" y="0" width="118" height="38" rx="6" fill="#e8d9b8" stroke="#c9a84c" strokeWidth="0.8" />
-            <line x1="8" y1="13" x2="30" y2="13" stroke="#c9a84c" strokeWidth="1.5" strokeDasharray="5 4" strokeLinecap="round" />
-            <text x="36" y="17" fontSize="10" fill="#7a5c14" fontFamily="Georgia, serif">Trade route</text>
-            <circle cx="16" cy="29" r="4.5" fill="#c8851e" stroke="#f5edd8" strokeWidth="1.5" />
-            <text x="26" y="33" fontSize="10" fill="#7a5c14" fontFamily="Georgia, serif">City / hub</text>
-          </g>
-
-          {/* Animated route lines */}
-          {routes.map(([fromId, toId], i) => {
-            const from = cityById(fromId);
-            const to = cityById(toId);
-            const mx = (from.x + to.x) / 2;
-            const my = (from.y + to.y) / 2 - 22;
-            return (
-              <motion.path
-                key={`${fromId}-${toId}`}
-                d={`M${from.x} ${from.y} Q${mx} ${my} ${to.x} ${to.y}`}
-                fill="none"
-                stroke="#c9a84c"
-                strokeWidth="1.5"
-                strokeDasharray="7 6"
-                strokeLinecap="round"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.75 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.1, delay: i * 0.08, ease: "easeOut" }}
-              />
-            );
-          })}
-
-          {/* City markers */}
-          {cities.map((city, i) => {
-            const outerR = city.primary ? 20 : 14;
-            const innerR = city.primary ? 9  : 6;
-            const labelY = city.y - outerR - 6;
-
-            return (
-              <g key={city.id}>
-                {/* Pulse ring */}
-                <motion.circle
-                  cx={city.x}
-                  cy={city.y}
-                  r={outerR}
-                  fill="#c8851e"
-                  fillOpacity="0"
-                  stroke="#c8851e"
-                  strokeWidth="1"
-                  strokeOpacity="0.25"
-                  animate={{ r: [outerR, outerR + 6, outerR], strokeOpacity: [0.25, 0, 0.25] }}
-                  transition={{ duration: 2.8, repeat: Infinity, delay: i * 0.22, ease: "easeInOut" }}
-                />
-
-                {/* Outer ring (reference style: thick border circle) */}
-                <motion.circle
-                  cx={city.x}
-                  cy={city.y}
-                  r={outerR - 2}
-                  fill="#f5edd8"
-                  stroke="#c8851e"
-                  strokeWidth={city.primary ? 2.5 : 1.8}
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.5 + i * 0.07, ease: "backOut" }}
-                  style={{ transformOrigin: `${city.x}px ${city.y}px` }}
-                />
-
-                {/* Inner filled dot */}
-                <motion.circle
-                  cx={city.x}
-                  cy={city.y}
-                  r={innerR}
-                  fill="#c8851e"
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.35, delay: 0.55 + i * 0.07, ease: "backOut" }}
-                  style={{ transformOrigin: `${city.x}px ${city.y}px` }}
-                />
-
-                {/* City label */}
-                <motion.text
-                  x={city.x}
-                  y={labelY}
-                  textAnchor="middle"
-                  fontSize={city.primary ? 11.5 : 9.5}
-                  fontWeight="700"
-                  fill={city.primary ? "#8a5c10" : "#9a7230"}
-                  fontFamily="Georgia, serif"
-                  letterSpacing="0.12em"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.65 + i * 0.07 }}
-                >
-                  {city.name}
-                </motion.text>
-              </g>
-            );
-          })}
-        </svg>
+        />
       </div>
 
       {/* Footer pills */}
-      <div className="px-4 pb-4 grid grid-cols-2 sm:grid-cols-4 gap-2">
+      <div className="px-4 pb-4 grid grid-cols-2 sm:grid-cols-4 gap-2"
+        style={{ borderTop: "0.5px solid #d4b87a44" }}>
         {[
           { label: "Ghana", icon: MapPin },
           { label: "Togo / Benin", icon: Route },
@@ -479,12 +497,11 @@ function WestAfricaMap() {
         ].map((item) => {
           const Icon = item.icon;
           return (
-            <div
-              key={item.label}
-              className="flex items-center justify-center gap-2 rounded-xl border px-3 py-2.5 text-xs font-bold text-slate-700"
-              style={{ borderColor: "#d4a84c55", background: "rgba(255,255,255,0.7)" }}
+            <div key={item.label}
+              className="flex items-center justify-center gap-2 rounded-xl border px-3 py-2.5 text-xs font-semibold"
+              style={{ borderColor: "#d4a84c55", background: "rgba(255,255,255,0.55)", color: "#5a4010" }}
             >
-              <Icon className="h-3.5 w-3.5" style={{ color: "#c8851e" }} />
+              <Icon className="h-3.5 w-3.5 flex-shrink-0" style={{ color: "#c8851e" }} />
               {item.label}
             </div>
           );
