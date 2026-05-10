@@ -486,7 +486,6 @@ export function Home() {
               className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 sm:mb-10 leading-relaxed max-w-xl"
             >
               ProHaul delivers reliable bulk haulage solutions across Ghana and West Africa, ensuring safe and efficient cargo movement.
-Backed by a high-capacity fleet, we support seamless transportation across key trade corridors.
             </motion.p>
 
             <motion.div
