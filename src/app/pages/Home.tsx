@@ -248,14 +248,14 @@ function Img({ src, alt, className = "" }: { src: string; alt: string; className
 const IMGS = {
   hero: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1800&q=80",
   about: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=900&q=80",
-  fleet1: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-  fleet2: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80",
-  agri: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=800&q=80",
+  fleet1: "https://i.pinimg.com/1200x/58/9d/c6/589dc6beb7f521cb20b06b800bfd89f8.jpg",
+  fleet2: "https://i.pinimg.com/1200x/58/9d/c6/589dc6beb7f521cb20b06b800bfd89f8.jpg",
+  agri: "https://i.pinimg.com/1200x/be/78/19/be7819b6d1b7ff0a596db7ba5c443ef4.jpg",
   port: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80",
-  driver: "https://images.unsplash.com/photo-1504270997636-07ddfbd48945?w=800&q=80",
-  safety: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80",
+  driver: "https://i.pinimg.com/736x/f2/89/68/f2896850d0c9991f641d494792a190f6.jpg",
+  safety: "https://i.pinimg.com/736x/48/c2/83/48c283f5f6e4aa97182150eb99fee79a.jpg",
   warehouse: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=1200&q=80",
-  road: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800&q=80",
+  road: "https://i.pinimg.com/1200x/bd/f9/5b/bdf95b0b9c4f84017e0c2747c01b3710.jpg",
 };
 
 /* ══════════════════════════════════════════

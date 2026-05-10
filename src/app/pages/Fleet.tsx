@@ -136,8 +136,8 @@ const IMGS = {
   hero: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1800&q=85",
   tanker: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=85",
   fleet: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85",
-  road: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&q=85",
-  warehouse: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=1200&q=85",
+  road: "https://i.pinimg.com/1200x/58/9d/c6/589dc6beb7f521cb20b06b800bfd89f8.jpg",
+  warehouse: "https://i.pinimg.com/1200x/d9/2e/ff/d92effc80b2ae50709ae3af40d7b7439.jpg",
   port: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1200&q=85",
   driver: "https://images.unsplash.com/photo-1504270997636-07ddfbd48945?w=900&q=85",
 };
