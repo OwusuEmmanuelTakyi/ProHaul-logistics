@@ -134,20 +134,20 @@ function Img({ src, alt, className = "" }: { src: string; alt: string; className
 
 const IMGS = {
   hero: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1800&q=85",
-  fleet: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=85",
-  road: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&q=85",
+  fleet: "https://i.pinimg.com/736x/20/79/15/2079151e9565ece35bc2e994d880b4a0.jpg",
+  road: "https://i.pinimg.com/1200x/62/ec/e4/62ece4038daee4d4aa9fb3ed4ee7c12c.jpg",
   driver: "https://images.unsplash.com/photo-1504270997636-07ddfbd48945?w=900&q=85",
-  warehouse: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=1200&q=85",
-  port: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1200&q=85",
-  agri: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=900&q=85",
+  warehouse: "https://i.pinimg.com/1200x/b0/32/3a/b0323a5d857e24750bb17aa0d33ec9e2.jpg",
+  port: "https://i.pinimg.com/1200x/9c/e3/52/9ce35244d0cb2496f624e86fc68af7af.jpg",
+  agri: "https://i.pinimg.com/736x/20/29/09/202909f3f401d1d0039be58392c39f37.jpg",
   safety: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=900&q=85",
 };
 
 const stats = [
-  { value: "Ghana", label: "Nationwide coverage", icon: MapPin },
-  { value: "ECOWAS", label: "Cross-border corridors", icon: Globe },
-  { value: "460-530", label: "Horse power", icon: Zap },
-  { value: "54,000L", label: "Tanker capacity", icon: Fuel },
+  { value: "Ghana", label: "Nationwide Coverage", icon: MapPin },
+  { value: "ECOWAS", label: "Cross-border", icon: Globe },
+  { value: "460HP-530HP", label: "Engine Power", icon: Zap },
+  { value: "27,000L - 54,000L", label: "Tanker Capacity", icon: Fuel },
 ];
 
 const pillars = [
@@ -300,7 +300,8 @@ export function About() {
               transition={{ duration: 0.7, delay: 0.35 }}
               className="mt-6 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-gray-300"
             >
-              A Ghana-based haulage company delivering dependable, end-to-end transportation solutions across Ghana and the wider West African sub-region.
+              ProHaul is a Ghana-based haulage company delivering dependable, end-to-end transportation solutions across Ghana and the wider West African sub-region. We specialize in the safe, efficient, and timely movement of bulk and packaged goods, supporting businesses across critical sectors of the economy.
+With a modern fleet, experienced drivers, and a deep understanding of regional trade routes, ProHaul is built to move your cargo securely, on schedule, and at scale.
             </motion.p>
 
             <motion.div
@@ -375,15 +376,12 @@ export function About() {
                 Dependable transport for critical sectors of the economy.
               </h2>
               <p className="mb-5 text-muted-foreground leading-relaxed">
-                ProHaul delivers dependable, end-to-end transportation solutions for the safe, efficient, and timely movement of bulk and packaged goods.
+                ProHaul is a Ghanaian-owned haulage company providing reliable, efficient, and scalable transportation solutions across Ghana and the West African sub-region. We specialize in the movement of bulk and general cargo, serving key sectors including petroleum distribution, agriculture, construction, manufacturing, and trade through our nationwide and cross-border operations.
               </p>
               <p className="mb-5 text-muted-foreground leading-relaxed">
-                We support businesses across petroleum distribution, agriculture, construction, industrial inputs, and containerized cargo movement.
+                Backed by a modern fleet of high-performance European trucks and specialized trailers, ProHaul is committed to safety, operational excellence, and timely delivery. Through technology-driven fleet management systems, compliance-focused operations, and a strong understanding of regional trade corridors, we deliver dependable haulage solutions that support business continuity and regional commerce.
               </p>
-              <p className="mb-8 text-muted-foreground leading-relaxed">
-                With a modern fleet, experienced drivers, and a deep understanding of regional trade routes, ProHaul is built to move cargo securely, on schedule, and at scale.
-              </p>
-
+              
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {["Modern European truck brands", "Experienced and trained drivers", "Regional route knowledge", "Secure and timely delivery"].map((item) => (
                   <div key={item} className="flex items-center gap-2 rounded-lg border border-border bg-muted/50 p-3 text-sm font-medium">
@@ -402,10 +400,8 @@ export function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
             <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">Our Foundation</p>
-            <h2 className="mb-4 text-3xl md:text-5xl font-extrabold text-foreground">Built on safety, reliability, and disciplined execution.</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Every ProHaul operation is guided by structured planning, trained personnel, and a commitment to consistent service delivery.
-            </p>
+            <h2 className="mb-4 text-3xl md:text-5xl font-extrabold text-foreground">Driven by safety, reliability, and operational discipline.</h2>
+            
           </Reveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -440,7 +436,7 @@ export function About() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <RevealX x={-70}>
               <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-400">Our Haulage Scope</p>
-              <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight">Supporting Ghana's most important supply chains.</h2>
+              <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight">Supporting critical supply chains across Ghana and the West African sub-region.</h2>
               <p className="mb-8 text-gray-400 leading-relaxed">
                 ProHaul provides reliable transport for bulk and packaged goods, supporting industries that depend on timely movement from ports, farms, warehouses, depots, industrial zones, and project sites.
               </p>
@@ -521,7 +517,9 @@ export function About() {
               <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">Track Record & Experience</p>
               <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight text-foreground">Reliable operations across major commercial and industrial corridors.</h2>
               <p className="mb-8 text-muted-foreground leading-relaxed">
-                ProHaul has established a strong operational track record supporting petroleum distribution, agriculture, construction, and industrial supply chains.
+                ProHaul has established a strong and reliable operational track record supporting key sectors of the economy, including petroleum distribution, agriculture, and construction. Our experience spans the transportation of both bulk and packaged cargo, delivered with consistency, efficiency, and adherence to industry standards.
+
+We have successfully executed haulage operations across major commercial and industrial corridors within Ghana and extending into the West African sub-region. Our ability to manage diverse logistics requirements under varying operational conditions has positioned us as a dependable partner for clients with both routine and complex transportation needs.
               </p>
               <div className="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
                 <Img src={IMGS.road} alt="Long distance haulage route" className="h-full w-full sm:hover:scale-105 transition-transform duration-700" />
@@ -551,50 +549,75 @@ export function About() {
 
       {/* TECHNOLOGY + COMPLIANCE */}
       <section className="py-16 sm:py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <RevealX x={-70}>
-              <div className="h-full rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-sm">
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/10">
-                  <Satellite className="h-7 w-7 text-orange-500" />
-                </div>
-                <h2 className="mb-4 text-2xl sm:text-3xl font-extrabold text-foreground">Technology & Visibility</h2>
-                <p className="mb-6 text-muted-foreground leading-relaxed">
-                  ProHaul leverages GPS tracking and fleet management systems to provide real-time operational insight, strengthen control over fleet performance, and enhance service reliability.
-                </p>
-                <div className="space-y-3">
-                  {["Integrated GPS tracking", "Fleet monitoring and performance oversight", "Driver coordination and communication", "Trip monitoring and reporting"].map((item) => (
-                    <div key={item} className="flex items-center gap-3 text-sm font-medium">
-                      <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-orange-500" />
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </RevealX>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <RevealX x={-70}>
+      <div className="rounded-3xl border border-border bg-card p-6 sm:p-8 lg:p-10 shadow-sm">
+        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/10">
+          <Satellite className="h-7 w-7 text-orange-500" />
+        </div>
 
-            <RevealX x={70}>
-              <div className="h-full rounded-3xl border border-border bg-slate-950 p-6 sm:p-8 text-white shadow-2xl">
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/15">
-                  <FileCheck2 className="h-7 w-7 text-orange-400" />
-                </div>
-                <h2 className="mb-4 text-2xl sm:text-3xl font-extrabold">Compliance & Assurance</h2>
-                <p className="mb-6 text-gray-400 leading-relaxed">
-                  Our operations are structured around regulatory discipline, documentation control, safety compliance, environmental responsibility, and cargo security.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {["DVLA requirements", "NPA standards", "EPA alignment", "ECOWAS protocols", "Audit readiness", "GIT insurance"].map((item) => (
-                    <div key={item} className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 p-3 text-sm font-medium text-white/90">
-                      <Shield className="h-4 w-4 flex-shrink-0 text-orange-400" />
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </RevealX>
+        <div className="space-y-6">
+          <div className="rounded-2xl border border-border bg-muted/40 p-5">
+            <h2 className="mb-3 text-lg sm:text-xl font-extrabold text-foreground">
+              1. Technology & Visibility
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              ProHaul leverages technology as a core enabler of operational excellence, driving efficiency, transparency, and accountability across all haulage activities. Our technology framework is designed to provide real-time operational insight, strengthen control over fleet performance, and enhance the overall reliability of our service delivery.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-border bg-muted/40 p-5">
+            <h2 className="mb-3 text-lg sm:text-xl font-extrabold text-foreground">
+              2. Capabilities
+            </h2>
+            <h3 className="mb-3 text-base font-bold text-foreground">
+              Integrated GPS Tracking & Fleet Management Systems
+            </h3>
+            <p className="text-muted-foreground leading-relaxed">
+              We deploy advanced GPS tracking integrated with fleet management systems to provide real-time visibility of all active trips. This enables continuous monitoring of vehicle movements, route adherence, and cargo transit status, while optimizing fleet utilization and improving operational efficiency.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-border bg-muted/40 p-5">
+            <h2 className="mb-3 text-lg sm:text-xl font-extrabold text-foreground">
+              3. Fleet Monitoring & Performance Oversight
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Our systems provide detailed oversight of truck performance, including movement patterns, utilization levels, and operational efficiency. This allows for proactive identification of inefficiencies, improved asset management, and reduced downtime.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-border bg-muted/40 p-5">
+            <h2 className="mb-3 text-lg sm:text-xl font-extrabold text-foreground">
+              4. Driver Coordination & Communication
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              We maintain structured and coordinated communication between drivers and operations teams throughout the delivery lifecycle, ensuring prompt response to operational changes, route adjustments, and client requirements.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-border bg-muted/40 p-5">
+            <h2 className="mb-3 text-lg sm:text-xl font-extrabold text-foreground">
+              5. Trip Monitoring & Reporting
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Each trip is actively monitored from dispatch through to delivery, with performance tracking and reporting mechanisms in place to ensure adherence to schedules and service standards.
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-border bg-muted/40 p-5">
+            <h2 className="mb-3 text-lg sm:text-xl font-extrabold text-foreground">
+              6. Operational Impact
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              These technology-driven capabilities enable proactive decision-making, stronger operational control, and improved service consistency. They also enhance accountability at every stage of the logistics process, ensuring that clients remain consistently informed on the status of their cargo and can rely on accurate, timely delivery updates.
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+    </RevealX>
+  </div>
+</section>
 
       {/* PROCESS */}
       <section className="py-16 sm:py-24 bg-muted">
