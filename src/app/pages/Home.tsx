@@ -269,7 +269,7 @@ const IMGS = {
 const SERVICES = [
   {
     icon: Fuel,
-    title: "Fuel & Petroleum",
+    title: "Bulk Fuel",
     desc: "Secure haulage of PMS, AGO & DPK — fully NPA compliant with real-time monitoring.",
     link: "/services/fuel-haulage",
     color: "from-orange-500 to-red-600",
@@ -326,34 +326,34 @@ const STATS = [
 
 const FEATURES = [
   {
-    icon: Shield,
-    title: "Safety First",
-    desc: "Strict HSE protocols, driver certification and zero-incident culture across all operations.",
+    icon: CheckCircle2,
+    title: "Proven reliability and on-time delivery",
+    
   },
   {
     icon: CheckCircle2,
-    title: "Proven Reliability",
-    desc: "On-time delivery backed by real-time GPS monitoring and disciplined scheduling.",
+    title: "Safety-focused operations and trained personnel",
+    
+  },
+  {
+    icon: CheckCircle2,
+    title: "Scalable capacity for bulk and specialized cargo",
+    
   },
   {
     icon: Truck,
-    title: "Modern Fleet",
-    desc: "MAN, DAF, Volvo & Scania prime movers — 460HP to 530HP for any terrain and route.",
-  },
-  {
-    icon: Users,
-    title: "Expert Team",
-    desc: "Trained, certified drivers with deep knowledge of regional and cross-border trade routes.",
+    title: "Strong knowledge of regional logistics and cross-border trade",
+    
   },
 ];
 
 const FLEET = [
-  { label: "Fuel Tankers", specs: "27,000 – 54,000 L", icon: Fuel },
-  { label: "Flatbed Load", specs: "Up to 50 tonnes", icon: Truck },
+  { label: "Bulk Tankers", specs: "27,000L – 54,000L", icon: Fuel },
+  { label: "Payload Capacity", specs: "50 tons", icon: Truck },
   { label: "Engine Power", specs: "460 – 530 HP", icon: Zap },
   { label: "Torque Output", specs: "2,100 – 2,500 Nm", icon: BarChart3 },
   { label: "Containers", specs: "20ft & 40ft", icon: Container },
-  { label: "Coverage", specs: "Ghana + W. Africa", icon: Navigation },
+  { label: "Coverage", specs: "Ghana & West Africa", icon: Navigation },
 ];
 
 const PROCESS = [
@@ -626,7 +626,7 @@ export function Home() {
         Our Haulage Services
       </h2>
       <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-        Comprehensive logistics solutions engineered for Ghana's most critical industries
+        A comprehensive haulage solution engineered for Ghana's and West Africa’s  most critical industries
       </p>
     </Reveal>
 
@@ -692,7 +692,7 @@ export function Home() {
                 <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-3">Our Strengths</p>
                 <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">Why Choose ProHaul?</h2>
                 <p className="text-muted-foreground leading-relaxed mb-8 sm:mb-10">
-                  We distinguish ourselves through operational strength, market insight, and disciplined execution — supporting your continuity and long-term growth.
+                  Modern high-capacity fleet, nationwide and cross-border reach, technology-driven operations, and a strong commitment to safety, reliability, and timely delivery.
                 </p>
               </RevealX>
 
@@ -707,7 +707,7 @@ export function Home() {
                         </div>
                         <div>
                           <h3 className="font-bold mb-1">{f.title}</h3>
-                          <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
+                          
                         </div>
                       </div>
                     </Reveal>
@@ -750,7 +750,7 @@ export function Home() {
               <p className="text-orange-400 font-bold text-sm uppercase tracking-widest mb-3">Built for Scale</p>
               <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">Fleet & Operational Capacity</h2>
               <p className="text-gray-400 leading-relaxed mb-8">
-                A modern, high-performance fleet of MAN, DAF, Volvo & Scania trucks — engineered for demanding long-haul operations across Ghana and West Africa.
+                ProHaul operates a modern, high-performance fleet designed to deliver reliability, efficiency, and scalable capacity across a wide range of haulage requirements. Our fleet strategy is centered on deploying robust, well-maintained equipment capable of supporting both routine and high-demand logistics operations
               </p>
               <div className="flex flex-wrap gap-3">
                 {["MAN", "DAF", "VOLVO", "SCANIA"].map((brand, i) => (
@@ -857,12 +857,11 @@ export function Home() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                 {[
-                  { label: "DVLA Compliant", icon: CheckCircle2 },
-                  { label: "NPA Certified", icon: CheckCircle2 },
-                  { label: "EPA Aligned", icon: CheckCircle2 },
-                  { label: "ECOWAS Transit", icon: CheckCircle2 },
-                  { label: "GIT Insurance", icon: Shield },
-                  { label: "GPS Tracking", icon: Navigation },
+                  { label: "Driver safety training and certification programs", icon: CheckCircle2 },
+                  { label: "Enforcement of personal protective equipment (PPE) usage", icon: CheckCircle2 },
+                  { label: "Routine vehicle inspection and maintenance protocols", icon: CheckCircle2 },
+                  { label: "Incident reporting, investigation, and response procedures", icon: CheckCircle2 },
+                  { label: "Compliance with applicable environmental and safety regulations", icon: Shield },
                 ].map((item, i) => {
                   const Icon = item.icon;
                   return (

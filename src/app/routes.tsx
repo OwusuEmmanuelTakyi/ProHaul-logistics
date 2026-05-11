@@ -14,6 +14,7 @@ import { Contact } from "./pages/Contact";
 import { NotFound } from "./pages/NotFound";
 import { Quote } from "./pages/Quote";
 import { Services } from "./pages/services";
+import { ComplianceRegulatory } from "./pages/ComplianceRegulatory";
 //import {ScrollToTop} from "./components/ScrollToTop";
 
 export const router = createBrowserRouter([
@@ -34,6 +35,7 @@ export const router = createBrowserRouter([
       { path: "contact", Component: Contact },
       { path: "quote", Component: Quote },
       { path: "services", Component: Services },
+      {path: "compliance-regulatory", Component: ComplianceRegulatory},
       { path: "*", Component: NotFound },
     ],
   },
