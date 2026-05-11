@@ -259,7 +259,7 @@ const IMGS = {
   tanker: "https://i.pinimg.com/736x/14/d7/30/14d730be90a9f0e5d4259d47ad6bc8e5.jpg",
   fertilizer: "https://i.pinimg.com/736x/20/29/09/202909f3f401d1d0039be58392c39f37.jpg",
   scale:"https://i.pinimg.com/1200x/56/ad/7f/56ad7f8d6b01e974aec8f196f7cda26f.jpg",
-  safety2: "https://i.pinimg.com/1200x/89/73/83/8973836e28f492882fe5aa81ea4500ba.jpg",
+  safety2: "https://i.pinimg.com/736x/ec/2f/71/ec2f71e3f43af9685bb2bc3d892bfe9a.jpg",
   safety3: "https://i.pinimg.com/736x/9a/36/f8/9a36f8145a9264848a511f35ba1d43f8.jpg"
 };
 
@@ -828,64 +828,78 @@ export function Home() {
 
       {/* ══════════ HSE & COMPLIANCE ══════════ */}
       <section className="py-16 sm:py-24 bg-muted">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <RevealX x={-70}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[3/4] col-span-1 shadow-xl">
-                  <Img src={IMGS.safety2} alt="Safety gear" className="w-full h-full sm:hover:scale-105 transition-transform duration-700" />
-                </div>
-                <div className="flex flex-col gap-4 col-span-1">
-                  <div className="rounded-xl overflow-hidden min-h-[180px] sm:flex-1 shadow-xl">
-                    <Img src={IMGS.safety3} alt="Certified driver" className="w-full h-full sm:hover:scale-105 transition-transform duration-700" />
-                  </div>
-                  <div className="rounded-xl bg-orange-500 p-5 text-white shadow-xl shadow-orange-500/20">
-                    <Shield className="w-8 h-8 mb-2 opacity-80" />
-                    <div className="text-2xl font-extrabold">Zero</div>
-                    <div className="text-sm text-orange-100">Incident Target</div>
-                  </div>
-                </div>
-              </div>
-            </RevealX>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-16 items-center">
+      
+      {/* One Image Only */}
+      <RevealX x={-70}>
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-card shadow-2xl">
+          <div className="aspect-[4/3] lg:aspect-[4/5]">
+            <Img
+              src={IMGS.safety2}
+              alt="Health, Safety and Environment operations"
+              className="w-full h-full sm:hover:scale-105 transition-transform duration-700"
+            />
+          </div>
 
-            <RevealX x={70}>
-              <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-3">Safety & Compliance</p>
-              <h2 className="text-3xl md:text-4xl font-extrabold mb-6 leading-tight">Health, Safety & Environment</h2>
-              <p className="text-muted-foreground leading-relaxed mb-8">
-                Safety is a core pillar of ProHaul's operations. We maintain a structured HSE framework designed to protect personnel, cargo, and the communities within which we operate — with a zero-incident objective embedded in every process.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                {[
-                  { label: "Driver safety training and certification programs", icon: CheckCircle2 },
-                  { label: "Enforcement of personal protective equipment (PPE) usage", icon: CheckCircle2 },
-                  { label: "Routine vehicle inspection and maintenance protocols", icon: CheckCircle2 },
-                  { label: "Incident reporting, investigation, and response procedures", icon: CheckCircle2 },
-                  { label: "Compliance with applicable environmental and safety regulations", icon: Shield },
-                ].map((item, i) => {
-                  const Icon = item.icon;
-                  return (
-                    <Reveal key={item.label} delay={i * 0.05} y={20}>
-                      <div className="flex items-center gap-2 p-3 rounded-lg bg-background border border-border hover:border-orange-400/40 transition-colors">
-                        <Icon className="w-4 h-4 text-orange-500 flex-shrink-0" />
-                        <span className="text-sm font-medium">{item.label}</span>
-                      </div>
-                    </Reveal>
-                  );
-                })}
-              </div>
-
-              <Link
-                to="/hse"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 border border-orange-500 text-orange-500 rounded-lg hover:bg-orange-500 hover:text-white sm:hover:scale-105 transition-all font-semibold"
-              >
-                Our HSE Framework <ArrowRight className="w-5 h-5" />
-              </Link>
-            </RevealX>
+          <div className="absolute left-5 bottom-5 rounded-2xl bg-orange-500 p-5 text-white shadow-xl shadow-orange-500/30">
+            <Shield className="w-8 h-8 mb-3 opacity-90" />
+            <div className="text-3xl font-extrabold leading-none">Zero</div>
+            <div className="mt-1 text-sm font-medium text-orange-100">
+              Incident Target
+            </div>
           </div>
         </div>
-      </section>
+      </RevealX>
 
+      {/* Text Content */}
+      <RevealX x={70}>
+        <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-3">
+          Safety & Compliance
+        </p>
+
+        <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight text-foreground">
+          Health, Safety & Environment
+        </h2>
+
+        <p className="text-muted-foreground leading-relaxed mb-8">
+          Safety is a core pillar of ProHaul&apos;s operations. We maintain a structured
+          HSE framework designed to protect personnel, cargo, and the communities within
+          which we operate — with a zero-incident objective embedded in every process.
+        </p>
+
+        <div className="grid grid-cols-1 gap-4 mb-8">
+          {[
+            "Driver safety training and certification programs",
+            "Enforcement of personal protective equipment (PPE) usage",
+            "Routine vehicle inspection and maintenance protocols",
+            "Incident reporting, investigation, and response procedures",
+            "Compliance with applicable environmental and safety regulations",
+          ].map((item, i) => (
+            <Reveal key={item} delay={i * 0.05} y={20}>
+              <div className="group flex items-start gap-4 rounded-2xl border border-border bg-background p-4 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-lg">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10 transition-colors group-hover:bg-orange-500">
+                  <CheckCircle2 className="h-5 w-5 text-orange-500 transition-colors group-hover:text-white" />
+                </div>
+
+                <span className="pt-2 text-sm sm:text-base font-medium leading-relaxed text-foreground">
+                  {item}
+                </span>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <Link
+          to="/hse-compliance"
+          className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-7 py-4 border border-orange-500 text-orange-500 rounded-lg hover:bg-orange-500 hover:text-white sm:hover:scale-105 transition-all font-bold"
+        >
+          Our HSE Framework <ArrowRight className="w-5 h-5" />
+        </Link>
+      </RevealX>
+    </div>
+  </div>
+</section>
       {/* ══════════ TESTIMONIALS ══════════ */}
       <section className="py-16 sm:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -43,11 +43,11 @@ export function Navigation() {
   ];
 
   const afterServicesLinks = [
-    { name: "Fleet", path: "/fleet", delay: 0.25 },
-    { name: "HSE", path: "/hse", delay: 0.3 },
-    { name: "Compliance and Regulatory", path: "/compliance-regulatory", delay: 0.35 },
-    { name: "Contact", path: "/contact", delay: 0.4 },
-  ];
+  { name: "Fleet", path: "/fleet", delay: 0.25 },
+  { name: "HSE & Compliance", path: "/hse-compliance", delay: 0.3 },
+  { name: "GIT", path: "/git-insurance", delay: 0.35 },
+  { name: "Contact", path: "/contact", delay: 0.4 },
+];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);

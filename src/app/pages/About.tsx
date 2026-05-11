@@ -425,58 +425,89 @@ With a modern fleet, experienced drivers, and a deep understanding of regional t
 
       {/* WHAT WE MOVE */}
       <section className="py-16 sm:py-24 bg-slate-950 text-white relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
-            backgroundSize: isMobile ? "48px 48px" : "80px 80px",
-          }}
-        />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <RevealX x={-70}>
-              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-400">Our Haulage Scope</p>
-              <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight">Supporting critical supply chains across Ghana and the West African sub-region.</h2>
-              <p className="mb-8 text-gray-400 leading-relaxed">
-                ProHaul provides reliable transport for bulk and packaged goods, supporting industries that depend on timely movement from ports, farms, warehouses, depots, industrial zones, and project sites.
-              </p>
+  <div
+    className="absolute inset-0 opacity-[0.04]"
+    style={{
+      backgroundImage:
+        "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
+      backgroundSize: isMobile ? "48px 48px" : "80px 80px",
+    }}
+  />
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {services.map((service, index) => {
-                  const Icon = service.icon;
-                  return (
-                    <motion.div
-                      key={service.label}
-                      initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: isMobile ? 0 : index * 0.06, duration: 0.45 }}
-                      className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-4 transition-all hover:border-orange-400/40 hover:bg-white/10"
-                    >
-                      <Icon className="h-5 w-5 flex-shrink-0 text-orange-400" />
-                      <span className="text-sm font-medium text-white/90">{service.label}</span>
-                    </motion.div>
-                  );
-                })}
-              </div>
-            </RevealX>
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center">
+      {/* Text Content */}
+      <RevealX x={-70}>
+        <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-400">
+          Our Haulage Scope
+        </p>
 
-            <RevealX x={70}>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="col-span-2 rounded-3xl overflow-hidden aspect-[16/9] border border-white/10 shadow-2xl">
-                  <Img src={IMGS.port} alt="Container haulage and port logistics" className="h-full w-full sm:hover:scale-105 transition-transform duration-700" />
+        <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight">
+          Supporting critical supply chains across Ghana and the West African sub-region.
+        </h2>
+
+        <p className="mb-8 text-gray-400 leading-relaxed">
+          ProHaul provides reliable transport for bulk and packaged goods, supporting
+          industries that depend on timely movement from ports, farms, warehouses, depots,
+          industrial zones, and project sites.
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {services.map((service, index) => {
+            const Icon = service.icon;
+
+            return (
+              <motion.div
+                key={service.label}
+                initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  delay: isMobile ? 0 : index * 0.06,
+                  duration: 0.45,
+                }}
+                className="group flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition-all duration-300 hover:border-orange-400/40 hover:bg-white/[0.08]"
+              >
+                <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10 transition-colors group-hover:bg-orange-500">
+                  <Icon className="h-5 w-5 text-orange-400 transition-colors group-hover:text-white" />
                 </div>
-                <div className="rounded-2xl overflow-hidden aspect-square border border-white/10 shadow-xl">
-                  <Img src={IMGS.agri} alt="Agricultural commodities haulage" className="h-full w-full sm:hover:scale-105 transition-transform duration-700" />
-                </div>
-                <div className="rounded-2xl overflow-hidden aspect-square border border-white/10 shadow-xl">
-                  <Img src={IMGS.warehouse} alt="Warehouse and construction material logistics" className="h-full w-full sm:hover:scale-105 transition-transform duration-700" />
-                </div>
-              </div>
-            </RevealX>
+
+                <span className="pt-2 text-sm sm:text-base font-medium leading-relaxed text-white/90">
+                  {service.label}
+                </span>
+              </motion.div>
+            );
+          })}
+        </div>
+      </RevealX>
+
+      {/* One Image Only */}
+      <RevealX x={70}>
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl">
+          <div className="aspect-[4/3] lg:aspect-[4/5]">
+            <Img
+              src={IMGS.port}
+              alt="Container haulage and port logistics"
+              className="h-full w-full sm:hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+
+          <div className="absolute left-5 right-5 bottom-5 rounded-2xl border border-white/10 bg-slate-950/80 p-5 backdrop-blur-md">
+            <p className="text-sm font-bold uppercase tracking-widest text-orange-400">
+              Nationwide & Regional Reach
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-gray-300">
+              Reliable movement across ports, industrial zones, farms, warehouses,
+              depots, and project sites.
+            </p>
           </div>
         </div>
-      </section>
+      </RevealX>
+    </div>
+  </div>
+</section>
 
       {/* DIFFERENTIATORS */}
       <section className="py-16 sm:py-24 bg-background">

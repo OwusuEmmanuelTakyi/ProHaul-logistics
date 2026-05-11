@@ -9,12 +9,13 @@ import { Fertilizer } from "./pages/services/Fertilizer";
 import { Container } from "./pages/services/Container";
 import { CrossBorder } from "./pages/services/CrossBorder";
 import { Fleet } from "./pages/Fleet";
-import { HSE } from "./pages/HSE";
+import { HSECompliance } from "./pages/HSECompliance";
 import { Contact } from "./pages/Contact";
 import { NotFound } from "./pages/NotFound";
 import { Quote } from "./pages/Quote";
 import { Services } from "./pages/services";
 import { ComplianceRegulatory } from "./pages/ComplianceRegulatory";
+import { GITInsurance } from "./pages/GITInsurance";
 //import {ScrollToTop} from "./components/ScrollToTop";
 
 export const router = createBrowserRouter([
@@ -31,11 +32,12 @@ export const router = createBrowserRouter([
       { path: "services/container", Component: Container },
       { path: "services/cross-border", Component: CrossBorder },
       { path: "fleet", Component: Fleet },
-      { path: "hse", Component: HSE },
+      {path : "hse-compliance", Component: HSECompliance},
       { path: "contact", Component: Contact },
       { path: "quote", Component: Quote },
       { path: "services", Component: Services },
       {path: "compliance-regulatory", Component: ComplianceRegulatory},
+      { path: "git-insurance", Component: GITInsurance},
       { path: "*", Component: NotFound },
     ],
   },
