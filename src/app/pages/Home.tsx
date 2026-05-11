@@ -258,9 +258,9 @@ const IMGS = {
   road: "https://i.pinimg.com/1200x/4c/a2/c5/4ca2c5243d2d5095295abe35e1a9fd4d.jpg",
   tanker: "https://i.pinimg.com/736x/14/d7/30/14d730be90a9f0e5d4259d47ad6bc8e5.jpg",
   fertilizer: "https://i.pinimg.com/736x/20/29/09/202909f3f401d1d0039be58392c39f37.jpg",
-  scale:"https://i.pinimg.com/1200x/2c/6f/e7/2c6fe7d4078c158277344febe9e590ba.jpg",
+  scale:"https://i.pinimg.com/1200x/2f/60/1b/2f601bd6c95240de6a97a25e196fddc1.jpg",
   safety2: "https://i.pinimg.com/1200x/89/73/83/8973836e28f492882fe5aa81ea4500ba.jpg",
-  safety3: "https://i.pinimg.com/1200x/56/ad/7f/56ad7f8d6b01e974aec8f196f7cda26f.jpg"
+  safety3: "https://i.pinimg.com/736x/9a/36/f8/9a36f8145a9264848a511f35ba1d43f8.jpg"
 };
 
 /* ══════════════════════════════════════════
@@ -615,47 +615,73 @@ export function Home() {
       </section>
 
       {/* ══════════ SERVICES — image cards ══════════ */}
-      <section className="py-16 sm:py-24 bg-muted">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Reveal className="text-center mb-10 sm:mb-16">
-            <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-3">What We Do</p>
-            <h2 className="text-3xl md:text-5xl font-extrabold mb-4">Our Haulage Services</h2>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive logistics solutions engineered for Ghana's most critical industries
-            </p>
-          </Reveal>
+      {/* ══════════ SERVICES — image cards ══════════ */}
+<section className="py-16 sm:py-24 bg-muted">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Reveal className="text-center mb-10 sm:mb-16">
+      <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-3">
+        What We Do
+      </p>
+      <h2 className="text-3xl md:text-5xl font-extrabold mb-4">
+        Our Haulage Services
+      </h2>
+      <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+        Comprehensive logistics solutions engineered for Ghana's most critical industries
+      </p>
+    </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-            {SERVICES.map((svc, i) => {
-              const Icon = svc.icon;
-              return (
-                <Reveal key={svc.title} delay={i * 0.08} y={48}>
-                  <Link
-                    to={svc.link}
-                    className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 block min-h-[21rem] sm:h-72"
-                  >
-                    <Img src={svc.img} alt={svc.title} className="absolute inset-0 w-full h-full md:group-hover:scale-110 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/15" />
-                    <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${svc.color}`} />
-                    <div className="absolute inset-0 p-5 sm:p-6 flex flex-col justify-end">
-                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${svc.color} flex items-center justify-center mb-4 shadow-lg md:group-hover:scale-110 transition-transform duration-300`}>
-                        <Icon className="w-6 h-6 text-white" />
-                      </div>
-                      <h3 className="text-lg font-bold text-white mb-2">{svc.title}</h3>
-                      <p className="text-sm text-gray-300 leading-relaxed mb-4 opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-300">
-                        {svc.desc}
-                      </p>
-                      <span className="inline-flex items-center gap-1.5 text-orange-400 text-sm font-semibold md:group-hover:gap-3 transition-all">
-                        Learn More <ArrowRight className="w-4 h-4" />
-                      </span>
-                    </div>
-                  </Link>
-                </Reveal>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+      {SERVICES.map((svc, i) => {
+        const Icon = svc.icon;
+
+        return (
+          <Reveal key={svc.title} delay={i * 0.08} y={48}>
+            <Link
+              to={svc.link}
+              className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 block min-h-[21rem] sm:h-72"
+            >
+              <Img
+                src={svc.img}
+                alt={svc.title}
+                className="absolute inset-0 w-full h-full md:group-hover:scale-110 transition-transform duration-700"
+              />
+
+              {/* Reduced dark overlay so image shows better */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
+
+              {/* Small soft bottom shade only for text readability */}
+              <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/55 to-transparent" />
+
+              <div
+                className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${svc.color}`}
+              />
+
+              <div className="absolute inset-0 p-5 sm:p-6 flex flex-col justify-end">
+                <div
+                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${svc.color} flex items-center justify-center mb-4 shadow-lg md:group-hover:scale-110 transition-transform duration-300`}
+                >
+                  <Icon className="w-6 h-6 text-white" />
+                </div>
+
+                <h3 className="text-lg font-bold text-white mb-2 drop-shadow-lg">
+                  {svc.title}
+                </h3>
+
+                <p className="text-sm text-white/90 leading-relaxed mb-4 drop-shadow-lg opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-300">
+                  {svc.desc}
+                </p>
+
+                <span className="inline-flex items-center gap-1.5 text-orange-300 text-sm font-semibold md:group-hover:gap-3 transition-all drop-shadow-lg">
+                  Learn More <ArrowRight className="w-4 h-4" />
+                </span>
+              </div>
+            </Link>
+          </Reveal>
+        );
+      })}
+    </div>
+  </div>
+</section>
 
       {/* ══════════ WHY CHOOSE US ══════════ */}
       <section className="py-16 sm:py-24 bg-background">
