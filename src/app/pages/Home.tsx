@@ -258,7 +258,7 @@ const IMGS = {
   road: "https://i.pinimg.com/1200x/4c/a2/c5/4ca2c5243d2d5095295abe35e1a9fd4d.jpg",
   tanker: "https://i.pinimg.com/736x/14/d7/30/14d730be90a9f0e5d4259d47ad6bc8e5.jpg",
   fertilizer: "https://i.pinimg.com/736x/20/29/09/202909f3f401d1d0039be58392c39f37.jpg",
-  scale:"https://i.pinimg.com/1200x/2f/60/1b/2f601bd6c95240de6a97a25e196fddc1.jpg",
+  scale:"https://i.pinimg.com/1200x/56/ad/7f/56ad7f8d6b01e974aec8f196f7cda26f.jpg",
   safety2: "https://i.pinimg.com/1200x/89/73/83/8973836e28f492882fe5aa81ea4500ba.jpg",
   safety3: "https://i.pinimg.com/736x/9a/36/f8/9a36f8145a9264848a511f35ba1d43f8.jpg"
 };
