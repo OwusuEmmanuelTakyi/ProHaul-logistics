@@ -1,4 +1,11 @@
-import { useEffect, useRef, useState, type ChangeEvent, type FormEvent, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type FormEvent,
+  type ReactNode,
+} from "react";
 import { Link } from "react-router";
 import {
   motion,
@@ -6,43 +13,39 @@ import {
   useReducedMotion,
   useScroll,
   useTransform,
+  AnimatePresence,
 } from "framer-motion";
 import {
   ArrowRight,
   CheckCircle2,
   Clock,
-  Container,
-  Droplet,
-  FileCheck2,
-  Globe,
   Mail,
   MapPin,
-  Package,
   Phone,
   Send,
   Shield,
   Truck,
+  ChevronRight,
 } from "lucide-react";
+
+/* ─────────────────────────── helpers ─────────────────────────── */
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
-
   useEffect(() => {
-    const media = window.matchMedia("(max-width: 767px)");
-    const update = () => setIsMobile(media.matches);
-
+    const m = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(m.matches);
     update();
-    media.addEventListener("change", update);
-    return () => media.removeEventListener("change", update);
+    m.addEventListener("change", update);
+    return () => m.removeEventListener("change", update);
   }, []);
-
   return isMobile;
 }
 
 function Reveal({
   children,
   delay = 0,
-  y = 56,
+  y = 40,
   className = "",
 }: {
   children: ReactNode;
@@ -51,54 +54,18 @@ function Reveal({
   className?: string;
 }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-45px" });
+  const inView = useInView(ref, { once: true, margin: "-40px" });
   const isMobile = useIsMobile();
-  const reduceMotion = useReducedMotion();
-  const safeY = reduceMotion ? 0 : isMobile ? Math.min(y, 24) : y;
-
+  const reduce = useReducedMotion();
+  const safeY = reduce ? 0 : isMobile ? Math.min(y, 18) : y;
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: safeY }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: safeY }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{
-        duration: isMobile ? 0.5 : 0.75,
-        delay: isMobile ? Math.min(delay, 0.12) : delay,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-function RevealX({
-  children,
-  delay = 0,
-  x = -64,
-  className = "",
-}: {
-  children: ReactNode;
-  delay?: number;
-  x?: number;
-  className?: string;
-}) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-45px" });
-  const isMobile = useIsMobile();
-  const reduceMotion = useReducedMotion();
-  const safeX = reduceMotion || isMobile ? 0 : x;
-  const safeY = reduceMotion ? 0 : isMobile ? 24 : 0;
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, x: safeX, y: safeY }}
-      animate={inView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: safeX, y: safeY }}
-      transition={{
-        duration: isMobile ? 0.5 : 0.75,
-        delay: isMobile ? Math.min(delay, 0.12) : delay,
+        duration: isMobile ? 0.45 : 0.7,
+        delay: isMobile ? Math.min(delay, 0.08) : delay,
         ease: [0.22, 1, 0.36, 1],
       }}
       className={className}
@@ -110,10 +77,9 @@ function RevealX({
 
 function Img({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
   const [loaded, setLoaded] = useState(false);
-
   return (
     <div className={`relative overflow-hidden ${className}`}>
-      {!loaded && <div className="absolute inset-0 bg-slate-700 animate-pulse" />}
+      {!loaded && <div className="absolute inset-0 animate-pulse bg-slate-800" />}
       <img
         src={src}
         alt={alt}
@@ -125,48 +91,37 @@ function Img({ src, alt, className = "" }: { src: string; alt: string; className
   );
 }
 
-const IMGS = {
-  hero: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1800&q=85",
-  cargo: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=1200&q=85",
-  road: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&q=85",
-};
+/* ─────────────────────────── data ─────────────────────────── */
 
-const cargoTypes = [
-  { value: "27000L", label: "27,000L", icon: Droplet },
-  { value: "36000L", label: "36,000L", icon: Droplet },
-  { value: "45000L", label: "45,000L", icon: Droplet },
-  { value: "54000L", label: "54,000L", icon: Droplet },
+const HERO_IMG =
+  "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1800&q=85";
+const ROAD_IMG =
+  "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&q=85";
+
+const TANKER_SIZES = [
+  { value: "27000", label: "27,000 L" },
+  { value: "36000", label: "36,000 L" },
+  { value: "45000", label: "45,000 L" },
+  { value: "54000", label: "54,000 L" },
 ];
 
-const benefits = [
-  {
-    icon: Shield,
-    title: "Safety-led pricing",
-    text: "Your quote reflects the correct cargo handling, insurance, compliance, and route requirements.",
-  },
-  {
-    icon: Truck,
-    title: "Right tanker allocation",
-    text: "We match your request to the right tanker size, route, schedule, and operational requirement.",
-  },
-  {
-    icon: Clock,
-    title: "Fast response",
-    text: "Share your route, tanker size, pickup point, destination, and timeline so our team can respond.",
-  },
-  {
-    icon: FileCheck2,
-    title: "Clear requirements",
-    text: "We use your pickup, destination, cargo details, volume, and date to plan the movement properly.",
-  },
+const CARGO_TYPES = [
+  "Petroleum / Fuel (PMS, AGO, DPK)",
+  "Agricultural Products",
+  "Cement & Construction Materials",
+  "Fertilizer & Agro-inputs",
+  "Container Cargo",
+  "Cross-Border / Other",
 ];
 
-const requestSteps = [
-  "Choose the tanker/cargo capacity you need.",
-  "Add pickup and delivery locations.",
-  "Describe your cargo and quantity details.",
-  "Submit and wait for our team to respond.",
+const TRUST_ITEMS = [
+  { icon: Shield,  label: "Safety-first operations",    sub: "Compliant handling on every trip" },
+  { icon: Truck,   label: "Right tanker, right route",  sub: "We match capacity to your need"  },
+  { icon: Clock,   label: "Fast response",              sub: "Our team replies promptly"        },
+  { icon: CheckCircle2, label: "Transparent pricing",   sub: "No hidden fees or surprises"      },
 ];
+
+/* ─────────────────────────── component ─────────────────────────── */
 
 export function Quote() {
   const [formData, setFormData] = useState({
@@ -174,258 +129,487 @@ export function Quote() {
     company: "",
     email: "",
     phone: "",
+    tankerSize: "",
     cargoType: "",
     pickup: "",
     destination: "",
-    cargoDescription: "",
-    cargoVolume: "",
     preferredDate: "",
-    message: "",
+    notes: "",
   });
+  const [submitted, setSubmitted] = useState(false);
 
   const heroRef = useRef(null);
   const isMobile = useIsMobile();
-  const reduceMotion = useReducedMotion();
+  const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const imageY = useTransform(scrollYProgress, [0, 1], isMobile ? ["0%", "8%"] : ["0%", "24%"]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.9], [1, isMobile ? 0.35 : 0]);
+  const imgY   = useTransform(scrollYProgress, [0, 1], isMobile ? ["0%", "6%"] : ["0%", "22%"]);
+  const heroOp = useTransform(scrollYProgress, [0, 0.88], [1, isMobile ? 0.4 : 0]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const set = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    setFormData((p) => ({ ...p, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const submit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Quote request submitted:", formData);
+    setSubmitted(true);
   };
 
   return (
     <div className="w-full overflow-x-hidden bg-background">
-      <section ref={heroRef} className="relative min-h-[72svh] lg:min-h-[680px] flex items-center overflow-hidden py-24 text-white">
-        <motion.div style={{ y: reduceMotion ? "0%" : imageY }} className="absolute inset-0 z-0">
-          <Img src={IMGS.hero} alt="ProHaul haulage quote request" className="absolute inset-0 h-full w-full" />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/72 to-slate-950/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/88 via-transparent to-transparent" />
+
+      {/* ══════════════════ HERO ══════════════════ */}
+      <section
+        ref={heroRef}
+        className="relative flex min-h-[70svh] items-center overflow-hidden py-28 text-white lg:min-h-[640px]"
+      >
+        {/* parallax background */}
+        <motion.div style={{ y: reduce ? "0%" : imgY }} className="absolute inset-0 z-0">
+          <Img src={HERO_IMG} alt="ProHaul truck" className="absolute inset-0 h-full w-full" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/96 via-slate-950/70 to-slate-950/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent" />
         </motion.div>
 
+        {/* dot-grid texture */}
         <div
-          className="absolute inset-0 z-0 opacity-[0.035]"
+          className="absolute inset-0 z-0"
           style={{
-            backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
-            backgroundSize: isMobile ? "48px 48px" : "80px 80px",
+            backgroundImage:
+              "radial-gradient(circle, rgba(255,255,255,0.045) 1px, transparent 1px)",
+            backgroundSize: isMobile ? "32px 32px" : "48px 48px",
           }}
         />
 
-        <motion.div style={{ opacity: reduceMotion ? 1 : heroOpacity }} className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }}
+        <motion.div
+          style={{ opacity: reduce ? 1 : heroOp }}
+          className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8"
+        >
+          {/* breadcrumb */}
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55 }}
-            className="mb-6 flex flex-wrap items-center gap-2 text-sm"
+            transition={{ duration: 0.45 }}
+            className="mb-7 flex items-center gap-2 text-[13px] text-gray-400"
           >
-            <Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link>
-            <span className="text-gray-500">/</span>
+            <Link to="/" className="hover:text-white transition-colors">Home</Link>
+            <ChevronRight className="h-3.5 w-3.5" />
             <span className="text-white">Get a Quote</span>
-          </motion.div>
+          </motion.p>
 
-          <div className="max-w-4xl">
+          <div className="max-w-3xl">
+            {/* eyebrow badge */}
             <motion.div
-              initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.55, delay: 0.12 }}
-              className="mb-6 inline-flex max-w-full items-center gap-3 rounded-2xl border border-orange-500/30 bg-orange-500/15 px-4 py-3 backdrop-blur-sm"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-orange-500/30 bg-orange-500/12 px-4 py-2 backdrop-blur-sm"
             >
-              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500">
-                <Package className="h-6 w-6 text-white" />
-              </div>
-              <span className="text-sm font-semibold text-orange-200">Request a Haulage Quote</span>
+              <span className="h-2 w-2 rounded-full bg-orange-400 animate-pulse" />
+              <span className="text-[13px] font-semibold text-orange-200 tracking-wide">
+                Request a Haulage Quote
+              </span>
             </motion.div>
 
+            {/* headline */}
             <motion.h1
-              initial={{ opacity: 0, y: reduceMotion ? 0 : isMobile ? 34 : 76 }}
+              initial={{ opacity: 0, y: reduce ? 0 : isMobile ? 24 : 56 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="text-[clamp(2.55rem,12vw,4.8rem)] md:text-6xl lg:text-7xl font-extrabold leading-[0.98] tracking-tight"
+              transition={{ duration: 0.72, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
+              className="text-[clamp(2.4rem,9vw,4.5rem)] font-extrabold leading-[0.97] tracking-tight"
             >
-              Get a quote for your <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-orange-600">cargo movement.</span>
+              Move your cargo{" "}
+              <span className="bg-gradient-to-r from-orange-300 to-orange-500 bg-clip-text text-transparent">
+                with confidence.
+              </span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.38 }}
-              className="mt-6 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-gray-300"
+              transition={{ duration: 0.65, delay: 0.32 }}
+              className="mt-5 max-w-xl text-base leading-relaxed text-gray-300 sm:text-[17px]"
             >
-              Share your tanker capacity, cargo details, pickup point, destination, and preferred delivery timeline. ProHaul will review your request and prepare a suitable haulage response.
+              Share your route, cargo, and preferred timeline — our team will
+              put together the right haulage solution for you.
             </motion.p>
+
+            {/* scroll nudge */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="mt-10 flex items-center gap-3"
+            >
+              <div className="h-px w-10 bg-orange-500/60" />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-400">
+                Fill the form below
+              </span>
+            </motion.div>
           </div>
         </motion.div>
       </section>
 
-      <section className="relative z-10 -mt-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-5">
-          {benefits.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <Reveal key={item.title} delay={index * 0.08} y={30}>
-                <div className="h-full rounded-2xl border border-border bg-card p-5 shadow-2xl transition-all hover:border-orange-400/50 hover:shadow-xl sm:hover:-translate-y-1">
-                  <Icon className="mb-4 h-7 w-7 text-orange-500" />
-                  <h3 className="mb-2 font-bold text-foreground">{item.title}</h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{item.text}</p>
-                </div>
-              </Reveal>
-            );
-          })}
+      {/* ══════════════════ TRUST STRIP ══════════════════ */}
+      <section className="relative z-10 -mt-10 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+            {TRUST_ITEMS.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <Reveal key={item.label} delay={i * 0.07} y={20}>
+                  <div className="flex items-start gap-3 rounded-2xl border border-border bg-card p-4 shadow-xl transition-all hover:border-orange-400/40">
+                    <div className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10">
+                      <Icon className="h-4 w-4 text-orange-500" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-bold text-foreground leading-snug">{item.label}</p>
+                      <p className="mt-0.5 text-xs text-muted-foreground">{item.sub}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
+          </div>
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.85fr] gap-10 lg:gap-16 items-start">
-            <RevealX x={-70}>
-              <div className="rounded-3xl border border-border bg-card p-5 sm:p-8 shadow-xl">
-                <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">Quote Form</p>
-                <h2 className="mb-4 text-3xl md:text-4xl font-extrabold text-foreground">Tell us what you need moved.</h2>
-                <p className="mb-8 text-muted-foreground leading-relaxed">
-                  Select the tanker capacity and provide your pickup, destination, cargo details, and preferred delivery date.
-                </p>
+      {/* ══════════════════ FORM + SIDEBAR ══════════════════ */}
+      <section className="py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_340px] lg:gap-12 xl:grid-cols-[1fr_360px]">
 
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label htmlFor="name" className="block mb-2 text-sm font-semibold text-foreground">Full Name *</label>
-                      <input id="name" name="name" type="text" value={formData.name} onChange={handleChange} required placeholder="John Doe" className="w-full rounded-xl border border-border bg-input-background px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20" />
-                    </div>
-                    <div>
-                      <label htmlFor="company" className="block mb-2 text-sm font-semibold text-foreground">Company / Organization</label>
-                      <input id="company" name="company" type="text" value={formData.company} onChange={handleChange} placeholder="Company name" className="w-full rounded-xl border border-border bg-input-background px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20" />
-                    </div>
-                  </div>
+            {/* ── FORM ── */}
+            <Reveal y={36}>
+              <div className="rounded-3xl border border-border bg-card shadow-xl">
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label htmlFor="email" className="block mb-2 text-sm font-semibold text-foreground">Email Address *</label>
-                      <input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required placeholder="john@example.com" className="w-full rounded-xl border border-border bg-input-background px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20" />
-                    </div>
-                    <div>
-                      <label htmlFor="phone" className="block mb-2 text-sm font-semibold text-foreground">Phone Number *</label>
-                      <input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} required placeholder="+233 XX XXX XXXX" className="w-full rounded-xl border border-border bg-input-background px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20" />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="cargoType" className="block mb-2 text-sm font-semibold text-foreground">Type of Cargo *</label>
-                    <select id="cargoType" name="cargoType" value={formData.cargoType} onChange={handleChange} required className="w-full rounded-xl border border-border bg-input-background px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20">
-                      <option value="">Select cargo/tanker capacity</option>
-                      {cargoTypes.map((cargo) => (
-                        <option key={cargo.value} value={cargo.value}>{cargo.label}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label htmlFor="pickup" className="block mb-2 text-sm font-semibold text-foreground">Pickup Location *</label>
-                      <input id="pickup" name="pickup" type="text" value={formData.pickup} onChange={handleChange} required placeholder="e.g. Tema Port" className="w-full rounded-xl border border-border bg-input-background px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20" />
-                    </div>
-                    <div>
-                      <label htmlFor="destination" className="block mb-2 text-sm font-semibold text-foreground">Delivery Destination *</label>
-                      <input id="destination" name="destination" type="text" value={formData.destination} onChange={handleChange} required placeholder="e.g. Kumasi, Lagos, Abidjan" className="w-full rounded-xl border border-border bg-input-background px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20" />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                    <div>
-                      <label htmlFor="cargoDescription" className="block mb-2 text-sm font-semibold text-foreground">Cargo Description</label>
-                      <input id="cargoDescription" name="cargoDescription" type="text" value={formData.cargoDescription} onChange={handleChange} placeholder="PMS, AGO, DPK..." className="w-full rounded-xl border border-border bg-input-background px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20" />
-                    </div>
-                    <div>
-                      <label htmlFor="cargoVolume" className="block mb-2 text-sm font-semibold text-foreground">Volume / Quantity</label>
-                      <input id="cargoVolume" name="cargoVolume" type="text" value={formData.cargoVolume} onChange={handleChange} placeholder="e.g. full tanker / 2 trips" className="w-full rounded-xl border border-border bg-input-background px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20" />
-                    </div>
-                    <div>
-                      <label htmlFor="preferredDate" className="block mb-2 text-sm font-semibold text-foreground">Preferred Date</label>
-                      <input id="preferredDate" name="preferredDate" type="date" value={formData.preferredDate} onChange={handleChange} className="w-full rounded-xl border border-border bg-input-background px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20" />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block mb-2 text-sm font-semibold text-foreground">Additional Details</label>
-                    <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows={5} placeholder="Add special handling requirements, loading details, delivery deadline, documentation needs, or other notes..." className="w-full resize-none rounded-xl border border-border bg-input-background px-4 py-3 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20" />
-                  </div>
-
-                  <button type="submit" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-orange-500 px-8 py-4 font-bold text-white shadow-lg shadow-orange-600/25 transition-all hover:bg-orange-600 sm:hover:scale-[1.01]">
-                    <Send className="h-5 w-5" />
-                    Submit Quote Request
-                  </button>
-                </form>
-              </div>
-            </RevealX>
-
-            <RevealX x={70}>
-              <div className="space-y-6 lg:sticky lg:top-28">
-                <div className="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
-                  <Img src={IMGS.cargo} alt="Cargo handling and logistics" className="h-full w-full sm:hover:scale-105 transition-transform duration-700" />
+                {/* form header */}
+                <div className="border-b border-border px-6 py-6 sm:px-8">
+                  <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.2em] text-orange-500">
+                    Quote Form
+                  </p>
+                  <h2 className="text-2xl font-extrabold text-foreground sm:text-3xl">
+                    Tell us what you need moved.
+                  </h2>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    Fill in the details below and our team will prepare a
+                    tailored haulage response.
+                  </p>
                 </div>
 
-                <div className="rounded-3xl bg-slate-950 p-6 sm:p-8 text-white shadow-2xl">
-                  <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-400">What to include</p>
-                  <h3 className="mb-5 text-2xl font-extrabold">Quote request checklist</h3>
-                  <div className="space-y-4">
-                    {requestSteps.map((step, index) => (
-                      <div key={step} className="flex items-start gap-3">
-                        <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-orange-500 text-sm font-bold text-white">
-                          {index + 1}
-                        </div>
-                        <p className="text-sm leading-relaxed text-gray-300">{step}</p>
+                <AnimatePresence mode="wait">
+                  {submitted ? (
+                    <motion.div
+                      key="success"
+                      initial={{ opacity: 0, scale: 0.96 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="flex flex-col items-center justify-center gap-4 px-8 py-20 text-center"
+                    >
+                      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10">
+                        <CheckCircle2 className="h-8 w-8 text-green-500" />
                       </div>
-                    ))}
-                  </div>
-                </div>
+                      <h3 className="text-xl font-extrabold text-foreground">
+                        Quote request sent!
+                      </h3>
+                      <p className="max-w-xs text-sm text-muted-foreground">
+                        Our team will review your details and respond with the
+                        right haulage solution.
+                      </p>
+                      <button
+                        onClick={() => setSubmitted(false)}
+                        className="mt-2 rounded-full border border-border px-6 py-2.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted"
+                      >
+                        Submit another
+                      </button>
+                    </motion.div>
+                  ) : (
+                    <motion.form
+                      key="form"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      onSubmit={submit}
+                      className="space-y-0 divide-y divide-border"
+                    >
+                      {/* ── section: contact info ── */}
+                      <div className="px-6 py-6 sm:px-8">
+                        <p className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">
+                          01 — Contact Information
+                        </p>
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                          <Field label="Full Name" required>
+                            <input
+                              name="name" type="text" value={formData.name}
+                              onChange={set} required placeholder="John Doe"
+                              className={INPUT}
+                            />
+                          </Field>
+                          <Field label="Company / Organization">
+                            <input
+                              name="company" type="text" value={formData.company}
+                              onChange={set} placeholder="Optional"
+                              className={INPUT}
+                            />
+                          </Field>
+                          <Field label="Email Address" required>
+                            <input
+                              name="email" type="email" value={formData.email}
+                              onChange={set} required placeholder="you@example.com"
+                              className={INPUT}
+                            />
+                          </Field>
+                          <Field label="Phone Number" required>
+                            <input
+                              name="phone" type="tel" value={formData.phone}
+                              onChange={set} required placeholder="+233 XX XXX XXXX"
+                              className={INPUT}
+                            />
+                          </Field>
+                        </div>
+                      </div>
 
-                <div className="rounded-3xl border border-border bg-card p-6 shadow-sm">
-                  <h3 className="mb-4 text-xl font-extrabold text-foreground">Need quick assistance?</h3>
-                  <div className="space-y-3">
-                    <a href="tel:+233XXXXXXXXX" className="flex items-center gap-3 rounded-2xl bg-muted p-4 text-sm font-bold text-foreground transition-colors hover:text-orange-500">
-                      <Phone className="h-5 w-5 text-orange-500" />
+                      {/* ── section: cargo details ── */}
+                      <div className="px-6 py-6 sm:px-8">
+                        <p className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">
+                          02 — Cargo Details
+                        </p>
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                          <Field label="Tanker Capacity" required>
+                            <select
+                              name="tankerSize" value={formData.tankerSize}
+                              onChange={set} required className={INPUT}
+                            >
+                              <option value="">Select capacity</option>
+                              {TANKER_SIZES.map((t) => (
+                                <option key={t.value} value={t.value}>{t.label}</option>
+                              ))}
+                            </select>
+                          </Field>
+                          <Field label="Cargo Type" required>
+                            <select
+                              name="cargoType" value={formData.cargoType}
+                              onChange={set} required className={INPUT}
+                            >
+                              <option value="">Select type</option>
+                              {CARGO_TYPES.map((c) => (
+                                <option key={c} value={c}>{c}</option>
+                              ))}
+                            </select>
+                          </Field>
+                        </div>
+                      </div>
+
+                      {/* ── section: route ── */}
+                      <div className="px-6 py-6 sm:px-8">
+                        <p className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">
+                          03 — Route & Timeline
+                        </p>
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                          <Field label="Pickup Location" required>
+                            <input
+                              name="pickup" type="text" value={formData.pickup}
+                              onChange={set} required placeholder="e.g. Tema Port"
+                              className={INPUT}
+                            />
+                          </Field>
+                          <Field label="Delivery Destination" required>
+                            <input
+                              name="destination" type="text" value={formData.destination}
+                              onChange={set} required placeholder="e.g. Kumasi / Lagos"
+                              className={INPUT}
+                            />
+                          </Field>
+                          <Field label="Preferred Date" className="sm:col-span-2 sm:max-w-xs">
+                            <input
+                              name="preferredDate" type="date" value={formData.preferredDate}
+                              onChange={set} className={INPUT}
+                            />
+                          </Field>
+                        </div>
+                      </div>
+
+                      {/* ── section: notes ── */}
+                      <div className="px-6 py-6 sm:px-8">
+                        <p className="mb-4 text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">
+                          04 — Additional Notes
+                        </p>
+                        <textarea
+                          name="notes" value={formData.notes} onChange={set}
+                          rows={4}
+                          placeholder="Special handling, documentation needs, delivery deadline, or any other details…"
+                          className={`${INPUT} resize-none`}
+                        />
+                      </div>
+
+                      {/* ── submit ── */}
+                      <div className="px-6 py-6 sm:px-8">
+                        <motion.button
+                          type="submit"
+                          whileHover={{ scale: 1.01 }}
+                          whileTap={{ scale: 0.98 }}
+                          className="inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-orange-500 px-8 py-4 text-[15px] font-bold text-white shadow-lg shadow-orange-500/25 transition-colors hover:bg-orange-600"
+                        >
+                          <Send className="h-4.5 w-4.5" />
+                          Submit Quote Request
+                          <ArrowRight className="h-4 w-4" />
+                        </motion.button>
+                        <p className="mt-3 text-center text-[11px] text-muted-foreground">
+                          We'll respond within 1 business day.
+                        </p>
+                      </div>
+                    </motion.form>
+                  )}
+                </AnimatePresence>
+              </div>
+            </Reveal>
+
+            {/* ── SIDEBAR ── */}
+            <div className="space-y-5 lg:sticky lg:top-28">
+
+              {/* quick contact */}
+              <Reveal delay={0.1} y={28}>
+                <div className="rounded-3xl border border-border bg-card p-5 shadow-sm">
+                  <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.18em] text-orange-500">
+                    Quick Contact
+                  </p>
+                  <h3 className="mb-4 text-lg font-extrabold text-foreground">
+                    Prefer to talk? Reach us directly.
+                  </h3>
+                  <div className="space-y-2.5">
+                    <a
+                      href="tel:+233XXXXXXXXX"
+                      className="flex items-center gap-3 rounded-2xl bg-muted px-4 py-3.5 text-sm font-semibold text-foreground transition-all hover:bg-orange-50 hover:text-orange-600 dark:hover:bg-orange-500/10"
+                    >
+                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10">
+                        <Phone className="h-4 w-4 text-orange-500" />
+                      </div>
                       +233 XX XXX XXXX
                     </a>
-                    <a href="mailto:info@prohaul.com" className="flex items-center gap-3 rounded-2xl bg-muted p-4 text-sm font-bold text-foreground transition-colors hover:text-orange-500">
-                      <Mail className="h-5 w-5 text-orange-500" />
+                    <a
+                      href="mailto:info@prohaul.com"
+                      className="flex items-center gap-3 rounded-2xl bg-muted px-4 py-3.5 text-sm font-semibold text-foreground transition-all hover:bg-orange-50 hover:text-orange-600 dark:hover:bg-orange-500/10"
+                    >
+                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10">
+                        <Mail className="h-4 w-4 text-orange-500" />
+                      </div>
                       info@prohaul.com
                     </a>
-                    <div className="flex items-center gap-3 rounded-2xl bg-muted p-4 text-sm font-bold text-foreground">
-                      <MapPin className="h-5 w-5 text-orange-500" />
+                    <div className="flex items-center gap-3 rounded-2xl bg-muted px-4 py-3.5 text-sm font-semibold text-muted-foreground">
+                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10">
+                        <MapPin className="h-4 w-4 text-orange-500" />
+                      </div>
                       Accra, Ghana
                     </div>
                   </div>
                 </div>
-              </div>
-            </RevealX>
+              </Reveal>
+
+              {/* checklist */}
+              <Reveal delay={0.18} y={28}>
+                <div className="rounded-3xl bg-slate-950 p-5 text-white shadow-xl">
+                  <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-orange-400">
+                    What to include
+                  </p>
+                  <h3 className="mb-5 text-lg font-extrabold">
+                    Quote checklist
+                  </h3>
+                  <ul className="space-y-3">
+                    {[
+                      "Your name & contact details",
+                      "Tanker capacity required",
+                      "Cargo type & description",
+                      "Pickup & delivery locations",
+                      "Preferred delivery date",
+                    ].map((step, i) => (
+                      <li key={step} className="flex items-start gap-3">
+                        <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-orange-500 text-[11px] font-black text-white">
+                          {i + 1}
+                        </span>
+                        <span className="text-sm leading-relaxed text-gray-300">{step}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+
+              {/* tanker sizes */}
+              <Reveal delay={0.24} y={28}>
+                <div className="rounded-3xl border border-border bg-card p-5 shadow-sm">
+                  <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-orange-500">
+                    Tanker Sizes
+                  </p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {TANKER_SIZES.map((t) => (
+                      <div
+                        key={t.value}
+                        className="flex flex-col items-center justify-center rounded-2xl border border-border bg-muted py-4 text-center"
+                      >
+                        <p className="text-[18px] font-extrabold text-foreground leading-none">
+                          {t.label.split(" ")[0]}
+                        </p>
+                        <p className="mt-0.5 text-[11px] font-medium text-muted-foreground">
+                          Litres
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* ══════════════════ CTA BANNER ══════════════════ */}
       <section className="relative overflow-hidden py-20 sm:py-28 text-white">
         <div className="absolute inset-0 z-0">
-          <Img src={IMGS.road} alt="ProHaul haulage routes" className="h-full w-full" />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/88 to-orange-700/85" />
+          <Img src={ROAD_IMG} alt="ProHaul road" className="h-full w-full" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/96 via-slate-950/85 to-orange-700/75" />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Reveal y={44}>
-            <p className="mb-4 text-sm font-bold uppercase tracking-widest text-orange-300">ProHaul Logistics Solutions</p>
-            <h2 className="mb-6 text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight">
-              Reliable quotes start with clear cargo details.
-            </h2>
-            <p className="mx-auto mb-8 max-w-3xl text-base sm:text-xl leading-relaxed text-gray-300">
-              ProHaul supports fuel haulage with tanker capacities of 27,000L, 36,000L, 45,000L, and 54,000L, together with broader haulage solutions across Ghana and West Africa.
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+          <Reveal y={36}>
+            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-orange-300">
+              ProHaul Logistics
             </p>
-            <Link to="/contact" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg border border-white/30 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 sm:hover:scale-105">
-              Contact Us <ArrowRight className="h-5 w-5" />
+            <h2 className="mb-5 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
+              Reliable quotes start with clear details.
+            </h2>
+            <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg">
+              Tanker capacities from 27,000 L to 54,000 L — serving Ghana and
+              West Africa with safety-first haulage.
+            </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2.5 rounded-full border border-white/30 bg-white/10 px-7 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-all hover:bg-white/20 hover:scale-[1.02]"
+            >
+              Contact Us <ArrowRight className="h-4 w-4" />
             </Link>
           </Reveal>
         </div>
       </section>
+    </div>
+  );
+}
+
+/* ─────────────── sub-components ─────────────── */
+
+const INPUT =
+  "w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground/60 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/15 dark:bg-slate-900/40";
+
+function Field({
+  label,
+  required,
+  className = "",
+  children,
+}: {
+  label: string;
+  required?: boolean;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className={className}>
+      <label className="mb-1.5 block text-[13px] font-semibold text-foreground">
+        {label}
+        {required && <span className="ml-0.5 text-orange-500">*</span>}
+      </label>
+      {children}
     </div>
   );
 }

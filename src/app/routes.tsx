@@ -13,6 +13,7 @@ import { HSE } from "./pages/HSE";
 import { Contact } from "./pages/Contact";
 import { NotFound } from "./pages/NotFound";
 import { Quote } from "./pages/Quote";
+import { Services } from "./pages/services";
 //import {ScrollToTop} from "./components/ScrollToTop";
 
 export const router = createBrowserRouter([
@@ -32,6 +33,7 @@ export const router = createBrowserRouter([
       { path: "hse", Component: HSE },
       { path: "contact", Component: Contact },
       { path: "quote", Component: Quote },
+      { path: "services", Component: Services },
       { path: "*", Component: NotFound },
     ],
   },
