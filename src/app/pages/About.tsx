@@ -133,13 +133,13 @@ function Img({ src, alt, className = "" }: { src: string; alt: string; className
 }
 
 const IMGS = {
-  hero: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1800&q=85",
-  fleet: "https://i.pinimg.com/736x/20/79/15/2079151e9565ece35bc2e994d880b4a0.jpg",
-  road: "https://i.pinimg.com/1200x/62/ec/e4/62ece4038daee4d4aa9fb3ed4ee7c12c.jpg",
+  hero: "https://i.pinimg.com/1200x/6d/b2/af/6db2afb30b88075a9dfc50d2c51d1452.jpg",
+  fleet: "https://i.pinimg.com/1200x/fe/de/23/fede23fecf1218f1e91e47d1bed3bb24.jpg",
+  road: "https://i.pinimg.com/1200x/12/23/5e/12235e6d2f593c802163c8ff70d00592.jpg",
   driver: "https://images.unsplash.com/photo-1504270997636-07ddfbd48945?w=900&q=85",
-  warehouse: "https://i.pinimg.com/1200x/b0/32/3a/b0323a5d857e24750bb17aa0d33ec9e2.jpg",
-  port: "https://i.pinimg.com/1200x/9c/e3/52/9ce35244d0cb2496f624e86fc68af7af.jpg",
-  agri: "https://i.pinimg.com/736x/20/29/09/202909f3f401d1d0039be58392c39f37.jpg",
+  warehouse: "https://i.pinimg.com/1200x/80/67/0d/80670d30b9e4f732fc615086e776ae16.jpg",
+  port: "https://i.pinimg.com/1200x/7c/6a/5e/7c6a5ed402b6721d2e3285a392af3ef2.jpg",
+  agri: "https://i.pinimg.com/236x/ec/04/7b/ec047b27319f5f9c9f0cd4d460120a11.jpg",
   safety: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=900&q=85",
 };
 
