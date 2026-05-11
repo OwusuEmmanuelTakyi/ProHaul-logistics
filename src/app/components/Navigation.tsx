@@ -29,10 +29,10 @@ export function Navigation() {
   const { theme, setTheme } = useTheme();
 
   const services = [
-    { name: "Fuel Haulage", path: "/services/fuel-haulage", icon: Droplet },
-    { name: "Agricultural Products", path: "/services/agricultural", icon: Wheat },
-    { name: "Cement & Construction", path: "/services/cement", icon: Building2 },
-    { name: "Fertilizer & Industrial", path: "/services/fertilizer", icon: Sprout },
+    { name: "Bulk Fuel Haulage", path: "/services/fuel-haulage", icon: Droplet },
+    { name: "Agricultural Products Haulage", path: "/services/agricultural", icon: Wheat },
+    { name: "Cement & Construction Haulage", path: "/services/cement", icon: Building2 },
+    { name: "Fertilizer & Industrial Haulage", path: "/services/fertilizer", icon: Sprout },
     { name: "Container Haulage", path: "/services/container", icon: Container },
     { name: "Cross-Border Haulage", path: "/services/cross-border", icon: Globe },
   ];
@@ -259,7 +259,7 @@ export function Navigation() {
                               onClick={() => setServicesOpen(false)}
                               className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-5 py-2.5 text-xs font-black uppercase tracking-wider text-white backdrop-blur-sm transition-all hover:border-orange-500 hover:bg-orange-500"
                             >
-                              Get a Quote <ArrowRight className="h-3.5 w-3.5" />
+                              Book Shipment <ArrowRight className="h-3.5 w-3.5" />
                             </Link>
                           </div>
                         </div>
@@ -334,7 +334,7 @@ export function Navigation() {
                 className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-2.5 text-[13px] font-black uppercase tracking-wide text-white shadow-lg shadow-orange-600/25 transition-all hover:bg-orange-600 hover:shadow-orange-600/40"
               >
                 <PackageCheck className="h-3.5 w-3.5" />
-                Get a Quote
+                Book Shipment
               </Link>
             </motion.div>
           </nav>
@@ -506,7 +506,7 @@ export function Navigation() {
                     className="flex w-full items-center justify-center gap-2 rounded-full bg-orange-500 px-4 py-3 text-sm font-black uppercase tracking-wide text-white shadow-lg shadow-orange-500/25 transition-colors hover:bg-orange-600"
                   >
                     <PackageCheck className="h-4 w-4" />
-                    Get a Quote
+                    Book Shipment
                   </Link>
                 </div>
               </div>

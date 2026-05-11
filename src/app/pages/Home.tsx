@@ -479,7 +479,7 @@ export function Home() {
               className="min-h-[1.15em] text-[clamp(2.2rem,11vw,4.5rem)] md:text-6xl lg:text-7xl font-extrabold leading-[1.02] tracking-tight mb-6 sm:mb-8"
             >
               <Typewriter
-                words={[ "Regional Reach" ]}
+                words={[ "Regional Reach." ]}
                 className="block max-w-full break-words text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600"
               />
             </motion.div>
@@ -503,7 +503,7 @@ export function Home() {
                 to="/quote"
                 className="inline-flex w-full sm:w-auto items-center justify-center px-6 sm:px-8 py-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600 sm:hover:scale-105 active:scale-100 transition-all gap-2 font-bold shadow-xl shadow-orange-600/40"
               >
-                Get a Free Quote <ArrowRight className="w-5 h-5" />
+                Book Shipment <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 to="/services"
@@ -596,7 +596,7 @@ export function Home() {
                 With a modern fleet, experienced drivers, and a deep understanding of regional trade routes, ProHaul is built to move your cargo securely, on schedule, and at scale.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                {["NPA Certified Operations","MPS Certified", "GPS Fleet Tracking", "ECOWAS Cross-Border Ready", "Goods in Transit Insurance"].map((item) => (
+                {["NPA Certified ","MPS Certified", "GPS Fleet Tracking", "ECOWAS", "Goods in Transit Insurance"].map((item) => (
                   <div key={item} className="flex items-center gap-2 text-sm font-medium">
                     <CheckCircle2 className="w-4 h-4 text-orange-500 flex-shrink-0" />
                     {item}

@@ -259,9 +259,9 @@ export const servicePages = {
     floatingText: "Tanker capacity range",
     quickFacts: [
       { icon: Droplet, value: "PMS, AGO, DPK", label: "Product coverage" },
-      { icon: Truck, value: "54,000L", label: "Maximum tanker capacity" },
+      { icon: Truck, value: "27,000L - 54,000L", label: "Bulk capacity" },
       { icon: Shield, value: "NPA", label: "Compliance-driven operations" },
-      { icon: MapPin, value: "Ghana + W/A", label: "Distribution reach" },
+      { icon: MapPin, value: "Ghana & West Africa", label: "Coverage" },
     ],
     cardsKicker: "Scope of Service",
     cardsTitle: "Fuel logistics for depots, customers, stations, and project sites.",

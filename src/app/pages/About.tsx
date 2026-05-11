@@ -145,9 +145,9 @@ const IMGS = {
 
 const stats = [
   { value: "Ghana", label: "Nationwide Coverage", icon: MapPin },
-  { value: "ECOWAS", label: "Cross-border", icon: Globe },
+  { value: "ECOWAS", label: "Transit", icon: Globe },
   { value: "460HP-530HP", label: "Engine Power", icon: Zap },
-  { value: "27,000L - 54,000L", label: "Tanker Capacity", icon: Fuel },
+  { value: "27,000L - 54,000L", label: "Bulk Capacity", icon: Fuel },
 ];
 
 const pillars = [
@@ -259,7 +259,7 @@ export function About() {
       <section ref={heroRef} className="relative min-h-[76svh] lg:min-h-[720px] flex items-center overflow-hidden py-24 text-white">
         <motion.div style={{ y: reduceMotion ? "0%" : imageY }} className="absolute inset-0 z-0">
           <Img src={IMGS.hero} alt="ProHaul haulage truck on the road" className="absolute inset-0 h-full w-full" />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/70 to-slate-950/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/70 to-slate-900/30" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent" />
         </motion.div>
 
@@ -548,76 +548,7 @@ We have successfully executed haulage operations across major commercial and ind
       </section>
 
       {/* TECHNOLOGY + COMPLIANCE */}
-      <section className="py-16 sm:py-24 bg-background">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <RevealX x={-70}>
-      <div className="rounded-3xl border border-border bg-card p-6 sm:p-8 lg:p-10 shadow-sm">
-        <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/10">
-          <Satellite className="h-7 w-7 text-orange-500" />
-        </div>
-
-        <div className="space-y-6">
-          <div className="rounded-2xl border border-border bg-muted/40 p-5">
-            <h2 className="mb-3 text-lg sm:text-xl font-extrabold text-foreground">
-              1. Technology & Visibility
-            </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              ProHaul leverages technology as a core enabler of operational excellence, driving efficiency, transparency, and accountability across all haulage activities. Our technology framework is designed to provide real-time operational insight, strengthen control over fleet performance, and enhance the overall reliability of our service delivery.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-border bg-muted/40 p-5">
-            <h2 className="mb-3 text-lg sm:text-xl font-extrabold text-foreground">
-              2. Capabilities
-            </h2>
-            <h3 className="mb-3 text-base font-bold text-foreground">
-              Integrated GPS Tracking & Fleet Management Systems
-            </h3>
-            <p className="text-muted-foreground leading-relaxed">
-              We deploy advanced GPS tracking integrated with fleet management systems to provide real-time visibility of all active trips. This enables continuous monitoring of vehicle movements, route adherence, and cargo transit status, while optimizing fleet utilization and improving operational efficiency.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-border bg-muted/40 p-5">
-            <h2 className="mb-3 text-lg sm:text-xl font-extrabold text-foreground">
-              3. Fleet Monitoring & Performance Oversight
-            </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Our systems provide detailed oversight of truck performance, including movement patterns, utilization levels, and operational efficiency. This allows for proactive identification of inefficiencies, improved asset management, and reduced downtime.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-border bg-muted/40 p-5">
-            <h2 className="mb-3 text-lg sm:text-xl font-extrabold text-foreground">
-              4. Driver Coordination & Communication
-            </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              We maintain structured and coordinated communication between drivers and operations teams throughout the delivery lifecycle, ensuring prompt response to operational changes, route adjustments, and client requirements.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-border bg-muted/40 p-5">
-            <h2 className="mb-3 text-lg sm:text-xl font-extrabold text-foreground">
-              5. Trip Monitoring & Reporting
-            </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Each trip is actively monitored from dispatch through to delivery, with performance tracking and reporting mechanisms in place to ensure adherence to schedules and service standards.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-border bg-muted/40 p-5">
-            <h2 className="mb-3 text-lg sm:text-xl font-extrabold text-foreground">
-              6. Operational Impact
-            </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              These technology-driven capabilities enable proactive decision-making, stronger operational control, and improved service consistency. They also enhance accountability at every stage of the logistics process, ensuring that clients remain consistently informed on the status of their cargo and can rely on accurate, timely delivery updates.
-            </p>
-          </div>
-        </div>
-      </div>
-    </RevealX>
-  </div>
-</section>
+      
 
       {/* PROCESS */}
       <section className="py-16 sm:py-24 bg-muted">
