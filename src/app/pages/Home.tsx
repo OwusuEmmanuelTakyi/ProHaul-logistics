@@ -349,7 +349,7 @@ const FEATURES = [
 
 const FLEET = [
   { label: "Bulk Tankers", specs: "27,000L – 54,000L", icon: Fuel },
-  { label: "Payload Capacity", specs: "50 tons", icon: Truck },
+  { label: "Payload Capacity", specs: "50 Tons", icon: Truck },
   { label: "Engine Power", specs: "460 – 530 HP", icon: Zap },
   { label: "Torque Output", specs: "2,100 – 2,500 Nm", icon: BarChart3 },
   { label: "Containers", specs: "20ft & 40ft", icon: Container },
