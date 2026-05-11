@@ -247,15 +247,20 @@ function Img({ src, alt, className = "" }: { src: string; alt: string; className
 ══════════════════════════════════════════ */
 const IMGS = {
   hero: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1800&q=80",
-  about: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=900&q=80",
-  fleet1: "https://i.pinimg.com/1200x/58/9d/c6/589dc6beb7f521cb20b06b800bfd89f8.jpg",
-  fleet2: "https://i.pinimg.com/1200x/58/9d/c6/589dc6beb7f521cb20b06b800bfd89f8.jpg",
-  agri: "https://i.pinimg.com/1200x/be/78/19/be7819b6d1b7ff0a596db7ba5c443ef4.jpg",
-  port: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&q=80",
-  driver: "https://i.pinimg.com/736x/f2/89/68/f2896850d0c9991f641d494792a190f6.jpg",
-  safety: "https://i.pinimg.com/736x/48/c2/83/48c283f5f6e4aa97182150eb99fee79a.jpg",
-  warehouse: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=1200&q=80",
-  road: "https://i.pinimg.com/1200x/bd/f9/5b/bdf95b0b9c4f84017e0c2747c01b3710.jpg",
+  about: "https://i.pinimg.com/736x/20/79/15/2079151e9565ece35bc2e994d880b4a0.jpg",
+  fleet1: "https://i.pinimg.com/736x/86/42/b3/8642b33f667902155dedcdc0c8d7543d.jpg",
+  fleet2: "https://i.pinimg.com/736x/14/d7/30/14d730be90a9f0e5d4259d47ad6bc8e5.jpg",
+  agri: "https://i.pinimg.com/1200x/90/a9/15/90a915a89477e25fb4449069bac9ec11.jpg",
+  port: "https://i.pinimg.com/1200x/13/13/43/131343dbf45ddc161d7e24a712df985a.jpg",
+  driver: "https://i.pinimg.com/1200x/24/65/e4/2465e40ca8f0720b97ef50dccd302ff9.jpg",
+  safety: "https://i.pinimg.com/1200x/6d/67/56/6d675621a2eca1098e7631e4ce74c1c8.jpg",
+  warehouse: "https://i.pinimg.com/736x/6c/2e/e8/6c2ee854e49d538b2912b7b5def33e04.jpg",
+  road: "https://i.pinimg.com/1200x/4c/a2/c5/4ca2c5243d2d5095295abe35e1a9fd4d.jpg",
+  tanker: "https://i.pinimg.com/736x/14/d7/30/14d730be90a9f0e5d4259d47ad6bc8e5.jpg",
+  fertilizer: "https://i.pinimg.com/736x/20/29/09/202909f3f401d1d0039be58392c39f37.jpg",
+  scale:"https://i.pinimg.com/1200x/2c/6f/e7/2c6fe7d4078c158277344febe9e590ba.jpg",
+  safety2: "https://i.pinimg.com/1200x/89/73/83/8973836e28f492882fe5aa81ea4500ba.jpg",
+  safety3: "https://i.pinimg.com/1200x/56/ad/7f/56ad7f8d6b01e974aec8f196f7cda26f.jpg"
 };
 
 /* ══════════════════════════════════════════
@@ -268,7 +273,7 @@ const SERVICES = [
     desc: "Secure haulage of PMS, AGO & DPK — fully NPA compliant with real-time monitoring.",
     link: "/services/fuel-haulage",
     color: "from-orange-500 to-red-600",
-    img: IMGS.fleet2,
+    img: IMGS.tanker,
   },
   {
     icon: Wheat,
@@ -308,7 +313,7 @@ const SERVICES = [
     desc: "Safe transport of NPK, urea and industrial inputs aligned with farming cycles.",
     link: "/services/fertilizer",
     color: "from-yellow-500 to-amber-700",
-    img: IMGS.about,
+    img: IMGS.fertilizer,
   },
 ];
 
@@ -454,7 +459,7 @@ export function Home() {
             </motion.div>
 
             <div className="mb-2 sm:mb-4 overflow-visible text-sm">
-              {"Reliable Bulk Haulage   Nationwide Strength".split(" ").map((word, i) => (
+              {"Reliable Bulk Haulage.   Nationwide Strength.".split(" ").map((word, i) => (
                 <motion.span
                   key={word}
                   initial={{ opacity: 0, y: reduceMotion ? 0 : isMobile ? 26 : 70 }}
@@ -739,7 +744,7 @@ export function Home() {
 
             <RevealX x={70}>
               <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl border border-white/10">
-                <Img src={IMGS.fleet2} alt="ProHaul tanker truck" className="w-full h-full sm:hover:scale-105 transition-transform duration-700" />
+                <Img src={IMGS.scale} alt="ProHaul tanker truck" className="w-full h-full sm:hover:scale-105 transition-transform duration-700" />
               </div>
             </RevealX>
           </div>
@@ -802,11 +807,11 @@ export function Home() {
             <RevealX x={-70}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[3/4] col-span-1 shadow-xl">
-                  <Img src={IMGS.safety} alt="Safety gear" className="w-full h-full sm:hover:scale-105 transition-transform duration-700" />
+                  <Img src={IMGS.safety2} alt="Safety gear" className="w-full h-full sm:hover:scale-105 transition-transform duration-700" />
                 </div>
                 <div className="flex flex-col gap-4 col-span-1">
                   <div className="rounded-xl overflow-hidden min-h-[180px] sm:flex-1 shadow-xl">
-                    <Img src={IMGS.driver} alt="Certified driver" className="w-full h-full sm:hover:scale-105 transition-transform duration-700" />
+                    <Img src={IMGS.safety3} alt="Certified driver" className="w-full h-full sm:hover:scale-105 transition-transform duration-700" />
                   </div>
                   <div className="rounded-xl bg-orange-500 p-5 text-white shadow-xl shadow-orange-500/20">
                     <Shield className="w-8 h-8 mb-2 opacity-80" />
