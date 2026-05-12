@@ -86,7 +86,7 @@ function Img({
 }
 
 const IMGS = {
-  hero: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1800&q=85",
+  hero: "https://i.pinimg.com/736x/88/49/f8/8849f84cf158b18d285188fa373d1ae8.jpg",
   git: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1400&q=85",
 };
 

@@ -98,9 +98,9 @@ function Img({ src, alt, className = "" }: { src: string; alt: string; className
 }
 
 const IMGS = {
-  agriHero: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=1800&q=85",
-  fuelHero: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1800&q=85",
-  cementHero: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1800&q=85",
+  agriHero: "https://i.pinimg.com/1200x/10/c1/bc/10c1bc92ee54ea02c310b4d144dcd1e8.jpg",
+  fuelHero: "https://i.pinimg.com/1200x/b6/52/3c/b6523cea91fd2afee2dbf60beee8b61b.jpg",
+  cementHero: "https://i.pinimg.com/1200x/53/49/a2/5349a2f5ce5b36a4b8ba3132d4ee60c2.jpg",
   fertilizerHero: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1800&q=85",
   containerHero: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1800&q=85",
   crossHero: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1800&q=85",
@@ -507,7 +507,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal y={36}>
             <div className="rounded-3xl border border-border bg-card p-6 sm:p-8 lg:p-10 shadow-sm">
-              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">Service Specific Page</p>
+              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500"></p>
               <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight text-foreground">{data.breadcrumb}</h2>
               <div className="space-y-5">
                 {data.intro.map((paragraph) => (

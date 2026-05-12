@@ -369,54 +369,7 @@ export function HSECompliance() {
         </div>
       </section>
 
-      <section className="bg-background py-16 sm:py-24">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <Reveal y={36}>
-            <div className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8 lg:p-10">
-              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/10">
-                <BadgeCheck className="h-7 w-7 text-orange-500" />
-              </div>
-
-              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">
-                Track Record & Experience
-              </p>
-
-              <h2 className="mb-6 text-3xl font-extrabold leading-tight text-foreground md:text-5xl">
-                Track Record & Experience
-              </h2>
-
-              <div className="space-y-5 leading-relaxed text-muted-foreground">
-                <p>
-                  ProHaul has established a strong and reliable operational track record supporting
-                  key sectors of the economy, including petroleum distribution, agriculture, and
-                  construction. Our experience spans the transportation of both bulk and packaged
-                  cargo, delivered with consistency, efficiency, and adherence to industry standards.
-                </p>
-
-                <p>
-                  We have successfully executed haulage operations across major commercial and
-                  industrial corridors within Ghana and extending into the West African sub-region.
-                  Our ability to manage diverse logistics requirements under varying operational
-                  conditions has positioned us as a dependable partner for clients with both routine
-                  and complex transportation needs.
-                </p>
-
-                <p>
-                  Established processes and disciplined execution ensure reliable service delivery
-                  across multiple assignments, reinforcing client confidence and long-term engagement.
-                </p>
-
-                <p>Scalable Service Delivery</p>
-
-                <p>
-                  Capacity to expand operations in response to increasing client demand, supported by
-                  fleet growth, operational planning, and resource optimization
-                </p>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      
 
       <section className="bg-muted py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
