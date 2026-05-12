@@ -101,8 +101,8 @@ const IMGS = {
   agriHero: "https://i.pinimg.com/1200x/10/c1/bc/10c1bc92ee54ea02c310b4d144dcd1e8.jpg",
   fuelHero: "https://i.pinimg.com/1200x/b6/52/3c/b6523cea91fd2afee2dbf60beee8b61b.jpg",
   cementHero: "https://i.pinimg.com/1200x/53/49/a2/5349a2f5ce5b36a4b8ba3132d4ee60c2.jpg",
-  fertilizerHero: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1800&q=85",
-  containerHero: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1800&q=85",
+  fertilizerHero: "https://i.pinimg.com/1200x/50/80/fb/5080fbba66841898078f6bf701f3339b.jpg",
+  containerHero: "https://i.pinimg.com/736x/2d/7d/f8/2d7df85506f7becc7b5d304883eeba8e.jpg",
   crossHero: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1800&q=85",
 };
 
