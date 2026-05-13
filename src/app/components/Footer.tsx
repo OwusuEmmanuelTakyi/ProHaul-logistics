@@ -8,12 +8,16 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
-                <span className="font-bold text-white">PH</span>
-              </div>
+<div className="flex items-center gap-3 mb-4">
+  <img
+    src="/src/images/logo.png"
+    alt="ProHaul Logo"
+    className="h-10 w-auto"
+  />
+</div>
               <div>
-                <h3 className="font-bold text-lg">ProHaul</h3>
-                <p className="text-xs text-muted-foreground">Logistics Solutions</p>
+                <h3 className="font-bold text-[22px] text-orange-500 text-lg">ProHaul</h3>
+                <p className="text-xs text-muted-foreground"></p>
               </div>
             </div>
             <p className="text-sm text-muted-foreground mb-4">

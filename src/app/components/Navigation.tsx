@@ -119,7 +119,7 @@ export function Navigation() {
                 />
               </motion.div>
 
-              <span className="text-[22px] font-black leading-none tracking-tight text-red-600 sm:text-[26px]">
+              <span className="text-[22px] font-black leading-none tracking-tight text-orange-500 sm:text-[26px]">
                 ProHaul
               </span>
             </Link>

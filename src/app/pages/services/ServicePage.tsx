@@ -103,7 +103,7 @@ const IMGS = {
   cementHero: "https://i.pinimg.com/1200x/53/49/a2/5349a2f5ce5b36a4b8ba3132d4ee60c2.jpg",
   fertilizerHero: "https://i.pinimg.com/1200x/50/80/fb/5080fbba66841898078f6bf701f3339b.jpg",
   containerHero: "https://i.pinimg.com/736x/2d/7d/f8/2d7df85506f7becc7b5d304883eeba8e.jpg",
-  crossHero: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1800&q=85",
+  crossHero: "https://i.pinimg.com/1200x/4c/a2/c5/4ca2c5243d2d5095295abe35e1a9fd4d.jpg",
 };
 
 type IconType = typeof Truck;
