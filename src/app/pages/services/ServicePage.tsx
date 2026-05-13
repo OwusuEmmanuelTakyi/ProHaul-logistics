@@ -134,7 +134,6 @@ export const servicePages = {
   fuel: {
     breadcrumb: "Fuel Haulage",
     icon: Droplet,
-    badge: "Fuel Haulage Services",
     title: "Fuel haulage services",
     highlight: "built around safety and reliability.",
     heroText:
@@ -192,7 +191,6 @@ export const servicePages = {
   agricultural: {
     breadcrumb: "Agricultural Products",
     icon: Wheat,
-    badge: "Agricultural Products & Commodities Haulage",
     title: "Agricultural products and commodities,",
     highlight: "moved reliably.",
     heroText:
@@ -234,7 +232,6 @@ export const servicePages = {
   cement: {
     breadcrumb: "Cement & Construction Materials",
     icon: Building2,
-    badge: "Cement & Construction Materials Haulage",
     title: "Construction materials,",
     highlight: "delivered on schedule.",
     heroText:
@@ -277,7 +274,6 @@ export const servicePages = {
   fertilizer: {
     breadcrumb: "Fertilizer & Industrial Inputs",
     icon: Sprout,
-    badge: "Fertilizer & Industrial Inputs Haulage",
     title: "Fertilizer and industrial inputs,",
     highlight: "delivered where needed.",
     heroText:
@@ -320,7 +316,6 @@ export const servicePages = {
   container: {
     breadcrumb: "Container Haulage",
     icon: ContainerIcon,
-    badge: "Container Haulage Services",
     title: "Container haulage,",
     highlight: "from port to destination.",
     heroText:
@@ -351,7 +346,6 @@ export const servicePages = {
   crossBorder: {
     breadcrumb: "Nationwide & Cross-Border Haulage",
     icon: Globe,
-    badge: "Nationwide & Cross-Border Haulage",
     title: "Cargo movement across Ghana and",
     highlight: "West African corridors.",
     heroText:

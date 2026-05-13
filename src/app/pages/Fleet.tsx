@@ -124,6 +124,7 @@ function Img({ src, alt, className = "" }: { src: string; alt: string; className
 const IMGS = {
   tanker: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=85",
   road: "https://i.pinimg.com/1200x/58/9d/c6/589dc6beb7f521cb20b06b800bfd89f8.jpg",
+  hero: "https://i.pinimg.com/1200x/8f/df/0a/8fdf0a9b81a599f9bb9cfe74c5855cbd.jpg",
 };
 
 const trustedBrands = ["MAN", "DAF", "Volvo", "Scania"];
@@ -176,17 +177,19 @@ export function Fleet() {
         className="relative min-h-[72svh] lg:min-h-[660px] flex items-center overflow-hidden py-24 text-white"
       >
         <motion.div style={{ y: reduceMotion ? "0%" : videoY }} className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="absolute inset-0 h-full w-full object-cover brightness-[1.15] contrast-[1.05] saturate-[1.08]"
-          >
-            <source src={fleetVideo} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <motion.div
+                    style={{ y: reduceMotion ? "0%" : videoY }}
+
+                    className="absolute inset-0 z-0"
+                  >
+                    <Img
+                      src={IMGS.hero}
+                      alt="Cargo Security & Insurance"
+                      className="absolute inset-0 h-full w-full"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-slate-950/82 via-slate-950/50 to-slate-950/10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-transparent to-transparent" />
+                  </motion.div>
 
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/72 via-slate-950/38 to-slate-950/5" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent" />
@@ -217,7 +220,7 @@ export function Fleet() {
               <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500">
                 <Truck className="h-6 w-6 text-white" />
               </div>
-              <span className="text-sm font-semibold text-orange-200">Fleet & Operational Capacity</span>
+              <span className="text-sm font-semibold text-orange-200"></span>
             </motion.div>
 
             <motion.h1
@@ -269,7 +272,7 @@ export function Fleet() {
             <RevealX x={70}>
               <div className="h-full min-h-[340px] overflow-hidden rounded-3xl shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=85"
+                  src="https://i.pinimg.com/736x/60/19/da/6019dacd999d834b8d00dd1f44f4c44c.jpg"
                   alt="ProHaul fleet and operational capacity"
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
