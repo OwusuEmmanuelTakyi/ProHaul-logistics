@@ -121,19 +121,21 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
                 <span className="text-sm text-muted-foreground">
-                  Accra, Ghana
+                    12 Avenue B West,
+                    North Legon, <br/>
+                    Accra - Ghana
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
                 <span className="text-sm text-muted-foreground">
-                  +233 XX XXX XXXX
+                  +233 (0) 244 136 797
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
                 <span className="text-sm text-muted-foreground">
-                  info@prohaul.com
+                  Bookings@prohaul-logistics.com
                 </span>
               </li>
             </ul>

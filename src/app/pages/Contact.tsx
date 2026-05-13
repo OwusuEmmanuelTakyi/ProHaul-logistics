@@ -608,7 +608,7 @@ export function Contact() {
               <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500">
                 <Send className="h-5 w-5 text-white" />
               </div>
-              <span className="text-sm font-semibold text-orange-200">Contact ProHaul</span>
+              <span className="text-sm font-semibold text-orange-200"></span>
             </motion.div>
 
             {/* Headline */}
