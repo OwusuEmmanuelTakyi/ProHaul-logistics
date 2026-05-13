@@ -280,7 +280,7 @@ export function About() {
               className="inline-flex max-w-full items-center gap-2 rounded-full border border-orange-500/40 bg-orange-500/15 px-3 sm:px-4 py-1.5 text-[11px] sm:text-sm text-orange-300 mb-6"
             >
               <span className="h-2 w-2 rounded-full bg-orange-400 animate-pulse flex-shrink-0" />
-              <span className="truncate sm:whitespace-normal">Reliable Bulk Haulage · Nationwide Strength · Regional Reach</span>
+              <span className="truncate sm:whitespace-normal"></span>
             </motion.div>
 
             <div className="overflow-hidden">

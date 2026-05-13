@@ -267,7 +267,7 @@ export function HSECompliance() {
                 <Shield className="h-6 w-6 text-white" />
               </div>
               <span className="text-sm font-semibold text-orange-200">
-                Health, Safety, Environment & Compliance
+               
               </span>
             </div>
 

@@ -87,7 +87,7 @@ function Img({
 
 const IMGS = {
   hero: "https://i.pinimg.com/736x/88/49/f8/8849f84cf158b18d285188fa373d1ae8.jpg",
-  git: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1400&q=85",
+  git: "https://i.pinimg.com/1200x/97/2e/d0/972ed006b3622cb50df25166285e423c.jpg",
 };
 
 const clientBenefits = [
@@ -156,7 +156,7 @@ export function GITInsurance() {
                 <ShieldCheck className="h-6 w-6 text-white" />
               </div>
               <span className="text-sm font-semibold text-orange-200">
-                Goods in Transit (GIT) insurance policy
+                
               </span>
             </div>
 
