@@ -144,9 +144,10 @@ const IMGS = {
 };
 
 const stats = [
-  { value: "Ghana", label: "Nationwide Coverage", icon: MapPin },
-  { value: "ECOWAS", label: "Transit", icon: Globe },
+  { value: "Ghana", label: "Nationwide ", icon: MapPin },
+  { value: "ECOWAS", label: "Region", icon: Globe },
   { value: "460HP-530HP", label: "Engine Power", icon: Zap },
+  { value: "50 Tons", label: "Flat Bird Capacity", icon: Zap },
   { value: "27,000L - 54,000L", label: "Bulk Capacity", icon: Fuel },
 ];
 
@@ -328,16 +329,16 @@ With a modern fleet, experienced drivers, and a deep understanding of regional t
       </section>
 
       {/* QUICK STATS */}
-      <section className="relative z-10 -mt-12 px-4 sm:px-6 lg:px-8">
+      <section className="relative z-5 -mt-10 px-3 sm:px-5 lg:px-6">
         <div className="max-w-7xl mx-auto rounded-2xl border border-border bg-card shadow-2xl overflow-hidden">
-          <div className="grid grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-3 lg:grid-cols-5">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <Reveal key={stat.label} delay={index * 0.08} y={30}>
                   <div className="border-b border-r border-border p-5 sm:p-7 last:border-r-0 lg:border-b-0">
                     <Icon className="mb-4 h-7 w-7 text-orange-500" />
-                    <div className="text-xl sm:text-2xl font-extrabold text-foreground">{stat.value}</div>
+                    <div className="text-xl sm:text-1xl font-extrabold text-foreground">{stat.value}</div>
                     <p className="mt-1 text-xs sm:text-sm text-muted-foreground leading-tight">{stat.label}</p>
                   </div>
                 </Reveal>

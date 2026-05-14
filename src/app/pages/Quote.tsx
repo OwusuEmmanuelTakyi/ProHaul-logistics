@@ -227,8 +227,7 @@ export function Quote() {
               transition={{ duration: 0.65, delay: 0.32 }}
               className="mt-5 max-w-xl text-base leading-relaxed text-gray-300 sm:text-[17px]"
             >
-              Share your route, cargo, and preferred timeline — our team will
-              put together the right haulage solution for you.
+              A diverse fleet equipped to handle cargo transportation needs safely, efficiently, and reliably.
             </motion.p>
 
             {/* scroll nudge */}

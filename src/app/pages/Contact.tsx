@@ -164,21 +164,19 @@ const contactCards = [
   {
     icon: Phone,
     title: "Phone",
-    text: "Call us for quick haulage enquiries and quote requests.",
+    
     value: "+233 (0) 244 136 797",
     href: "tel:+233XXXXXXXXX",
   },
   {
     icon: Mail,
     title: "Email",
-    text: "Send your cargo details and our team will respond.",
     value: "Bookings@prohaul-logistics.com",
     href: "mailto:info@prohaul.com",
   },
   {
     icon: MapPin,
     title: "Location",
-    text: "Regional haulage coordination hub.",
     value: "12 Avenue B West, North Legon, Accra-Ghana",
     href: "#coverage",
   },

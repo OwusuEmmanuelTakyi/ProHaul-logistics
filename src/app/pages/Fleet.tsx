@@ -139,17 +139,17 @@ const fleetCapability = [
 const trailerConfiguration = [
   {
     icon: Fuel,
-    title: "Fuel tankers",
+    title: "Bulk Fuel Tankers",
     text: "27,000L, 36,000L, 45,000L, and 54,000L capacities for petroleum transport",
   },
   {
     icon: Package,
-    title: "Flatbed trailers",
-    text: "Configured for general cargo and construction materials, with load capacities of up to 80 tonnes",
+    title: "Flat Bed Trailers",
+    text: "Configured for general cargo and construction materials, with load capacities of up to 50 tonnes",
   },
   {
     icon: ContainerIcon,
-    title: "Container handling capability",
+    title: "Container Handling Capabilities",
     text: "Compatible with 20ft and 40ft containers for port and inland logistics",
   },
 ];

@@ -459,7 +459,7 @@ export function Home() {
             </motion.div>
 
             <div className="mb-2 sm:mb-4 overflow-visible text-sm">
-              {"Reliable Bulk Haulage.   Nationwide Strength.".split(" ").map((word, i) => (
+              {"Reliable Bulk Haulage.   ".split(" ").map((word, i) => (
                 <motion.span
                   key={word}
                   initial={{ opacity: 0, y: reduceMotion ? 0 : isMobile ? 26 : 70 }}
@@ -471,6 +471,18 @@ export function Home() {
                 </motion.span>
               ))}
             </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
+              className="min-h-[1.15em] text-[clamp(2.2rem,11vw,4.5rem)] md:text-6xl lg:text-7xl font-extrabold leading-[1.02] tracking-tight mb-6 sm:mb-8"
+            >
+              <Typewriter
+                words={[ "Nationwide Strength." ]}
+                className="block max-w-full break-words text-transparent bg-clip-text bg-white"
+              />
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0 }}
