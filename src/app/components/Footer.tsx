@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin } from "lucide-react";
+import logo from "@/images/logo.png"; // ✅ Module import — works in production
 
 export function Footer() {
   return (
@@ -8,13 +9,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center gap-3 mb-4">
-<div className="flex items-center gap-3 mb-4">
-  <img
-    src="/src/images/logo.png"
-    alt="ProHaul Logo"
-    className="h-10 w-auto"
-  />
-</div>
+              <img
+                src={logo} // ✅ Use the imported variable, not a raw string path
+                alt="ProHaul Logo"
+                className="h-10 w-auto"
+              />
               <div>
                 <h3 className="font-bold text-[22px] text-orange-500 text-lg">ProHaul</h3>
                 <p className="text-xs text-muted-foreground"></p>
@@ -121,9 +120,9 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
                 <span className="text-sm text-muted-foreground">
-                    12 Avenue B West,
-                    North Legon, <br/>
-                    Accra - Ghana
+                  12 Avenue B West,
+                  North Legon, <br />
+                  Accra - Ghana
                 </span>
               </li>
               <li className="flex items-start gap-3">
