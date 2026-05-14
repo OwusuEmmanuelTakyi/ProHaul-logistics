@@ -94,9 +94,9 @@ function Img({ src, alt, className = "" }: { src: string; alt: string; className
 /* ─────────────────────────── data ─────────────────────────── */
 
 const HERO_IMG =
-  "https://i.pinimg.com/1200x/a4/6f/aa/a46faa47b6d9558698b94eb2cf420ebb.jpg";
+  "";
 const ROAD_IMG =
-  "https://i.pinimg.com/1200x/b5/5b/f2/b55bf24820f5a9647f5e622d30e97790.jpg";
+  "https://i.pinimg.com/1200x/a4/6f/aa/a46faa47b6d9558698b94eb2cf420ebb.jpg";
 
 const TANKER_SIZES = [
   { value: "27000", label: "27,000 L" },
