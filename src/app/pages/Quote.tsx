@@ -94,7 +94,7 @@ function Img({ src, alt, className = "" }: { src: string; alt: string; className
 /* ─────────────────────────── data ─────────────────────────── */
 
 const HERO_IMG =
-  "";
+  "https://i.pinimg.com/1200x/b5/5b/f2/b55bf24820f5a9647f5e622d30e97790.jpg";
 const ROAD_IMG =
   "https://i.pinimg.com/1200x/a4/6f/aa/a46faa47b6d9558698b94eb2cf420ebb.jpg";
 
@@ -115,10 +115,10 @@ const CARGO_TYPES = [
 ];
 
 const TRUST_ITEMS = [
-  { icon: Truck,   label: "Reliable Equipments",  sub: "We match capacity to your need"  },
-  { icon: Shield,  label: "Dedicated Team",    sub: "Compliant handling on every trip" },
-  { icon: Clock,   label: "Quick Response",              sub: "Our team replies promptly"        },
-  { icon: CheckCircle2, label: "Speed",   sub: "We deliver on time"      },
+  { icon: Truck,   label: "Reliable Equipments",  sub: "We match capacity to your needs"  },
+  { icon: Shield,  label: "Dedicated Team",    sub: "Commitment to task" },
+  { icon: Clock,   label: "Quick Response",              sub: "24-hour response"        },
+  { icon: CheckCircle2, label: "Speed",   sub: "We meet your deadlines"      },
 ];
 
 /* ─────────────────────────── component ─────────────────────────── */
