@@ -99,7 +99,7 @@ function Img({
 
 const IMGS = {
   hero: "https://i.pinimg.com/1200x/69/c1/68/69c1686ff4ba6c8bc79a83dfc9656ba7.jpg",
-  hse: "https://i.pinimg.com/1200x/91/15/f5/9115f502212c62c725f299375c6c05e8.jpg",
+  hse: "https://i.pinimg.com/736x/4a/bb/80/4abb80ca85e3ebae03dd81c6c6131dc6.jpg",
 };
 
 const hseFocusAreas = [

@@ -156,7 +156,7 @@ function Img({
    Data
 ───────────────────────────────────────────── */
 const IMGS = {
-  hero: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1800&q=85",
+  hero: "https://i.pinimg.com/1200x/95/91/91/95919143ff5e240089af6be99a868b1e.jpg",
   road: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&q=85",
 };
 
@@ -165,21 +165,21 @@ const contactCards = [
     icon: Phone,
     title: "Phone",
     text: "Call us for quick haulage enquiries and quote requests.",
-    value: "+233 XX XXX XXXX",
+    value: "+233 (0) 244 136 797",
     href: "tel:+233XXXXXXXXX",
   },
   {
     icon: Mail,
     title: "Email",
     text: "Send your cargo details and our team will respond.",
-    value: "info@prohaul.com",
+    value: "Bookings@prohaul-logistics.com",
     href: "mailto:info@prohaul.com",
   },
   {
     icon: MapPin,
     title: "Location",
     text: "Regional haulage coordination hub.",
-    value: "Accra, Ghana",
+    value: "12 Avenue B West, North Legon, Accra-Ghana",
     href: "#coverage",
   },
 ];
@@ -642,7 +642,7 @@ export function Contact() {
               className="mt-9 flex flex-wrap gap-3"
             >
               <a
-                href="tel:+233XXXXXXXXX"
+                href="tel:+233 (0) 244 136 797"
                 className="inline-flex items-center gap-2 rounded-xl bg-orange-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-orange-600/30 transition-all hover:bg-orange-600 hover:scale-[1.02]"
               >
                 <Phone className="h-4 w-4" /> Call Us Now

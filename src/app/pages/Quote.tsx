@@ -94,9 +94,9 @@ function Img({ src, alt, className = "" }: { src: string; alt: string; className
 /* ─────────────────────────── data ─────────────────────────── */
 
 const HERO_IMG =
-  "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1800&q=85";
+  "https://i.pinimg.com/1200x/a4/6f/aa/a46faa47b6d9558698b94eb2cf420ebb.jpg";
 const ROAD_IMG =
-  "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&q=85";
+  "https://i.pinimg.com/1200x/b5/5b/f2/b55bf24820f5a9647f5e622d30e97790.jpg";
 
 const TANKER_SIZES = [
   { value: "27000", label: "27,000 L" },
@@ -106,7 +106,7 @@ const TANKER_SIZES = [
 ];
 
 const CARGO_TYPES = [
-  "Petroleum / Fuel (PMS, AGO, DPK)",
+  "Bulk Fuel (PMS, AGO, DPK)",
   "Agricultural Products",
   "Cement & Construction Materials",
   "Fertilizer & Agro-inputs",
@@ -115,10 +115,10 @@ const CARGO_TYPES = [
 ];
 
 const TRUST_ITEMS = [
-  { icon: Shield,  label: "Safety-first operations",    sub: "Compliant handling on every trip" },
-  { icon: Truck,   label: "Right tanker, right route",  sub: "We match capacity to your need"  },
-  { icon: Clock,   label: "Fast response",              sub: "Our team replies promptly"        },
-  { icon: CheckCircle2, label: "Transparent pricing",   sub: "No hidden fees or surprises"      },
+  { icon: Truck,   label: "Reliable Equipments",  sub: "We match capacity to your need"  },
+  { icon: Shield,  label: "Dedicated Team",    sub: "Compliant handling on every trip" },
+  { icon: Clock,   label: "Quick Response",              sub: "Our team replies promptly"        },
+  { icon: CheckCircle2, label: "Speed",   sub: "We deliver on time"      },
 ];
 
 /* ─────────────────────────── component ─────────────────────────── */
@@ -215,9 +215,9 @@ export function Quote() {
               transition={{ duration: 0.72, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
               className="text-[clamp(2.4rem,9vw,4.5rem)] font-extrabold leading-[0.97] tracking-tight"
             >
-              Move your cargo{" "}
+              Appropriate equipment tailored {" "}
               <span className="bg-gradient-to-r from-orange-300 to-orange-500 bg-clip-text text-transparent">
-                with confidence.
+                to every haulage requirement.
               </span>
             </motion.h1>
 
@@ -370,17 +370,7 @@ export function Quote() {
                           02 — Cargo Details
                         </p>
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                          <Field label="Tanker Capacity" required>
-                            <select
-                              name="tankerSize" value={formData.tankerSize}
-                              onChange={set} required className={INPUT}
-                            >
-                              <option value="">Select capacity</option>
-                              {TANKER_SIZES.map((t) => (
-                                <option key={t.value} value={t.value}>{t.label}</option>
-                              ))}
-                            </select>
-                          </Field>
+                          
                           <Field label="Cargo Type" required>
                             <select
                               name="cargoType" value={formData.cargoType}
@@ -389,6 +379,17 @@ export function Quote() {
                               <option value="">Select type</option>
                               {CARGO_TYPES.map((c) => (
                                 <option key={c} value={c}>{c}</option>
+                              ))}
+                            </select>
+                          </Field>
+                          <Field label="Bulk Tank Capacity" required>
+                            <select
+                              name="tankerSize" value={formData.tankerSize}
+                              onChange={set} required className={INPUT}
+                            >
+                              <option value="">Select capacity</option>
+                              {TANKER_SIZES.map((t) => (
+                                <option key={t.value} value={t.value}>{t.label}</option>
                               ))}
                             </select>
                           </Field>
@@ -401,21 +402,27 @@ export function Quote() {
                           03 — Route & Timeline
                         </p>
                         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                          <Field label="Pickup Location" required>
+                          <Field label="Pickup Address" required>
                             <input
                               name="pickup" type="text" value={formData.pickup}
                               onChange={set} required placeholder="e.g. Tema Port"
                               className={INPUT}
                             />
                           </Field>
-                          <Field label="Delivery Destination" required>
+                          <Field label="Delivery Address" required>
                             <input
                               name="destination" type="text" value={formData.destination}
                               onChange={set} required placeholder="e.g. Kumasi / Lagos"
                               className={INPUT}
                             />
                           </Field>
-                          <Field label="Preferred Date" className="sm:col-span-2 sm:max-w-xs">
+                          <Field label="Pickup Date" className="sm:col-span-2 sm:max-w-xs">
+                            <input
+                              name="preferredDate" type="date" value={formData.preferredDate}
+                              onChange={set} className={INPUT}
+                            />
+                          </Field>
+                          <Field label="Delivary Date" className="sm:col-span-2 sm:max-w-xs">
                             <input
                               name="preferredDate" type="date" value={formData.preferredDate}
                               onChange={set} className={INPUT}
@@ -473,84 +480,35 @@ export function Quote() {
                   </h3>
                   <div className="space-y-2.5">
                     <a
-                      href="tel:+233XXXXXXXXX"
+                      href="tel:+233 (0) 244 136 797"
                       className="flex items-center gap-3 rounded-2xl bg-muted px-4 py-3.5 text-sm font-semibold text-foreground transition-all hover:bg-orange-50 hover:text-orange-600 dark:hover:bg-orange-500/10"
                     >
                       <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10">
                         <Phone className="h-4 w-4 text-orange-500" />
                       </div>
-                      +233 XX XXX XXXX
+                      +233 (0) 244 136 797
                     </a>
                     <a
-                      href="mailto:info@prohaul.com"
+                      href="mailto:Bookings@prohaul-logistics.com"
                       className="flex items-center gap-3 rounded-2xl bg-muted px-4 py-3.5 text-sm font-semibold text-foreground transition-all hover:bg-orange-50 hover:text-orange-600 dark:hover:bg-orange-500/10"
                     >
                       <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10">
                         <Mail className="h-4 w-4 text-orange-500" />
                       </div>
-                      info@prohaul.com
+                      Bookings@prohaul-logistics.com
                     </a>
                     <div className="flex items-center gap-3 rounded-2xl bg-muted px-4 py-3.5 text-sm font-semibold text-muted-foreground">
                       <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10">
                         <MapPin className="h-4 w-4 text-orange-500" />
                       </div>
-                      Accra, Ghana
+                      12 Avenue B West, North Legon, Accra - Ghana
                     </div>
                   </div>
                 </div>
               </Reveal>
 
               {/* checklist */}
-              <Reveal delay={0.18} y={28}>
-                <div className="rounded-3xl bg-slate-950 p-5 text-white shadow-xl">
-                  <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-orange-400">
-                    What to include
-                  </p>
-                  <h3 className="mb-5 text-lg font-extrabold">
-                    Quote checklist
-                  </h3>
-                  <ul className="space-y-3">
-                    {[
-                      "Your name & contact details",
-                      "Tanker capacity required",
-                      "Cargo type & description",
-                      "Pickup & delivery locations",
-                      "Preferred delivery date",
-                    ].map((step, i) => (
-                      <li key={step} className="flex items-start gap-3">
-                        <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-orange-500 text-[11px] font-black text-white">
-                          {i + 1}
-                        </span>
-                        <span className="text-sm leading-relaxed text-gray-300">{step}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-
-              {/* tanker sizes */}
-              <Reveal delay={0.24} y={28}>
-                <div className="rounded-3xl border border-border bg-card p-5 shadow-sm">
-                  <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-orange-500">
-                    Tanker Sizes
-                  </p>
-                  <div className="grid grid-cols-2 gap-2">
-                    {TANKER_SIZES.map((t) => (
-                      <div
-                        key={t.value}
-                        className="flex flex-col items-center justify-center rounded-2xl border border-border bg-muted py-4 text-center"
-                      >
-                        <p className="text-[18px] font-extrabold text-foreground leading-none">
-                          {t.label.split(" ")[0]}
-                        </p>
-                        <p className="mt-0.5 text-[11px] font-medium text-muted-foreground">
-                          Litres
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
+              
             </div>
           </div>
         </div>
@@ -560,19 +518,18 @@ export function Quote() {
       <section className="relative overflow-hidden py-20 sm:py-28 text-white">
         <div className="absolute inset-0 z-0">
           <Img src={ROAD_IMG} alt="ProHaul road" className="h-full w-full" />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/96 via-slate-950/85 to-orange-700/75" />
+          <div className="absolute inset-0 bg-gradient-to-r " />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <Reveal y={36}>
             <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-orange-300">
-              ProHaul Logistics
+              
             </p>
             <h2 className="mb-5 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
-              Reliable quotes start with clear details.
+              
             </h2>
             <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg">
-              Tanker capacities from 27,000 L to 54,000 L — serving Ghana and
-              West Africa with safety-first haulage.
+              
             </p>
             <Link
               to="/contact"
