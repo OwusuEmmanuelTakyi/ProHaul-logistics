@@ -88,13 +88,13 @@ function Img({ src, alt, className = "" }: { src: string; alt: string; className
 }
 
 const IMGS = {
-  hero: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1800&q=85",
-  fuel: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=85",
-  agric: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=1200&q=85",
-  cement: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=1200&q=85",
-  fertilizer: "https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=1200&q=85",
+  hero: "https://i.pinimg.com/1200x/23/cf/9a/23cf9a8a0bb3e1ce30940f805e40fe8f.jpg",
+  fuel: "https://i.pinimg.com/1200x/90/ce/b3/90ceb33207a97dbac732742b7650099f.jpg",
+  agric: "https://i.pinimg.com/1200x/10/c1/bc/10c1bc92ee54ea02c310b4d144dcd1e8.jpg",
+  cement: "https://i.pinimg.com/1200x/53/49/a2/5349a2f5ce5b36a4b8ba3132d4ee60c2.jpg",
+  fertilizer: "https://i.pinimg.com/736x/20/29/09/202909f3f401d1d0039be58392c39f37.jpg",
   container: "https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1200&q=85",
-  crossBorder: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=1200&q=85",
+  crossBorder: "https://i.pinimg.com/1200x/04/19/86/041986f347342287e978ebbedc1dc802.jpg",
 };
 
 const services = [
