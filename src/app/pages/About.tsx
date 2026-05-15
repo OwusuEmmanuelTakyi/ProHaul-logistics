@@ -15,6 +15,7 @@ import {
   Users,
   Globe,
   Zap,
+  Settings,
   CheckCircle2,
   ArrowRight,
   Truck,
@@ -147,7 +148,7 @@ const stats = [
   { value: "Ghana", label: "Nationwide ", icon: MapPin },
   { value: "ECOWAS", label: "Region", icon: Globe },
   { value: "460HP-530HP", label: "Engine Power", icon: Zap },
-  { value: "50 Tons", label: "Flat Bird Capacity", icon: Zap },
+  { value: "50 Tons", label: "Flat Bed Capacity", icon: Settings },
   { value: "27,000L - 54,000L", label: "Bulk Capacity", icon: Fuel },
 ];
 

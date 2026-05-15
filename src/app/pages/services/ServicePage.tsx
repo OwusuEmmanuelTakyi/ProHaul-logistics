@@ -11,41 +11,85 @@ import {
   ArrowRight,
   Building2,
   CheckCircle2,
-  Clock,
   Container as ContainerIcon,
   Droplet,
-  FileCheck2,
   Globe,
-  MapPin,
-  Navigation,
-  Package,
-  Route,
-  Shield,
-  Ship,
   Sprout,
-  Target,
-  TrendingUp,
   Truck,
-  Warehouse,
   Wheat,
-  Wrench,
 } from "lucide-react";
 
+/* ══════════════════════════════════════════
+   RESPONSIVE HOOK
+══════════════════════════════════════════ */
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
-
   useEffect(() => {
     const media = window.matchMedia("(max-width: 767px)");
     const update = () => setIsMobile(media.matches);
-
     update();
     media.addEventListener("change", update);
     return () => media.removeEventListener("change", update);
   }, []);
-
   return isMobile;
 }
 
+/* ══════════════════════════════════════════
+   TYPEWRITER — types once, no delete, cursor
+   disappears the moment typing finishes
+══════════════════════════════════════════ */
+function Typewriter({
+  text,
+  className = "",
+  startDelay = 0,
+  typeSpeed = 55,
+  onDone,
+}: {
+  text: string;
+  className?: string;
+  startDelay?: number;
+  typeSpeed?: number;
+  onDone?: () => void;
+}) {
+  const [displayed, setDisplayed] = useState("");
+  const [done, setDone] = useState(false);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setStarted(true), startDelay);
+    return () => clearTimeout(t);
+  }, [startDelay]);
+
+  useEffect(() => {
+    if (!started || done) return;
+    if (displayed.length < text.length) {
+      const t = setTimeout(
+        () => setDisplayed(text.slice(0, displayed.length + 1)),
+        typeSpeed
+      );
+      return () => clearTimeout(t);
+    } else {
+      setDone(true);
+      onDone?.();
+    }
+  }, [displayed, started, done, text, typeSpeed, onDone]);
+
+  return (
+    <span className={className}>
+      {displayed}
+      {!done && (
+        <span
+          className="inline-block h-[0.85em] w-[3px] bg-current ml-1 align-middle"
+          style={{ animation: "blink 0.7s step-end infinite" }}
+        />
+      )}
+    </span>
+  );
+}
+
+/* ══════════════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════════════ */
 function Reveal({
   children,
   delay = 0,
@@ -80,9 +124,11 @@ function Reveal({
   );
 }
 
+/* ══════════════════════════════════════════
+   LAZY IMAGE
+══════════════════════════════════════════ */
 function Img({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
   const [loaded, setLoaded] = useState(false);
-
   return (
     <div className={`relative overflow-hidden ${className}`}>
       {!loaded && <div className="absolute inset-0 bg-slate-700 animate-pulse" />}
@@ -97,6 +143,9 @@ function Img({ src, alt, className = "" }: { src: string; alt: string; className
   );
 }
 
+/* ══════════════════════════════════════════
+   IMAGE URLS
+══════════════════════════════════════════ */
 const IMGS = {
   agriHero: "https://i.pinimg.com/1200x/10/c1/bc/10c1bc92ee54ea02c310b4d144dcd1e8.jpg",
   fuelHero: "https://i.pinimg.com/1200x/b6/52/3c/b6523cea91fd2afee2dbf60beee8b61b.jpg",
@@ -106,6 +155,9 @@ const IMGS = {
   crossHero: "https://i.pinimg.com/1200x/4c/a2/c5/4ca2c5243d2d5095295abe35e1a9fd4d.jpg",
 };
 
+/* ══════════════════════════════════════════
+   TYPES
+══════════════════════════════════════════ */
 type IconType = typeof Truck;
 
 type TextBlock = {
@@ -130,10 +182,14 @@ type ServicePageData = {
   secondaryLabel?: string;
 };
 
+/* ══════════════════════════════════════════
+   SERVICE DATA
+══════════════════════════════════════════ */
 export const servicePages = {
   fuel: {
     breadcrumb: "Fuel Haulage",
     icon: Droplet,
+    badge: "Fuel Haulage",
     title: "Fuel haulage services",
     highlight: "built around safety and reliability.",
     heroText:
@@ -191,6 +247,7 @@ export const servicePages = {
   agricultural: {
     breadcrumb: "Agricultural Products",
     icon: Wheat,
+    badge: "Agricultural Haulage",
     title: "Agricultural products and commodities,",
     highlight: "moved reliably.",
     heroText:
@@ -232,6 +289,7 @@ export const servicePages = {
   cement: {
     breadcrumb: "Cement & Construction Materials",
     icon: Building2,
+    badge: "Construction Haulage",
     title: "Construction materials,",
     highlight: "delivered on schedule.",
     heroText:
@@ -274,6 +332,7 @@ export const servicePages = {
   fertilizer: {
     breadcrumb: "Fertilizer & Industrial Inputs",
     icon: Sprout,
+    badge: "Fertilizer Haulage",
     title: "Fertilizer and industrial inputs,",
     highlight: "delivered where needed.",
     heroText:
@@ -316,6 +375,7 @@ export const servicePages = {
   container: {
     breadcrumb: "Container Haulage",
     icon: ContainerIcon,
+    badge: "Container Haulage",
     title: "Container haulage,",
     highlight: "from port to destination.",
     heroText:
@@ -346,6 +406,7 @@ export const servicePages = {
   crossBorder: {
     breadcrumb: "Nationwide & Cross-Border Haulage",
     icon: Globe,
+    badge: "Cross-Border Haulage",
     title: "Cargo movement across Ghana and",
     highlight: "West African corridors.",
     heroText:
@@ -381,6 +442,9 @@ export const servicePages = {
   },
 } satisfies Record<string, ServicePageData>;
 
+/* ══════════════════════════════════════════
+   SECTION CARD
+══════════════════════════════════════════ */
 function SectionCard({ block, index }: { block: TextBlock; index: number }) {
   return (
     <Reveal delay={index * 0.08} y={34}>
@@ -409,26 +473,54 @@ function SectionCard({ block, index }: { block: TextBlock; index: number }) {
   );
 }
 
+/* ══════════════════════════════════════════
+   SERVICE PAGE
+══════════════════════════════════════════ */
 export function ServicePage({ data }: { data: ServicePageData }) {
   const heroRef = useRef(null);
   const isMobile = useIsMobile();
   const reduceMotion = useReducedMotion();
+
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const imageY = useTransform(scrollYProgress, [0, 1], isMobile ? ["0%", "8%"] : ["0%", "18%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.9], [1, isMobile ? 0.45 : 0]);
+
   const HeroIcon = data.icon;
+
+  /* ── Typewriter chain timing (ms) ──
+     line1 = data.title   (plain white)
+     line2 = data.highlight (orange gradient)
+     Both start after badge fades in (~300ms)
+  */
+  const TYPE_SPEED = 55;
+  const LINE1_START = 350;
+  const LINE1_DURATION = data.title.length * TYPE_SPEED;
+  const LINE2_START = LINE1_START + LINE1_DURATION + 80;
+  const LINE2_DURATION = data.highlight.length * TYPE_SPEED;
+
+  // subtitle + buttons appear after both lines finish
+  const subtitleDelay = (LINE2_START + LINE2_DURATION + 120) / 1000;
 
   return (
     <div className="w-full overflow-x-hidden bg-background">
-      {/* Hero - one image only */}
-      <section ref={heroRef} className="relative min-h-[72svh] lg:min-h-[660px] flex items-center overflow-hidden py-24 text-white">
+
+      {/* ══════════ HERO ══════════ */}
+      <section
+        ref={heroRef}
+        className="relative min-h-[72svh] lg:min-h-[660px] flex items-center overflow-hidden py-24 text-white"
+      >
+        {/* Parallax background */}
         <motion.div style={{ y: reduceMotion ? "0%" : imageY }} className="absolute inset-0 z-0">
           <Img src={data.heroImage} alt={data.badge} className="absolute inset-0 h-full w-full" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/82 via-slate-950/48 to-slate-950/10" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-transparent to-transparent" />
         </motion.div>
 
-        <motion.div style={{ opacity: reduceMotion ? 1 : heroOpacity }} className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          style={{ opacity: reduceMotion ? 1 : heroOpacity }}
+          className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          {/* Breadcrumb */}
           <motion.div
             initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -443,6 +535,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
           </motion.div>
 
           <div className="max-w-4xl">
+            {/* Badge */}
             <motion.div
               initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -455,28 +548,41 @@ export function ServicePage({ data }: { data: ServicePageData }) {
               <span className="text-sm font-semibold text-orange-200">{data.badge}</span>
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: reduceMotion ? 0 : isMobile ? 34 : 76 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="text-[clamp(2.55rem,12vw,4.8rem)] md:text-6xl lg:text-7xl font-extrabold leading-[0.98] tracking-tight"
-            >
-              {data.title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-orange-600">{data.highlight}</span>
-            </motion.h1>
+            {/* ── Line 1: data.title (white) ── */}
+            <div className="min-h-[1.0em] text-[clamp(2rem,9vw,4.2rem)] md:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight text-white mb-1">
+              <Typewriter
+                text={data.title}
+                startDelay={LINE1_START}
+                typeSpeed={TYPE_SPEED}
+                className="inline"
+              />
+            </div>
 
+            {/* ── Line 2: data.highlight (orange gradient) ── */}
+            <div className="min-h-[1.1em] text-[clamp(2rem,9vw,4.2rem)] md:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6">
+              <Typewriter
+                text={data.highlight}
+                startDelay={LINE2_START}
+                typeSpeed={TYPE_SPEED}
+                className="inline text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-orange-600"
+              />
+            </div>
+
+            {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.38 }}
-              className="mt-6 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-gray-300"
+              transition={{ duration: 0.7, delay: subtitleDelay }}
+              className="mt-2 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-gray-300"
             >
               {data.heroText}
             </motion.p>
 
+            {/* CTA buttons */}
             <motion.div
               initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.55 }}
+              transition={{ duration: 0.65, delay: subtitleDelay + 0.15 }}
               className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4"
             >
               <Link
@@ -496,13 +602,15 @@ export function ServicePage({ data }: { data: ServicePageData }) {
         </motion.div>
       </section>
 
-      {/* Main text - exact content */}
+      {/* ══════════ INTRO ══════════ */}
       <section className="py-16 sm:py-24 bg-background">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal y={36}>
             <div className="rounded-3xl border border-border bg-card p-6 sm:p-8 lg:p-10 shadow-sm">
-              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500"></p>
-              <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight text-foreground">{data.breadcrumb}</h2>
+              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500" />
+              <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight text-foreground">
+                {data.breadcrumb}
+              </h2>
               <div className="space-y-5">
                 {data.intro.map((paragraph) => (
                   <p key={paragraph} className="text-muted-foreground leading-relaxed">
@@ -515,7 +623,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
         </div>
       </section>
 
-      {/* Text sections - no extra images */}
+      {/* ══════════ SECTIONS ══════════ */}
       <section className="py-16 sm:py-24 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -526,6 +634,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
         </div>
       </section>
 
+      {/* ══════════ CLOSING ══════════ */}
       {data.closing ? (
         <section className="py-16 sm:py-24 bg-background">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -538,12 +647,16 @@ export function ServicePage({ data }: { data: ServicePageData }) {
         </section>
       ) : null}
 
-      {/* Simple CTA - no background image */}
+      {/* ══════════ CTA ══════════ */}
       <section className="py-16 sm:py-24 bg-orange-500 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Reveal y={44}>
-            <p className="mb-4 text-sm font-bold uppercase tracking-widest text-orange-100">ProHaul Logistics Solutions</p>
-            <h2 className="mb-6 text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight">Ready to move your cargo?</h2>
+            <p className="mb-4 text-sm font-bold uppercase tracking-widest text-orange-100">
+              ProHaul Logistics Solutions
+            </p>
+            <h2 className="mb-6 text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight">
+              Ready to move your cargo?
+            </h2>
             <p className="mx-auto mb-8 max-w-3xl text-base sm:text-xl leading-relaxed text-orange-50">
               Request a quote and let ProHaul support your haulage requirements with reliable service delivery.
             </p>
@@ -566,6 +679,8 @@ export function ServicePage({ data }: { data: ServicePageData }) {
           </Reveal>
         </div>
       </section>
+
+      <style>{`@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}`}</style>
     </div>
   );
 }

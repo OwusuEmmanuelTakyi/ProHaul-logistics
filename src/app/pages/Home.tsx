@@ -40,7 +40,6 @@ function useIsMobile() {
   useEffect(() => {
     const media = window.matchMedia("(max-width: 767px)");
     const update = () => setIsMobile(media.matches);
-
     update();
     media.addEventListener("change", update);
     return () => media.removeEventListener("change", update);
@@ -50,38 +49,53 @@ function useIsMobile() {
 }
 
 /* ══════════════════════════════════════════
-   TYPEWRITER — cycles through words
+   TYPEWRITER — types once, no delete, no cursor after done
 ══════════════════════════════════════════ */
-function Typewriter({ words, className = "" }: { words: string[]; className?: string }) {
-  const [wordIndex, setWordIndex] = useState(0);
+function Typewriter({
+  text,
+  className = "",
+  startDelay = 0,
+  typeSpeed = 65,
+  onDone,
+}: {
+  text: string;
+  className?: string;
+  startDelay?: number;
+  typeSpeed?: number;
+  onDone?: () => void;
+}) {
   const [displayed, setDisplayed] = useState("");
-  const [deleting, setDeleting] = useState(false);
+  const [done, setDone] = useState(false);
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
-    const current = words[wordIndex];
-    let timeout: ReturnType<typeof setTimeout>;
+    const t = setTimeout(() => setStarted(true), startDelay);
+    return () => clearTimeout(t);
+  }, [startDelay]);
 
-    if (!deleting && displayed.length < current.length) {
-      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 70);
-    } else if (!deleting && displayed.length === current.length) {
-      timeout = setTimeout(() => setDeleting(true), 1800);
-    } else if (deleting && displayed.length > 0) {
-      timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 40);
-    } else if (deleting && displayed.length === 0) {
-      setDeleting(false);
-      setWordIndex((i) => (i + 1) % words.length);
+  useEffect(() => {
+    if (!started || done) return;
+    if (displayed.length < text.length) {
+      const t = setTimeout(
+        () => setDisplayed(text.slice(0, displayed.length + 1)),
+        typeSpeed
+      );
+      return () => clearTimeout(t);
+    } else {
+      setDone(true);
+      onDone?.();
     }
-
-    return () => clearTimeout(timeout);
-  }, [displayed, deleting, wordIndex, words]);
+  }, [displayed, started, done, text, typeSpeed, onDone]);
 
   return (
     <span className={className}>
       {displayed}
-      <span
-        className="inline-block h-[0.85em] w-[3px] bg-orange-400 ml-1 align-middle"
-        style={{ animation: "blink 0.7s step-end infinite" }}
-      />
+      {!done && (
+        <span
+          className="inline-block h-[0.85em] w-[3px] bg-current ml-1 align-middle"
+          style={{ animation: "blink 0.7s step-end infinite" }}
+        />
+      )}
     </span>
   );
 }
@@ -128,7 +142,6 @@ function AnimatedCounter({ value }: { value: string }) {
 
 /* ══════════════════════════════════════════
    SCROLL REVEAL WRAPPERS
-   Mobile fix: horizontal reveals become soft fade-up animations.
 ══════════════════════════════════════════ */
 function Reveal({
   children,
@@ -199,7 +212,15 @@ function RevealX({
   );
 }
 
-function RevealScale({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
+function RevealScale({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+}) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const isMobile = useIsMobile();
@@ -258,9 +279,9 @@ const IMGS = {
   road: "https://i.pinimg.com/1200x/4c/a2/c5/4ca2c5243d2d5095295abe35e1a9fd4d.jpg",
   tanker: "https://i.pinimg.com/736x/14/d7/30/14d730be90a9f0e5d4259d47ad6bc8e5.jpg",
   fertilizer: "https://i.pinimg.com/736x/20/29/09/202909f3f401d1d0039be58392c39f37.jpg",
-  scale:"https://i.pinimg.com/1200x/56/ad/7f/56ad7f8d6b01e974aec8f196f7cda26f.jpg",
+  scale: "https://i.pinimg.com/1200x/56/ad/7f/56ad7f8d6b01e974aec8f196f7cda26f.jpg",
   safety2: "https://i.pinimg.com/736x/ec/2f/71/ec2f71e3f43af9685bb2bc3d892bfe9a.jpg",
-  safety3: "https://i.pinimg.com/736x/9a/36/f8/9a36f8145a9264848a511f35ba1d43f8.jpg"
+  safety3: "https://i.pinimg.com/736x/9a/36/f8/9a36f8145a9264848a511f35ba1d43f8.jpg",
 };
 
 /* ══════════════════════════════════════════
@@ -325,26 +346,10 @@ const STATS = [
 ];
 
 const FEATURES = [
-  {
-    icon: CheckCircle2,
-    title: "Proven reliability and on-time delivery",
-    
-  },
-  {
-    icon: CheckCircle2,
-    title: "Safety-focused operations and trained personnel",
-    
-  },
-  {
-    icon: CheckCircle2,
-    title: "Scalable capacity for bulk and specialized cargo",
-    
-  },
-  {
-    icon: Truck,
-    title: "Strong knowledge of regional logistics and cross-border trade",
-    
-  },
+  { icon: CheckCircle2, title: "Proven reliability and on-time delivery" },
+  { icon: CheckCircle2, title: "Safety-focused operations and trained personnel" },
+  { icon: CheckCircle2, title: "Scalable capacity for bulk and specialized cargo" },
+  { icon: Truck, title: "Strong knowledge of regional logistics and cross-border trade" },
 ];
 
 const FLEET = [
@@ -398,6 +403,28 @@ const TESTIMONIALS = [
 ];
 
 /* ══════════════════════════════════════════
+   HERO TYPEWRITER CHAIN
+   All 3 lines type one after the other.
+   Timing (ms):
+     line1: starts at 300ms
+       "Reliable Bulk Haulage." = 22 chars × 65ms = 1430ms → done ≈ 1730ms
+     line2: starts at 1800ms
+       "Nationwide Strength."  = 20 chars × 65ms = 1300ms → done ≈ 3100ms
+     line3: starts at 3180ms
+       "Regional Reach."       = 15 chars × 65ms =  975ms → done ≈ 4155ms
+══════════════════════════════════════════ */
+const LINE1_TEXT = "Reliable Bulk Haulage.";
+const LINE2_TEXT = "Nationwide Strength.";
+const LINE3_TEXT = "Regional Reach.";
+const TYPE_SPEED = 65;
+
+const LINE1_START = 300;
+const LINE1_DURATION = LINE1_TEXT.length * TYPE_SPEED;
+const LINE2_START = LINE1_START + LINE1_DURATION + 80;
+const LINE2_DURATION = LINE2_TEXT.length * TYPE_SPEED;
+const LINE3_START = LINE2_START + LINE2_DURATION + 80;
+
+/* ══════════════════════════════════════════
    HOME PAGE
 ══════════════════════════════════════════ */
 export function Home() {
@@ -407,6 +434,9 @@ export function Home() {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const videoY = useTransform(scrollYProgress, [0, 1], isMobile ? ["0%", "7%"] : ["0%", "25%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.85], [1, isMobile ? 0.25 : 0]);
+
+  // Subtitle + buttons fade in after all 3 lines finish typing
+  const subtitleDelay = (LINE3_START + LINE3_TEXT.length * TYPE_SPEED + 100) / 1000;
 
   return (
     <div className="w-full overflow-x-hidden bg-background">
@@ -429,17 +459,17 @@ export function Home() {
             Your browser does not support the video tag.
           </video>
 
-          {/* fallback poster image behind the video */}
           <Img src={IMGS.hero} alt="ProHaul trucks" className="absolute inset-0 -z-10 w-full h-full" />
 
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/65 via-slate-950/35 to-slate-950/10" />
-<div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent" />
         </motion.div>
 
         <div
           className="absolute inset-0 z-0 opacity-[0.03]"
           style={{
-            backgroundImage: "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
+            backgroundImage:
+              "linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)",
             backgroundSize: isMobile ? "48px 48px" : "80px 80px",
           }}
         />
@@ -449,66 +479,59 @@ export function Home() {
           className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full"
         >
           <div className="max-w-3xl w-full">
+            {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="inline-flex max-w-full items-center gap-2 px-3 sm:px-4 py-1.5 bg-orange-500/20 border border-orange-500/40 rounded-full text-orange-300 text-[11px] sm:text-sm mb-6 sm:mb-8 leading-relaxed"
-            >
-              
-            </motion.div>
+            />
 
-            <div className="mb-2 sm:mb-4 overflow-visible text-sm">
-              {"Reliable Bulk Haulage.   ".split(" ").map((word, i) => (
-                <motion.span
-                  key={word}
-                  initial={{ opacity: 0, y: reduceMotion ? 0 : isMobile ? 26 : 70 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.65, delay: 0.2 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                  className="inline-block mr-2 sm:mr-3 lg:mr-4 text-[clamp(2rem,10vw,4rem)] md:text-5xl lg:text-6xl font-extrabold text-white leading-[0.98] tracking-tight"
-                >
-                  {word}
-                </motion.span>
-              ))}
+            {/* ── Line 1: Reliable Bulk Haulage. ── */}
+            <div className="mb-1 sm:mb-2 min-h-[1.0em] text-[clamp(2rem,10vw,4rem)] md:text-5xl lg:text-6xl font-extrabold text-white leading-[0.98] tracking-tight">
+              <Typewriter
+                text={LINE1_TEXT}
+                startDelay={LINE1_START}
+                typeSpeed={TYPE_SPEED}
+                className="inline"
+              />
             </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-              className="min-h-[1.15em] text-[clamp(2.2rem,11vw,4.5rem)] md:text-6xl lg:text-7xl font-extrabold leading-[1.02] tracking-tight mb-6 sm:mb-8"
-            >
+            {/* ── Line 2: Nationwide Strength. ── */}
+            <div className="mb-1 sm:mb-2 min-h-[1.15em] text-[clamp(2.2rem,11vw,4.5rem)] md:text-6xl lg:text-7xl font-extrabold leading-[1.02] tracking-tight">
               <Typewriter
-                words={[ "Nationwide Strength." ]}
-                className="block max-w-full break-words text-transparent bg-clip-text bg-white"
+                text={LINE2_TEXT}
+                startDelay={LINE2_START}
+                typeSpeed={TYPE_SPEED}
+                className="block max-w-full break-words text-white"
               />
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-              className="min-h-[1.15em] text-[clamp(2.2rem,11vw,4.5rem)] md:text-6xl lg:text-7xl font-extrabold leading-[1.02] tracking-tight mb-6 sm:mb-8"
-            >
+            {/* ── Line 3: Regional Reach. ── */}
+            <div className="mb-6 sm:mb-8 min-h-[1.15em] text-[clamp(2.2rem,11vw,4.5rem)] md:text-6xl lg:text-7xl font-extrabold leading-[1.02] tracking-tight">
               <Typewriter
-                words={[ "Regional Reach." ]}
+                text={LINE3_TEXT}
+                startDelay={LINE3_START}
+                typeSpeed={TYPE_SPEED}
                 className="block max-w-full break-words text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600"
               />
-            </motion.div>
+            </div>
 
+            {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.95 }}
+              transition={{ duration: 0.7, delay: subtitleDelay }}
               className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 sm:mb-10 leading-relaxed max-w-xl"
             >
               ProHaul delivers reliable bulk haulage solutions across Ghana and West Africa, ensuring safe and efficient cargo movement.
             </motion.p>
 
+            {/* CTA buttons */}
             <motion.div
               initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.1 }}
+              transition={{ duration: 0.6, delay: subtitleDelay + 0.15 }}
               className="flex flex-col sm:flex-row gap-3 sm:gap-4"
             >
               <Link
@@ -525,8 +548,6 @@ export function Home() {
               </Link>
             </motion.div>
           </div>
-
-          
         </motion.div>
 
         <motion.div
@@ -608,7 +629,7 @@ export function Home() {
                 With a modern fleet, experienced drivers, and a deep understanding of regional trade routes, ProHaul is built to move your cargo securely, on schedule, and at scale.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                {["NPA Certified ","MPS Certified", "GPS Fleet Tracking", "ECOWAS", "Goods in Transit Insurance"].map((item) => (
+                {["NPA Certified", "MPS Certified", "GPS Fleet Tracking", "ECOWAS", "Goods in Transit Insurance"].map((item) => (
                   <div key={item} className="flex items-center gap-2 text-sm font-medium">
                     <CheckCircle2 className="w-4 h-4 text-orange-500 flex-shrink-0" />
                     {item}
@@ -627,73 +648,48 @@ export function Home() {
       </section>
 
       {/* ══════════ SERVICES — image cards ══════════ */}
-      {/* ══════════ SERVICES — image cards ══════════ */}
-<section className="py-16 sm:py-24 bg-muted">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <Reveal className="text-center mb-10 sm:mb-16">
-      <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-3">
-        What We Do
-      </p>
-      <h2 className="text-3xl md:text-5xl font-extrabold mb-4">
-        Our Haulage Services
-      </h2>
-      <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
-        A comprehensive haulage solution engineered for Ghana's and West Africa’s  most critical industries
-      </p>
-    </Reveal>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-      {SERVICES.map((svc, i) => {
-        const Icon = svc.icon;
-
-        return (
-          <Reveal key={svc.title} delay={i * 0.08} y={48}>
-            <Link
-              to={svc.link}
-              className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 block min-h-[21rem] sm:h-72"
-            >
-              <Img
-                src={svc.img}
-                alt={svc.title}
-                className="absolute inset-0 w-full h-full md:group-hover:scale-110 transition-transform duration-700"
-              />
-
-              {/* Reduced dark overlay so image shows better */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
-
-              {/* Small soft bottom shade only for text readability */}
-              <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/55 to-transparent" />
-
-              <div
-                className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${svc.color}`}
-              />
-
-              <div className="absolute inset-0 p-5 sm:p-6 flex flex-col justify-end">
-                <div
-                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${svc.color} flex items-center justify-center mb-4 shadow-lg md:group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <Icon className="w-6 h-6 text-white" />
-                </div>
-
-                <h3 className="text-lg font-bold text-white mb-2 drop-shadow-lg">
-                  {svc.title}
-                </h3>
-
-                <p className="text-sm text-white/90 leading-relaxed mb-4 drop-shadow-lg opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-300">
-                  {svc.desc}
-                </p>
-
-                <span className="inline-flex items-center gap-1.5 text-orange-300 text-sm font-semibold md:group-hover:gap-3 transition-all drop-shadow-lg">
-                  Learn More <ArrowRight className="w-4 h-4" />
-                </span>
-              </div>
-            </Link>
+      <section className="py-16 sm:py-24 bg-muted">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal className="text-center mb-10 sm:mb-16">
+            <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-3">What We Do</p>
+            <h2 className="text-3xl md:text-5xl font-extrabold mb-4">Our Haulage Services</h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
+              A comprehensive haulage solution engineered for Ghana's and West Africa's most critical industries
+            </p>
           </Reveal>
-        );
-      })}
-    </div>
-  </div>
-</section>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            {SERVICES.map((svc, i) => {
+              const Icon = svc.icon;
+              return (
+                <Reveal key={svc.title} delay={i * 0.08} y={48}>
+                  <Link
+                    to={svc.link}
+                    className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 block min-h-[21rem] sm:h-72"
+                  >
+                    <Img src={svc.img} alt={svc.title} className="absolute inset-0 w-full h-full md:group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/55 to-transparent" />
+                    <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${svc.color}`} />
+                    <div className="absolute inset-0 p-5 sm:p-6 flex flex-col justify-end">
+                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${svc.color} flex items-center justify-center mb-4 shadow-lg md:group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon className="w-6 h-6 text-white" />
+                      </div>
+                      <h3 className="text-lg font-bold text-white mb-2 drop-shadow-lg">{svc.title}</h3>
+                      <p className="text-sm text-white/90 leading-relaxed mb-4 drop-shadow-lg opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-300">
+                        {svc.desc}
+                      </p>
+                      <span className="inline-flex items-center gap-1.5 text-orange-300 text-sm font-semibold md:group-hover:gap-3 transition-all drop-shadow-lg">
+                        Learn More <ArrowRight className="w-4 h-4" />
+                      </span>
+                    </div>
+                  </Link>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       {/* ══════════ WHY CHOOSE US ══════════ */}
       <section className="py-16 sm:py-24 bg-background">
@@ -707,7 +703,6 @@ export function Home() {
                   Modern high-capacity fleet, nationwide and cross-border reach, technology-driven operations, and a strong commitment to safety, reliability, and timely delivery.
                 </p>
               </RevealX>
-
               <div className="space-y-4">
                 {FEATURES.map((f, i) => {
                   const Icon = f.icon;
@@ -719,7 +714,6 @@ export function Home() {
                         </div>
                         <div>
                           <h3 className="font-bold mb-1">{f.title}</h3>
-                          
                         </div>
                       </div>
                     </Reveal>
@@ -762,7 +756,7 @@ export function Home() {
               <p className="text-orange-400 font-bold text-sm uppercase tracking-widest mb-3">Built for Scale</p>
               <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">Fleet & Operational Capacity</h2>
               <p className="text-gray-400 leading-relaxed mb-8">
-                ProHaul operates a modern, high-performance fleet designed to deliver reliability, efficiency, and scalable capacity across a wide range of haulage requirements. Our fleet strategy is centered on deploying robust, well-maintained equipment capable of supporting both routine and high-demand logistics operations
+                ProHaul operates a modern, high-performance fleet designed to deliver reliability, efficiency, and scalable capacity across a wide range of haulage requirements. Our fleet strategy is centered on deploying robust, well-maintained equipment capable of supporting both routine and high-demand logistics operations.
               </p>
               <div className="flex flex-wrap gap-3">
                 {["MAN", "DAF", "VOLVO", "SCANIA"].map((brand, i) => (
@@ -840,78 +834,62 @@ export function Home() {
 
       {/* ══════════ HSE & COMPLIANCE ══════════ */}
       <section className="py-16 sm:py-24 bg-muted">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-16 items-center">
-      
-      {/* One Image Only */}
-      <RevealX x={-70}>
-        <div className="relative overflow-hidden rounded-3xl border border-border bg-card shadow-2xl">
-          <div className="aspect-[4/3] lg:aspect-[4/5]">
-            <Img
-              src={IMGS.safety2}
-              alt="Health, Safety and Environment operations"
-              className="w-full h-full sm:hover:scale-105 transition-transform duration-700"
-            />
-          </div>
-
-          <div className="absolute left-5 bottom-5 rounded-2xl bg-orange-500 p-5 text-white shadow-xl shadow-orange-500/30">
-            <Shield className="w-8 h-8 mb-3 opacity-90" />
-            <div className="text-3xl font-extrabold leading-none">Zero</div>
-            <div className="mt-1 text-sm font-medium text-orange-100">
-              Incident Target
-            </div>
-          </div>
-        </div>
-      </RevealX>
-
-      {/* Text Content */}
-      <RevealX x={70}>
-        <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-3">
-          Safety & Compliance
-        </p>
-
-        <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight text-foreground">
-          Health, Safety & Environment
-        </h2>
-
-        <p className="text-muted-foreground leading-relaxed mb-8">
-          Safety is a core pillar of ProHaul&apos;s operations. We maintain a structured
-          HSE framework designed to protect personnel, cargo, and the communities within
-          which we operate — with a zero-incident objective embedded in every process.
-        </p>
-
-        <div className="grid grid-cols-1 gap-4 mb-8">
-          {[
-            "Driver safety training and certification programs",
-            "Enforcement of personal protective equipment (PPE) usage",
-            "Routine vehicle inspection and maintenance protocols",
-            "Incident reporting, investigation, and response procedures",
-            "Compliance with applicable environmental and safety regulations",
-          ].map((item, i) => (
-            <Reveal key={item} delay={i * 0.05} y={20}>
-              <div className="group flex items-start gap-4 rounded-2xl border border-border bg-background p-4 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-lg">
-                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10 transition-colors group-hover:bg-orange-500">
-                  <CheckCircle2 className="h-5 w-5 text-orange-500 transition-colors group-hover:text-white" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-16 items-center">
+            <RevealX x={-70}>
+              <div className="relative overflow-hidden rounded-3xl border border-border bg-card shadow-2xl">
+                <div className="aspect-[4/3] lg:aspect-[4/5]">
+                  <Img
+                    src={IMGS.safety2}
+                    alt="Health, Safety and Environment operations"
+                    className="w-full h-full sm:hover:scale-105 transition-transform duration-700"
+                  />
                 </div>
-
-                <span className="pt-2 text-sm sm:text-base font-medium leading-relaxed text-foreground">
-                  {item}
-                </span>
+                <div className="absolute left-5 bottom-5 rounded-2xl bg-orange-500 p-5 text-white shadow-xl shadow-orange-500/30">
+                  <Shield className="w-8 h-8 mb-3 opacity-90" />
+                  <div className="text-3xl font-extrabold leading-none">Zero</div>
+                  <div className="mt-1 text-sm font-medium text-orange-100">Incident Target</div>
+                </div>
               </div>
-            </Reveal>
-          ))}
-        </div>
+            </RevealX>
 
-        <Link
-          to="/hse-compliance"
-          className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-7 py-4 border border-orange-500 text-orange-500 rounded-lg hover:bg-orange-500 hover:text-white sm:hover:scale-105 transition-all font-bold"
-        >
-          Our HSE Framework <ArrowRight className="w-5 h-5" />
-        </Link>
-      </RevealX>
-    </div>
-  </div>
-</section>
+            <RevealX x={70}>
+              <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-3">Safety & Compliance</p>
+              <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight text-foreground">
+                Health, Safety & Environment
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-8">
+                Safety is a core pillar of ProHaul&apos;s operations. We maintain a structured HSE framework designed to protect personnel, cargo, and the communities within which we operate — with a zero-incident objective embedded in every process.
+              </p>
+              <div className="grid grid-cols-1 gap-4 mb-8">
+                {[
+                  "Driver safety training and certification programs",
+                  "Enforcement of personal protective equipment (PPE) usage",
+                  "Routine vehicle inspection and maintenance protocols",
+                  "Incident reporting, investigation, and response procedures",
+                  "Compliance with applicable environmental and safety regulations",
+                ].map((item, i) => (
+                  <Reveal key={item} delay={i * 0.05} y={20}>
+                    <div className="group flex items-start gap-4 rounded-2xl border border-border bg-background p-4 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-lg">
+                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10 transition-colors group-hover:bg-orange-500">
+                        <CheckCircle2 className="h-5 w-5 text-orange-500 transition-colors group-hover:text-white" />
+                      </div>
+                      <span className="pt-2 text-sm sm:text-base font-medium leading-relaxed text-foreground">{item}</span>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+              <Link
+                to="/hse-compliance"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-7 py-4 border border-orange-500 text-orange-500 rounded-lg hover:bg-orange-500 hover:text-white sm:hover:scale-105 transition-all font-bold"
+              >
+                Our HSE Framework <ArrowRight className="w-5 h-5" />
+              </Link>
+            </RevealX>
+          </div>
+        </div>
+      </section>
+
       {/* ══════════ TESTIMONIALS ══════════ */}
       <section className="py-16 sm:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
