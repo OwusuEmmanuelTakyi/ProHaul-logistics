@@ -251,7 +251,7 @@ export function Navigation() {
                             </p>
 
                             <h3 className="max-w-[210px] text-xl font-black leading-snug">
-                              Find the right haulage solution for your cargo
+                              Find the right haulage solution for your business
                             </h3>
 
                             <Link

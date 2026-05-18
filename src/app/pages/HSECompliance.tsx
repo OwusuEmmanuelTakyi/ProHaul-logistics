@@ -279,7 +279,7 @@ export function HSECompliance() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg md:text-xl">
-              Safety is a core pillar of ProHaul’ operations. We maintain a structured
+              Safety is a core pillar of ProHaul' operations. We maintain a structured
               Health, Safety, and Environment (HSE) framework designed to protect personnel,
               cargo, and the communities within which we operate.
             </p>
@@ -306,7 +306,7 @@ export function HSECompliance() {
 
                 <div className="space-y-5 leading-relaxed text-muted-foreground">
                   <p>
-                    Safety is a core pillar of ProHaul’ operations. We maintain a structured
+                    Safety is a core pillar of ProHaul' operations. We maintain a structured
                     Health, Safety, and Environment (HSE) framework designed to protect personnel,
                     cargo, and the communities within which we operate.
                   </p>
@@ -334,38 +334,43 @@ export function HSECompliance() {
 
       <section className="bg-muted py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Reveal className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
-            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">
-              HSE Focus Areas
-            </p>
-            <h2 className="text-3xl font-extrabold leading-tight text-foreground md:text-5xl">
-              HSE Focus Areas
-            </h2>
-          </Reveal>
+          <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+            <Reveal y={36}>
+              <div className="h-full min-h-[320px] overflow-hidden rounded-3xl border border-border bg-card shadow-2xl">
+                <Img
+                  src="https://i.pinimg.com/webp/736x/58/32/f2/5832f279887a0140cefef8b8cda246fc.webp"
+                  alt="Safety equipment including hard hats, high-visibility vests, gloves, and protective gear laid out on a surface"
+                  className="h-full w-full"
+                />
+              </div>
+            </Reveal>
 
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {hseFocusAreas.map((item, index) => (
-              <Reveal key={item} delay={index * 0.08} y={38}>
-                <div className="flex h-full items-start gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-xl sm:hover:-translate-y-1">
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10 text-orange-500">
-                    <CheckCircle2 className="h-5 w-5" />
-                  </div>
-                  <p className="text-sm font-medium leading-relaxed text-foreground sm:text-base">
-                    {item}
-                  </p>
+            <Reveal y={36} delay={0.08}>
+              <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8 lg:p-10">
+                <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">
+                  HSE Focus Areas
+                </p>
+                <h2 className="mb-8 text-3xl font-extrabold leading-tight text-foreground md:text-5xl">
+                  HSE Focus Areas
+                </h2>
+
+                <div className="space-y-4">
+                  {hseFocusAreas.map((item, index) => (
+                    <Reveal key={item} delay={index * 0.08} y={24}>
+                      <div className="flex items-start gap-4 rounded-2xl border border-border bg-background p-4 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-md">
+                        <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10 text-orange-500">
+                          <CheckCircle2 className="h-5 w-5" />
+                        </div>
+                        <p className="text-sm font-medium leading-relaxed text-foreground sm:text-base">
+                          {item}
+                        </p>
+                      </div>
+                    </Reveal>
+                  ))}
                 </div>
-              </Reveal>
-            ))}
+              </div>
+            </Reveal>
           </div>
-
-          <Reveal y={36} className="mt-8">
-            <div className="rounded-3xl bg-slate-950 p-6 text-white shadow-2xl sm:p-8">
-              <p className="text-lg leading-relaxed text-gray-200">
-                Our objective is to maintain a zero-incident operating environment while ensuring
-                consistent service delivery.
-              </p>
-            </div>
-          </Reveal>
         </div>
       </section>
 
@@ -415,7 +420,7 @@ export function HSECompliance() {
               ProHaul distinguishes itself through a combination of operational strength, market
               insight, and a disciplined approach to execution. Our business is structured to
               deliver not just transportation services, but dependable logistics solutions that
-              support our clients’ operational continuity and long-term growth.
+              support our clients' operational continuity and long-term growth.
             </p>
           </Reveal>
 
