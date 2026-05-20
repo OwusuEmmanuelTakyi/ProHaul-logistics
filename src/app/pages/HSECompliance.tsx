@@ -9,7 +9,6 @@ import {
 } from "framer-motion";
 import {
   ArrowRight,
-  BadgeCheck,
   CheckCircle2,
   FileCheck2,
   Globe,
@@ -23,17 +22,64 @@ import {
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
-
   useEffect(() => {
     const media = window.matchMedia("(max-width: 767px)");
     const update = () => setIsMobile(media.matches);
-
     update();
     media.addEventListener("change", update);
     return () => media.removeEventListener("change", update);
   }, []);
-
   return isMobile;
+}
+
+/* ── TYPEWRITER ── */
+function Typewriter({
+  text,
+  className = "",
+  startDelay = 0,
+  typeSpeed = 55,
+  onDone,
+}: {
+  text: string;
+  className?: string;
+  startDelay?: number;
+  typeSpeed?: number;
+  onDone?: () => void;
+}) {
+  const [displayed, setDisplayed] = useState("");
+  const [done, setDone] = useState(false);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setStarted(true), startDelay);
+    return () => clearTimeout(t);
+  }, [startDelay]);
+
+  useEffect(() => {
+    if (!started || done) return;
+    if (displayed.length < text.length) {
+      const t = setTimeout(
+        () => setDisplayed(text.slice(0, displayed.length + 1)),
+        typeSpeed
+      );
+      return () => clearTimeout(t);
+    } else {
+      setDone(true);
+      onDone?.();
+    }
+  }, [displayed, started, done, text, typeSpeed, onDone]);
+
+  return (
+    <span className={className}>
+      {displayed}
+      {!done && (
+        <span
+          className="inline-block h-[0.85em] w-[3px] bg-current ml-1 align-middle"
+          style={{ animation: "blink 0.7s step-end infinite" }}
+        />
+      )}
+    </span>
+  );
 }
 
 function Reveal({
@@ -80,7 +126,6 @@ function Img({
   className?: string;
 }) {
   const [loaded, setLoaded] = useState(false);
-
   return (
     <div className={`relative overflow-hidden ${className}`}>
       {!loaded && <div className="absolute inset-0 animate-pulse bg-slate-700" />}
@@ -208,6 +253,15 @@ const complianceAreas = [
   },
 ];
 
+/* ── Typewriter timing ── */
+const TYPE_SPEED     = 55;
+const LINE1_TEXT     = "HSE &";
+const LINE2_TEXT     = "Compliance";
+const LINE1_START    = 350;
+const LINE1_DURATION = LINE1_TEXT.length * TYPE_SPEED;
+const LINE2_START    = LINE1_START + LINE1_DURATION + 80;
+const LINE2_DURATION = LINE2_TEXT.length * TYPE_SPEED;
+
 export function HSECompliance() {
   const heroRef = useRef(null);
   const isMobile = useIsMobile();
@@ -230,8 +284,12 @@ export function HSECompliance() {
     [1, isMobile ? 0.45 : 0]
   );
 
+  const subtitleDelay = (LINE2_START + LINE2_DURATION + 120) / 1000;
+
   return (
     <div className="w-full overflow-x-hidden bg-background">
+
+      {/* ── HERO ── */}
       <section
         ref={heroRef}
         className="relative flex min-h-[72svh] items-center overflow-hidden py-24 text-white lg:min-h-[660px]"
@@ -253,40 +311,72 @@ export function HSECompliance() {
           style={{ opacity: reduceMotion ? 1 : heroOpacity }}
           className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8"
         >
-          <div className="mb-6 flex flex-wrap items-center gap-2 text-sm">
+          {/* Breadcrumb */}
+          <motion.div
+            initial={{ opacity: 0, y: reduceMotion ? 0 : 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+            className="mb-6 flex flex-wrap items-center gap-2 text-sm"
+          >
             <Link to="/" className="text-gray-400 transition-colors hover:text-white">
               Home
             </Link>
             <span className="text-gray-500">/</span>
             <span className="text-white">HSE & Compliance</span>
-          </div>
+          </motion.div>
 
           <div className="max-w-4xl">
-            <div className="mb-6 inline-flex max-w-full items-center gap-3 rounded-2xl border border-orange-500/30 bg-orange-500/15 px-4 py-3 backdrop-blur-sm">
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.55, delay: 0.12 }}
+              className="mb-6 inline-flex max-w-full items-center gap-3 rounded-2xl border border-orange-500/30 bg-orange-500/15 px-4 py-3 backdrop-blur-sm"
+            >
               <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500">
                 <Shield className="h-6 w-6 text-white" />
               </div>
               <span className="text-sm font-semibold text-orange-200">
-               
+                Health, Safety & Environment
               </span>
+            </motion.div>
+
+            {/* Line 1 — "HSE &" white */}
+            <div className="min-h-[1.0em] text-[clamp(2.7rem,12vw,5.3rem)] md:text-6xl lg:text-7xl font-extrabold leading-[0.98] tracking-tight text-white mb-1">
+              <Typewriter
+                text={LINE1_TEXT}
+                startDelay={LINE1_START}
+                typeSpeed={TYPE_SPEED}
+                className="inline"
+              />
             </div>
 
-            <h1 className="text-[clamp(2.7rem,12vw,5.3rem)] font-extrabold leading-[0.98] tracking-tight md:text-6xl lg:text-7xl">
-              HSE &{" "}
-              <span className="bg-gradient-to-r from-orange-300 to-orange-600 bg-clip-text text-transparent">
-                Compliance
-              </span>
-            </h1>
+            {/* Line 2 — "Compliance" orange gradient */}
+            <div className="min-h-[1.1em] text-[clamp(2.7rem,12vw,5.3rem)] md:text-6xl lg:text-7xl font-extrabold leading-[0.98] tracking-tight mb-6">
+              <Typewriter
+                text={LINE2_TEXT}
+                startDelay={LINE2_START}
+                typeSpeed={TYPE_SPEED}
+                className="inline text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-orange-600"
+              />
+            </div>
 
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg md:text-xl">
-              Safety is a core pillar of ProHaul' operations. We maintain a structured
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: subtitleDelay }}
+              className="mt-2 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg md:text-xl"
+            >
+              Safety is a core pillar of ProHaul's operations. We maintain a structured
               Health, Safety, and Environment (HSE) framework designed to protect personnel,
               cargo, and the communities within which we operate.
-            </p>
+            </motion.p>
           </div>
         </motion.div>
       </section>
 
+      {/* ── HSE INTRO ── */}
       <section className="bg-background py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-[1.05fr_0.95fr]">
@@ -295,22 +385,18 @@ export function HSECompliance() {
                 <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/10">
                   <HardHat className="h-7 w-7 text-orange-500" />
                 </div>
-
                 <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">
                   Health, Safety & Environment (HSE)
                 </p>
-
                 <h2 className="mb-6 text-3xl font-extrabold leading-tight text-foreground md:text-5xl">
                   Health, Safety & Environment (HSE)
                 </h2>
-
                 <div className="space-y-5 leading-relaxed text-muted-foreground">
                   <p>
-                    Safety is a core pillar of ProHaul' operations. We maintain a structured
+                    Safety is a core pillar of ProHaul's operations. We maintain a structured
                     Health, Safety, and Environment (HSE) framework designed to protect personnel,
                     cargo, and the communities within which we operate.
                   </p>
-
                   <p>
                     Our approach integrates preventive measures, continuous training, and strict
                     adherence to industry safety standards.
@@ -332,6 +418,7 @@ export function HSECompliance() {
         </div>
       </section>
 
+      {/* ── HSE FOCUS AREAS ── */}
       <section className="bg-muted py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-[0.95fr_1.05fr]">
@@ -353,7 +440,6 @@ export function HSECompliance() {
                 <h2 className="mb-8 text-3xl font-extrabold leading-tight text-foreground md:text-5xl">
                   HSE Focus Areas
                 </h2>
-
                 <div className="space-y-4">
                   {hseFocusAreas.map((item, index) => (
                     <Reveal key={item} delay={index * 0.08} y={24}>
@@ -374,8 +460,7 @@ export function HSECompliance() {
         </div>
       </section>
 
-      
-
+      {/* ── EXPERIENCE HIGHLIGHTS ── */}
       <section className="bg-muted py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
@@ -394,12 +479,8 @@ export function HSECompliance() {
                   <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-orange-500/10 text-sm font-black text-orange-500">
                     {String(index + 1).padStart(2, "0")}
                   </div>
-                  <h3 className="mb-3 text-xl font-extrabold text-foreground">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {item.text}
-                  </p>
+                  <h3 className="mb-3 text-xl font-extrabold text-foreground">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{item.text}</p>
                 </div>
               </Reveal>
             ))}
@@ -407,6 +488,7 @@ export function HSECompliance() {
         </div>
       </section>
 
+      {/* ── KEY DIFFERENTIATORS ── */}
       <section className="bg-background py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal className="mx-auto mb-10 max-w-4xl text-center sm:mb-14">
@@ -428,12 +510,8 @@ export function HSECompliance() {
             {differentiators.map((item, index) => (
               <Reveal key={item.title} delay={index * 0.08} y={38}>
                 <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-xl sm:hover:-translate-y-1">
-                  <h3 className="mb-3 text-xl font-extrabold text-foreground">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {item.text}
-                  </p>
+                  <h3 className="mb-3 text-xl font-extrabold text-foreground">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{item.text}</p>
                 </div>
               </Reveal>
             ))}
@@ -451,6 +529,7 @@ export function HSECompliance() {
         </div>
       </section>
 
+      {/* ── TECHNOLOGY & VISIBILITY ── */}
       <section className="bg-muted py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal className="mx-auto mb-10 max-w-4xl text-center sm:mb-14">
@@ -473,12 +552,8 @@ export function HSECompliance() {
             {technologyCapabilities.map((item, index) => (
               <Reveal key={item.title} delay={index * 0.08} y={38}>
                 <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-xl sm:hover:-translate-y-1">
-                  <h3 className="mb-3 text-xl font-extrabold text-foreground">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {item.text}
-                  </p>
+                  <h3 className="mb-3 text-xl font-extrabold text-foreground">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{item.text}</p>
                 </div>
               </Reveal>
             ))}
@@ -486,9 +561,7 @@ export function HSECompliance() {
 
           <Reveal y={36} className="mt-8">
             <div className="rounded-3xl border border-orange-500/20 bg-orange-500/10 p-6 sm:p-8">
-              <h3 className="mb-3 text-2xl font-extrabold text-foreground">
-                Operational Impact
-              </h3>
+              <h3 className="mb-3 text-2xl font-extrabold text-foreground">Operational Impact</h3>
               <p className="leading-relaxed text-muted-foreground">
                 These technology-driven capabilities enable proactive decision-making, stronger
                 operational control, and improved service consistency. They also enhance
@@ -501,6 +574,7 @@ export function HSECompliance() {
         </div>
       </section>
 
+      {/* ── COMPLIANCE & REGULATORY STANDARDS ── */}
       <section className="bg-background py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal className="mx-auto mb-10 max-w-4xl text-center sm:mb-14">
@@ -521,7 +595,6 @@ export function HSECompliance() {
                 regional standards, enabling lawful, efficient, and seamless movement of cargo across
                 all jurisdictions in which we operate.
               </p>
-
               <p>
                 We adopt a zero-tolerance approach to non-compliance, embedding regulatory discipline
                 into every aspect of our operations—from fleet management and driver conduct to
@@ -535,19 +608,14 @@ export function HSECompliance() {
           <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {complianceAreas.map((item, index) => {
               const Icon = item.icon;
-
               return (
                 <Reveal key={item.title} delay={index * 0.08} y={38}>
                   <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-xl sm:hover:-translate-y-1">
                     <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500/10">
                       <Icon className="h-6 w-6 text-orange-500" />
                     </div>
-                    <h3 className="mb-3 text-xl font-extrabold text-foreground">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      {item.text}
-                    </p>
+                    <h3 className="mb-3 text-xl font-extrabold text-foreground">{item.title}</h3>
+                    <p className="text-sm leading-relaxed text-muted-foreground">{item.text}</p>
                   </div>
                 </Reveal>
               );
@@ -567,6 +635,7 @@ export function HSECompliance() {
         </div>
       </section>
 
+      {/* ── CTA ── */}
       <section className="bg-orange-500 py-16 text-white sm:py-24">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <Reveal y={44}>
@@ -576,7 +645,6 @@ export function HSECompliance() {
             <h2 className="mb-6 text-3xl font-extrabold leading-tight sm:text-4xl md:text-6xl">
               Move cargo with safety, discipline, and compliance.
             </h2>
-
             <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
               <Link
                 to="/quote"
@@ -584,7 +652,6 @@ export function HSECompliance() {
               >
                 Book Shipment <ArrowRight className="h-5 w-5" />
               </Link>
-
               <Link
                 to="/git-insurance"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/30 bg-white/10 px-8 py-4 font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/20 sm:w-auto sm:hover:scale-105"
@@ -595,6 +662,8 @@ export function HSECompliance() {
           </Reveal>
         </div>
       </section>
+
+      <style>{`@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}`}</style>
     </div>
   );
 }

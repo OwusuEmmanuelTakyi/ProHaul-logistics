@@ -280,8 +280,8 @@ const IMGS = {
   tanker: "https://i.pinimg.com/736x/14/d7/30/14d730be90a9f0e5d4259d47ad6bc8e5.jpg",
   fertilizer: "https://i.pinimg.com/736x/20/29/09/202909f3f401d1d0039be58392c39f37.jpg",
   scale: "https://i.pinimg.com/1200x/56/ad/7f/56ad7f8d6b01e974aec8f196f7cda26f.jpg",
-  safety2: "https://i.pinimg.com/736x/ec/2f/71/ec2f71e3f43af9685bb2bc3d892bfe9a.jpg",
-  safety3: "https://i.pinimg.com/736x/9a/36/f8/9a36f8145a9264848a511f35ba1d43f8.jpg",
+  safety2: "https://i.pinimg.com/736x/8f/68/cd/8f68cdd145706fe2ee55449b0338449f.jpg",
+  safety3: "https://i.pinimg.com/736x/8f/68/cd/8f68cdd145706fe2ee55449b0338449f.jpg",
 };
 
 /* ══════════════════════════════════════════
