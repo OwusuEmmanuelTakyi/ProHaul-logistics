@@ -148,7 +148,7 @@ function Img({ src, alt, className = "" }: { src: string; alt: string; className
 ══════════════════════════════════════════ */
 const IMGS = {
   agriHero: "https://i.pinimg.com/1200x/10/c1/bc/10c1bc92ee54ea02c310b4d144dcd1e8.jpg",
-  fuelHero: "https://i.pinimg.com/1200x/90/ce/b3/90ceb33207a97dbac732742b7650099f.jpg",
+  fuelHero: "https://i.pinimg.com/1200x/23/cf/9a/23cf9a8a0bb3e1ce30940f805e40fe8f.jpg",
   cementHero: "https://i.pinimg.com/1200x/53/49/a2/5349a2f5ce5b36a4b8ba3132d4ee60c2.jpg",
   fertilizerHero: "https://i.pinimg.com/1200x/50/80/fb/5080fbba66841898078f6bf701f3339b.jpg",
   containerHero: "https://i.pinimg.com/1200x/6d/67/56/6d675621a2eca1098e7631e4ce74c1c8.jpg",
