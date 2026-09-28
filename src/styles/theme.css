@@ -71,7 +71,7 @@
   --chart-5: oklch(0.645 0.246 16.439);
   --sidebar: #1a1f26;
   --sidebar-foreground: #e5e7eb;
-  --sidebar-primary: #f97316;
+  --sidebar-primary: #e00000;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #374151;
   --sidebar-accent-foreground: #f3f4f6;
@@ -80,6 +80,17 @@
 }
 
 @theme inline {
+  --color-brand-50: #fff1f1;
+  --color-brand-100: #ffdfdf;
+  --color-brand-200: #ffc4c4;
+  --color-brand-300: #ff9a9a;
+  --color-brand-400: #f85555;
+  --color-brand-500: #e00000;
+  --color-brand-600: #bf0000;
+  --color-brand-700: #9e0000;
+  --color-brand-800: #820404;
+  --color-brand-900: #6b0a0a;
+  --color-brand-950: #3d0000;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

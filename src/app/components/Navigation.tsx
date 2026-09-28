@@ -77,8 +77,8 @@ export function Navigation() {
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `group relative flex items-center gap-0.5 rounded-xl px-3 py-2 text-[13px] font-semibold tracking-[0.01em] transition-colors duration-200 xl:px-4 ${
       isActive
-        ? "text-orange-500"
-        : "text-slate-700 hover:text-orange-500 dark:text-slate-200 dark:hover:text-orange-400"
+        ? "text-brand-500"
+        : "text-slate-700 hover:text-brand-500 dark:text-slate-200 dark:hover:text-brand-400"
     }`;
 
   return (
@@ -99,7 +99,7 @@ export function Navigation() {
             : "border border-slate-100 shadow-md shadow-black/10 dark:border-white/10"
         }`}
       >
-        <div className="flex h-[72px] items-center px-4 sm:h-[78px] sm:px-6">
+        <div className="flex h-[80px] items-center px-4 sm:h-[88px] sm:px-6">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.03 }}
@@ -108,14 +108,14 @@ export function Navigation() {
           >
             <Link to="/" onClick={closeMobileMenu} className="flex items-center">
               <motion.div
-                className="flex h-14 flex-shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white sm:h-[60px]"
+                className="flex h-[68px] flex-shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white sm:h-[76px]"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
                 <img
                   src={logo}
                   alt="ProHaul"
-                  className="h-full w-auto object-contain"
+                  className="h-full w-auto scale-110 object-contain"
                 />
               </motion.div>
             </Link>
@@ -135,7 +135,7 @@ export function Navigation() {
                     <>
                       {item.name}
                       <span
-                        className={`absolute bottom-1 left-3 right-3 h-[2px] rounded-full bg-orange-500 transition-all duration-300 xl:left-4 xl:right-4 ${
+                        className={`absolute bottom-1 left-3 right-3 h-[2px] rounded-full bg-gradient-to-r from-brand-500 to-brand-700 transition-all duration-300 xl:left-4 xl:right-4 ${
                           isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
                         }`}
                       />
@@ -160,8 +160,8 @@ export function Navigation() {
                 aria-expanded={servicesOpen}
                 className={`group relative flex items-center gap-1 rounded-xl px-3 py-2 text-[13px] font-semibold tracking-[0.01em] transition-colors duration-200 xl:px-4 ${
                   servicesOpen
-                    ? "text-orange-500"
-                    : "text-slate-700 hover:text-orange-500 dark:text-slate-200 dark:hover:text-orange-400"
+                    ? "text-brand-500"
+                    : "text-slate-700 hover:text-brand-500 dark:text-slate-200 dark:hover:text-brand-400"
                 }`}
               >
                 Services
@@ -171,7 +171,7 @@ export function Navigation() {
                   }`}
                 />
                 <span
-                  className={`absolute bottom-1 left-3 right-3 h-[2px] rounded-full bg-orange-500 transition-all duration-300 xl:left-4 xl:right-4 ${
+                  className={`absolute bottom-1 left-3 right-3 h-[2px] rounded-full bg-gradient-to-r from-brand-500 to-brand-700 transition-all duration-300 xl:left-4 xl:right-4 ${
                     servicesOpen ? "opacity-100" : "opacity-0 group-hover:opacity-100"
                   }`}
                 />
@@ -194,10 +194,10 @@ export function Navigation() {
                           <Link
                             to="/services"
                             onClick={() => setServicesOpen(false)}
-                            className="group mb-5 inline-flex items-center gap-2 text-xl font-black text-slate-900 transition-colors hover:text-orange-500 dark:text-white"
+                            className="group mb-5 inline-flex items-center gap-2 text-xl font-black text-slate-900 transition-colors hover:text-brand-500 dark:text-white"
                           >
                             All Services
-                            <ArrowRight className="h-5 w-5 text-orange-500 transition-transform group-hover:translate-x-1" />
+                            <ArrowRight className="h-5 w-5 text-brand-500 transition-transform group-hover:translate-x-1" />
                           </Link>
 
                           <div className="divide-y divide-slate-100 dark:divide-white/10">
@@ -216,12 +216,12 @@ export function Navigation() {
                                     onClick={() => setServicesOpen(false)}
                                     className="group flex items-start gap-3 py-3 transition-colors"
                                   >
-                                    <div className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-orange-50 transition-colors group-hover:bg-orange-500 dark:bg-orange-500/10">
-                                      <Icon className="h-4 w-4 text-orange-500 transition-colors group-hover:text-white" />
+                                    <div className="mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-brand-50 transition-colors group-hover:bg-brand-500 dark:bg-brand-500/10">
+                                      <Icon className="h-4 w-4 text-brand-500 transition-colors group-hover:text-white" />
                                     </div>
 
                                     <div className="min-w-0">
-                                      <p className="text-sm font-bold text-slate-900 transition-colors group-hover:text-orange-500 dark:text-white">
+                                      <p className="text-sm font-bold text-slate-900 transition-colors group-hover:text-brand-500 dark:text-white">
                                         {service.name}
                                       </p>
                                     </div>
@@ -242,7 +242,7 @@ export function Navigation() {
                           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/55 to-slate-950/10" />
 
                           <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-7 text-center text-white">
-                            <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-orange-300">
+                            <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-brand-300">
                               ProHaul
                             </p>
 
@@ -253,7 +253,7 @@ export function Navigation() {
                             <Link
                               to="/quote"
                               onClick={() => setServicesOpen(false)}
-                              className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-5 py-2.5 text-xs font-black uppercase tracking-wider text-white backdrop-blur-sm transition-all hover:border-orange-500 hover:bg-orange-500"
+                              className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-5 py-2.5 text-xs font-black uppercase tracking-wider text-white backdrop-blur-sm transition-all hover:border-brand-500 hover:bg-brand-500"
                             >
                               Book Shipment <ArrowRight className="h-3.5 w-3.5" />
                             </Link>
@@ -278,7 +278,7 @@ export function Navigation() {
                     <>
                       {item.name}
                       <span
-                        className={`absolute bottom-1 left-3 right-3 h-[2px] rounded-full bg-orange-500 transition-all duration-300 xl:left-4 xl:right-4 ${
+                        className={`absolute bottom-1 left-3 right-3 h-[2px] rounded-full bg-gradient-to-r from-brand-500 to-brand-700 transition-all duration-300 xl:left-4 xl:right-4 ${
                           isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
                         }`}
                       />
@@ -327,7 +327,7 @@ export function Navigation() {
             >
               <Link
                 to="/quote"
-                className="inline-flex items-center gap-2 rounded-full bg-orange-500 px-5 py-2.5 text-[13px] font-black uppercase tracking-wide text-white shadow-lg shadow-orange-600/25 transition-all hover:bg-orange-600 hover:shadow-orange-600/40"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-700 px-5 py-2.5 text-[13px] font-black uppercase tracking-wide text-white shadow-lg shadow-brand-600/25 transition-all hover:brightness-110 hover:shadow-brand-600/40"
               >
                 <PackageCheck className="h-3.5 w-3.5" />
                 Book Shipment
@@ -402,8 +402,8 @@ export function Navigation() {
                   className={({ isActive }) =>
                     `block rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors ${
                       isActive
-                        ? "bg-orange-50 text-orange-500 dark:bg-orange-500/10"
-                        : "text-slate-700 hover:bg-slate-50 hover:text-orange-500 dark:text-slate-300 dark:hover:bg-white/5"
+                        ? "bg-brand-50 text-brand-500 dark:bg-brand-500/10"
+                        : "text-slate-700 hover:bg-slate-50 hover:text-brand-500 dark:text-slate-300 dark:hover:bg-white/5"
                     }`
                   }
                   onClick={closeMobileMenu}
@@ -416,8 +416,8 @@ export function Navigation() {
                   className={({ isActive }) =>
                     `block rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors ${
                       isActive
-                        ? "bg-orange-50 text-orange-500 dark:bg-orange-500/10"
-                        : "text-slate-700 hover:bg-slate-50 hover:text-orange-500 dark:text-slate-300 dark:hover:bg-white/5"
+                        ? "bg-brand-50 text-brand-500 dark:bg-brand-500/10"
+                        : "text-slate-700 hover:bg-slate-50 hover:text-brand-500 dark:text-slate-300 dark:hover:bg-white/5"
                     }`
                   }
                   onClick={closeMobileMenu}
@@ -452,7 +452,7 @@ export function Navigation() {
                           <Link
                             to="/services"
                             onClick={closeMobileMenu}
-                            className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-black text-orange-500 transition-colors hover:bg-white dark:hover:bg-white/10"
+                            className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-black text-brand-500 transition-colors hover:bg-white dark:hover:bg-white/10"
                           >
                             All Services <ArrowRight className="h-3.5 w-3.5" />
                           </Link>
@@ -465,9 +465,9 @@ export function Navigation() {
                                 key={service.path}
                                 to={service.path}
                                 onClick={closeMobileMenu}
-                                className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-slate-600 transition-colors hover:bg-white hover:text-orange-500 dark:text-slate-400 dark:hover:bg-white/10"
+                                className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-slate-600 transition-colors hover:bg-white hover:text-brand-500 dark:text-slate-400 dark:hover:bg-white/10"
                               >
-                                <Icon className="h-4 w-4 flex-shrink-0 text-orange-500" />
+                                <Icon className="h-4 w-4 flex-shrink-0 text-brand-500" />
                                 <span className="font-semibold">{service.name}</span>
                               </Link>
                             );
@@ -485,8 +485,8 @@ export function Navigation() {
                     className={({ isActive }) =>
                       `block rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors ${
                         isActive
-                          ? "bg-orange-50 text-orange-500 dark:bg-orange-500/10"
-                          : "text-slate-700 hover:bg-slate-50 hover:text-orange-500 dark:text-slate-300 dark:hover:bg-white/5"
+                          ? "bg-brand-50 text-brand-500 dark:bg-brand-500/10"
+                          : "text-slate-700 hover:bg-slate-50 hover:text-brand-500 dark:text-slate-300 dark:hover:bg-white/5"
                       }`
                     }
                     onClick={closeMobileMenu}
@@ -499,7 +499,7 @@ export function Navigation() {
                   <Link
                     to="/quote"
                     onClick={closeMobileMenu}
-                    className="flex w-full items-center justify-center gap-2 rounded-full bg-orange-500 px-4 py-3 text-sm font-black uppercase tracking-wide text-white shadow-lg shadow-orange-500/25 transition-colors hover:bg-orange-600"
+                    className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-700 px-4 py-3 text-sm font-black uppercase tracking-wide text-white shadow-lg shadow-brand-500/25 transition-colors hover:brightness-110"
                   >
                     <PackageCheck className="h-4 w-4" />
                     Book Shipment

@@ -521,12 +521,12 @@ export function Contact() {
               initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.88 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-7 inline-flex items-center gap-3 rounded-2xl border border-orange-500/30 bg-orange-500/12 px-4 py-3 backdrop-blur-sm"
+              className="mb-7 inline-flex items-center gap-3 rounded-2xl border border-brand-500/30 bg-brand-500/12 px-4 py-3 backdrop-blur-sm"
             >
-              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500">
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-brand-500 to-brand-700">
                 <Send className="h-5 w-5 text-white" />
               </div>
-              <span className="text-sm font-semibold text-orange-200">Get in Touch</span>
+              <span className="text-sm font-semibold text-brand-200">Get in Touch</span>
             </motion.div>
 
             {/* Line 1 — white */}
@@ -539,13 +539,13 @@ export function Contact() {
               />
             </div>
 
-            {/* Line 2 — orange gradient */}
+            {/* Line 2 — red gradient */}
             <div className="min-h-[1.1em] text-[clamp(2.6rem,10vw,5rem)] font-extrabold leading-[0.97] tracking-tight mb-6">
               <Typewriter
                 text={LINE2_TEXT}
                 startDelay={LINE2_START}
                 typeSpeed={TYPE_SPEED}
-                className="inline text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-orange-500"
+                className="inline text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-brand-500"
               />
             </div>
 
@@ -569,7 +569,7 @@ export function Contact() {
             >
               <a
                 href="tel:+233 (0) 244 136 797"
-                className="inline-flex items-center gap-2 rounded-xl bg-orange-500 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-orange-600/30 transition-all hover:bg-orange-600 hover:scale-[1.02]"
+                className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-brand-500 to-brand-700 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand-600/30 transition-all hover:brightness-110 hover:scale-[1.02]"
               >
                 <Phone className="h-4 w-4" /> Call Us Now
               </a>
@@ -608,13 +608,13 @@ export function Contact() {
               <Reveal key={item.title} delay={index * 0.09} y={28}>
                 <a
                   href={item.href}
-                  className="group flex flex-col items-center text-center h-full rounded-2xl border border-border bg-card p-6 shadow-2xl transition-all duration-300 hover:border-orange-400/40 hover:shadow-xl sm:hover:-translate-y-1"
+                  className="group flex flex-col items-center text-center h-full rounded-2xl border border-border bg-card p-6 shadow-2xl transition-all duration-300 hover:border-brand-400/40 hover:shadow-xl sm:hover:-translate-y-1"
                 >
-                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/10 transition-all group-hover:bg-orange-500">
-                    <Icon className="h-6 w-6 text-orange-500 transition-colors group-hover:text-white" />
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-500/10 transition-all group-hover:bg-brand-500">
+                    <Icon className="h-6 w-6 text-brand-500 transition-colors group-hover:text-white" />
                   </div>
                   <h3 className="mb-2 text-base font-bold text-foreground">{item.title}</h3>
-                  <p className="font-bold text-orange-500 text-sm">{item.value}</p>
+                  <p className="font-bold text-brand-500 text-sm">{item.value}</p>
                 </a>
               </Reveal>
             );
@@ -630,7 +630,7 @@ export function Contact() {
             {/* Form */}
             <RevealX x={-64}>
               <div className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xl">
-                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-orange-500">Request a Quote</p>
+                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-500">Request a Quote</p>
                 <h2 className="mb-3 text-2xl md:text-3xl font-extrabold text-foreground leading-tight">Send us your haulage details.</h2>
                 <p className="mb-7 text-sm text-muted-foreground leading-relaxed">
                   Tell us what you need moved — cargo type, pickup point, destination, and timeline. We'll respond promptly.
@@ -662,21 +662,21 @@ export function Contact() {
                     >
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label htmlFor="name" className="block mb-1.5 text-xs font-semibold text-foreground">Full Name <span className="text-orange-500">*</span></label>
-                          <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required placeholder="John Doe" className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 placeholder:text-muted-foreground/60" />
+                          <label htmlFor="name" className="block mb-1.5 text-xs font-semibold text-foreground">Full Name <span className="text-brand-500">*</span></label>
+                          <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required placeholder="John Doe" className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-all focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 placeholder:text-muted-foreground/60" />
                         </div>
                         <div>
                           <label htmlFor="phone" className="block mb-1.5 text-xs font-semibold text-foreground">Phone Number</label>
-                          <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} placeholder="+233 XX XXX XXXX" className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 placeholder:text-muted-foreground/60" />
+                          <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} placeholder="+233 XX XXX XXXX" className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-all focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 placeholder:text-muted-foreground/60" />
                         </div>
                       </div>
                       <div>
-                        <label htmlFor="email" className="block mb-1.5 text-xs font-semibold text-foreground">Email Address <span className="text-orange-500">*</span></label>
-                        <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required placeholder="john@example.com" className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 placeholder:text-muted-foreground/60" />
+                        <label htmlFor="email" className="block mb-1.5 text-xs font-semibold text-foreground">Email Address <span className="text-brand-500">*</span></label>
+                        <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required placeholder="john@example.com" className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-all focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 placeholder:text-muted-foreground/60" />
                       </div>
                       <div>
-                        <label htmlFor="service" className="block mb-1.5 text-xs font-semibold text-foreground">Service of Interest <span className="text-orange-500">*</span></label>
-                        <select id="service" name="service" value={formData.service} onChange={handleChange} required className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20">
+                        <label htmlFor="service" className="block mb-1.5 text-xs font-semibold text-foreground">Service of Interest <span className="text-brand-500">*</span></label>
+                        <select id="service" name="service" value={formData.service} onChange={handleChange} required className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-all focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20">
                           <option value="">Select a service</option>
                           {serviceOptions.map((s) => (
                             <option key={s.value} value={s.value}>{s.label}</option>
@@ -685,10 +685,10 @@ export function Contact() {
                         </select>
                       </div>
                       <div>
-                        <label htmlFor="message" className="block mb-1.5 text-xs font-semibold text-foreground">Message <span className="text-orange-500">*</span></label>
-                        <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} placeholder="Cargo type, pickup location, destination, volume, and timeline..." className="w-full resize-none rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 placeholder:text-muted-foreground/60" />
+                        <label htmlFor="message" className="block mb-1.5 text-xs font-semibold text-foreground">Message <span className="text-brand-500">*</span></label>
+                        <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={5} placeholder="Cargo type, pickup location, destination, volume, and timeline..." className="w-full resize-none rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-all focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 placeholder:text-muted-foreground/60" />
                       </div>
-                      <button type="submit" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-orange-500 px-8 py-4 text-sm font-bold text-white shadow-lg shadow-orange-600/25 transition-all hover:bg-orange-600 hover:scale-[1.01] active:scale-[0.99]">
+                      <button type="submit" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-500 to-brand-700 px-8 py-4 text-sm font-bold text-white shadow-lg shadow-brand-600/25 transition-all hover:brightness-110 hover:scale-[1.01] active:scale-[0.99]">
                         <Send className="h-4 w-4" /> Send Message
                       </button>
                     </motion.form>
@@ -711,10 +711,10 @@ export function Contact() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: isMobile ? 0 : i * 0.05 }}
-                        className="flex items-center gap-3 rounded-2xl border border-border bg-card p-3.5 shadow-sm hover:border-orange-300/50 hover:shadow-md transition-all"
+                        className="flex items-center gap-3 rounded-2xl border border-border bg-card p-3.5 shadow-sm hover:border-brand-300/50 hover:shadow-md transition-all"
                       >
-                        <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10">
-                          <Icon className="h-4.5 w-4.5 text-orange-500" />
+                        <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-brand-500/10">
+                          <Icon className="h-4.5 w-4.5 text-brand-500" />
                         </div>
                         <span className="text-sm font-semibold text-foreground">{service.label}</span>
                       </motion.div>
@@ -732,14 +732,14 @@ export function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
             <Reveal className="lg:col-span-2" y={36}>
-              <div className="h-full rounded-3xl bg-gradient-to-br from-orange-500 to-orange-600 p-6 sm:p-8 text-white shadow-xl shadow-orange-500/25">
-                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-orange-100">Why Choose ProHaul?</p>
+              <div className="h-full rounded-3xl bg-gradient-to-br from-brand-500 to-brand-600 p-6 sm:p-8 text-white shadow-xl shadow-brand-500/25">
+                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-100">Why Choose ProHaul?</p>
                 <h2 className="mb-6 text-2xl md:text-3xl font-extrabold leading-tight">A trusted logistics partner for business continuity.</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {whyChoose.map((item) => (
                     <div key={item} className="flex items-start gap-3 rounded-2xl bg-white/10 p-4 backdrop-blur-sm">
                       <CheckCircle2 className="mt-0.5 h-4.5 w-4.5 flex-shrink-0" />
-                      <span className="text-sm font-medium text-orange-50 leading-snug">{item}</span>
+                      <span className="text-sm font-medium text-brand-50 leading-snug">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -748,8 +748,8 @@ export function Contact() {
 
             <Reveal className="lg:col-span-1" y={36} delay={0.1}>
               <div className="h-full rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-sm">
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500/10">
-                  <Clock className="h-6 w-6 text-orange-500" />
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-500/10">
+                  <Clock className="h-6 w-6 text-brand-500" />
                 </div>
                 <h3 className="mb-5 text-xl font-extrabold text-foreground">Business Hours</h3>
                 <div className="space-y-4">
@@ -777,7 +777,7 @@ export function Contact() {
       <section id="coverage-detail" className="py-16 sm:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center max-w-3xl mx-auto mb-12">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-orange-500">Coverage & Operational Strength</p>
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-brand-500">Coverage & Operational Strength</p>
             <h2 className="mb-4 text-3xl md:text-5xl font-extrabold text-foreground leading-tight">Nationwide strength with regional reach.</h2>
             <p className="text-muted-foreground leading-relaxed">
               ProHaul supports cargo movement across Ghana and key West African trade corridors, with access to ports, industrial zones, farms, warehouses, markets, and commercial hubs.
@@ -793,9 +793,9 @@ export function Contact() {
               const Icon = item.icon;
               return (
                 <Reveal key={item.title} delay={index * 0.08} y={40}>
-                  <div className="group h-full rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-orange-400/40 hover:shadow-xl sm:hover:-translate-y-2">
-                    <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-orange-500/10 transition-all group-hover:bg-orange-500">
-                      <Icon className="h-5 w-5 text-orange-500 transition-colors group-hover:text-white" />
+                  <div className="group h-full rounded-2xl border border-border bg-card p-6 shadow-sm transition-all hover:border-brand-400/40 hover:shadow-xl sm:hover:-translate-y-2">
+                    <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-500/10 transition-all group-hover:bg-brand-500">
+                      <Icon className="h-5 w-5 text-brand-500 transition-colors group-hover:text-white" />
                     </div>
                     <h3 className="mb-3 font-bold text-foreground">{item.title}</h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">{item.text}</p>
@@ -811,12 +811,12 @@ export function Contact() {
       <section className="relative overflow-hidden py-24 sm:py-32 text-white">
         <div className="absolute inset-0 z-0">
           <Img src={IMGS.road} alt="ProHaul route network" className="h-full w-full" />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/96 via-slate-950/88 to-orange-700/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/96 via-slate-950/88 to-brand-700/80" />
         </div>
         <div className="absolute inset-0 z-0" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)", backgroundSize: "44px 44px" }} />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Reveal y={40}>
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-orange-300">Let's Move Together</p>
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-brand-300">Let's Move Together</p>
             <h2 className="mb-6 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight max-w-4xl mx-auto">
               We don't just move goods — we keep businesses moving.
             </h2>
@@ -824,7 +824,7 @@ export function Contact() {
               Partner with ProHaul for reliable, safe, and efficient haulage solutions across Ghana and West Africa.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
-              <a href="tel:+233XXXXXXXXX" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-orange-500 px-8 py-4 text-sm font-bold text-white shadow-xl shadow-orange-600/30 transition-all hover:bg-orange-600 hover:scale-105">
+              <a href="tel:+233XXXXXXXXX" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-500 to-brand-700 px-8 py-4 text-sm font-bold text-white shadow-xl shadow-brand-600/30 transition-all hover:brightness-110 hover:scale-105">
                 <Phone className="h-4 w-4" /> Call Us
               </a>
               <a href="mailto:info@prohaul.com" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/8 px-8 py-4 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/18 hover:scale-105">

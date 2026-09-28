@@ -189,12 +189,12 @@ export function ComplianceRegulatory() {
               initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.55, delay: 0.12 }}
-              className="mb-6 inline-flex max-w-full items-center gap-3 rounded-2xl border border-orange-500/30 bg-orange-500/15 px-4 py-3 backdrop-blur-sm"
+              className="mb-6 inline-flex max-w-full items-center gap-3 rounded-2xl border border-brand-500/30 bg-brand-500/15 px-4 py-3 backdrop-blur-sm"
             >
-              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500">
+              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-brand-500 to-brand-700">
                 <ShieldCheck className="h-6 w-6 text-white" />
               </div>
-              <span className="text-sm font-semibold text-orange-200">Compliance & Regulatory Standards</span>
+              <span className="text-sm font-semibold text-brand-200">Compliance & Regulatory Standards</span>
             </motion.div>
 
             <motion.h1
@@ -223,7 +223,7 @@ export function ComplianceRegulatory() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center">
             <RevealX x={-70}>
-              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">Operational Strength</p>
+              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Operational Strength</p>
               <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight text-foreground">Track Record & Experience</h2>
               <p className="mb-5 text-muted-foreground leading-relaxed">
                 ProHaul has established a strong and reliable operational track record supporting key sectors of the economy, including petroleum distribution, agriculture, and construction. Our experience spans the transportation of both bulk and packaged cargo, delivered with consistency, efficiency, and adherence to industry standards.
@@ -238,10 +238,10 @@ export function ComplianceRegulatory() {
                 <div className="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
                   <Img src={IMGS.road} alt="Track record and route experience" className="h-full w-full sm:hover:scale-105 transition-transform duration-700" />
                 </div>
-                <div className="absolute left-3 bottom-3 sm:-left-6 sm:-bottom-6 rounded-2xl bg-orange-500 p-5 sm:p-6 text-white shadow-xl shadow-orange-500/30">
+                <div className="absolute left-3 bottom-3 sm:-left-6 sm:-bottom-6 rounded-2xl bg-gradient-to-r from-brand-500 to-brand-700 p-5 sm:p-6 text-white shadow-xl shadow-brand-500/30">
                   <BadgeCheck className="h-8 w-8 mb-3" />
                   <p className="text-xl sm:text-2xl font-extrabold">Reliable Operations</p>
-                  <p className="text-xs sm:text-sm text-orange-100">Ghana & West Africa</p>
+                  <p className="text-xs sm:text-sm text-brand-100">Ghana & West Africa</p>
                 </div>
               </div>
             </RevealX>
@@ -253,7 +253,7 @@ export function ComplianceRegulatory() {
       <section className="py-16 sm:py-24 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">Experience Highlights</p>
+            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Experience Highlights</p>
             <h2 className="mb-4 text-3xl md:text-5xl font-extrabold text-foreground">Proven capacity across routes, timelines, and cargo types.</h2>
           </Reveal>
 
@@ -262,9 +262,9 @@ export function ComplianceRegulatory() {
               const Icon = item.icon;
               return (
                 <Reveal key={item.title} delay={index * 0.08} y={42}>
-                  <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-xl sm:hover:-translate-y-2">
-                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500/10">
-                      <Icon className="h-6 w-6 text-orange-500" />
+                  <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-brand-400/50 hover:shadow-xl sm:hover:-translate-y-2">
+                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-500/10">
+                      <Icon className="h-6 w-6 text-brand-500" />
                     </div>
                     <h3 className="mb-3 text-xl font-extrabold text-foreground">{item.title}</h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">{item.text}</p>
@@ -281,7 +281,7 @@ export function ComplianceRegulatory() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-start">
             <RevealX x={-70} className="lg:sticky lg:top-28">
-              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">Compliance Framework</p>
+              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Compliance Framework</p>
               <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight text-foreground">Compliance & Regulatory Standards</h2>
               <div className="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
                 <Img src={IMGS.compliance} alt="Compliance and regulatory operations" className="h-full w-full sm:hover:scale-105 transition-transform duration-700" />
@@ -302,10 +302,10 @@ export function ComplianceRegulatory() {
 
               <Reveal y={36} delay={0.08}>
                 <div className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-sm">
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500/10">
-                    <Truck className="h-6 w-6 text-orange-500" />
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-500/10">
+                    <Truck className="h-6 w-6 text-brand-500" />
                   </div>
-                  <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">Compliance Areas</p>
+                  <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Compliance Areas</p>
                   <h3 className="mb-3 text-2xl font-extrabold text-foreground">Ghanaian Transport & Safety Regulations</h3>
                   <p className="text-muted-foreground leading-relaxed">
                     We comply with all national transport and road safety requirements, including vehicle licensing, roadworthiness standards, and operational guidelines enforced by relevant authorities such as the Driver and Vehicle Licensing Authority (DVLA) and other statutory bodies.
@@ -315,8 +315,8 @@ export function ComplianceRegulatory() {
 
               <Reveal y={36} delay={0.16}>
                 <div className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-sm">
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500/10">
-                    <ClipboardCheck className="h-6 w-6 text-orange-500" />
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-500/10">
+                    <ClipboardCheck className="h-6 w-6 text-brand-500" />
                   </div>
                   <h3 className="mb-3 text-2xl font-extrabold text-foreground">Petroleum Transportation Standards</h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -341,7 +341,7 @@ export function ComplianceRegulatory() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <RevealX x={-70}>
-              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-400">Cargo Protection</p>
+              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-400">Cargo Protection</p>
               <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight">Cargo Security & Insurance</h2>
               <p className="mb-5 text-gray-300 leading-relaxed">
                 At ProHaul, we recognize that the security of our clients’ cargo is paramount. As part of our commitment to risk management and service reliability, all cargo transported under our operations is covered by a comprehensive Goods in Transit (GIT) insurance policy.
@@ -350,10 +350,10 @@ export function ComplianceRegulatory() {
                 This policy is underwritten in partnership with one of Ghana’s leading insurance providers, ensuring that our clients benefit from strong financial backing and credible claims support.
               </p>
 
-              <div className="rounded-3xl bg-orange-500 p-6 sm:p-8 text-white shadow-2xl shadow-orange-500/20">
+              <div className="rounded-3xl bg-gradient-to-r from-brand-500 to-brand-700 p-6 sm:p-8 text-white shadow-2xl shadow-brand-500/20">
                 <LockKeyhole className="mb-5 h-10 w-10" />
                 <h3 className="mb-3 text-2xl sm:text-3xl font-extrabold">Goods in Transit Insurance</h3>
-                <p className="text-orange-50 leading-relaxed">
+                <p className="text-brand-50 leading-relaxed">
                   With ProHaul, clients are assured not only of efficient delivery, but also of secured and protected cargo throughout the transportation lifecycle.
                 </p>
               </div>
@@ -370,7 +370,7 @@ export function ComplianceRegulatory() {
                   <div className="space-y-4">
                     {clientBenefits.map((benefit) => (
                       <div key={benefit} className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-orange-400" />
+                        <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand-400" />
                         <span className="text-sm sm:text-base text-gray-300">{benefit}</span>
                       </div>
                     ))}
@@ -389,11 +389,11 @@ export function ComplianceRegulatory() {
       <section className="relative overflow-hidden py-20 sm:py-28 text-white">
         <div className="absolute inset-0 z-0">
           <Img src={IMGS.road} alt="ProHaul route network" className="h-full w-full" />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/88 to-orange-700/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/88 to-brand-700/85" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Reveal y={44}>
-            <p className="mb-4 text-sm font-bold uppercase tracking-widest text-orange-300">Compliance-Driven Haulage</p>
+            <p className="mb-4 text-sm font-bold uppercase tracking-widest text-brand-300">Compliance-Driven Haulage</p>
             <h2 className="mb-6 text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight">
               Move cargo with confidence, transparency, and protection.
             </h2>
@@ -403,7 +403,7 @@ export function ComplianceRegulatory() {
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
               <Link
                 to="/quote"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-orange-500 px-8 py-4 font-bold text-white shadow-xl shadow-orange-600/30 transition-all hover:bg-orange-600 sm:hover:scale-105"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-brand-700 px-8 py-4 font-bold text-white shadow-xl shadow-brand-600/30 transition-all hover:brightness-110 sm:hover:scale-105"
               >
                 Request a Quote <ArrowRight className="h-5 w-5" />
               </Link>

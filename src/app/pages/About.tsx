@@ -301,9 +301,9 @@ export function About() {
               initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.55, delay: 0.12 }}
-              className="inline-flex max-w-full items-center gap-2 rounded-full border border-orange-500/40 bg-orange-500/15 px-3 sm:px-4 py-1.5 text-[11px] sm:text-sm text-orange-300 mb-6"
+              className="inline-flex max-w-full items-center gap-2 rounded-full border border-brand-500/40 bg-brand-500/15 px-3 sm:px-4 py-1.5 text-[11px] sm:text-sm text-brand-300 mb-6"
             >
-              <span className="h-2 w-2 rounded-full bg-orange-400 animate-pulse flex-shrink-0" />
+              <span className="h-2 w-2 rounded-full bg-brand-400 animate-pulse flex-shrink-0" />
               <span className="truncate sm:whitespace-normal">Ghana-Based Haulage Company</span>
             </motion.div>
 
@@ -317,13 +317,13 @@ export function About() {
               />
             </div>
 
-            {/* Line 2 — "ProHaul" orange gradient */}
+            {/* Line 2 — "ProHaul" red gradient */}
             <div className="min-h-[1.1em] text-[clamp(2.8rem,13vw,5rem)] md:text-6xl lg:text-7xl font-extrabold leading-[0.98] tracking-tight mb-6">
               <Typewriter
                 text={LINE2_TEXT}
                 startDelay={LINE2_START}
                 typeSpeed={TYPE_SPEED}
-                className="inline text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600"
+                className="inline text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-600"
               />
             </div>
 
@@ -351,7 +351,7 @@ export function About() {
             >
               <Link
                 to="/contact"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-orange-500 px-7 py-4 font-bold text-white shadow-xl shadow-orange-600/30 transition-all hover:bg-orange-600 sm:hover:scale-105"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-brand-500 to-brand-700 px-7 py-4 font-bold text-white shadow-xl shadow-brand-600/30 transition-all hover:brightness-110 sm:hover:scale-105"
               >
                 Work With Us <ArrowRight className="h-5 w-5" />
               </Link>
@@ -375,7 +375,7 @@ export function About() {
               return (
                 <Reveal key={stat.label} delay={index * 0.08} y={30}>
                   <div className="border-b border-r border-border p-5 sm:p-7 last:border-r-0 lg:border-b-0">
-                    <Icon className="mb-4 h-7 w-7 text-orange-500" />
+                    <Icon className="mb-4 h-7 w-7 text-brand-500" />
                     <div className="text-xl sm:text-1xl font-extrabold text-foreground">{stat.value}</div>
                     <p className="mt-1 text-xs sm:text-sm text-muted-foreground leading-tight">{stat.label}</p>
                   </div>
@@ -395,14 +395,14 @@ export function About() {
                 <div className="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
                   <Img src={IMGS.fleet} alt="Modern ProHaul fleet" className="h-full w-full sm:hover:scale-105 transition-transform duration-700" />
                 </div>
-                <div className="absolute left-3 bottom-3 sm:-left-6 sm:-bottom-6 rounded-2xl bg-orange-500 p-4 sm:p-6 text-white shadow-xl shadow-orange-500/30">
+                <div className="absolute left-3 bottom-3 sm:-left-6 sm:-bottom-6 rounded-2xl bg-gradient-to-r from-brand-500 to-brand-700 p-4 sm:p-6 text-white shadow-xl shadow-brand-500/30">
                   <Truck className="h-7 w-7 mb-3 opacity-90" />
                   <p className="text-2xl sm:text-3xl font-extrabold">Built</p>
-                  <p className="text-xs sm:text-sm text-orange-100">to move cargo at scale</p>
+                  <p className="text-xs sm:text-sm text-brand-100">to move cargo at scale</p>
                 </div>
                 <div className="absolute right-3 top-3 sm:-right-5 sm:-top-5 rounded-2xl border border-white/10 bg-slate-950 p-4 text-white shadow-xl">
                   <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold">
-                    <Navigation className="h-4 w-4 text-orange-400" />
+                    <Navigation className="h-4 w-4 text-brand-400" />
                     Ghana + West Africa
                   </div>
                 </div>
@@ -410,7 +410,7 @@ export function About() {
             </RevealX>
 
             <RevealX x={70}>
-              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">Who We Are</p>
+              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Who We Are</p>
               <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight text-foreground">
                 Dependable transport for critical sectors of the economy.
               </h2>
@@ -431,7 +431,7 @@ export function About() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {["Modern European truck brands", "Experienced and trained drivers", "Regional route knowledge", "Secure and timely delivery"].map((item) => (
                   <div key={item} className="flex items-center gap-2 rounded-lg border border-border bg-muted/50 p-3 text-sm font-medium">
-                    <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-orange-500" />
+                    <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-brand-500" />
                     {item}
                   </div>
                 ))}
@@ -445,7 +445,7 @@ export function About() {
       <section className="py-16 sm:py-24 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">Our Foundation</p>
+            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Our Foundation</p>
             <h2 className="mb-4 text-3xl md:text-5xl font-extrabold text-foreground">
               Driven by safety, reliability, and operational discipline.
             </h2>
@@ -456,9 +456,9 @@ export function About() {
               const Icon = pillar.icon;
               return (
                 <Reveal key={pillar.title} delay={index * 0.08} y={42}>
-                  <div className="group h-full rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-xl sm:hover:-translate-y-2">
-                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/10 transition-all group-hover:bg-orange-500">
-                      <Icon className="h-6 w-6 text-orange-500 transition-colors group-hover:text-white" />
+                  <div className="group h-full rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-brand-400/50 hover:shadow-xl sm:hover:-translate-y-2">
+                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 transition-all group-hover:bg-brand-500">
+                      <Icon className="h-6 w-6 text-brand-500 transition-colors group-hover:text-white" />
                     </div>
                     <h3 className="mb-3 font-bold text-foreground">{pillar.title}</h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">{pillar.description}</p>
@@ -483,7 +483,7 @@ export function About() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center">
             <RevealX x={-70}>
-              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-400">Our Haulage Scope</p>
+              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-400">Our Haulage Scope</p>
               <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight">
                 Supporting critical supply chains across Ghana and the West African sub-region.
               </h2>
@@ -502,10 +502,10 @@ export function About() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: isMobile ? 0 : index * 0.06, duration: 0.45 }}
-                      className="group flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition-all duration-300 hover:border-orange-400/40 hover:bg-white/[0.08]"
+                      className="group flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition-all duration-300 hover:border-brand-400/40 hover:bg-white/[0.08]"
                     >
-                      <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10 transition-colors group-hover:bg-orange-500">
-                        <Icon className="h-5 w-5 text-orange-400 transition-colors group-hover:text-white" />
+                      <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-brand-500/10 transition-colors group-hover:bg-brand-500">
+                        <Icon className="h-5 w-5 text-brand-400 transition-colors group-hover:text-white" />
                       </div>
                       <span className="pt-2 text-sm sm:text-base font-medium leading-relaxed text-white/90">{service.label}</span>
                     </motion.div>
@@ -521,7 +521,7 @@ export function About() {
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
                 <div className="absolute left-5 right-5 bottom-5 rounded-2xl border border-white/10 bg-slate-950/80 p-5 backdrop-blur-md">
-                  <p className="text-sm font-bold uppercase tracking-widest text-orange-400">Nationwide & Regional Reach</p>
+                  <p className="text-sm font-bold uppercase tracking-widest text-brand-400">Nationwide & Regional Reach</p>
                   <p className="mt-2 text-sm leading-relaxed text-gray-300">
                     Reliable movement across ports, industrial zones, farms, warehouses, depots, and project sites.
                   </p>
@@ -536,7 +536,7 @@ export function About() {
       <section className="py-16 sm:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">Key Differentiators</p>
+            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Key Differentiators</p>
             <h2 className="mb-4 text-3xl md:text-5xl font-extrabold text-foreground">What sets ProHaul apart.</h2>
             <p className="text-muted-foreground leading-relaxed">
               We combine operational strength, market insight, technology, and a disciplined approach to execution.
@@ -548,10 +548,10 @@ export function About() {
               const Icon = item.icon;
               return (
                 <Reveal key={item.title} delay={index * 0.08} y={42}>
-                  <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-xl sm:hover:-translate-y-2">
-                    <div className="absolute right-0 top-0 h-24 w-24 translate-x-10 -translate-y-10 rounded-full bg-orange-500/10 transition-all group-hover:scale-150" />
-                    <div className="relative mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/10 transition-all group-hover:bg-orange-500">
-                      <Icon className="h-6 w-6 text-orange-500 transition-colors group-hover:text-white" />
+                  <div className="group relative h-full overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-brand-400/50 hover:shadow-xl sm:hover:-translate-y-2">
+                    <div className="absolute right-0 top-0 h-24 w-24 translate-x-10 -translate-y-10 rounded-full bg-brand-500/10 transition-all group-hover:scale-150" />
+                    <div className="relative mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 transition-all group-hover:bg-brand-500">
+                      <Icon className="h-6 w-6 text-brand-500 transition-colors group-hover:text-white" />
                     </div>
                     <h3 className="relative mb-3 font-bold text-foreground">{item.title}</h3>
                     <p className="relative text-sm leading-relaxed text-muted-foreground">{item.description}</p>
@@ -568,7 +568,7 @@ export function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-start">
             <RevealX x={-70} className="lg:sticky lg:top-28">
-              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">Track Record & Experience</p>
+              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Track Record & Experience</p>
               <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight text-foreground">
                 Reliable operations across major commercial and industrial corridors.
               </h2>
@@ -590,9 +590,9 @@ export function About() {
             <div className="space-y-5">
               {experience.map((item, index) => (
                 <Reveal key={item.title} delay={index * 0.08} y={36}>
-                  <div className="relative rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-sm transition-all duration-300 hover:border-orange-400/40 hover:shadow-xl">
+                  <div className="relative rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-sm transition-all duration-300 hover:border-brand-400/40 hover:shadow-xl">
                     <div className="flex flex-col sm:flex-row gap-4">
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-orange-500 text-white font-extrabold shadow-lg shadow-orange-500/25">
+                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-brand-500 to-brand-700 text-white font-extrabold shadow-lg shadow-brand-500/25">
                         {String(index + 1).padStart(2, "0")}
                       </div>
                       <div>
@@ -612,7 +612,7 @@ export function About() {
       <section className="py-16 sm:py-24 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
-            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">Service Delivery Process</p>
+            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Service Delivery Process</p>
             <h2 className="mb-4 text-3xl md:text-5xl font-extrabold text-foreground">Clear steps from request to confirmation.</h2>
             <p className="text-muted-foreground leading-relaxed">
               Our structured process ensures efficiency, transparency, and accountability throughout the logistics chain.
@@ -620,11 +620,11 @@ export function About() {
           </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 relative">
-            <div className="hidden lg:block absolute top-10 left-[12%] right-[12%] h-px bg-gradient-to-r from-transparent via-orange-400/40 to-transparent" />
+            <div className="hidden lg:block absolute top-10 left-[12%] right-[12%] h-px bg-gradient-to-r from-transparent via-brand-400/40 to-transparent" />
             {process.map((item, index) => (
               <Reveal key={item.step} delay={index * 0.1} y={42}>
-                <div className="relative text-center rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-orange-400/40 hover:shadow-xl sm:hover:-translate-y-2">
-                  <div className="relative z-10 mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-orange-500 text-lg font-extrabold text-white shadow-xl shadow-orange-500/25">
+                <div className="relative text-center rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-brand-400/40 hover:shadow-xl sm:hover:-translate-y-2">
+                  <div className="relative z-10 mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-brand-500 to-brand-700 text-lg font-extrabold text-white shadow-xl shadow-brand-500/25">
                     {item.step}
                   </div>
                   <h3 className="mb-3 font-bold text-foreground">{item.title}</h3>
@@ -640,21 +640,21 @@ export function About() {
       <section className="relative overflow-hidden py-20 sm:py-28 text-white">
         <div className="absolute inset-0 z-0">
           <Img src={IMGS.safety} alt="ProHaul safety and operations" className="h-full w-full" />
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-600/95 via-orange-600/90 to-slate-950/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-600/95 via-brand-600/90 to-slate-950/85" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Reveal y={44}>
-            <p className="mb-4 text-sm font-bold uppercase tracking-widest text-orange-100">Corporate Assurance</p>
+            <p className="mb-4 text-sm font-bold uppercase tracking-widest text-brand-100">Corporate Assurance</p>
             <h2 className="mb-6 text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight">
               We don't just move goods — we keep businesses moving.
             </h2>
-            <p className="mx-auto mb-8 max-w-3xl text-base sm:text-xl leading-relaxed text-orange-50">
+            <p className="mx-auto mb-8 max-w-3xl text-base sm:text-xl leading-relaxed text-brand-50">
               Our services are underpinned by operational discipline, safety compliance, and a commitment to delivering consistent value to clients.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
               <Link
                 to="/contact"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-white px-8 py-4 font-bold text-orange-600 transition-all hover:bg-gray-100 sm:hover:scale-105"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-white px-8 py-4 font-bold text-brand-600 transition-all hover:bg-gray-100 sm:hover:scale-105"
               >
                 Partner With Us <ArrowRight className="h-5 w-5" />
               </Link>

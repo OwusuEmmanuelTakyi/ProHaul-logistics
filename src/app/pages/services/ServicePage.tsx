@@ -448,8 +448,8 @@ export const servicePages = {
 function SectionCard({ block, index }: { block: TextBlock; index: number }) {
   return (
     <Reveal delay={index * 0.08} y={34}>
-      <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-xl sm:p-7">
-        <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-orange-500/10 text-sm font-black text-orange-500">
+      <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-brand-400/50 hover:shadow-xl sm:p-7">
+        <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-500/10 text-sm font-black text-brand-500">
           {String(index + 1).padStart(2, "0")}
         </div>
         <h3 className="mb-4 text-xl font-extrabold text-foreground">{block.title}</h3>
@@ -462,7 +462,7 @@ function SectionCard({ block, index }: { block: TextBlock; index: number }) {
           <div className="mt-5 space-y-3">
             {block.items.map((item) => (
               <div key={item} className="flex items-start gap-3 text-sm font-medium leading-relaxed text-foreground">
-                <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-orange-500" />
+                <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-brand-500" />
                 <span>{item}</span>
               </div>
             ))}
@@ -489,7 +489,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
 
   /* ── Typewriter chain timing (ms) ──
      line1 = data.title   (plain white)
-     line2 = data.highlight (orange gradient)
+     line2 = data.highlight (red gradient)
      Both start after badge fades in (~300ms)
   */
   const TYPE_SPEED = 55;
@@ -540,12 +540,12 @@ export function ServicePage({ data }: { data: ServicePageData }) {
               initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.55, delay: 0.12 }}
-              className="mb-6 inline-flex max-w-full items-center gap-3 rounded-2xl border border-orange-500/30 bg-orange-500/15 px-4 py-3 backdrop-blur-sm"
+              className="mb-6 inline-flex max-w-full items-center gap-3 rounded-2xl border border-brand-500/30 bg-brand-500/15 px-4 py-3 backdrop-blur-sm"
             >
-              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500">
+              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-brand-500 to-brand-700">
                 <HeroIcon className="h-6 w-6 text-white" />
               </div>
-              <span className="text-sm font-semibold text-orange-200">{data.badge}</span>
+              <span className="text-sm font-semibold text-brand-200">{data.badge}</span>
             </motion.div>
 
             {/* ── Line 1: data.title (white) ── */}
@@ -558,13 +558,13 @@ export function ServicePage({ data }: { data: ServicePageData }) {
               />
             </div>
 
-            {/* ── Line 2: data.highlight (orange gradient) ── */}
+            {/* ── Line 2: data.highlight (red gradient) ── */}
             <div className="min-h-[1.1em] text-[clamp(2rem,9vw,4.2rem)] md:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight mb-6">
               <Typewriter
                 text={data.highlight}
                 startDelay={LINE2_START}
                 typeSpeed={TYPE_SPEED}
-                className="inline text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-orange-600"
+                className="inline text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-brand-600"
               />
             </div>
 
@@ -587,7 +587,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
             >
               <Link
                 to="/quote"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-orange-500 px-7 py-4 font-bold text-white shadow-xl shadow-orange-600/30 transition-all hover:bg-orange-600 sm:hover:scale-105"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-brand-500 to-brand-700 px-7 py-4 font-bold text-white shadow-xl shadow-brand-600/30 transition-all hover:brightness-110 sm:hover:scale-105"
               >
                 {data.primaryCta} <ArrowRight className="h-5 w-5" />
               </Link>
@@ -607,7 +607,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal y={36}>
             <div className="rounded-3xl border border-border bg-card p-6 sm:p-8 lg:p-10 shadow-sm">
-              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500" />
+              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500" />
               <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight text-foreground">
                 {data.breadcrumb}
               </h2>
@@ -648,22 +648,22 @@ export function ServicePage({ data }: { data: ServicePageData }) {
       ) : null}
 
       {/* ══════════ CTA ══════════ */}
-      <section className="py-16 sm:py-24 bg-orange-500 text-white">
+      <section className="py-16 sm:py-24 bg-gradient-to-r from-brand-500 to-brand-700 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Reveal y={44}>
-            <p className="mb-4 text-sm font-bold uppercase tracking-widest text-orange-100">
+            <p className="mb-4 text-sm font-bold uppercase tracking-widest text-brand-100">
               ProHaul Logistics Solutions
             </p>
             <h2 className="mb-6 text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight">
               Ready to move your cargo?
             </h2>
-            <p className="mx-auto mb-8 max-w-3xl text-base sm:text-xl leading-relaxed text-orange-50">
+            <p className="mx-auto mb-8 max-w-3xl text-base sm:text-xl leading-relaxed text-brand-50">
               Request a quote and let ProHaul support your haulage requirements with reliable service delivery.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
               <Link
                 to="/quote"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-white px-8 py-4 font-bold text-orange-600 shadow-xl shadow-orange-700/20 transition-all hover:bg-orange-50 sm:hover:scale-105"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-white px-8 py-4 font-bold text-brand-600 shadow-xl shadow-brand-700/20 transition-all hover:bg-brand-50 sm:hover:scale-105"
               >
                 Request a Quote <ArrowRight className="h-5 w-5" />
               </Link>

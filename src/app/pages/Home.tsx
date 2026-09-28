@@ -293,7 +293,7 @@ const SERVICES = [
     title: "Bulk Fuel",
     desc: "Secure haulage of PMS, AGO & DPK — fully NPA compliant with real-time monitoring.",
     link: "/services/fuel-haulage",
-    color: "from-orange-500 to-red-600",
+    color: "from-brand-500 to-red-600",
     img: IMGS.tanker,
   },
   {
@@ -333,7 +333,7 @@ const SERVICES = [
     title: "Fertilizers & Inputs",
     desc: "Safe transport of NPK, urea and industrial inputs aligned with farming cycles.",
     link: "/services/fertilizer",
-    color: "from-yellow-500 to-amber-700",
+    color: "from-brand-500 to-brand-700",
     img: IMGS.fertilizer,
   },
 ];
@@ -484,7 +484,7 @@ export function Home() {
               initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex max-w-full items-center gap-2 px-3 sm:px-4 py-1.5 bg-orange-500/20 border border-orange-500/40 rounded-full text-orange-300 text-[11px] sm:text-sm mb-6 sm:mb-8 leading-relaxed"
+              className="inline-flex max-w-full items-center gap-2 px-3 sm:px-4 py-1.5 bg-brand-500/20 border border-brand-500/40 rounded-full text-brand-300 text-[11px] sm:text-sm mb-6 sm:mb-8 leading-relaxed"
             />
 
             {/* ── Line 1: Reliable Bulk Haulage. ── */}
@@ -513,7 +513,7 @@ export function Home() {
                 text={LINE3_TEXT}
                 startDelay={LINE3_START}
                 typeSpeed={TYPE_SPEED}
-                className="block max-w-full break-words text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600"
+                className="block max-w-full break-words text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-600"
               />
             </div>
 
@@ -536,7 +536,7 @@ export function Home() {
             >
               <Link
                 to="/quote"
-                className="inline-flex w-full sm:w-auto items-center justify-center px-6 sm:px-8 py-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600 sm:hover:scale-105 active:scale-100 transition-all gap-2 font-bold shadow-xl shadow-orange-600/40"
+                className="inline-flex w-full sm:w-auto items-center justify-center px-6 sm:px-8 py-4 bg-gradient-to-r from-brand-500 to-brand-700 text-white rounded-lg hover:brightness-110 sm:hover:scale-105 active:scale-100 transition-all gap-2 font-bold shadow-xl shadow-brand-600/40"
               >
                 Book Shipment <ArrowRight className="w-5 h-5" />
               </Link>
@@ -564,7 +564,7 @@ export function Home() {
       </section>
 
       {/* ══════════ STATS BAR ══════════ */}
-      <section className="py-10 sm:py-14 bg-orange-500">
+      <section className="py-10 sm:py-14 bg-gradient-to-r from-brand-500 to-brand-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5 sm:gap-8">
             {STATS.map((s, i) => {
@@ -576,7 +576,7 @@ export function Home() {
                     <div className="text-3xl sm:text-4xl font-extrabold mb-1">
                       <AnimatedCounter value={s.value} />
                     </div>
-                    <div className="text-xs sm:text-sm text-orange-100 font-medium leading-tight">{s.label}</div>
+                    <div className="text-xs sm:text-sm text-brand-100 font-medium leading-tight">{s.label}</div>
                   </div>
                 </Reveal>
               );
@@ -599,10 +599,10 @@ export function Home() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.25, duration: 0.5 }}
-                  className="absolute bottom-2 right-2 sm:-bottom-6 sm:-right-6 bg-orange-500 text-white rounded-2xl p-4 sm:p-5 shadow-xl shadow-orange-500/30"
+                  className="absolute bottom-2 right-2 sm:-bottom-6 sm:-right-6 bg-gradient-to-r from-brand-500 to-brand-700 text-white rounded-2xl p-4 sm:p-5 shadow-xl shadow-brand-500/30"
                 >
                   <div className="text-2xl sm:text-3xl font-extrabold">10+</div>
-                  <div className="text-xs sm:text-sm text-orange-100">Years of Excellence</div>
+                  <div className="text-xs sm:text-sm text-brand-100">Years of Excellence</div>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.8 }}
@@ -612,7 +612,7 @@ export function Home() {
                   className="absolute top-2 left-2 sm:-top-5 sm:-left-5 bg-slate-900 text-white rounded-2xl p-3 sm:p-4 shadow-xl border border-white/10"
                 >
                   <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400" />
+                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-brand-400" />
                     <span className="text-xs sm:text-sm font-semibold">Ghana & West Africa</span>
                   </div>
                 </motion.div>
@@ -620,7 +620,7 @@ export function Home() {
             </RevealX>
 
             <RevealX x={70}>
-              <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-3">About ProHaul</p>
+              <p className="text-brand-500 font-bold text-sm uppercase tracking-widest mb-3">About ProHaul</p>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6 leading-tight">Ghana's Trusted Partner for Bulk Haulage</h2>
               <p className="text-muted-foreground leading-relaxed mb-5">
                 ProHaul is a Ghana-based haulage company delivering dependable, end-to-end transportation solutions across Ghana and the wider West African sub-region. We specialize in the safe, efficient, and timely movement of bulk and packaged goods, supporting businesses across critical sectors of the economy.
@@ -631,14 +631,14 @@ export function Home() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                 {["NPA Certified", "MPS Certified", "GPS Fleet Tracking", "ECOWAS", "Goods in Transit Insurance"].map((item) => (
                   <div key={item} className="flex items-center gap-2 text-sm font-medium">
-                    <CheckCircle2 className="w-4 h-4 text-orange-500 flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-brand-500 flex-shrink-0" />
                     {item}
                   </div>
                 ))}
               </div>
               <Link
                 to="/about"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 sm:hover:scale-105 transition-all font-semibold"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-brand-500 to-brand-700 text-white rounded-lg hover:brightness-110 sm:hover:scale-105 transition-all font-semibold"
               >
                 Learn About Us <ArrowRight className="w-5 h-5" />
               </Link>
@@ -651,7 +651,7 @@ export function Home() {
       <section className="py-16 sm:py-24 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center mb-10 sm:mb-16">
-            <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-3">What We Do</p>
+            <p className="text-brand-500 font-bold text-sm uppercase tracking-widest mb-3">What We Do</p>
             <h2 className="text-3xl md:text-5xl font-extrabold mb-4">Our Haulage Services</h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
               A comprehensive haulage solution engineered for Ghana's and West Africa's most critical industries
@@ -679,7 +679,7 @@ export function Home() {
                       <p className="text-sm text-white/90 leading-relaxed mb-4 drop-shadow-lg opacity-100 translate-y-0 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-300">
                         {svc.desc}
                       </p>
-                      <span className="inline-flex items-center gap-1.5 text-orange-300 text-sm font-semibold md:group-hover:gap-3 transition-all drop-shadow-lg">
+                      <span className="inline-flex items-center gap-1.5 text-brand-300 text-sm font-semibold md:group-hover:gap-3 transition-all drop-shadow-lg">
                         Learn More <ArrowRight className="w-4 h-4" />
                       </span>
                     </div>
@@ -697,7 +697,7 @@ export function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
               <RevealX x={-60}>
-                <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-3">Our Strengths</p>
+                <p className="text-brand-500 font-bold text-sm uppercase tracking-widest mb-3">Our Strengths</p>
                 <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">Why Choose ProHaul?</h2>
                 <p className="text-muted-foreground leading-relaxed mb-8 sm:mb-10">
                   Modern high-capacity fleet, nationwide and cross-border reach, technology-driven operations, and a strong commitment to safety, reliability, and timely delivery.
@@ -708,9 +708,9 @@ export function Home() {
                   const Icon = f.icon;
                   return (
                     <Reveal key={f.title} delay={i * 0.08} y={28}>
-                      <div className="flex flex-col sm:flex-row gap-4 p-5 rounded-xl bg-muted border border-border hover:border-orange-400/40 hover:shadow-lg sm:hover:-translate-y-1 transition-all duration-300">
-                        <div className="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                          <Icon className="w-6 h-6 text-orange-500" />
+                      <div className="flex flex-col sm:flex-row gap-4 p-5 rounded-xl bg-muted border border-border hover:border-brand-400/40 hover:shadow-lg sm:hover:-translate-y-1 transition-all duration-300">
+                        <div className="w-12 h-12 bg-brand-500/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                          <Icon className="w-6 h-6 text-brand-500" />
                         </div>
                         <div>
                           <h3 className="font-bold mb-1">{f.title}</h3>
@@ -753,7 +753,7 @@ export function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-10 sm:mb-16">
             <RevealX x={-70}>
-              <p className="text-orange-400 font-bold text-sm uppercase tracking-widest mb-3">Built for Scale</p>
+              <p className="text-brand-400 font-bold text-sm uppercase tracking-widest mb-3">Built for Scale</p>
               <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">Fleet & Operational Capacity</h2>
               <p className="text-gray-400 leading-relaxed mb-8">
                 ProHaul operates a modern, high-performance fleet designed to deliver reliability, efficiency, and scalable capacity across a wide range of haulage requirements. Our fleet strategy is centered on deploying robust, well-maintained equipment capable of supporting both routine and high-demand logistics operations.
@@ -766,7 +766,7 @@ export function Home() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: isMobile ? 0 : 0.2 + i * 0.1 }}
-                    className="px-5 py-2 border border-white/20 rounded-full text-sm font-bold text-white/60 hover:text-orange-400 hover:border-orange-400/40 transition-colors cursor-default"
+                    className="px-5 py-2 border border-white/20 rounded-full text-sm font-bold text-white/60 hover:text-brand-400 hover:border-brand-400/40 transition-colors cursor-default"
                   >
                     {brand}
                   </motion.span>
@@ -786,8 +786,8 @@ export function Home() {
               const Icon = spec.icon;
               return (
                 <Reveal key={spec.label} delay={i * 0.08} y={36}>
-                  <div className="bg-white/5 border border-white/10 rounded-xl p-5 sm:p-6 hover:bg-white/10 hover:border-orange-500/30 sm:hover:-translate-y-1 transition-all duration-300">
-                    <Icon className="w-8 h-8 text-orange-400 mb-3" />
+                  <div className="bg-white/5 border border-white/10 rounded-xl p-5 sm:p-6 hover:bg-white/10 hover:border-brand-500/30 sm:hover:-translate-y-1 transition-all duration-300">
+                    <Icon className="w-8 h-8 text-brand-400 mb-3" />
                     <div className="text-lg sm:text-xl font-extrabold mb-1">{spec.specs}</div>
                     <div className="text-sm text-gray-400">{spec.label}</div>
                   </div>
@@ -802,7 +802,7 @@ export function Home() {
       <section className="py-16 sm:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center mb-10 sm:mb-16">
-            <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-3">Simple & Transparent</p>
+            <p className="text-brand-500 font-bold text-sm uppercase tracking-widest mb-3">Simple & Transparent</p>
             <h2 className="text-3xl md:text-5xl font-extrabold mb-4">Our Service Process</h2>
             <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
               A structured model ensuring efficiency and reliability from request to delivery
@@ -810,11 +810,11 @@ export function Home() {
           </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-            <div className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-orange-400/40 to-transparent" />
+            <div className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-brand-400/40 to-transparent" />
             {PROCESS.map((p, i) => (
               <Reveal key={p.step} delay={i * 0.1} y={42}>
                 <div className="text-center group">
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-orange-500 text-white flex items-center justify-center font-extrabold text-xl sm:text-2xl mx-auto mb-5 sm:mb-6 shadow-xl shadow-orange-500/30 sm:group-hover:scale-110 sm:group-hover:shadow-orange-500/50 transition-all duration-300 relative z-10">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-r from-brand-500 to-brand-700 text-white flex items-center justify-center font-extrabold text-xl sm:text-2xl mx-auto mb-5 sm:mb-6 shadow-xl shadow-brand-500/30 sm:group-hover:scale-110 sm:group-hover:shadow-brand-500/50 transition-all duration-300 relative z-10">
                     {p.step}
                   </div>
                   <h3 className="font-bold text-lg mb-3">{p.title}</h3>
@@ -845,16 +845,16 @@ export function Home() {
                     className="w-full h-full sm:hover:scale-105 transition-transform duration-700"
                   />
                 </div>
-                <div className="absolute left-5 bottom-5 rounded-2xl bg-orange-500 p-5 text-white shadow-xl shadow-orange-500/30">
+                <div className="absolute left-5 bottom-5 rounded-2xl bg-gradient-to-r from-brand-500 to-brand-700 p-5 text-white shadow-xl shadow-brand-500/30">
                   <Shield className="w-8 h-8 mb-3 opacity-90" />
                   <div className="text-3xl font-extrabold leading-none">Zero</div>
-                  <div className="mt-1 text-sm font-medium text-orange-100">Incident Target</div>
+                  <div className="mt-1 text-sm font-medium text-brand-100">Incident Target</div>
                 </div>
               </div>
             </RevealX>
 
             <RevealX x={70}>
-              <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-3">Safety & Compliance</p>
+              <p className="text-brand-500 font-bold text-sm uppercase tracking-widest mb-3">Safety & Compliance</p>
               <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight text-foreground">
                 Health, Safety & Environment
               </h2>
@@ -870,9 +870,9 @@ export function Home() {
                   "Compliance with applicable environmental and safety regulations",
                 ].map((item, i) => (
                   <Reveal key={item} delay={i * 0.05} y={20}>
-                    <div className="group flex items-start gap-4 rounded-2xl border border-border bg-background p-4 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-lg">
-                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10 transition-colors group-hover:bg-orange-500">
-                        <CheckCircle2 className="h-5 w-5 text-orange-500 transition-colors group-hover:text-white" />
+                    <div className="group flex items-start gap-4 rounded-2xl border border-border bg-background p-4 shadow-sm transition-all duration-300 hover:border-brand-400/50 hover:shadow-lg">
+                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-brand-500/10 transition-colors group-hover:bg-brand-500">
+                        <CheckCircle2 className="h-5 w-5 text-brand-500 transition-colors group-hover:text-white" />
                       </div>
                       <span className="pt-2 text-sm sm:text-base font-medium leading-relaxed text-foreground">{item}</span>
                     </div>
@@ -881,7 +881,7 @@ export function Home() {
               </div>
               <Link
                 to="/hse-compliance"
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-7 py-4 border border-orange-500 text-orange-500 rounded-lg hover:bg-orange-500 hover:text-white sm:hover:scale-105 transition-all font-bold"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-7 py-4 border border-brand-500 text-brand-500 rounded-lg hover:bg-brand-500 hover:text-white sm:hover:scale-105 transition-all font-bold"
               >
                 Our HSE Framework <ArrowRight className="w-5 h-5" />
               </Link>
@@ -894,22 +894,22 @@ export function Home() {
       <section className="py-16 sm:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center mb-10 sm:mb-16">
-            <p className="text-orange-500 font-bold text-sm uppercase tracking-widest mb-3">Client Trust</p>
+            <p className="text-brand-500 font-bold text-sm uppercase tracking-widest mb-3">Client Trust</p>
             <h2 className="text-3xl md:text-5xl font-extrabold mb-4">What Our Clients Say</h2>
           </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {TESTIMONIALS.map((t, i) => (
               <RevealScale key={t.name} delay={i * 0.1}>
-                <div className="bg-card border border-border rounded-2xl p-6 sm:p-7 hover:shadow-xl hover:border-orange-400/30 sm:hover:-translate-y-2 transition-all duration-300 h-full flex flex-col">
+                <div className="bg-card border border-border rounded-2xl p-6 sm:p-7 hover:shadow-xl hover:border-brand-400/30 sm:hover:-translate-y-2 transition-all duration-300 h-full flex flex-col">
                   <div className="flex gap-1 mb-5">
                     {[...Array(5)].map((_, j) => (
-                      <Star key={j} className="w-4 h-4 fill-orange-400 text-orange-400" />
+                      <Star key={j} className="w-4 h-4 fill-brand-400 text-brand-400" />
                     ))}
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1 italic">&quot;{t.text}&quot;</p>
                   <div className="flex items-center gap-3 pt-4 border-t border-border">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center font-bold text-white text-sm flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-400 to-brand-600 flex items-center justify-center font-bold text-white text-sm flex-shrink-0">
                       {t.name.charAt(0)}
                     </div>
                     <div>
@@ -932,7 +932,7 @@ export function Home() {
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Reveal y={48}>
-            <p className="text-orange-400 font-bold text-sm uppercase tracking-widest mb-4">Let's Move Together</p>
+            <p className="text-brand-400 font-bold text-sm uppercase tracking-widest mb-4">Let's Move Together</p>
             <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-6 leading-tight">Ready to Move Your Cargo?</h2>
             <p className="text-base sm:text-lg text-gray-300 mb-8 sm:mb-10 leading-relaxed max-w-2xl mx-auto">
               Partner with ProHaul for reliable, safe, and efficient haulage solutions across Ghana and West Africa. We don't just move goods — we keep businesses moving.
@@ -940,7 +940,7 @@ export function Home() {
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link
                 to="/quote"
-                className="inline-flex w-full sm:w-auto items-center justify-center px-6 sm:px-8 py-4 bg-orange-500 text-white rounded-lg hover:bg-orange-600 sm:hover:scale-105 transition-all gap-2 font-bold shadow-xl shadow-orange-600/40"
+                className="inline-flex w-full sm:w-auto items-center justify-center px-6 sm:px-8 py-4 bg-gradient-to-r from-brand-500 to-brand-700 text-white rounded-lg hover:brightness-110 sm:hover:scale-105 transition-all gap-2 font-bold shadow-xl shadow-brand-600/40"
               >
                 Get a Quote <ArrowRight className="w-5 h-5" />
               </Link>

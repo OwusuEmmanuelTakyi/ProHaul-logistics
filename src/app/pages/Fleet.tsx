@@ -276,12 +276,12 @@ export function Fleet() {
               initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.55, delay: 0.12 }}
-              className="mb-6 inline-flex max-w-full items-center gap-3 rounded-2xl border border-orange-500/30 bg-orange-500/15 px-4 py-3 backdrop-blur-sm"
+              className="mb-6 inline-flex max-w-full items-center gap-3 rounded-2xl border border-brand-500/30 bg-brand-500/15 px-4 py-3 backdrop-blur-sm"
             >
-              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500">
+              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-brand-500 to-brand-700">
                 <Truck className="h-6 w-6 text-white" />
               </div>
-              <span className="text-sm font-semibold text-orange-200">Fleet & Operations</span>
+              <span className="text-sm font-semibold text-brand-200">Fleet & Operations</span>
             </motion.div>
 
             {/* ── Line 1: "Fleet &" (white) ── */}
@@ -294,13 +294,13 @@ export function Fleet() {
               />
             </div>
 
-            {/* ── Line 2: "Operational Capacity." (orange gradient) ── */}
+            {/* ── Line 2: "Operational Capacity." (red gradient) ── */}
             <div className="min-h-[1.1em] text-[clamp(2.7rem,12vw,5.3rem)] md:text-6xl lg:text-7xl font-extrabold leading-[0.98] tracking-tight mb-6">
               <Typewriter
                 text={LINE2_TEXT}
                 startDelay={LINE2_START}
                 typeSpeed={TYPE_SPEED}
-                className="inline text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-orange-600"
+                className="inline text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-brand-600"
               />
             </div>
 
@@ -323,7 +323,7 @@ export function Fleet() {
           <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-12 items-stretch">
             <Reveal y={36}>
               <div className="h-full rounded-3xl border border-border bg-card p-6 sm:p-8 lg:p-10 shadow-sm">
-                <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">Fleet & Operational Capacity</p>
+                <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Fleet & Operational Capacity</p>
                 <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight text-foreground">
                   Fleet & Operational Capacity
                 </h2>
@@ -359,7 +359,7 @@ export function Fleet() {
       <section className="py-16 sm:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
-            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">Trusted European Truck Brands</p>
+            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Trusted European Truck Brands</p>
             <h2 className="text-3xl md:text-5xl font-extrabold leading-tight text-foreground">MAN, DAF, Volvo, and Scania.</h2>
             <p className="mt-5 text-muted-foreground leading-relaxed">
               Our fleet comprises trusted European truck brands selected for their durability, fuel efficiency, and proven performance under demanding operating conditions.
@@ -368,9 +368,9 @@ export function Fleet() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
             {trustedBrands.map((brand, index) => (
               <Reveal key={brand} delay={index * 0.08} y={38}>
-                <div className="group h-full rounded-3xl border border-border bg-card p-6 sm:p-8 text-center shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-xl sm:hover:-translate-y-2">
-                  <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/10 transition-all group-hover:bg-orange-500">
-                    <Truck className="h-7 w-7 text-orange-500 transition-colors group-hover:text-white" />
+                <div className="group h-full rounded-3xl border border-border bg-card p-6 sm:p-8 text-center shadow-sm transition-all duration-300 hover:border-brand-400/50 hover:shadow-xl sm:hover:-translate-y-2">
+                  <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-500/10 transition-all group-hover:bg-brand-500">
+                    <Truck className="h-7 w-7 text-brand-500 transition-colors group-hover:text-white" />
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-black text-foreground">{brand}</h3>
                 </div>
@@ -384,14 +384,14 @@ export function Fleet() {
       <section className="py-16 sm:py-24 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
-            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">Fleet Capability</p>
+            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Fleet Capability</p>
             <h2 className="text-3xl md:text-5xl font-extrabold leading-tight text-foreground">Fleet Capability</h2>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {fleetCapability.map((item, index) => (
               <Reveal key={item} delay={index * 0.08} y={38}>
-                <div className="flex h-full items-start gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-xl sm:hover:-translate-y-1">
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10 text-orange-500">
+                <div className="flex h-full items-start gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-brand-400/50 hover:shadow-xl sm:hover:-translate-y-1">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-brand-500/10 text-brand-500">
                     <CheckCircle2 className="h-5 w-5" />
                   </div>
                   <p className="text-sm sm:text-base font-medium leading-relaxed text-foreground">{item}</p>
@@ -406,7 +406,7 @@ export function Fleet() {
       <section className="py-16 sm:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
-            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">Trailer Configuration</p>
+            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Trailer Configuration</p>
             <h2 className="text-3xl md:text-5xl font-extrabold leading-tight text-foreground">Trailer Configuration</h2>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -414,8 +414,8 @@ export function Fleet() {
               const Icon = item.icon;
               return (
                 <Reveal key={item.title} delay={index * 0.08} y={42}>
-                  <div className="group h-full rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-xl sm:hover:-translate-y-2">
-                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500 transition-all group-hover:scale-110">
+                  <div className="group h-full rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-sm transition-all duration-300 hover:border-brand-400/50 hover:shadow-xl sm:hover:-translate-y-2">
+                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-r from-brand-500 to-brand-700 transition-all group-hover:scale-110">
                       <Icon className="h-7 w-7 text-white" />
                     </div>
                     <h3 className="mb-3 text-xl font-bold text-foreground">{item.title}</h3>

@@ -246,10 +246,10 @@ export function Quote() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-orange-500/30 bg-orange-500/12 px-4 py-2 backdrop-blur-sm"
+              className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-brand-500/30 bg-brand-500/12 px-4 py-2 backdrop-blur-sm"
             >
-              <span className="h-2 w-2 rounded-full bg-orange-400 animate-pulse" />
-              <span className="text-[13px] font-semibold text-orange-200 tracking-wide">
+              <span className="h-2 w-2 rounded-full bg-brand-400 animate-pulse" />
+              <span className="text-[13px] font-semibold text-brand-200 tracking-wide">
                 Request a Haulage Quote
               </span>
             </motion.div>
@@ -263,12 +263,12 @@ export function Quote() {
             >
               Appropriate equipment{" "}
               <br className="hidden sm:block" />
-              <span className="bg-gradient-to-r from-orange-300 to-orange-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-brand-300 to-brand-500 bg-clip-text text-transparent">
                 {twDisplayed}
                 {/* blinking cursor while typing */}
                 {!twDone && (
                   <span
-                    className="inline-block w-[3px] h-[0.85em] ml-1 align-middle bg-orange-400"
+                    className="inline-block w-[3px] h-[0.85em] ml-1 align-middle bg-brand-400"
                     style={{ animation: "blink 0.7s steps(1) infinite" }}
                   />
                 )}
@@ -291,7 +291,7 @@ export function Quote() {
               transition={{ delay: 1 }}
               className="mt-10 flex items-center gap-3"
             >
-              <div className="h-px w-10 bg-orange-500/60" />
+              <div className="h-px w-10 bg-brand-500/60" />
               <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-400">
                 Fill the form below
               </span>
@@ -313,9 +313,9 @@ export function Quote() {
               const Icon = item.icon;
               return (
                 <Reveal key={item.label} delay={i * 0.07} y={20}>
-                  <div className="flex items-start gap-3 rounded-2xl border border-border bg-card p-4 shadow-xl transition-all hover:border-orange-400/40">
-                    <div className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10">
-                      <Icon className="h-4 w-4 text-orange-500" />
+                  <div className="flex items-start gap-3 rounded-2xl border border-border bg-card p-4 shadow-xl transition-all hover:border-brand-400/40">
+                    <div className="mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-brand-500/10">
+                      <Icon className="h-4 w-4 text-brand-500" />
                     </div>
                     <div>
                       <p className="text-sm font-bold text-foreground leading-snug">{item.label}</p>
@@ -340,7 +340,7 @@ export function Quote() {
 
                 {/* form header */}
                 <div className="border-b border-border px-6 py-6 sm:px-8">
-                  <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.2em] text-orange-500">
+                  <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.2em] text-brand-500">
                     Quote Form
                   </p>
                   <h2 className="text-2xl font-extrabold text-foreground sm:text-3xl">
@@ -472,8 +472,8 @@ export function Quote() {
                                       key={t.value}
                                       className={`flex cursor-pointer flex-col items-center justify-center gap-1.5 rounded-xl border-2 py-4 text-sm font-semibold transition-all
                                         ${formData.tankerSize === t.value
-                                          ? "border-orange-500 bg-orange-500/10 text-orange-600 dark:text-orange-400 shadow-sm shadow-orange-500/10"
-                                          : "border-border bg-muted/40 text-muted-foreground hover:border-orange-300 hover:bg-muted"
+                                          ? "border-brand-500 bg-brand-500/10 text-brand-600 dark:text-brand-400 shadow-sm shadow-brand-500/10"
+                                          : "border-border bg-muted/40 text-muted-foreground hover:border-brand-300 hover:bg-muted"
                                         }`}
                                     >
                                       <input
@@ -481,7 +481,7 @@ export function Quote() {
                                         checked={formData.tankerSize === t.value}
                                         onChange={set} className="sr-only"
                                       />
-                                      <Truck className={`h-4 w-4 ${formData.tankerSize === t.value ? "text-orange-500" : "text-muted-foreground"}`} />
+                                      <Truck className={`h-4 w-4 ${formData.tankerSize === t.value ? "text-brand-500" : "text-muted-foreground"}`} />
                                       <span>{t.label}</span>
                                     </label>
                                   ))}
@@ -509,8 +509,8 @@ export function Quote() {
                                       key={c.value}
                                       className={`flex cursor-pointer items-center justify-center gap-2.5 rounded-xl border-2 py-4 text-sm font-semibold transition-all
                                         ${formData.containerSize === c.value
-                                          ? "border-orange-500 bg-orange-500/10 text-orange-600 dark:text-orange-400 shadow-sm shadow-orange-500/10"
-                                          : "border-border bg-muted/40 text-muted-foreground hover:border-orange-300 hover:bg-muted"
+                                          ? "border-brand-500 bg-brand-500/10 text-brand-600 dark:text-brand-400 shadow-sm shadow-brand-500/10"
+                                          : "border-border bg-muted/40 text-muted-foreground hover:border-brand-300 hover:bg-muted"
                                         }`}
                                     >
                                       <input
@@ -518,7 +518,7 @@ export function Quote() {
                                         checked={formData.containerSize === c.value}
                                         onChange={set} className="sr-only"
                                       />
-                                      <Container className={`h-4 w-4 ${formData.containerSize === c.value ? "text-orange-500" : "text-muted-foreground"}`} />
+                                      <Container className={`h-4 w-4 ${formData.containerSize === c.value ? "text-brand-500" : "text-muted-foreground"}`} />
                                       {c.label}
                                     </label>
                                   ))}
@@ -561,11 +561,11 @@ export function Quote() {
                         {/* Pickup + Delivery addresses */}
                         <div className="relative">
                           {/* vertical connector line */}
-                          <div className="absolute left-[17px] top-[44px] bottom-[44px] w-px bg-gradient-to-b from-orange-400/60 to-orange-400/20 hidden sm:block" />
+                          <div className="absolute left-[17px] top-[44px] bottom-[44px] w-px bg-gradient-to-b from-brand-400/60 to-brand-400/20 hidden sm:block" />
                           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                             <Field label="Pickup Address" required>
                               <div className="relative">
-                                <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-orange-400 pointer-events-none" />
+                                <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-brand-400 pointer-events-none" />
                                 <input
                                   name="pickup" type="text" value={formData.pickup}
                                   onChange={set} required placeholder="e.g. Tema Port"
@@ -618,7 +618,7 @@ export function Quote() {
                           type="submit"
                           whileHover={{ scale: 1.01 }}
                           whileTap={{ scale: 0.98 }}
-                          className="inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-orange-500 px-8 py-4 text-[15px] font-bold text-white shadow-lg shadow-orange-500/25 transition-colors hover:bg-orange-600"
+                          className="inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-brand-500 to-brand-700 px-8 py-4 text-[15px] font-bold text-white shadow-lg shadow-brand-500/25 transition-colors hover:brightness-110"
                         >
                           <Send className="h-4 w-4" />
                           Submit Quote Request
@@ -641,7 +641,7 @@ export function Quote() {
               {/* quick contact */}
               <Reveal delay={0.1} y={28}>
                 <div className="rounded-3xl border border-border bg-card p-5 shadow-sm">
-                  <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.18em] text-orange-500">
+                  <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.18em] text-brand-500">
                     Quick Contact
                   </p>
                   <h3 className="mb-4 text-lg font-extrabold text-foreground">
@@ -650,25 +650,25 @@ export function Quote() {
                   <div className="space-y-2.5">
                     <a
                       href="tel:+233244136797"
-                      className="flex items-center gap-3 rounded-2xl bg-muted px-4 py-3.5 text-sm font-semibold text-foreground transition-all hover:bg-orange-50 hover:text-orange-600 dark:hover:bg-orange-500/10"
+                      className="flex items-center gap-3 rounded-2xl bg-muted px-4 py-3.5 text-sm font-semibold text-foreground transition-all hover:bg-brand-50 hover:text-brand-600 dark:hover:bg-brand-500/10"
                     >
-                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10">
-                        <Phone className="h-4 w-4 text-orange-500" />
+                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-brand-500/10">
+                        <Phone className="h-4 w-4 text-brand-500" />
                       </div>
                       +233 (0) 244 136 797
                     </a>
                     <a
                       href="mailto:Bookings@prohaul-logistics.com"
-                      className="flex items-center gap-3 rounded-2xl bg-muted px-4 py-3.5 text-sm font-semibold text-foreground transition-all hover:bg-orange-50 hover:text-orange-600 dark:hover:bg-orange-500/10"
+                      className="flex items-center gap-3 rounded-2xl bg-muted px-4 py-3.5 text-sm font-semibold text-foreground transition-all hover:bg-brand-50 hover:text-brand-600 dark:hover:bg-brand-500/10"
                     >
-                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10">
-                        <Mail className="h-4 w-4 text-orange-500" />
+                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-brand-500/10">
+                        <Mail className="h-4 w-4 text-brand-500" />
                       </div>
                       Bookings@prohaul-logistics.com
                     </a>
                     <div className="flex items-start gap-3 rounded-2xl bg-muted px-4 py-3.5 text-sm font-semibold text-muted-foreground">
-                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10">
-                        <MapPin className="h-4 w-4 text-orange-500" />
+                      <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-brand-500/10">
+                        <MapPin className="h-4 w-4 text-brand-500" />
                       </div>
                       12 Avenue B West, North Legon, Accra — Ghana
                     </div>
@@ -689,7 +689,7 @@ export function Quote() {
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <Reveal y={36}>
-            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-orange-300">
+            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.22em] text-brand-300">
               Have a question first?
             </p>
             <h2 className="mb-5 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
@@ -714,13 +714,13 @@ export function Quote() {
 /* ─────────────── sub-components ─────────────── */
 
 const INPUT =
-  "w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground/60 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/15 dark:bg-slate-900/40";
+  "w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none transition-all placeholder:text-muted-foreground/60 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/15 dark:bg-slate-900/40";
 
 function FormSection({ number, label, children }: { number: string; label: string; children: ReactNode }) {
   return (
     <div className="px-6 py-7 sm:px-8 border-b border-border last:border-b-0">
       <div className="flex items-center gap-3 mb-5">
-        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-orange-500 text-[10px] font-extrabold text-white flex-shrink-0">
+        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-brand-500 to-brand-700 text-[10px] font-extrabold text-white flex-shrink-0">
           {number}
         </span>
         <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-muted-foreground">{label}</span>
@@ -734,7 +734,7 @@ function FormSection({ number, label, children }: { number: string; label: strin
 function SectionLabel({ number, label }: { number: string; label: string }) {
   return (
     <p className="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground">
-      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-orange-500/15 text-[10px] font-extrabold text-orange-500">
+      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand-500/15 text-[10px] font-extrabold text-brand-500">
         {number}
       </span>
       {label}
@@ -757,7 +757,7 @@ function Field({
     <div className={className}>
       <label className="mb-1.5 block text-[13px] font-semibold text-foreground">
         {label}
-        {required && <span className="ml-0.5 text-orange-500">*</span>}
+        {required && <span className="ml-0.5 text-brand-500">*</span>}
       </label>
       {children}
     </div>

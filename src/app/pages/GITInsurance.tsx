@@ -206,12 +206,12 @@ export function GITInsurance() {
               initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.55, delay: 0.12 }}
-              className="mb-6 inline-flex max-w-full items-center gap-3 rounded-2xl border border-orange-500/30 bg-orange-500/15 px-4 py-3 backdrop-blur-sm"
+              className="mb-6 inline-flex max-w-full items-center gap-3 rounded-2xl border border-brand-500/30 bg-brand-500/15 px-4 py-3 backdrop-blur-sm"
             >
-              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500">
+              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-brand-500 to-brand-700">
                 <ShieldCheck className="h-6 w-6 text-white" />
               </div>
-              <span className="text-sm font-semibold text-orange-200">Cargo Security & Insurance</span>
+              <span className="text-sm font-semibold text-brand-200">Cargo Security & Insurance</span>
             </motion.div>
 
             {/* ── Line 1: "Cargo Security &" (white) ── */}
@@ -224,13 +224,13 @@ export function GITInsurance() {
               />
             </div>
 
-            {/* ── Line 2: "Insurance." (orange gradient) ── */}
+            {/* ── Line 2: "Insurance." (red gradient) ── */}
             <div className="min-h-[1.1em] text-[clamp(2.7rem,12vw,5.3rem)] md:text-6xl lg:text-7xl font-extrabold leading-[0.98] tracking-tight mb-6">
               <Typewriter
                 text={LINE2_TEXT}
                 startDelay={LINE2_START}
                 typeSpeed={TYPE_SPEED}
-                className="inline text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-orange-600"
+                className="inline text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-brand-600"
               />
             </div>
 
@@ -253,8 +253,8 @@ export function GITInsurance() {
           <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-[1.05fr_0.95fr]">
             <Reveal y={36}>
               <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8 lg:p-10">
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/10">
-                  <LockKeyhole className="h-7 w-7 text-orange-500" />
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-500/10">
+                  <LockKeyhole className="h-7 w-7 text-brand-500" />
                 </div>
                 <h2 className="mb-6 text-3xl font-extrabold leading-tight text-foreground md:text-5xl">
                   Cargo Security & Insurance
@@ -283,7 +283,7 @@ export function GITInsurance() {
       <section className="bg-muted py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
-            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">What This Means for Our Clients</p>
+            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">What This Means for Our Clients</p>
             <h2 className="text-3xl font-extrabold leading-tight text-foreground md:text-5xl">
               What This Means for Our Clients
             </h2>
@@ -291,8 +291,8 @@ export function GITInsurance() {
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {clientBenefits.map((benefit, index) => (
               <Reveal key={benefit} delay={index * 0.08} y={38}>
-                <div className="flex h-full items-start gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-xl sm:hover:-translate-y-1">
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10 text-orange-500">
+                <div className="flex h-full items-start gap-4 rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-brand-400/50 hover:shadow-xl sm:hover:-translate-y-1">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-brand-500/10 text-brand-500">
                     <CheckCircle2 className="h-5 w-5" />
                   </div>
                   <p className="text-sm font-medium leading-relaxed text-foreground sm:text-base">{benefit}</p>

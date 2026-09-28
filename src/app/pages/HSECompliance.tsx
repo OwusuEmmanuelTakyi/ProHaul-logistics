@@ -331,12 +331,12 @@ export function HSECompliance() {
               initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.55, delay: 0.12 }}
-              className="mb-6 inline-flex max-w-full items-center gap-3 rounded-2xl border border-orange-500/30 bg-orange-500/15 px-4 py-3 backdrop-blur-sm"
+              className="mb-6 inline-flex max-w-full items-center gap-3 rounded-2xl border border-brand-500/30 bg-brand-500/15 px-4 py-3 backdrop-blur-sm"
             >
-              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500">
+              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-brand-500 to-brand-700">
                 <Shield className="h-6 w-6 text-white" />
               </div>
-              <span className="text-sm font-semibold text-orange-200">
+              <span className="text-sm font-semibold text-brand-200">
                 Health, Safety & Environment
               </span>
             </motion.div>
@@ -351,13 +351,13 @@ export function HSECompliance() {
               />
             </div>
 
-            {/* Line 2 — "Compliance" orange gradient */}
+            {/* Line 2 — "Compliance" red gradient */}
             <div className="min-h-[1.1em] text-[clamp(2.7rem,12vw,5.3rem)] md:text-6xl lg:text-7xl font-extrabold leading-[0.98] tracking-tight mb-6">
               <Typewriter
                 text={LINE2_TEXT}
                 startDelay={LINE2_START}
                 typeSpeed={TYPE_SPEED}
-                className="inline text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-orange-600"
+                className="inline text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-brand-600"
               />
             </div>
 
@@ -382,10 +382,10 @@ export function HSECompliance() {
           <div className="grid grid-cols-1 items-stretch gap-8 lg:grid-cols-[1.05fr_0.95fr]">
             <Reveal y={36}>
               <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8 lg:p-10">
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500/10">
-                  <HardHat className="h-7 w-7 text-orange-500" />
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-500/10">
+                  <HardHat className="h-7 w-7 text-brand-500" />
                 </div>
-                <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">
+                <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">
                   Health, Safety & Environment (HSE)
                 </p>
                 <h2 className="mb-6 text-3xl font-extrabold leading-tight text-foreground md:text-5xl">
@@ -434,7 +434,7 @@ export function HSECompliance() {
 
             <Reveal y={36} delay={0.08}>
               <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8 lg:p-10">
-                <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">
+                <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">
                   HSE Focus Areas
                 </p>
                 <h2 className="mb-8 text-3xl font-extrabold leading-tight text-foreground md:text-5xl">
@@ -443,8 +443,8 @@ export function HSECompliance() {
                 <div className="space-y-4">
                   {hseFocusAreas.map((item, index) => (
                     <Reveal key={item} delay={index * 0.08} y={24}>
-                      <div className="flex items-start gap-4 rounded-2xl border border-border bg-background p-4 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-md">
-                        <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-orange-500/10 text-orange-500">
+                      <div className="flex items-start gap-4 rounded-2xl border border-border bg-background p-4 shadow-sm transition-all duration-300 hover:border-brand-400/50 hover:shadow-md">
+                        <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-brand-500/10 text-brand-500">
                           <CheckCircle2 className="h-5 w-5" />
                         </div>
                         <p className="text-sm font-medium leading-relaxed text-foreground sm:text-base">
@@ -464,7 +464,7 @@ export function HSECompliance() {
       <section className="bg-muted py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
-            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">
+            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">
               Experience Highlights
             </p>
             <h2 className="text-3xl font-extrabold leading-tight text-foreground md:text-5xl">
@@ -475,8 +475,8 @@ export function HSECompliance() {
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {experienceHighlights.map((item, index) => (
               <Reveal key={item.title} delay={index * 0.08} y={38}>
-                <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-xl sm:hover:-translate-y-1">
-                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-orange-500/10 text-sm font-black text-orange-500">
+                <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-brand-400/50 hover:shadow-xl sm:hover:-translate-y-1">
+                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-500/10 text-sm font-black text-brand-500">
                     {String(index + 1).padStart(2, "0")}
                   </div>
                   <h3 className="mb-3 text-xl font-extrabold text-foreground">{item.title}</h3>
@@ -492,7 +492,7 @@ export function HSECompliance() {
       <section className="bg-background py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal className="mx-auto mb-10 max-w-4xl text-center sm:mb-14">
-            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">
+            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">
               Key Differentiators
             </p>
             <h2 className="text-3xl font-extrabold leading-tight text-foreground md:text-5xl">
@@ -509,7 +509,7 @@ export function HSECompliance() {
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             {differentiators.map((item, index) => (
               <Reveal key={item.title} delay={index * 0.08} y={38}>
-                <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-xl sm:hover:-translate-y-1">
+                <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-brand-400/50 hover:shadow-xl sm:hover:-translate-y-1">
                   <h3 className="mb-3 text-xl font-extrabold text-foreground">{item.title}</h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">{item.text}</p>
                 </div>
@@ -533,7 +533,7 @@ export function HSECompliance() {
       <section className="bg-muted py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal className="mx-auto mb-10 max-w-4xl text-center sm:mb-14">
-            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">
+            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">
               Technology & Visibility
             </p>
             <h2 className="text-3xl font-extrabold leading-tight text-foreground md:text-5xl">
@@ -551,7 +551,7 @@ export function HSECompliance() {
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {technologyCapabilities.map((item, index) => (
               <Reveal key={item.title} delay={index * 0.08} y={38}>
-                <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-xl sm:hover:-translate-y-1">
+                <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-brand-400/50 hover:shadow-xl sm:hover:-translate-y-1">
                   <h3 className="mb-3 text-xl font-extrabold text-foreground">{item.title}</h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">{item.text}</p>
                 </div>
@@ -560,7 +560,7 @@ export function HSECompliance() {
           </div>
 
           <Reveal y={36} className="mt-8">
-            <div className="rounded-3xl border border-orange-500/20 bg-orange-500/10 p-6 sm:p-8">
+            <div className="rounded-3xl border border-brand-500/20 bg-brand-500/10 p-6 sm:p-8">
               <h3 className="mb-3 text-2xl font-extrabold text-foreground">Operational Impact</h3>
               <p className="leading-relaxed text-muted-foreground">
                 These technology-driven capabilities enable proactive decision-making, stronger
@@ -578,7 +578,7 @@ export function HSECompliance() {
       <section className="bg-background py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal className="mx-auto mb-10 max-w-4xl text-center sm:mb-14">
-            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-orange-500">
+            <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">
               Compliance & Regulatory Standards
             </p>
             <h2 className="text-3xl font-extrabold leading-tight text-foreground md:text-5xl">
@@ -610,9 +610,9 @@ export function HSECompliance() {
               const Icon = item.icon;
               return (
                 <Reveal key={item.title} delay={index * 0.08} y={38}>
-                  <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-orange-400/50 hover:shadow-xl sm:hover:-translate-y-1">
-                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-500/10">
-                      <Icon className="h-6 w-6 text-orange-500" />
+                  <div className="h-full rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-brand-400/50 hover:shadow-xl sm:hover:-translate-y-1">
+                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-500/10">
+                      <Icon className="h-6 w-6 text-brand-500" />
                     </div>
                     <h3 className="mb-3 text-xl font-extrabold text-foreground">{item.title}</h3>
                     <p className="text-sm leading-relaxed text-muted-foreground">{item.text}</p>
@@ -636,10 +636,10 @@ export function HSECompliance() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="bg-orange-500 py-16 text-white sm:py-24">
+      <section className="bg-gradient-to-r from-brand-500 to-brand-700 py-16 text-white sm:py-24">
         <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
           <Reveal y={44}>
-            <p className="mb-4 text-sm font-bold uppercase tracking-widest text-orange-100">
+            <p className="mb-4 text-sm font-bold uppercase tracking-widest text-brand-100">
               HSE & Compliance
             </p>
             <h2 className="mb-6 text-3xl font-extrabold leading-tight sm:text-4xl md:text-6xl">
@@ -648,7 +648,7 @@ export function HSECompliance() {
             <div className="flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
               <Link
                 to="/quote"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-8 py-4 font-bold text-orange-600 shadow-xl shadow-orange-700/20 transition-all hover:bg-orange-50 sm:w-auto sm:hover:scale-105"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-8 py-4 font-bold text-brand-600 shadow-xl shadow-brand-700/20 transition-all hover:bg-brand-50 sm:w-auto sm:hover:scale-105"
               >
                 Book Shipment <ArrowRight className="h-5 w-5" />
               </Link>
