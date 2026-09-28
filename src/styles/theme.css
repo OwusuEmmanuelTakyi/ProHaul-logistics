@@ -71,7 +71,7 @@
   --chart-5: oklch(0.645 0.246 16.439);
   --sidebar: #1a1f26;
   --sidebar-foreground: #e5e7eb;
-  --sidebar-primary: #e00000;
+  --sidebar-primary: #f01e2c;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #374151;
   --sidebar-accent-foreground: #f3f4f6;
@@ -80,17 +80,17 @@
 }
 
 @theme inline {
-  --color-brand-50: #fff1f1;
-  --color-brand-100: #ffdfdf;
-  --color-brand-200: #ffc4c4;
-  --color-brand-300: #ff9a9a;
-  --color-brand-400: #f85555;
-  --color-brand-500: #e00000;
-  --color-brand-600: #bf0000;
-  --color-brand-700: #9e0000;
-  --color-brand-800: #820404;
-  --color-brand-900: #6b0a0a;
-  --color-brand-950: #3d0000;
+  --color-brand-50: #fff1f2;
+  --color-brand-100: #ffe0e2;
+  --color-brand-200: #ffc6ca;
+  --color-brand-300: #ff9ca3;
+  --color-brand-400: #fb5f6a;
+  --color-brand-500: #f01e2c;
+  --color-brand-600: #d10f1c;
+  --color-brand-700: #ad0c17;
+  --color-brand-800: #8f1019;
+  --color-brand-900: #77141b;
+  --color-brand-950: #41040a;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
