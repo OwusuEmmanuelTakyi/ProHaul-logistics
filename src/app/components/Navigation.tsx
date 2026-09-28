@@ -106,22 +106,18 @@ export function Navigation() {
             whileTap={{ scale: 0.97 }}
             className="flex-shrink-0"
           >
-            <Link to="/" onClick={closeMobileMenu} className="flex items-center gap-3">
+            <Link to="/" onClick={closeMobileMenu} className="flex items-center">
               <motion.div
-                className="flex h-14 w-14 flex-shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md shadow-black/10 dark:border-white/10 dark:shadow-white/5 sm:h-[60px] sm:w-[60px]"
-                whileHover={{ rotate: [0, -5, 5, 0] }}
-                transition={{ duration: 0.4 }}
+                className="flex h-14 flex-shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white sm:h-[60px]"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.2 }}
               >
                 <img
                   src={logo}
-                  alt="ProHaul logo"
-                  className="h-[85%] w-[85%] object-contain"
+                  alt="ProHaul"
+                  className="h-full w-auto object-contain"
                 />
               </motion.div>
-
-              <span className="text-[22px] font-black leading-none tracking-tight text-orange-500 sm:text-[26px]">
-                ProHaul
-              </span>
             </Link>
           </motion.div>
 
