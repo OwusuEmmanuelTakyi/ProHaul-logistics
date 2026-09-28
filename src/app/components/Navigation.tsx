@@ -99,7 +99,7 @@ export function Navigation() {
             : "border border-slate-100 shadow-md shadow-black/10 dark:border-white/10"
         }`}
       >
-        <div className="flex h-[80px] items-center px-4 sm:h-[88px] sm:px-6">
+        <div className="flex h-[72px] items-center px-4 sm:h-[76px] sm:px-6">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.03 }}
@@ -108,7 +108,7 @@ export function Navigation() {
           >
             <Link to="/" onClick={closeMobileMenu} className="flex items-center">
               <motion.div
-                className="flex h-[68px] flex-shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white sm:h-[76px]"
+                className="flex h-[56px] flex-shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white sm:h-[60px]"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
               >
