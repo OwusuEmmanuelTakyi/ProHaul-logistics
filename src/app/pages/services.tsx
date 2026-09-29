@@ -225,7 +225,7 @@ export function Services() {
               transition={{ duration: 0.7, delay: 0.38 }}
               className="mt-6 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-gray-300"
             >
-              ProHaul provides safe, efficient, and scalable haulage services across Ghana and the West African sub-region.
+              We provide safe, efficient, and scalable haulage services across Ghana and the West African sub-region.
             </motion.p>
           </div>
         </motion.div>

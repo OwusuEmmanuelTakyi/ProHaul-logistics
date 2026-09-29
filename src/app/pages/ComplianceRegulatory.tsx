@@ -212,7 +212,7 @@ export function ComplianceRegulatory() {
               transition={{ duration: 0.7, delay: 0.38 }}
               className="mt-6 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-gray-300"
             >
-              ProHaul operates within a robust compliance framework, ensuring full adherence to all applicable laws and regulations governing haulage, petroleum transportation, and cross-border trade.
+              We operate within a robust compliance framework, ensuring full adherence to all applicable laws and regulations governing haulage, petroleum transportation, and cross-border trade.
             </motion.p>
           </div>
         </motion.div>
@@ -226,7 +226,7 @@ export function ComplianceRegulatory() {
               <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Operational Strength</p>
               <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight text-foreground">Track Record & Experience</h2>
               <p className="mb-5 text-muted-foreground leading-relaxed">
-                ProHaul has established a strong and reliable operational track record supporting key sectors of the economy, including petroleum distribution, agriculture, and construction. Our experience spans the transportation of both bulk and packaged cargo, delivered with consistency, efficiency, and adherence to industry standards.
+                We have established a strong and reliable operational track record supporting key sectors of the economy, including petroleum distribution, agriculture, and construction. Our experience spans the transportation of both bulk and packaged cargo, delivered with consistency, efficiency, and adherence to industry standards.
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 We have successfully executed haulage operations across major commercial and industrial corridors within Ghana and extending into the West African sub-region. Our ability to manage diverse logistics requirements under varying operational conditions has positioned us as a dependable partner for clients with both routine and complex transportation needs.
@@ -292,7 +292,7 @@ export function ComplianceRegulatory() {
               <Reveal y={36}>
                 <div className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-sm">
                   <p className="mb-5 text-muted-foreground leading-relaxed">
-                    ProHaul operates within a robust compliance framework, ensuring full adherence to all applicable laws and regulations governing haulage, petroleum transportation, and cross-border trade. Our operations are structured to meet stringent national and regional standards, enabling lawful, efficient, and seamless movement of cargo across all jurisdictions in which we operate.
+                    We operate within a robust compliance framework, ensuring full adherence to all applicable laws and regulations governing haulage, petroleum transportation, and cross-border trade. Our operations are structured to meet stringent national and regional standards, enabling lawful, efficient, and seamless movement of cargo across all jurisdictions in which we operate.
                   </p>
                   <p className="text-muted-foreground leading-relaxed">
                     We adopt a zero-tolerance approach to non-compliance, embedding regulatory discipline into every aspect of our operations—from fleet management and driver conduct to documentation and cargo handling. Our systems and processes are designed to meet audit and inspection requirements, ensuring full transparency, traceability, and accountability at all times.
@@ -344,7 +344,7 @@ export function ComplianceRegulatory() {
               <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-400">Cargo Protection</p>
               <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight">Cargo Security & Insurance</h2>
               <p className="mb-5 text-gray-300 leading-relaxed">
-                At ProHaul, we recognize that the security of our clients’ cargo is paramount. As part of our commitment to risk management and service reliability, all cargo transported under our operations is covered by a comprehensive Goods in Transit (GIT) insurance policy.
+                We recognize that the security of our clients’ cargo is paramount. As part of our commitment to risk management and service reliability, all cargo transported under our operations is covered by a comprehensive Goods in Transit (GIT) insurance policy.
               </p>
               <p className="mb-8 text-gray-300 leading-relaxed">
                 This policy is underwritten in partnership with one of Ghana’s leading insurance providers, ensuring that our clients benefit from strong financial backing and credible claims support.
@@ -354,7 +354,7 @@ export function ComplianceRegulatory() {
                 <LockKeyhole className="mb-5 h-10 w-10" />
                 <h3 className="mb-3 text-2xl sm:text-3xl font-extrabold">Goods in Transit Insurance</h3>
                 <p className="text-brand-50 leading-relaxed">
-                  With ProHaul, clients are assured not only of efficient delivery, but also of secured and protected cargo throughout the transportation lifecycle.
+                  With us, clients are assured not only of efficient delivery, but also of secured and protected cargo throughout the transportation lifecycle.
                 </p>
               </div>
             </RevealX>
@@ -398,7 +398,7 @@ export function ComplianceRegulatory() {
               Move cargo with confidence, transparency, and protection.
             </h2>
             <p className="mx-auto mb-8 max-w-3xl text-base sm:text-xl leading-relaxed text-gray-300">
-              ProHaul combines regulatory discipline, cargo security, insurance coverage, and proven operational experience to support reliable haulage across Ghana and West Africa.
+              We combine regulatory discipline, cargo security, insurance coverage, and proven operational experience to support reliable haulage across Ghana and West Africa.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
               <Link

@@ -556,7 +556,7 @@ export function Contact() {
               transition={{ duration: 0.65, delay: subtitleDelay }}
               className="mt-2 max-w-2xl text-base sm:text-lg leading-relaxed text-gray-300"
             >
-              Contact ProHaul for reliable, safe, and efficient haulage solutions
+              Contact us for reliable, safe, and efficient haulage solutions
               across Ghana and the West African sub-region.
             </motion.p>
 
@@ -780,7 +780,7 @@ export function Contact() {
             <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-brand-500">Coverage & Operational Strength</p>
             <h2 className="mb-4 text-3xl md:text-5xl font-extrabold text-foreground leading-tight">Nationwide strength with regional reach.</h2>
             <p className="text-muted-foreground leading-relaxed">
-              ProHaul supports cargo movement across Ghana and key West African trade corridors, with access to ports, industrial zones, farms, warehouses, markets, and commercial hubs.
+              We support cargo movement across Ghana and key West African trade corridors, with access to ports, industrial zones, farms, warehouses, markets, and commercial hubs.
             </p>
           </Reveal>
 
@@ -821,7 +821,7 @@ export function Contact() {
               We don't just move goods — we keep businesses moving.
             </h2>
             <p className="mx-auto mb-9 max-w-2xl text-base sm:text-lg leading-relaxed text-gray-300">
-              Partner with ProHaul for reliable, safe, and efficient haulage solutions across Ghana and West Africa.
+              Partner with us for reliable, safe, and efficient haulage solutions across Ghana and West Africa.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3">
               <a href="tel:+233XXXXXXXXX" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-500 to-brand-700 px-8 py-4 text-sm font-bold text-white shadow-xl shadow-brand-600/30 transition-all hover:brightness-110 hover:scale-105">

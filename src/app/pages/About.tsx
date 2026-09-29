@@ -338,7 +338,7 @@ export function About() {
               transportation solutions across Ghana and the wider West African sub-region. We
               specialize in the safe, efficient, and timely movement of bulk and packaged goods,
               supporting businesses across critical sectors of the economy. With a modern fleet,
-              experienced drivers, and a deep understanding of regional trade routes, ProHaul is
+              experienced drivers, and a deep understanding of regional trade routes, we are
               built to move your cargo securely, on schedule, and at scale.
             </motion.p>
 

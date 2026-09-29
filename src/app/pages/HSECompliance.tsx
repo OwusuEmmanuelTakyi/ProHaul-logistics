@@ -368,7 +368,7 @@ export function HSECompliance() {
               transition={{ duration: 0.7, delay: subtitleDelay }}
               className="mt-2 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg md:text-xl"
             >
-              Safety is a core pillar of ProHaul's operations. We maintain a structured
+              Safety is a core pillar of our operations. We maintain a structured
               Health, Safety, and Environment (HSE) framework designed to protect personnel,
               cargo, and the communities within which we operate.
             </motion.p>
@@ -393,7 +393,7 @@ export function HSECompliance() {
                 </h2>
                 <div className="space-y-5 leading-relaxed text-muted-foreground">
                   <p>
-                    Safety is a core pillar of ProHaul's operations. We maintain a structured
+                    Safety is a core pillar of our operations. We maintain a structured
                     Health, Safety, and Environment (HSE) framework designed to protect personnel,
                     cargo, and the communities within which we operate.
                   </p>
@@ -499,7 +499,7 @@ export function HSECompliance() {
               Key Differentiators
             </h2>
             <p className="mt-5 leading-relaxed text-muted-foreground">
-              ProHaul distinguishes itself through a combination of operational strength, market
+              We distinguish ourselves through a combination of operational strength, market
               insight, and a disciplined approach to execution. Our business is structured to
               deliver not just transportation services, but dependable logistics solutions that
               support our clients' operational continuity and long-term growth.
@@ -520,7 +520,7 @@ export function HSECompliance() {
           <Reveal y={36} className="mt-8">
             <div className="rounded-3xl bg-slate-950 p-6 text-white shadow-2xl sm:p-8">
               <p className="text-lg leading-relaxed text-gray-200">
-                At ProHaul, we position ourselves not merely as a service provider, but as a
+                We position ourselves not merely as a service provider, but as a
                 trusted logistics partner, delivering structured, reliable, and scalable solutions
                 that support business performance across industries.
               </p>
@@ -540,7 +540,7 @@ export function HSECompliance() {
               Technology & Visibility
             </h2>
             <p className="mt-5 leading-relaxed text-muted-foreground">
-              ProHaul leverages technology as a core enabler of operational excellence, driving
+              We leverage technology as a core enabler of operational excellence, driving
               efficiency, transparency, and accountability across all haulage activities. Our
               technology framework is designed to provide real-time operational insight, strengthen
               control over fleet performance, and enhance the overall reliability of our service
@@ -589,7 +589,7 @@ export function HSECompliance() {
           <div className="mx-auto max-w-5xl rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8 lg:p-10">
             <div className="space-y-5 leading-relaxed text-muted-foreground">
               <p>
-                ProHaul operates within a robust compliance framework, ensuring full adherence to
+                We operate within a robust compliance framework, ensuring full adherence to
                 all applicable laws and regulations governing haulage, petroleum transportation,
                 and cross-border trade. Our operations are structured to meet stringent national and
                 regional standards, enabling lawful, efficient, and seamless movement of cargo across

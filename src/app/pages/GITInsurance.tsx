@@ -241,7 +241,7 @@ export function GITInsurance() {
               transition={{ duration: 0.7, delay: subtitleDelay }}
               className="mt-2 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-gray-300"
             >
-              All cargo transported under ProHaul operations is covered by a comprehensive Goods in Transit (GIT) insurance policy, ensuring your shipment is protected at every stage.
+              All cargo transported under our operations is covered by a comprehensive Goods in Transit (GIT) insurance policy, ensuring your shipment is protected at every stage.
             </motion.p>
           </div>
         </motion.div>
@@ -261,7 +261,7 @@ export function GITInsurance() {
                 </h2>
                 <div className="space-y-5 leading-relaxed text-muted-foreground">
                   <p>
-                    At ProHaul, we recognize that the security of our clients' cargo is paramount. As part of our commitment to risk management and service reliability, all cargo transported under our operations is covered by a comprehensive Goods in Transit (GIT) insurance policy.
+                    We recognize that the security of our clients' cargo is paramount. As part of our commitment to risk management and service reliability, all cargo transported under our operations is covered by a comprehensive Goods in Transit (GIT) insurance policy.
                   </p>
                   <p>
                     This policy is underwritten in partnership with one of Ghana's leading insurance providers, ensuring that our clients benefit from strong financial backing and credible claims support.
@@ -313,7 +313,7 @@ export function GITInsurance() {
                   Our insurance coverage forms an integral part of our broader operational framework, which combines safety protocols, trained personnel, and disciplined haulage execution.
                 </p>
                 <p>
-                  With ProHaul, clients are assured not only of efficient delivery, but also of secured and protected cargo throughout the transportation lifecycle.
+                  With us, clients are assured not only of efficient delivery, but also of secured and protected cargo throughout the transportation lifecycle.
                 </p>
               </div>
             </div>

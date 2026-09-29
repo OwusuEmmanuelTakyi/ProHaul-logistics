@@ -311,7 +311,7 @@ export function Fleet() {
               transition={{ duration: 0.7, delay: subtitleDelay }}
               className="mt-2 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-gray-300"
             >
-              ProHaul operates a modern, high-performance fleet designed to deliver reliability, efficiency, and scalable capacity across a wide range of haulage requirements.
+              We operate a modern, high-performance fleet designed to deliver reliability, efficiency, and scalable capacity across a wide range of haulage requirements.
             </motion.p>
           </div>
         </motion.div>
@@ -329,7 +329,7 @@ export function Fleet() {
                 </h2>
                 <div className="space-y-5 text-muted-foreground leading-relaxed">
                   <p>
-                    ProHaul operates a modern, high-performance fleet designed to deliver reliability, efficiency, and scalable capacity across a wide range of haulage requirements. Our fleet strategy is centered on deploying robust, well-maintained equipment capable of supporting both routine and high-demand logistics operations.
+                    We operate a modern, high-performance fleet designed to deliver reliability, efficiency, and scalable capacity across a wide range of haulage requirements. Our fleet strategy is centered on deploying robust, well-maintained equipment capable of supporting both routine and high-demand logistics operations.
                   </p>
                   <p>
                     Our fleet comprises trusted European truck brands. MAN, DAF, Volvo, and Scania. Selected for their durability, fuel efficiency, and proven performance under demanding operating conditions. In line with our long-term growth strategy, the fleet is continually expanded and refreshed with newer models to strengthen operational capacity, improve efficiency, and meet the evolving requirements of our clients.
@@ -434,7 +434,7 @@ export function Fleet() {
           <Reveal y={36}>
             <div className="rounded-3xl border border-white/10 bg-white/5 p-6 sm:p-8 lg:p-10 shadow-2xl">
               <p className="text-lg sm:text-xl leading-relaxed text-gray-200">
-                This integrated fleet structure enables ProHaul to match equipment precisely to cargo requirements, ensuring optimal load management, operational efficiency, and consistent delivery performance across all routes.
+                This integrated fleet structure enables us to match equipment precisely to cargo requirements, ensuring optimal load management, operational efficiency, and consistent delivery performance across all routes.
               </p>
             </div>
           </Reveal>

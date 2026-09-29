@@ -172,7 +172,6 @@ type ServicePageData = {
   badge: string;
   title: string;
   highlight: string;
-  heroText: string;
   heroImage: string;
   primaryCta: string;
   intro: string[];
@@ -192,8 +191,6 @@ export const servicePages = {
     badge: "Fuel Haulage",
     title: "Fuel haulage services",
     highlight: "built around safety and reliability.",
-    heroText:
-      "",
     heroImage: IMGS.fuelHero,
     primaryCta: "Request Fuel Haulage",
     intro: [
@@ -250,8 +247,6 @@ export const servicePages = {
     badge: "Agricultural Haulage",
     title: "Agricultural products and commodities,",
     highlight: "moved reliably.",
-    heroText:
-      "We provide dedicated support to the agricultural and agribusiness value chain through reliable and efficient transportation of agricultural produce and related commodities across key supply chain nodes.",
     heroImage: IMGS.agriHero,
     primaryCta: "Request Agric Haulage",
     intro: [
@@ -292,8 +287,6 @@ export const servicePages = {
     badge: "Construction Haulage",
     title: "Construction materials,",
     highlight: "delivered on schedule.",
-    heroText:
-      "We provide specialized and dependable haulage services to cement manufacturers, distributors, importers, and construction companies involved in residential, commercial, and large-scale infrastructure development projects.",
     heroImage: IMGS.cementHero,
     primaryCta: "Request Construction Haulage",
     intro: [
@@ -335,8 +328,6 @@ export const servicePages = {
     badge: "Fertilizer Haulage",
     title: "Fertilizer and industrial inputs,",
     highlight: "delivered where needed.",
-    heroText:
-      "We deliver specialized haulage services for fertilizers and a wide range of industrial inputs that are essential to agricultural productivity and manufacturing operations.",
     heroImage: IMGS.fertilizerHero,
     primaryCta: "Request Input Haulage",
     intro: [
@@ -378,8 +369,6 @@ export const servicePages = {
     badge: "Container Haulage",
     title: "Container haulage,",
     highlight: "from port to destination.",
-    heroText:
-      "We support importers, exporters, and distribution networks with reliable containerized cargo movement from ports to inland destinations.",
     heroImage: IMGS.containerHero,
     primaryCta: "Request Container Haulage",
     intro: [
@@ -409,8 +398,6 @@ export const servicePages = {
     badge: "Cross-Border Haulage",
     title: "Cargo movement across Ghana and",
     highlight: "West African corridors.",
-    heroText:
-      "We operate an extensive and well-coordinated haulage network spanning all regions of Ghana and key trade corridors across the West African sub-region.",
     heroImage: IMGS.crossHero,
     primaryCta: "Request Cross-Border Haulage",
     intro: [
@@ -485,12 +472,9 @@ export function ServicePage({ data }: { data: ServicePageData }) {
   const imageY = useTransform(scrollYProgress, [0, 1], isMobile ? ["0%", "8%"] : ["0%", "18%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.9], [1, isMobile ? 0.45 : 0]);
 
-  const HeroIcon = data.icon;
-
   /* ── Typewriter chain timing (ms) ──
      line1 = data.title   (plain white)
      line2 = data.highlight (red gradient)
-     Both start after badge fades in (~300ms)
   */
   const TYPE_SPEED = 55;
   const LINE1_START = 350;
@@ -535,19 +519,6 @@ export function ServicePage({ data }: { data: ServicePageData }) {
           </motion.div>
 
           <div className="max-w-4xl">
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.55, delay: 0.12 }}
-              className="mb-6 inline-flex max-w-full items-center gap-3 rounded-2xl border border-brand-500/30 bg-brand-500/15 px-4 py-3 backdrop-blur-sm"
-            >
-              <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-brand-500 to-brand-700">
-                <HeroIcon className="h-6 w-6 text-white" />
-              </div>
-              <span className="text-sm font-semibold text-brand-200">{data.badge}</span>
-            </motion.div>
-
             {/* ── Line 1: data.title (white) ── */}
             <div className="min-h-[1.0em] text-[clamp(2rem,9vw,4.2rem)] md:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight text-white mb-1">
               <Typewriter
@@ -567,16 +538,6 @@ export function ServicePage({ data }: { data: ServicePageData }) {
                 className="inline text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-brand-600"
               />
             </div>
-
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: subtitleDelay }}
-              className="mt-2 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-gray-300"
-            >
-              {data.heroText}
-            </motion.p>
 
             {/* CTA buttons */}
             <motion.div

@@ -859,7 +859,7 @@ export function Home() {
                 Health, Safety & Environment
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-8">
-                Safety is a core pillar of ProHaul&apos;s operations. We maintain a structured HSE framework designed to protect personnel, cargo, and the communities within which we operate — with a zero-incident objective embedded in every process.
+                Safety is a core pillar of our operations. We maintain a structured HSE framework designed to protect personnel, cargo, and the communities within which we operate — with a zero-incident objective embedded in every process.
               </p>
               <div className="grid grid-cols-1 gap-4 mb-8">
                 {[
