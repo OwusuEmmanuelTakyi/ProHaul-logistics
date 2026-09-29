@@ -183,7 +183,7 @@ const IMGS = {
   hero: "https://i.pinimg.com/1200x/8f/df/0a/8fdf0a9b81a599f9bb9cfe74c5855cbd.jpg",
 };
 
-const trustedBrands = ["MAN", "DAF", "Volvo", "Scania"];
+const trustedBrands = ["MAN", "DAF", "Volvo", "Scania" , "Iveco" ];
 
 const fleetCapability = [
   "High-powered prime movers designed for long-distance and heavy-load transport",
@@ -211,7 +211,7 @@ const trailerConfiguration = [
 ];
 
 const fleetHighlights = [
-  { icon: Truck,    value: "MAN, DAF, Volvo, and Scania", label: "Trusted European truck brands" },
+  { icon: Truck,    value: "MAN, DAF, Volvo, Scania, and Iveco", label: "Trusted European truck brands" },
   { icon: Zap,      value: "460HP to 530HP",              label: "Truck power range" },
   { icon: Gauge,    value: "2,100 Nm to 2,500 Nm",        label: "Torque output range" },
   { icon: Settings, value: "27,000L to 54,000L",          label: "Fuel tanker capacities" },
@@ -332,7 +332,7 @@ export function Fleet() {
                     We operate a modern, high-performance fleet designed to deliver reliability, efficiency, and scalable capacity across a wide range of haulage requirements. Our fleet strategy is centered on deploying robust, well-maintained equipment capable of supporting both routine and high-demand logistics operations.
                   </p>
                   <p>
-                    Our fleet comprises trusted European truck brands. MAN, DAF, Volvo, and Scania. Selected for their durability, fuel efficiency, and proven performance under demanding operating conditions. In line with our long-term growth strategy, the fleet is continually expanded and refreshed with newer models to strengthen operational capacity, improve efficiency, and meet the evolving requirements of our clients.
+                    Our fleet comprises trusted European truck brands. MAN, DAF, Volvo, Scania and Iveco. Selected for their durability, fuel efficiency, and proven performance under demanding operating conditions. In line with our long-term growth strategy, the fleet is continually expanded and refreshed with newer models to strengthen operational capacity, improve efficiency, and meet the evolving requirements of our clients.
                   </p>
                   <p>
                     Our trucks are powered within the range of 460HP to 530HP, delivering the strength required for heavy-duty haulage operations. Complementing this is torque output ranging from 2,100 Nm to 2,500 Nm, providing the pulling power necessary to transport high payloads efficiently across long-haul routes and challenging terrains, including gradients and remote corridors.
@@ -360,19 +360,19 @@ export function Fleet() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
             <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Trusted European Truck Brands</p>
-            <h2 className="text-3xl md:text-5xl font-extrabold leading-tight text-foreground">MAN, DAF, Volvo, and Scania.</h2>
+            <h2 className="text-3xl md:text-5xl font-extrabold leading-tight text-foreground">MAN, DAF, Volvo, Scania, Iveco.</h2>
             <p className="mt-5 text-muted-foreground leading-relaxed">
               Our fleet comprises trusted European truck brands selected for their durability, fuel efficiency, and proven performance under demanding operating conditions.
             </p>
           </Reveal>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-5 gap-2 sm:gap-4">
             {trustedBrands.map((brand, index) => (
               <Reveal key={brand} delay={index * 0.08} y={38}>
-                <div className="group h-full rounded-3xl border border-border bg-card p-6 sm:p-8 text-center shadow-sm transition-all duration-300 hover:border-brand-400/50 hover:shadow-xl sm:hover:-translate-y-2">
-                  <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-500/10 transition-all group-hover:bg-brand-500">
-                    <Truck className="h-7 w-7 text-brand-500 transition-colors group-hover:text-white" />
+                <div className="group h-full rounded-xl sm:rounded-2xl border border-border bg-card px-1 py-3 sm:p-5 text-center shadow-sm transition-all duration-300 hover:border-brand-400/50 hover:shadow-xl sm:hover:-translate-y-2">
+                  <div className="mx-auto mb-2 sm:mb-3 flex h-8 w-8 sm:h-11 sm:w-11 items-center justify-center rounded-lg sm:rounded-xl bg-brand-500/10 transition-all group-hover:bg-brand-500">
+                    <Truck className="h-4 w-4 sm:h-5 sm:w-5 text-brand-500 transition-colors group-hover:text-white" />
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-black text-foreground">{brand}</h3>
+                  <h3 className="text-xs sm:text-lg lg:text-xl font-black text-foreground">{brand}</h3>
                 </div>
               </Reveal>
             ))}
