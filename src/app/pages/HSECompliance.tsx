@@ -368,10 +368,7 @@ export function HSECompliance() {
               transition={{ duration: 0.7, delay: subtitleDelay }}
               className="mt-2 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg md:text-xl"
             >
-              Safety is a core pillar of our operations. We maintain a structured
-              Health, Safety, and Environment (HSE) framework designed to protect personnel,
-              cargo, and the communities within which we operate.
-            </motion.p>
+             </motion.p>
           </div>
         </motion.div>
       </section>
