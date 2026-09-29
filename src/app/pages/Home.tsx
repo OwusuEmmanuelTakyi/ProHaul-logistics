@@ -524,7 +524,7 @@ export function Home() {
               transition={{ duration: 0.7, delay: subtitleDelay }}
               className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 sm:mb-10 leading-relaxed max-w-xl"
             >
-              ProHaul delivers reliable bulk haulage solutions across Ghana and West Africa, ensuring safe and efficient cargo movement.
+              We deliver reliable bulk haulage solutions across Ghana and West Africa, ensuring safe and efficient cargo movement.
             </motion.p>
 
             {/* CTA buttons */}
@@ -623,10 +623,10 @@ export function Home() {
               <p className="text-brand-500 font-bold text-sm uppercase tracking-widest mb-3">About ProHaul</p>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6 leading-tight">Ghana's Trusted Partner for Bulk Haulage</h2>
               <p className="text-muted-foreground leading-relaxed mb-5">
-                ProHaul is a Ghana-based haulage company delivering dependable, end-to-end transportation solutions across Ghana and the wider West African sub-region. We specialize in the safe, efficient, and timely movement of bulk and packaged goods, supporting businesses across critical sectors of the economy.
+                We are a Ghana-based haulage company delivering dependable, end-to-end transportation solutions across Ghana and the wider West African sub-region. We specialize in the safe, efficient, and timely movement of bulk and packaged goods, supporting businesses across critical sectors of the economy.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-8">
-                With a modern fleet, experienced drivers, and a deep understanding of regional trade routes, ProHaul is built to move your cargo securely, on schedule, and at scale.
+                With a modern fleet, experienced drivers, and a deep understanding of regional trade routes, we are built to move your cargo securely, on schedule, and at scale.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                 {["NPA Certified", "MPS Certified", "GPS Fleet Tracking", "ECOWAS", "Goods in Transit Insurance"].map((item) => (
@@ -756,7 +756,7 @@ export function Home() {
               <p className="text-brand-400 font-bold text-sm uppercase tracking-widest mb-3">Built for Scale</p>
               <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">Fleet & Operational Capacity</h2>
               <p className="text-gray-400 leading-relaxed mb-8">
-                ProHaul operates a modern, high-performance fleet designed to deliver reliability, efficiency, and scalable capacity across a wide range of haulage requirements. Our fleet strategy is centered on deploying robust, well-maintained equipment capable of supporting both routine and high-demand logistics operations.
+                We operate a modern, high-performance fleet designed to deliver reliability, efficiency, and scalable capacity across a wide range of haulage requirements. Our fleet strategy is centered on deploying robust, well-maintained equipment capable of supporting both routine and high-demand logistics operations.
               </p>
               <div className="flex flex-wrap gap-3">
                 {["MAN", "DAF", "VOLVO", "SCANIA"].map((brand, i) => (
@@ -935,7 +935,7 @@ export function Home() {
             <p className="text-brand-400 font-bold text-sm uppercase tracking-widest mb-4">Let's Move Together</p>
             <h2 className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-6 leading-tight">Ready to Move Your Cargo?</h2>
             <p className="text-base sm:text-lg text-gray-300 mb-8 sm:mb-10 leading-relaxed max-w-2xl mx-auto">
-              Partner with ProHaul for reliable, safe, and efficient haulage solutions across Ghana and West Africa. We don't just move goods — we keep businesses moving.
+              Reachout to us for reliable, safe, and efficient haulage solutions across Ghana and West Africa. We don't just move goods — we keep businesses moving.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <Link

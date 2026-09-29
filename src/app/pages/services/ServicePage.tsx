@@ -193,11 +193,11 @@ export const servicePages = {
     title: "Fuel haulage services",
     highlight: "built around safety and reliability.",
     heroText:
-      "ProHaul provides specialized bulk fuel haulage services designed to meet the operational, safety, and regulatory requirements of petroleum marketers, industrial operators, mining companies, and bulk fuel distributors.",
+      "",
     heroImage: IMGS.fuelHero,
     primaryCta: "Request Fuel Haulage",
     intro: [
-      "ProHaul provides specialized bulk fuel haulage services designed to meet the operational, safety, and regulatory requirements of petroleum marketers, industrial operators, mining companies, and bulk fuel distributors. Our service model is built around precision, safety, and reliability. Ensuring uninterrupted supply across critical sectors.",
+      "We provides specialized bulk fuel haulage services designed to meet the operational, safety, and regulatory requirements of petroleum marketers, industrial operators, mining companies, and bulk fuel distributors. Our service model is built around precision, safety, and reliability. Ensuring uninterrupted supply across critical sectors.",
       "Our fuel transportation operations are executed in strict adherence to applicable safety standards, environmental regulations, and industry best practices. We maintain disciplined operational controls across the entire delivery lifecycle, ensuring the secure, compliant, and timely movement of petroleum products across Ghana and the West African sub-region.",
     ],
     sections: [
@@ -239,7 +239,7 @@ export const servicePages = {
       },
     ],
     closing:
-      "ProHaul positions itself as a trusted fuel logistics partner, delivering safe, efficient, and dependable haulage solutions that support energy distribution and business continuity across the region.",
+      "We positions ourself as a trusted fuel logistics partner, delivering safe, efficient, and dependable haulage solutions that support energy distribution and business continuity across the region.",
     secondaryLink: "/services/cross-border",
     secondaryLabel: "Cross-Border Haulage",
   },
@@ -251,11 +251,11 @@ export const servicePages = {
     title: "Agricultural products and commodities,",
     highlight: "moved reliably.",
     heroText:
-      "ProHaul provides dedicated support to the agricultural and agribusiness value chain through reliable and efficient transportation of agricultural produce and related commodities across key supply chain nodes.",
+      "We provide dedicated support to the agricultural and agribusiness value chain through reliable and efficient transportation of agricultural produce and related commodities across key supply chain nodes.",
     heroImage: IMGS.agriHero,
     primaryCta: "Request Agric Haulage",
     intro: [
-      "ProHaul provides dedicated support to the agricultural and agribusiness value chain through reliable and efficient transportation of agricultural produce and related commodities across key supply chain nodes. Our services are designed to bridge the gap between farmgate production, aggregation centers, processing facilities, storage depots, and distribution markets, ensuring that goods move seamlessly from origin to end-user markets.",
+      "We provide dedicated support to the agricultural and agribusiness value chain through reliable and efficient transportation of agricultural produce and related commodities across key supply chain nodes. Our services are designed to bridge the gap between farmgate production, aggregation centers, processing facilities, storage depots, and distribution markets, ensuring that goods move seamlessly from origin to end-user markets.",
       "We understand the time-sensitive and quality-sensitive nature of agricultural logistics. As such, our operations are structured to minimize post-harvest losses, reduce transit delays, and maintain product integrity throughout the transportation process. Whether dealing with seasonal harvests or year-round commodity flows, we provide dependable haulage solutions tailored to the operational realities of the agricultural sector.",
     ],
     sections: [
@@ -281,7 +281,7 @@ export const servicePages = {
       },
     ],
     closing:
-      "Through these capabilities, ProHaul plays a critical role in strengthening agricultural supply chains, improving market access for producers, and supporting the efficient flow of food and raw materials across the region.",
+      "Through these capabilities, we play a critical role in strengthening agricultural supply chains, improving market access for producers, and supporting the efficient flow of food and raw materials across the region.",
     secondaryLink: "/services/fertilizer",
     secondaryLabel: "Fertilizer Haulage",
   },
@@ -293,11 +293,11 @@ export const servicePages = {
     title: "Construction materials,",
     highlight: "delivered on schedule.",
     heroText:
-      "ProHaul provides specialized and dependable haulage services to cement manufacturers, distributors, importers, and construction companies involved in residential, commercial, and large-scale infrastructure development projects.",
+      "We provide specialized and dependable haulage services to cement manufacturers, distributors, importers, and construction companies involved in residential, commercial, and large-scale infrastructure development projects.",
     heroImage: IMGS.cementHero,
     primaryCta: "Request Construction Haulage",
     intro: [
-      "ProHaul provides specialized and dependable haulage services to cement manufacturers, distributors, importers, and construction companies involved in residential, commercial, and large-scale infrastructure development projects. Our services are designed to support the construction value chain by ensuring that essential building materials are transported safely, efficiently, and delivered in alignment with project timelines and site requirements.",
+      "We provide specialized and dependable haulage services to cement manufacturers, distributors, importers, and construction companies involved in residential, commercial, and large-scale infrastructure development projects. Our services are designed to support the construction value chain by ensuring that essential building materials are transported safely, efficiently, and delivered in alignment with project timelines and site requirements.",
       "We recognize that the construction sector is highly time-sensitive, where delays in material delivery can directly impact project costs, contractor schedules, and overall delivery milestones. As such, our operations are structured to provide consistent, well-coordinated logistics support that keeps construction activities moving without interruption.",
       "Our transport solutions are tailored for both urban and remote project sites, with the capacity to navigate diverse terrain and delivery conditions while maintaining product integrity and schedule reliability.",
     ],
@@ -324,7 +324,7 @@ export const servicePages = {
       },
     ],
     closing:
-      "Through these capabilities, ProHaul plays a vital role in strengthening construction supply chains, improving project efficiency, and ensuring the timely availability of essential materials that drive infrastructure development across Ghana and the wider region.",
+      "Through these capabilities, we play a vital role in strengthening construction supply chains, improving project efficiency, and ensuring the timely availability of essential materials that drive infrastructure development across Ghana and the wider region.",
     secondaryLink: "/services/container",
     secondaryLabel: "Container Haulage",
   },
@@ -336,13 +336,13 @@ export const servicePages = {
     title: "Fertilizer and industrial inputs,",
     highlight: "delivered where needed.",
     heroText:
-      "ProHaul delivers specialized haulage services for fertilizers and a wide range of industrial inputs that are essential to agricultural productivity and manufacturing operations.",
+      "We deliver specialized haulage services for fertilizers and a wide range of industrial inputs that are essential to agricultural productivity and manufacturing operations.",
     heroImage: IMGS.fertilizerHero,
     primaryCta: "Request Input Haulage",
     intro: [
-      "ProHaul delivers specialized haulage services for fertilizers and a wide range of industrial inputs that are essential to agricultural productivity and manufacturing operations. Our services are structured to support importers, distributors, agro-dealers, and industrial operators by ensuring that critical inputs move efficiently from ports, factories, and storage facilities to end-users across the country.",
+      "We deliver specialized haulage services for fertilizers and a wide range of industrial inputs that are essential to agricultural productivity and manufacturing operations. Our services are structured to support importers, distributors, agro-dealers, and industrial operators by ensuring that critical inputs move efficiently from ports, factories, and storage facilities to end-users across the country.",
       "We understand that both fertilizers and industrial raw materials require careful handling, strict adherence to safety standards, and precise delivery timing. Particularly during peak agricultural seasons and production cycles. Our operations are therefore designed to minimize delays, prevent product contamination or damage, and ensure seamless distribution across multiple delivery points.",
-      "With a strong operational framework and trained personnel, ProHaul maintains high standards of safety, compliance, and efficiency in the transportation of sensitive and high-volume inputs.",
+      "With a strong operational framework and trained personnel, we maintain high standards of safety, compliance, and efficiency in the transportation of sensitive and high-volume inputs.",
     ],
     sections: [
       {
@@ -367,7 +367,7 @@ export const servicePages = {
       },
     ],
     closing:
-      "Through these capabilities, ProHaul supports the backbone of agricultural and industrial productivity by ensuring that essential inputs are delivered where and when they are needed most, contributing to improved yields, efficient production, and sustained economic activity.",
+      "Through these capabilities, we support the backbone of agricultural and industrial productivity by ensuring that essential inputs are delivered where and when they are needed most, contributing to improved yields, efficient production, and sustained economic activity.",
     secondaryLink: "/services/agricultural",
     secondaryLabel: "Agric Haulage",
   },
@@ -379,11 +379,11 @@ export const servicePages = {
     title: "Container haulage,",
     highlight: "from port to destination.",
     heroText:
-      "ProHaul supports importers, exporters, and distribution networks with reliable containerized cargo movement from ports to inland destinations.",
+      "We support importers, exporters, and distribution networks with reliable containerized cargo movement from ports to inland destinations.",
     heroImage: IMGS.containerHero,
     primaryCta: "Request Container Haulage",
     intro: [
-      "ProHaul supports importers, exporters, and distribution networks with reliable containerized cargo movement from ports to inland destinations.",
+      "We support importers, exporters, and distribution networks with reliable containerized cargo movement from ports to inland destinations.",
       "Container haulage content was not included in the new service-specific text supplied. This section has therefore been kept simple to avoid adding unsupported details.",
     ],
     sections: [
@@ -398,7 +398,7 @@ export const servicePages = {
       },
     ],
     closing:
-      "Partner with ProHaul for reliable container haulage that keeps import, export, and distribution supply chains moving efficiently.",
+      "Partner with us for reliable container haulage that keeps import, export, and distribution supply chains moving efficiently.",
     secondaryLink: "/services/cross-border",
     secondaryLabel: "Cross-Border Haulage",
   },
@@ -410,11 +410,11 @@ export const servicePages = {
     title: "Cargo movement across Ghana and",
     highlight: "West African corridors.",
     heroText:
-      "ProHaul operates an extensive and well-coordinated haulage network spanning all regions of Ghana and key trade corridors across the West African sub-region.",
+      "We operate an extensive and well-coordinated haulage network spanning all regions of Ghana and key trade corridors across the West African sub-region.",
     heroImage: IMGS.crossHero,
     primaryCta: "Request Cross-Border Haulage",
     intro: [
-      "ProHaul operates an extensive and well-coordinated haulage network spanning all regions of Ghana and key trade corridors across the West African sub-region. Our operations are structured to support seamless cargo movement between ports, production centers, industrial hubs, and end-user destinations.",
+      "We operate an extensive and well-coordinated haulage network spanning all regions of Ghana and key trade corridors across the West African sub-region. Our operations are structured to support seamless cargo movement between ports, production centers, industrial hubs, and end-user destinations.",
       "Leveraging deep operational knowledge of regional routes, transit protocols, and customs procedures, we efficiently manage cross-border logistics to ensure timely and compliant delivery of goods. Our familiarity with ECOWAS trade frameworks and corridor dynamics enables us to minimize delays and optimize transit performance across borders.",
     ],
     sections: [
@@ -436,7 +436,7 @@ export const servicePages = {
       },
     ],
     closing:
-      "Through this integrated network, ProHaul delivers consistent, reliable, and scalable haulage solutions that support regional trade and business continuity.",
+      "Through this integrated network, we deliver consistent, reliable, and scalable haulage solutions that support regional trade and business continuity.",
     secondaryLink: "/services/container",
     secondaryLabel: "Container Haulage",
   },
@@ -658,7 +658,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
               Ready to move your cargo?
             </h2>
             <p className="mx-auto mb-8 max-w-3xl text-base sm:text-xl leading-relaxed text-brand-50">
-              Request a quote and let ProHaul support your haulage requirements with reliable service delivery.
+              Request a quote and let us support your haulage requirements with reliable service delivery.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
               <Link

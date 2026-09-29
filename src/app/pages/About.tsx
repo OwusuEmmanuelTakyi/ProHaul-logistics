@@ -334,7 +334,7 @@ export function About() {
               transition={{ duration: 0.7, delay: subtitleDelay }}
               className="mt-2 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed text-gray-300"
             >
-              ProHaul is a Ghana-based haulage company delivering dependable, end-to-end
+              We are a Ghana-based haulage company delivering dependable, end-to-end
               transportation solutions across Ghana and the wider West African sub-region. We
               specialize in the safe, efficient, and timely movement of bulk and packaged goods,
               supporting businesses across critical sectors of the economy. With a modern fleet,
@@ -415,15 +415,13 @@ export function About() {
                 Dependable transport for critical sectors of the economy.
               </h2>
               <p className="mb-5 text-muted-foreground leading-relaxed">
-                ProHaul is a Ghanaian-owned haulage company providing reliable, efficient, and scalable
-                transportation solutions across Ghana and the West African sub-region. We specialize in
-                the movement of bulk and general cargo, serving key sectors including petroleum
+                We serve key sectors including petroleum
                 distribution, agriculture, construction, manufacturing, and trade through our nationwide
                 and cross-border operations.
               </p>
               <p className="mb-5 text-muted-foreground leading-relaxed">
                 Backed by a modern fleet of high-performance European trucks and specialized trailers,
-                ProHaul is committed to safety, operational excellence, and timely delivery. Through
+                We are committed to safety, operational excellence, and timely delivery. Through
                 technology-driven fleet management systems, compliance-focused operations, and a strong
                 understanding of regional trade corridors, we deliver dependable haulage solutions that
                 support business continuity and regional commerce.
@@ -488,7 +486,7 @@ export function About() {
                 Supporting critical supply chains across Ghana and the West African sub-region.
               </h2>
               <p className="mb-8 text-gray-400 leading-relaxed">
-                ProHaul provides reliable transport for bulk and packaged goods, supporting
+                We provide reliable transport for bulk and packaged goods, supporting
                 industries that depend on timely movement from ports, farms, warehouses, depots,
                 industrial zones, and project sites.
               </p>
@@ -573,7 +571,7 @@ export function About() {
                 Reliable operations across major commercial and industrial corridors.
               </h2>
               <p className="mb-8 text-muted-foreground leading-relaxed">
-                ProHaul has established a strong and reliable operational track record supporting key
+                We have established a strong and reliable operational track record supporting key
                 sectors of the economy, including petroleum distribution, agriculture, and construction.
                 Our experience spans the transportation of both bulk and packaged cargo, delivered with
                 consistency, efficiency, and adherence to industry standards. We have successfully
