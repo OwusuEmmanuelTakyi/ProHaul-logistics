@@ -241,7 +241,7 @@ const process = [
 /* ── Typewriter timing ── */
 const TYPE_SPEED     = 55;
 const LINE1_TEXT     = "About";
-const LINE2_TEXT     = "ProHaul";
+const LINE2_TEXT     = "HaulMax";
 const LINE1_START    = 350;
 const LINE1_DURATION = LINE1_TEXT.length * TYPE_SPEED;
 const LINE2_START    = LINE1_START + LINE1_DURATION + 80;
@@ -266,7 +266,7 @@ export function About() {
         className="relative min-h-[76svh] lg:min-h-[720px] flex items-center overflow-hidden py-24 text-white"
       >
         <motion.div style={{ y: reduceMotion ? "0%" : imageY }} className="absolute inset-0 z-0">
-          <Img src={IMGS.hero} alt="ProHaul haulage truck on the road" className="absolute inset-0 h-full w-full" />
+          <Img src={IMGS.hero} alt="HaulMax haulage truck on the road" className="absolute inset-0 h-full w-full" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/70 to-slate-900/30" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent" />
         </motion.div>
@@ -317,7 +317,7 @@ export function About() {
               />
             </div>
 
-            {/* Line 2 — "ProHaul" red gradient */}
+            {/* Line 2 — "HaulMax" red gradient */}
             <div className="min-h-[1.1em] text-[clamp(2.8rem,13vw,5rem)] md:text-6xl lg:text-7xl font-extrabold leading-[0.98] tracking-tight mb-6">
               <Typewriter
                 text={LINE2_TEXT}
@@ -393,7 +393,7 @@ export function About() {
             <RevealX x={-70}>
               <div className="relative">
                 <div className="rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
-                  <Img src={IMGS.fleet} alt="Modern ProHaul fleet" className="h-full w-full sm:hover:scale-105 transition-transform duration-700" />
+                  <Img src={IMGS.fleet} alt="Modern HaulMax fleet" className="h-full w-full sm:hover:scale-105 transition-transform duration-700" />
                 </div>
                 <div className="absolute left-3 bottom-3 sm:-left-6 sm:-bottom-6 rounded-2xl bg-gradient-to-r from-brand-500 to-brand-700 p-4 sm:p-6 text-white shadow-xl shadow-brand-500/30">
                   <Truck className="h-7 w-7 mb-3 opacity-90" />
@@ -535,7 +535,7 @@ export function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Reveal className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
             <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Key Differentiators</p>
-            <h2 className="mb-4 text-3xl md:text-5xl font-extrabold text-foreground">What sets ProHaul apart.</h2>
+            <h2 className="mb-4 text-3xl md:text-5xl font-extrabold text-foreground">What sets HaulMax apart.</h2>
             <p className="text-muted-foreground leading-relaxed">
               We combine operational strength, market insight, technology, and a disciplined approach to execution.
             </p>
@@ -637,7 +637,7 @@ export function About() {
       {/* ── CTA ── */}
       <section className="relative overflow-hidden py-20 sm:py-28 text-white">
         <div className="absolute inset-0 z-0">
-          <Img src={IMGS.safety} alt="ProHaul safety and operations" className="h-full w-full" />
+          <Img src={IMGS.safety} alt="HaulMax safety and operations" className="h-full w-full" />
           <div className="absolute inset-0 bg-gradient-to-r from-brand-600/95 via-brand-600/90 to-slate-950/85" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

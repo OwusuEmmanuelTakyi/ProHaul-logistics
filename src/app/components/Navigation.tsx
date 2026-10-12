@@ -114,7 +114,7 @@ export function Navigation() {
               >
                 <img
                   src={logo}
-                  alt="ProHaul"
+                  alt="HaulMax"
                   className="h-full w-auto scale-110 object-contain"
                 />
               </motion.div>
@@ -235,7 +235,7 @@ export function Navigation() {
                         <div className="relative min-h-[360px] overflow-hidden rounded-r-3xl">
                           <img
                             src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1200&q=85"
-                            alt="ProHaul truck on highway"
+                            alt="HaulMax truck on highway"
                             className="absolute inset-0 h-full w-full object-cover opacity-85 transition-transform duration-700 hover:scale-105"
                           />
 
@@ -243,7 +243,7 @@ export function Navigation() {
 
                           <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-7 text-center text-white">
                             <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-brand-300">
-                              ProHaul
+                              HaulMax
                             </p>
 
                             <h3 className="max-w-[210px] text-xl font-black leading-snug">

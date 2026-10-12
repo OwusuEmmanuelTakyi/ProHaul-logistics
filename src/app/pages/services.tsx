@@ -180,7 +180,7 @@ export function Services() {
       {/* HERO */}
       <section ref={heroRef} className="relative min-h-[70svh] lg:min-h-[660px] flex items-center overflow-hidden py-24 text-white">
         <motion.div style={{ y: reduceMotion ? "0%" : imageY }} className="absolute inset-0 z-0">
-          <Img src={IMGS.hero} alt="ProHaul haulage services" className="absolute inset-0 h-full w-full" />
+          <Img src={IMGS.hero} alt="HaulMax haulage services" className="absolute inset-0 h-full w-full" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/55 to-slate-950/20" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
         </motion.div>
@@ -287,12 +287,12 @@ export function Services() {
         </div>
       </section>
 
-      {/* WHY PROHAUL */}
+      {/* WHY HAULMAX */}
       <section className="py-16 sm:py-24 bg-muted">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <Reveal y={42}>
-              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Why ProHaul?</p>
+              <p className="mb-3 text-sm font-bold uppercase tracking-widest text-brand-500">Why HaulMax?</p>
               <h2 className="mb-6 text-3xl md:text-5xl font-extrabold leading-tight text-foreground">
                 Built to move cargo securely, on schedule, and at scale.
               </h2>
@@ -332,12 +332,12 @@ export function Services() {
       {/* CTA */}
       <section className="relative overflow-hidden py-20 sm:py-28 text-white">
         <div className="absolute inset-0 z-0">
-          <Img src={IMGS.crossBorder} alt="ProHaul route network" className="h-full w-full" />
+          <Img src={IMGS.crossBorder} alt="HaulMax route network" className="h-full w-full" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/88 to-brand-700/85" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Reveal y={44}>
-            <p className="mb-4 text-sm font-bold uppercase tracking-widest text-brand-300">ProHaul Logistics Solutions</p>
+            <p className="mb-4 text-sm font-bold uppercase tracking-widest text-brand-300">HaulMax Logistics Solutions</p>
             <h2 className="mb-6 text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight">
               We don’t just move goods. We keep businesses moving.
             </h2>

@@ -251,7 +251,7 @@ export const servicePages = {
     primaryCta: "Request Agric Haulage",
     intro: [
       "We provide dedicated support to the agricultural and agribusiness value chain through reliable and efficient transportation of agricultural produce and related commodities across key supply chain nodes. Our services are designed to bridge the gap between farmgate production, aggregation centers, processing facilities, storage depots, and distribution markets, ensuring that goods move seamlessly from origin to end-user markets.",
-      "At Prohaul understand the time-sensitive and quality-sensitive nature of agricultural logistics. As such, our operations are structured to minimize post-harvest losses, reduce transit delays, and maintain product integrity throughout the transportation process. Whether dealing with seasonal harvests or year-round commodity flows, we provide dependable haulage solutions tailored to the operational realities of the agricultural sector.",
+      "At Haulmax understand the time-sensitive and quality-sensitive nature of agricultural logistics. As such, our operations are structured to minimize post-harvest losses, reduce transit delays, and maintain product integrity throughout the transportation process. Whether dealing with seasonal harvests or year-round commodity flows, we provide dependable haulage solutions tailored to the operational realities of the agricultural sector.",
     ],
     sections: [
       {
@@ -613,7 +613,7 @@ export function ServicePage({ data }: { data: ServicePageData }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Reveal y={44}>
             <p className="mb-4 text-sm font-bold uppercase tracking-widest text-brand-100">
-              ProHaul Logistics Solutions
+              HaulMax Logistics Solutions
             </p>
             <h2 className="mb-6 text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight">
               Ready to move your cargo?

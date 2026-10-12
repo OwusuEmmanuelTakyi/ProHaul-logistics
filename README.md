@@ -1,7 +1,7 @@
 
-  # Design ProHaul Website
+  # Design HaulMax Website
 
-  This is a code bundle for Design ProHaul Website. The original project is available at https://www.figma.com/design/84uCZICBkc445HCWZ09wWF/Design-ProHaul-Website.
+  This is a code bundle for Design HaulMax Website. The original project is available at https://www.figma.com/design/84uCZICBkc445HCWZ09wWF/Design-ProHaul-Website.
 
   ## Running the code
 

@@ -388,17 +388,17 @@ const TESTIMONIALS = [
   {
     name: "Kwame Asante",
     role: "Operations Manager, AgroGhana Ltd",
-    text: "ProHaul has been our go-to logistics partner for over 3 years. Their on-time delivery record and professionalism is unmatched in the industry.",
+    text: "HaulMax has been our go-to logistics partner for over 3 years. Their on-time delivery record and professionalism is unmatched in the industry.",
   },
   {
     name: "Abena Mensah",
     role: "Supply Chain Director, BuildRight Ghana",
-    text: "From cement to tiles, ProHaul handles our construction logistics with precision. Their fleet capacity gives us confidence to scale our projects.",
+    text: "From cement to tiles, HaulMax handles our construction logistics with precision. Their fleet capacity gives us confidence to scale our projects.",
   },
   {
     name: "Kofi Boateng",
     role: "Procurement Lead, Delta Petroleum",
-    text: "Safety and compliance are non-negotiable in fuel transport. ProHaul ticks every box — NPA compliant, GPS tracked, and always on schedule.",
+    text: "Safety and compliance are non-negotiable in fuel transport. HaulMax ticks every box — NPA compliant, GPS tracked, and always on schedule.",
   },
 ];
 
@@ -459,7 +459,7 @@ export function Home() {
             Your browser does not support the video tag.
           </video>
 
-          <Img src={IMGS.hero} alt="ProHaul trucks" className="absolute inset-0 -z-10 w-full h-full" />
+          <Img src={IMGS.hero} alt="HaulMax trucks" className="absolute inset-0 -z-10 w-full h-full" />
 
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/65 via-slate-950/35 to-slate-950/10" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent" />
@@ -592,7 +592,7 @@ export function Home() {
             <RevealX x={-70}>
               <div className="relative pb-4 sm:pb-0">
                 <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
-                  <Img src={IMGS.about} alt="ProHaul fleet" className="w-full h-full sm:hover:scale-105 transition-transform duration-700" />
+                  <Img src={IMGS.about} alt="HaulMax fleet" className="w-full h-full sm:hover:scale-105 transition-transform duration-700" />
                 </div>
                 <motion.div
                   initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.8 }}
@@ -620,7 +620,7 @@ export function Home() {
             </RevealX>
 
             <RevealX x={70}>
-              <p className="text-brand-500 font-bold text-sm uppercase tracking-widest mb-3">About ProHaul</p>
+              <p className="text-brand-500 font-bold text-sm uppercase tracking-widest mb-3">About HaulMax</p>
               <h2 className="text-3xl md:text-4xl font-extrabold mb-6 leading-tight">Ghana's Trusted Partner for Bulk Haulage</h2>
               <p className="text-muted-foreground leading-relaxed mb-5">
                 We are a Ghana-based haulage company delivering dependable, end-to-end transportation solutions across Ghana and the wider West African sub-region. We specialize in the safe, efficient, and timely movement of bulk and packaged goods, supporting businesses across critical sectors of the economy.
@@ -698,7 +698,7 @@ export function Home() {
             <div>
               <RevealX x={-60}>
                 <p className="text-brand-500 font-bold text-sm uppercase tracking-widest mb-3">Our Strengths</p>
-                <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">Why Choose ProHaul?</h2>
+                <h2 className="text-3xl md:text-5xl font-extrabold mb-6 leading-tight">Why Choose HaulMax?</h2>
                 <p className="text-muted-foreground leading-relaxed mb-8 sm:mb-10">
                   Modern high-capacity fleet, nationwide and cross-border reach, technology-driven operations, and a strong commitment to safety, reliability, and timely delivery.
                 </p>
@@ -725,14 +725,14 @@ export function Home() {
             <RevealX x={70}>
               <div className="space-y-4">
                 <div className="rounded-2xl overflow-hidden aspect-[16/10] sm:aspect-[16/9] shadow-xl">
-                  <Img src={IMGS.driver} alt="Professional ProHaul driver" className="w-full h-full sm:hover:scale-105 transition-transform duration-700" />
+                  <Img src={IMGS.driver} alt="Professional HaulMax driver" className="w-full h-full sm:hover:scale-105 transition-transform duration-700" />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="rounded-xl overflow-hidden aspect-square shadow-lg">
                     <Img src={IMGS.safety} alt="Safety compliance" className="w-full h-full sm:hover:scale-105 transition-transform duration-700" />
                   </div>
                   <div className="rounded-xl overflow-hidden aspect-square shadow-lg">
-                    <Img src={IMGS.fleet1} alt="ProHaul fleet truck" className="w-full h-full sm:hover:scale-105 transition-transform duration-700" />
+                    <Img src={IMGS.fleet1} alt="HaulMax fleet truck" className="w-full h-full sm:hover:scale-105 transition-transform duration-700" />
                   </div>
                 </div>
               </div>
@@ -776,7 +776,7 @@ export function Home() {
 
             <RevealX x={70}>
               <div className="rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl border border-white/10">
-                <Img src={IMGS.scale} alt="ProHaul tanker truck" className="w-full h-full sm:hover:scale-105 transition-transform duration-700" />
+                <Img src={IMGS.scale} alt="HaulMax tanker truck" className="w-full h-full sm:hover:scale-105 transition-transform duration-700" />
               </div>
             </RevealX>
           </div>
@@ -826,7 +826,7 @@ export function Home() {
 
           <Reveal delay={0.2} y={40} className="mt-12 sm:mt-16">
             <div className="rounded-2xl overflow-hidden h-48 sm:h-64 shadow-2xl">
-              <Img src={IMGS.warehouse} alt="ProHaul logistics operations" className="w-full h-full sm:hover:scale-105 transition-transform duration-1000" />
+              <Img src={IMGS.warehouse} alt="HaulMax logistics operations" className="w-full h-full sm:hover:scale-105 transition-transform duration-1000" />
             </div>
           </Reveal>
         </div>

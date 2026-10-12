@@ -11,7 +11,7 @@ export function Footer() {
             <div className="mb-4 inline-flex rounded-xl bg-white">
               <img
                 src={logo} // ✅ Use the imported variable, not a raw string path
-                alt="ProHaul"
+                alt="HaulMax"
                 className="h-16 w-auto"
               />
             </div>
@@ -130,7 +130,7 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5" />
                 <span className="text-sm text-muted-foreground">
-                  Bookings@prohaul-logistics.com
+                  Bookings@haulmax-logistics.com
                 </span>
               </li>
             </ul>
@@ -139,7 +139,7 @@ export function Footer() {
 
         <div className="border-t border-border mt-8 pt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} ProHaul. All rights reserved. | We don't just move goods - we keep businesses moving!
+            &copy; {new Date().getFullYear()} HaulMax. All rights reserved. | We don't just move goods - we keep businesses moving!
           </p>
         </div>
       </div>

@@ -209,7 +209,7 @@ export function Quote() {
       >
         {/* parallax background */}
         <motion.div style={{ y: reduce ? "0%" : imgY }} className="absolute inset-0 z-0">
-          <Img src={HERO_IMG} alt="ProHaul truck" className="absolute inset-0 h-full w-full" />
+          <Img src={HERO_IMG} alt="HaulMax truck" className="absolute inset-0 h-full w-full" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/96 via-slate-950/70 to-slate-950/20" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent" />
         </motion.div>
@@ -658,13 +658,13 @@ export function Quote() {
                       +233 (0) 244 136 797
                     </a>
                     <a
-                      href="mailto:Bookings@prohaul-logistics.com"
+                      href="mailto:Bookings@haulmax-logistics.com"
                       className="flex items-center gap-3 rounded-2xl bg-muted px-4 py-3.5 text-sm font-semibold text-foreground transition-all hover:bg-brand-50 hover:text-brand-600 dark:hover:bg-brand-500/10"
                     >
                       <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-brand-500/10">
                         <Mail className="h-4 w-4 text-brand-500" />
                       </div>
-                      Bookings@prohaul-logistics.com
+                      Bookings@haulmax-logistics.com
                     </a>
                     <div className="flex items-start gap-3 rounded-2xl bg-muted px-4 py-3.5 text-sm font-semibold text-muted-foreground">
                       <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-brand-500/10">
@@ -684,7 +684,7 @@ export function Quote() {
       {/* ══════════════════ CTA BANNER ══════════════════ */}
       <section className="relative overflow-hidden py-20 sm:py-28 text-white">
         <div className="absolute inset-0 z-0">
-          <Img src={ROAD_IMG} alt="ProHaul road" className="h-full w-full" />
+          <Img src={ROAD_IMG} alt="HaulMax road" className="h-full w-full" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 to-slate-950/60" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">

@@ -167,7 +167,7 @@ export function ComplianceRegulatory() {
       {/* HERO */}
       <section ref={heroRef} className="relative min-h-[70svh] lg:min-h-[660px] flex items-center overflow-hidden py-24 text-white">
         <motion.div style={{ y: reduceMotion ? "0%" : imageY }} className="absolute inset-0 z-0">
-          <Img src={IMGS.hero} alt="ProHaul compliance and regulatory standards" className="absolute inset-0 h-full w-full" />
+          <Img src={IMGS.hero} alt="HaulMax compliance and regulatory standards" className="absolute inset-0 h-full w-full" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/82 via-slate-950/55 to-slate-950/15" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-transparent" />
         </motion.div>
@@ -388,7 +388,7 @@ export function ComplianceRegulatory() {
       {/* CTA */}
       <section className="relative overflow-hidden py-20 sm:py-28 text-white">
         <div className="absolute inset-0 z-0">
-          <Img src={IMGS.road} alt="ProHaul route network" className="h-full w-full" />
+          <Img src={IMGS.road} alt="HaulMax route network" className="h-full w-full" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/88 to-brand-700/85" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

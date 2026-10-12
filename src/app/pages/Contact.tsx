@@ -219,8 +219,8 @@ const contactCards = [
   {
     icon: Mail,
     title: "Email",
-    value: "Bookings@prohaul-logistics.com",
-    href: "mailto:info@prohaul.com",
+    value: "Bookings@haulmax-logistics.com",
+    href: "mailto:info@haulmax.com",
   },
   {
     icon: MapPin,
@@ -486,7 +486,7 @@ export function Contact() {
           style={{ y: reduceMotion ? "0%" : imageY, scale: reduceMotion ? 1 : heroScale }}
           className="absolute inset-0 z-0"
         >
-          <Img src={IMGS.hero} alt="ProHaul logistics truck" className="absolute inset-0 h-full w-full" />
+          <Img src={IMGS.hero} alt="HaulMax logistics truck" className="absolute inset-0 h-full w-full" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/96 via-slate-950/75 to-slate-950/25" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent" />
         </motion.div>
@@ -733,7 +733,7 @@ export function Contact() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
             <Reveal className="lg:col-span-2" y={36}>
               <div className="h-full rounded-3xl bg-gradient-to-br from-brand-500 to-brand-600 p-6 sm:p-8 text-white shadow-xl shadow-brand-500/25">
-                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-100">Why Choose ProHaul?</p>
+                <p className="mb-2 text-xs font-bold uppercase tracking-[0.2em] text-brand-100">Why Choose HaulMax?</p>
                 <h2 className="mb-6 text-2xl md:text-3xl font-extrabold leading-tight">A trusted logistics partner for business continuity.</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {whyChoose.map((item) => (
@@ -810,7 +810,7 @@ export function Contact() {
       {/* ── FINAL CTA ── */}
       <section className="relative overflow-hidden py-24 sm:py-32 text-white">
         <div className="absolute inset-0 z-0">
-          <Img src={IMGS.road} alt="ProHaul route network" className="h-full w-full" />
+          <Img src={IMGS.road} alt="HaulMax route network" className="h-full w-full" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/96 via-slate-950/88 to-brand-700/80" />
         </div>
         <div className="absolute inset-0 z-0" style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)", backgroundSize: "44px 44px" }} />
@@ -827,7 +827,7 @@ export function Contact() {
               <a href="tel:+233XXXXXXXXX" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-brand-500 to-brand-700 px-8 py-4 text-sm font-bold text-white shadow-xl shadow-brand-600/30 transition-all hover:brightness-110 hover:scale-105">
                 <Phone className="h-4 w-4" /> Call Us
               </a>
-              <a href="mailto:info@prohaul.com" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/8 px-8 py-4 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/18 hover:scale-105">
+              <a href="mailto:info@haulmax.com" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/8 px-8 py-4 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/18 hover:scale-105">
                 <Mail className="h-4 w-4" /> Email Us
               </a>
             </div>

@@ -249,7 +249,7 @@ export function Fleet() {
         className="relative min-h-[72svh] lg:min-h-[660px] flex items-center overflow-hidden py-24 text-white"
       >
         <motion.div style={{ y: reduceMotion ? "0%" : videoY }} className="absolute inset-0 z-0">
-          <Img src={IMGS.hero} alt="ProHaul fleet" className="absolute inset-0 h-full w-full" />
+          <Img src={IMGS.hero} alt="HaulMax fleet" className="absolute inset-0 h-full w-full" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/82 via-slate-950/50 to-slate-950/10" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/55 via-transparent to-transparent" />
         </motion.div>
@@ -345,7 +345,7 @@ export function Fleet() {
               <div className="h-full min-h-[340px] overflow-hidden rounded-3xl shadow-2xl">
                 <img
                   src="https://i.pinimg.com/736x/60/19/da/6019dacd999d834b8d00dd1f44f4c44c.jpg"
-                  alt="ProHaul fleet and operational capacity"
+                  alt="HaulMax fleet and operational capacity"
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 />
